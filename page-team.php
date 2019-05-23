@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying work
+ * The template for displaying staff
  *
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
@@ -11,7 +11,7 @@
 get_header();
 
 $loop = new WP_Query(array(
-    "post_type"   => "vt_project",
+    "post_type"   => "vt_staff",
     "post_status" => "publish",
 ));
 ?>
@@ -27,16 +27,19 @@ $loop = new WP_Query(array(
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class("work"); ?>>
-	<div class="projects">
+<article id="post-<?php the_ID(); ?>" <?php post_class("team"); ?>>
+	<div class="staff">
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-      <a class="project" href="<?php echo get_permalink($post->ID) ?>">
+      <span class="member">
         <?php echo get_the_post_thumbnail($post->ID) ?>
-        <span><?php echo get_field("main_label") ?></span><br>
-        <span><?php echo get_field("sub_label") ?></span>
-      </a>
+        <a href="<?php echo get_permalink($post->ID) ?>">
+          <?php echo get_field("name") ?>
+        </a><br>
+        <span><?php echo get_field("role") ?></span>
+        <p><?php echo get_field("bio") ?></p>
+      </span>
     <?php endwhile; ?>
-	</div><!-- .projects -->
+	</div><!-- .staff -->
 
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">
