@@ -122,7 +122,7 @@ add_action( 'widgets_init', 'paperplanes_widgets_init' );
 function paperplanes_scripts() {
 	wp_enqueue_style( 'paperplanes-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'paperplanes', get_template_directory_uri() . '/js/app.js', array(), '20151215', true );
+	wp_enqueue_script( 'paperplanes-main', get_template_directory_uri() . '/js/main.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'paperplanes-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 

@@ -10,10 +10,14 @@
 		display: flex; justify-content: space-between; align-items: center;
 	 	margin-bottom: 2em; border-width: 0px; border-bottom-width: 2px; border-style: solid; }
 
-	&.theme-dark {
+	&[data-theme="dark"] {
+		.home-link img { &.theme-dark { display: inline-block; } }
+		.home-link img { &.theme-light { display: none; } }
 		.banner { border-color: white; } }
 
-	&.theme-light {
+	&[data-theme="light"] {
+		.home-link img { &.theme-dark { display: none; } }
+		.home-link img { &.theme-light { display: inline-block; } }
 		.banner { border-color: black; } }
 
 	.menu {

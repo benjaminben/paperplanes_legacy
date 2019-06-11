@@ -9,7 +9,10 @@
  * @package Paper_Planes
  */
 
+global $post;
+
 $theme = get_field( 'theme' );
+$slug = $post->post_name;
 
 ?>
 
@@ -24,7 +27,7 @@ $theme = get_field( 'theme' );
 </head>
 
 <body <?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>>
-<div id="page" class="site">
+<div id="page" class="site <?php echo $slug ?>">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'paperplanes' ); ?></a>
 
 	<header id="masthead" class="site-header">
@@ -34,5 +37,3 @@ $theme = get_field( 'theme' );
 
 		<?php get_template_part("template-parts/navigation", "primary") ?>
 	</header><!-- #masthead -->
-
-	<div id="content" class="site-content">

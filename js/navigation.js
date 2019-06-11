@@ -41,6 +41,8 @@ doc = document.documentElement
       var scrollPosition = doc._data['scroll-position']
       doc.style.overflow = doc._data['previous-overflow']
       window.scrollTo(scrollPosition[0], scrollPosition[1])
+
+      container.setAttribute('data-theme', doc._data['menu-theme'])
 		} else {
 			container.className += ' toggled';
 			button.setAttribute( 'aria-expanded', 'true' );
@@ -55,6 +57,9 @@ doc = document.documentElement
       doc._data['previous-overflow'] = doc.style.overflow
       doc.style.overflow = 'hidden'
       window.scrollTo(scrollPosition[0], scrollPosition[1])
+
+      doc._data['menu-theme'] = container.getAttribute('data-theme')
+      container.setAttribute('data-theme', 'dark')
 		}
 	};
 

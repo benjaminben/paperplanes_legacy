@@ -530,6 +530,12 @@ hr {
   margin-bottom: 1.5em;
 }
 
+/* line 25, sass/elements/_elements.scss */
+#masthead {
+  position: relative;
+  z-index: 1;
+}
+
 /* line 1, sass/elements/_lists.scss */
 ul, ol {
   margin: 0 0 1.5em 3em;
@@ -562,7 +568,7 @@ dd {
   margin: 0 1.5em 1.5em;
 }
 
-/* line 27, sass/elements/_elements.scss */
+/* line 29, sass/elements/_elements.scss */
 img {
   height: auto;
   /* Make sure images are scaled correctly. */
@@ -570,7 +576,7 @@ img {
   /* Adhere to container width. */
 }
 
-/* line 32, sass/elements/_elements.scss */
+/* line 34, sass/elements/_elements.scss */
 figure {
   margin: 1em 0;
   /* Extra wide images within figure tags don't overflow the content area. */
@@ -582,13 +588,13 @@ table {
   width: 100%;
 }
 
-/* line 42, sass/elements/_elements.scss */
+/* line 44, sass/elements/_elements.scss */
 .work .projects {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-/* line 45, sass/elements/_elements.scss */
+/* line 47, sass/elements/_elements.scss */
 .team .staff {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -739,14 +745,30 @@ a:hover, a:active {
   border-style: solid;
 }
 /* line 14, sass/navigation/_menus.scss */
-.main-navigation.theme-dark .banner {
+.main-navigation[data-theme="dark"] .home-link img.theme-dark {
+  display: inline-block;
+}
+/* line 15, sass/navigation/_menus.scss */
+.main-navigation[data-theme="dark"] .home-link img.theme-light {
+  display: none;
+}
+/* line 16, sass/navigation/_menus.scss */
+.main-navigation[data-theme="dark"] .banner {
   border-color: white;
 }
-/* line 17, sass/navigation/_menus.scss */
-.main-navigation.theme-light .banner {
+/* line 19, sass/navigation/_menus.scss */
+.main-navigation[data-theme="light"] .home-link img.theme-dark {
+  display: none;
+}
+/* line 20, sass/navigation/_menus.scss */
+.main-navigation[data-theme="light"] .home-link img.theme-light {
+  display: inline-block;
+}
+/* line 21, sass/navigation/_menus.scss */
+.main-navigation[data-theme="light"] .banner {
   border-color: black;
 }
-/* line 19, sass/navigation/_menus.scss */
+/* line 23, sass/navigation/_menus.scss */
 .main-navigation .menu {
   display: none;
   list-style: none;
@@ -754,7 +776,7 @@ a:hover, a:active {
   padding-left: 0;
   position: absolute;
 }
-/* line 26, sass/navigation/_menus.scss */
+/* line 30, sass/navigation/_menus.scss */
 .main-navigation .menu ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   float: left;
@@ -763,78 +785,78 @@ a:hover, a:active {
   left: -999em;
   z-index: 99999;
 }
-/* line 34, sass/navigation/_menus.scss */
+/* line 38, sass/navigation/_menus.scss */
 .main-navigation .menu ul ul {
   left: -999em;
   top: 0;
 }
-/* line 40, sass/navigation/_menus.scss */
+/* line 44, sass/navigation/_menus.scss */
 .main-navigation .menu ul li:hover > ul, .main-navigation .menu ul li.focus > ul {
   left: 100%;
 }
-/* line 46, sass/navigation/_menus.scss */
+/* line 50, sass/navigation/_menus.scss */
 .main-navigation .menu ul a {
   width: 200px;
 }
-/* line 59, sass/navigation/_menus.scss */
+/* line 63, sass/navigation/_menus.scss */
 .main-navigation .menu li:hover > ul,
 .main-navigation .menu li.focus > ul {
   left: auto;
 }
-/* line 65, sass/navigation/_menus.scss */
+/* line 69, sass/navigation/_menus.scss */
 .main-navigation li {
   position: relative;
   margin-bottom: 1em;
   display: block;
   font-size: 2em;
 }
-/* line 68, sass/navigation/_menus.scss */
+/* line 72, sass/navigation/_menus.scss */
 .main-navigation li:last-of-type {
   margin-bottom: 0em;
 }
-/* line 74, sass/navigation/_menus.scss */
+/* line 78, sass/navigation/_menus.scss */
 .main-navigation li a {
   color: white;
   display: inline-block;
 }
-/* line 76, sass/navigation/_menus.scss */
+/* line 80, sass/navigation/_menus.scss */
 .main-navigation li a:hover, .main-navigation li a:focus {
   color: red;
 }
-/* line 79, sass/navigation/_menus.scss */
+/* line 83, sass/navigation/_menus.scss */
 .main-navigation a {
   text-decoration: none;
 }
-/* line 89, sass/navigation/_menus.scss */
+/* line 93, sass/navigation/_menus.scss */
 .main-navigation.toggled {
   background: black;
   min-height: 100vh;
 }
-/* line 91, sass/navigation/_menus.scss */
+/* line 95, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu {
   display: block;
 }
 
-/* line 94, sass/navigation/_menus.scss */
+/* line 98, sass/navigation/_menus.scss */
 .menu-toggle {
   display: inline-block;
 }
 
-/* line 102, sass/navigation/_menus.scss */
+/* line 106, sass/navigation/_menus.scss */
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden;
 }
-/* line 107, sass/navigation/_menus.scss */
+/* line 111, sass/navigation/_menus.scss */
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
-/* line 112, sass/navigation/_menus.scss */
+/* line 116, sass/navigation/_menus.scss */
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
@@ -989,6 +1011,11 @@ a:hover, a:active {
 }
 
 /* line 20, sass/site/primary/_posts-and-pages.scss */
+.site-content {
+  position: relative;
+}
+
+/* line 22, sass/site/primary/_posts-and-pages.scss */
 .page-links {
   clear: both;
   margin: 0 0 1.5em;
@@ -1005,6 +1032,40 @@ a:hover, a:active {
 /* line 4, sass/site/primary/_comments.scss */
 .bypostauthor {
   display: block;
+}
+
+/*--------------------------------------------------------------
+## Custom pages
+--------------------------------------------------------------*/
+/* line 2, sass/site/pages/_home.scss */
+#page.home video.reel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+/* line 6, sass/site/pages/_home.scss */
+#page.home .site-content {
+  color: black;
+  position: relative;
+  z-index: 0;
+}
+/* line 8, sass/site/pages/_home.scss */
+#page.home .site-content:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #6f7166;
+  z-index: -1;
+}
+/* line 15, sass/site/pages/_home.scss */
+#page.home .site-content .close {
+  cursor: pointer;
 }
 
 /*--------------------------------------------------------------
