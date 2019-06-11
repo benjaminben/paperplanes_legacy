@@ -1068,6 +1068,23 @@ a:hover, a:active {
   cursor: pointer;
 }
 
+/* line 2, sass/site/pages/_contact.scss */
+#page.contact .grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+/* line 6, sass/site/pages/_contact.scss */
+#page.contact .grid .item h5 {
+  margin: 0;
+}
+/* line 7, sass/site/pages/_contact.scss */
+#page.contact .grid .item.social img {
+  width: 20px;
+  height: auto;
+}
+
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/

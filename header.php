@@ -26,7 +26,7 @@ $slug = $post->post_name;
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>>
+<body style="background-color: <?php echo get_field('bg_color') ?> " <?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>>
 <div id="page" class="site <?php echo $slug ?>">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'paperplanes' ); ?></a>
 
