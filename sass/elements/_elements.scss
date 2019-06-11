@@ -12,6 +12,9 @@ body {
 	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
 }
 
+body.theme-dark { background: black; color: white; }
+body.theme-light { background: white; color: black; }
+
 hr {
 	background-color: $color__background-hr;
 	border: 0;

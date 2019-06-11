@@ -511,6 +511,18 @@ body {
 }
 
 /* line 15, sass/elements/_elements.scss */
+body.theme-dark {
+  background: black;
+  color: white;
+}
+
+/* line 16, sass/elements/_elements.scss */
+body.theme-light {
+  background: white;
+  color: black;
+}
+
+/* line 18, sass/elements/_elements.scss */
 hr {
   background-color: #ccc;
   border: 0;
@@ -550,7 +562,7 @@ dd {
   margin: 0 1.5em 1.5em;
 }
 
-/* line 24, sass/elements/_elements.scss */
+/* line 27, sass/elements/_elements.scss */
 img {
   height: auto;
   /* Make sure images are scaled correctly. */
@@ -558,7 +570,7 @@ img {
   /* Adhere to container width. */
 }
 
-/* line 29, sass/elements/_elements.scss */
+/* line 32, sass/elements/_elements.scss */
 figure {
   margin: 1em 0;
   /* Extra wide images within figure tags don't overflow the content area. */
@@ -570,13 +582,13 @@ table {
   width: 100%;
 }
 
-/* line 39, sass/elements/_elements.scss */
+/* line 42, sass/elements/_elements.scss */
 .work .projects {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-/* line 42, sass/elements/_elements.scss */
+/* line 45, sass/elements/_elements.scss */
 .team .staff {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -702,20 +714,48 @@ a:hover, a:active {
 --------------------------------------------------------------*/
 /* line 1, sass/navigation/_menus.scss */
 .main-navigation {
-  clear: both;
   display: block;
-  float: left;
   width: 100%;
+  padding: 2em 2em 0em;
 }
-/* line 7, sass/navigation/_menus.scss */
-.main-navigation ul {
+/* line 4, sass/navigation/_menus.scss */
+.main-navigation .home-link {
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 6, sass/navigation/_menus.scss */
+.main-navigation .home-link img, .main-navigation .home-link svg {
+  width: 200px;
+  height: auto;
+}
+/* line 9, sass/navigation/_menus.scss */
+.main-navigation .banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+  border-width: 0px;
+  border-bottom-width: 2px;
+  border-style: solid;
+}
+/* line 14, sass/navigation/_menus.scss */
+.main-navigation.theme-dark .banner {
+  border-color: white;
+}
+/* line 17, sass/navigation/_menus.scss */
+.main-navigation.theme-light .banner {
+  border-color: black;
+}
+/* line 19, sass/navigation/_menus.scss */
+.main-navigation .menu {
   display: none;
   list-style: none;
   margin: 0;
   padding-left: 0;
+  position: absolute;
 }
-/* line 13, sass/navigation/_menus.scss */
-.main-navigation ul ul {
+/* line 26, sass/navigation/_menus.scss */
+.main-navigation .menu ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   float: left;
   position: absolute;
@@ -723,68 +763,78 @@ a:hover, a:active {
   left: -999em;
   z-index: 99999;
 }
-/* line 21, sass/navigation/_menus.scss */
-.main-navigation ul ul ul {
+/* line 34, sass/navigation/_menus.scss */
+.main-navigation .menu ul ul {
   left: -999em;
   top: 0;
 }
-/* line 27, sass/navigation/_menus.scss */
-.main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
+/* line 40, sass/navigation/_menus.scss */
+.main-navigation .menu ul li:hover > ul, .main-navigation .menu ul li.focus > ul {
   left: 100%;
 }
-/* line 33, sass/navigation/_menus.scss */
-.main-navigation ul ul a {
+/* line 46, sass/navigation/_menus.scss */
+.main-navigation .menu ul a {
   width: 200px;
 }
-/* line 46, sass/navigation/_menus.scss */
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
+/* line 59, sass/navigation/_menus.scss */
+.main-navigation .menu li:hover > ul,
+.main-navigation .menu li.focus > ul {
   left: auto;
 }
-/* line 52, sass/navigation/_menus.scss */
+/* line 65, sass/navigation/_menus.scss */
 .main-navigation li {
-  float: left;
   position: relative;
-}
-/* line 61, sass/navigation/_menus.scss */
-.main-navigation a {
+  margin-bottom: 1em;
   display: block;
+  font-size: 2em;
+}
+/* line 68, sass/navigation/_menus.scss */
+.main-navigation li:last-of-type {
+  margin-bottom: 0em;
+}
+/* line 74, sass/navigation/_menus.scss */
+.main-navigation li a {
+  color: white;
+  display: inline-block;
+}
+/* line 76, sass/navigation/_menus.scss */
+.main-navigation li a:hover, .main-navigation li a:focus {
+  color: red;
+}
+/* line 79, sass/navigation/_menus.scss */
+.main-navigation a {
   text-decoration: none;
 }
-
-/* Small menu. */
-/* line 74, sass/navigation/_menus.scss */
-.menu-toggle,
-.main-navigation.toggled ul {
+/* line 89, sass/navigation/_menus.scss */
+.main-navigation.toggled {
+  background: black;
+  min-height: 100vh;
+}
+/* line 91, sass/navigation/_menus.scss */
+.main-navigation.toggled .menu {
   display: block;
 }
 
-@media screen and (min-width: 37.5em) {
-  /* line 80, sass/navigation/_menus.scss */
-  .menu-toggle {
-    display: none;
-  }
-
-  /* line 83, sass/navigation/_menus.scss */
-  .main-navigation ul {
-    display: block;
-  }
+/* line 94, sass/navigation/_menus.scss */
+.menu-toggle {
+  display: inline-block;
 }
-/* line 92, sass/navigation/_menus.scss */
+
+/* line 102, sass/navigation/_menus.scss */
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden;
 }
-/* line 97, sass/navigation/_menus.scss */
+/* line 107, sass/navigation/_menus.scss */
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
-/* line 102, sass/navigation/_menus.scss */
+/* line 112, sass/navigation/_menus.scss */
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {

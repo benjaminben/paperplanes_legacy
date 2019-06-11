@@ -13,7 +13,7 @@
   <span class="member">
     <?php echo get_the_post_thumbnail($post->ID) ?>
     <a href="<?php echo get_permalink($post->ID) ?>">
-      <?php echo get_field("name") ?>
+      <?php echo get_the_title() ?>
     </a><br>
     <span><?php echo get_field("role") ?></span>
     <p><?php echo get_field("bio") ?></p>
