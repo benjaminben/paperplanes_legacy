@@ -10,34 +10,55 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <?php the_field("marquee_video") ?>
-	<?php the_title( "<h1 class='entry-title'>", "</h1>" ); ?>
-	<div class="entry-content">
-		<?php the_field("description") ?>
-	</div><!-- .entry-content -->
-  <?php if( have_rows("credits") ): ?>
-  <div class="credits">
-    <h3>Credit List</h3>
-    <?php while ( have_rows("credits") ) : the_row(); ?>
-        <span><?php the_sub_field("role"); ?>: </span>
-        <span><?php the_sub_field("entity"); ?></span><br>
-    <?php endwhile; ?>
-  </div><!-- .credits  -->
-  <?php endif; ?>
-  </div>
-  <?php
-  $images = get_field("gallery");
-  $size = "full";
-
-  if ($images): ?>
-  <div class="gallery">
-    <?php foreach ( $images as $image ): ?>
-      <div class="item">
-        <?php echo wp_get_attachment_image( $image["ID"], $size ) ?>
-      </div><!-- .item -->
-    <?php endforeach; ?>
-  </div><!-- .gallery -->
-  <?php endif; ?>
+<?php
+if ( have_rows( 'content' ) ) :
+  while ( have_rows( 'content' ) ) : the_row();
+    if ( get_row_layout() == 'headspace' ) : ?>
+      <h1>HEADSPACE</h1> <?php
+    endif;
+    if ( get_row_layout() == 'marquee_video' ) : ?>
+      <div class="layout marquee-video"><?php the_sub_field( 'embed' ) ?><div> <?php
+    endif;
+    if ( get_row_layout() == 'generic' ) : ?>
+      <div class="layout generic"><?php the_sub_field( 'content' ) ?></div> <?php
+    endif;
+    if ( get_row_layout() == 'credits' ) : ?>
+      <div class="layout credits"> <?php
+        if ( have_rows( 'lines' ) ) :
+          while ( have_rows( 'lines' ) ) : the_row(); ?>
+          <span class="line">
+            <span class="role"><?php the_sub_field("role"); ?>: </span>
+            <span class="entity"><?php the_sub_field("entity"); ?></span>
+          </span> <?php
+          endwhile;
+        endif; ?>
+      </div> <?php
+    endif;
+    if ( get_row_layout() == 'gallery' ) :
+        $items = get_sub_field( 'items' );
+        $size = "full";
+        if ( get_sub_field( 'slideshow' ) ) : ?>
+          <div class="layout slideshow">
+            <?php foreach ( $items as $key=>$item ): ?>
+              <div data-active="<?php echo ($key == 0 ? 1 : 0) ?>" class="item">
+                <?php echo wp_get_attachment_image( $item["ID"], $size ) ?>
+              </div>
+            <?php endforeach; ?>
+          </div> <?php
+        else: ?>
+          <div class="layout gallery">
+            <?php foreach ( $items as $key=>$item ): ?>
+              <div class="item">
+                <?php echo wp_get_attachment_image( $item["ID"], $size ) ?>
+              </div>
+            <?php endforeach; ?>
+          </div><?php
+        endif;
+    endif;
+  endwhile;
+else :
+  // no layouts found
+endif; ?>
 	<footer class="entry-footer">
 		<?php paperplanes_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
