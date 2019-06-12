@@ -1061,7 +1061,23 @@ a:hover, a:active {
   background: #6f7166;
   z-index: -1;
 }
-/* line 15, sass/site/pages/_home.scss */
+/* line 16, sass/site/pages/_home.scss */
+#page.home .site-content .layout.banner {
+  font-size: 3em;
+}
+/* line 16, sass/site/pages/_home.scss */
+#page.home .site-content .layout.banner p {
+  margin: 0 0 1em;
+}
+/* line 17, sass/site/pages/_home.scss */
+#page.home .site-content .layout.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 3em;
+  font-size: 1.66em;
+}
+/* line 24, sass/site/pages/_home.scss */
 #page.home .site-content .close {
   cursor: pointer;
 }

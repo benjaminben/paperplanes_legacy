@@ -3,7 +3,7 @@
 		position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
 	 	object-fit: cover; }
 
-  .site-content  {
+  .site-content {
     color: black;
     &:before {
       content: "";
@@ -11,6 +11,15 @@
       background: rgba(111, 113, 102, 1); z-index: -1;
     }
     position: relative; z-index: 0;
+
+		.layout {
+			&.banner { font-size: 3em; p { margin: 0 0 1em; } }
+			&.grid {
+				display: grid; grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: auto; grid-gap: 3em;
+				font-size: 1.66em;
+			}
+		}
 
     .close { cursor: pointer; }
   }

@@ -12,7 +12,26 @@ $reel = get_field('reel');
 
 <div id="content" class="site-content">
   <?php while ( have_posts() ) : the_post(); ?>
-  <?php the_content(); ?>
+  <?php
+    if ( have_rows( 'content' ) ) :
+      while ( have_rows( 'content' ) ) : the_row();
+        if ( get_row_layout() == 'banner' ) : ?>
+          <div class="layout banner">
+          <?php the_sub_field( 'content' ) ?>
+          </div> <?php
+        endif;
+        if ( get_row_layout() == 'grid' ) : ?>
+          <div class="layout grid"> <?php
+            if ( have_rows( 'items' ) ) :
+              while ( have_rows( 'items' ) ) : the_row();
+                the_sub_field( 'content' );
+              endwhile;
+            endif; ?>
+          </div> <?php
+        endif;
+      endwhile;
+    endif;
+  ?>
   <?php endwhile; wp_reset_query(); ?>
   <span class="close">Explore</span>
 </div><!-- #content -->
