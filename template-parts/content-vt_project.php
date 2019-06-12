@@ -17,7 +17,7 @@ if ( have_rows( 'content' ) ) :
       <h1>HEADSPACE</h1> <?php
     endif;
     if ( get_row_layout() == 'marquee_video' ) : ?>
-      <div class="layout marquee-video"><?php the_sub_field( 'embed' ) ?><div> <?php
+      <div class="layout marquee-video"><?php the_sub_field( 'embed' ) ?></div> <?php
     endif;
     if ( get_row_layout() == 'generic' ) : ?>
       <div class="layout generic"><?php the_sub_field( 'content' ) ?></div> <?php
@@ -39,11 +39,15 @@ if ( have_rows( 'content' ) ) :
         $size = "full";
         if ( get_sub_field( 'slideshow' ) ) : ?>
           <div class="layout slideshow">
-            <?php foreach ( $items as $key=>$item ): ?>
-              <div data-active="<?php echo ($key == 0 ? 1 : 0) ?>" class="item">
-                <?php echo wp_get_attachment_image( $item["ID"], $size ) ?>
-              </div>
-            <?php endforeach; ?>
+            <div ref="items" class="items">
+              <?php foreach ( $items as $key=>$item ): ?>
+                <div :active="active == <?php echo $key ?>" class="item">
+                  <?php echo wp_get_attachment_image( $item["ID"], $size ) ?>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <span @click="navPrev" class="ctrl prev"><</span>
+            <span @click="navNext" class="ctrl next">></span>
           </div> <?php
         else: ?>
           <div class="layout gallery">

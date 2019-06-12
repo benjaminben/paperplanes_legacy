@@ -7,6 +7,11 @@
  * @package Paper_Planes
  */
 
+wp_enqueue_script(
+  'paperplanes-project',
+  get_template_directory_uri() . '/js/project.js',
+  array('vuejs'), '20151215', true
+);
 get_header();
 ?>
 
