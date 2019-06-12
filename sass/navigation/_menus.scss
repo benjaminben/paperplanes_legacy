@@ -1,24 +1,25 @@
 .main-navigation {
-	display: block; width: 100%; padding: 2em 2em 0em;
+	display: block; width: 100%; padding: $layout__navBannerPaddingTop 2em 0em;
 	position: fixed;
 
 	.home-link {
 		display: inline-block; vertical-align: middle;
-		img, svg { width: 200px; height: auto; }
+		img, svg { height: $layout__navBannerHeight; width: auto; }
 	}
 
 	.banner {
 		display: flex; justify-content: space-between; align-items: center;
-	 	margin-bottom: 2em; border-width: 0px; border-bottom-width: 2px; border-style: solid; }
+	 	padding-bottom: $layout__navBannerPaddingBottom; border-width: 0px; border-bottom-width: $layout__navBannerBorderBottom; border-style: solid;
+	 	margin-bottom: $layout__navBannerMarginBottom; }
 
 	&[data-theme="dark"] {
-		.home-link img { &.theme-dark { display: inline-block; } }
+		.home-link img { &.theme-dark { display: block; } }
 		.home-link img { &.theme-light { display: none; } }
 		.banner { border-color: white; } }
 
 	&[data-theme="light"] {
 		.home-link img { &.theme-dark { display: none; } }
-		.home-link img { &.theme-light { display: inline-block; } }
+		.home-link img { &.theme-light { display: block; } }
 		.banner { border-color: black; } }
 
 	.menu {
