@@ -19,19 +19,36 @@ if ( have_rows( 'content' ) ) :
     if ( get_row_layout() == 'marquee_video' ) : ?>
       <div class="layout marquee-video"><?php the_sub_field( 'embed' ) ?></div> <?php
     endif;
+    if ( get_row_layout() == 'title' ) : ?>
+      <div class="layout title">
+        <h1><?php get_sub_field( 'alt' ) ? the_sub_field( 'alt' ) : the_title() ?></h1>
+      </div> <?php
+    endif;
     if ( get_row_layout() == 'generic' ) : ?>
       <div class="layout generic"><?php the_sub_field( 'content' ) ?></div> <?php
     endif;
     if ( get_row_layout() == 'credits' ) : ?>
-      <div class="layout credits"> <?php
-        if ( have_rows( 'lines' ) ) :
-          while ( have_rows( 'lines' ) ) : the_row(); ?>
-          <span class="line">
-            <span class="role"><?php the_sub_field("role"); ?>: </span>
-            <span class="entity"><?php the_sub_field("entity"); ?></span>
-          </span> <?php
-          endwhile;
-        endif; ?>
+      <div class="layout credits">
+        <p>Credit List</p>
+        <div class="lines"><?php
+          if ( have_rows( 'lines' ) ) :
+            $ct = 0;
+            while ( have_rows( 'lines' ) ) : the_row();
+              if ( $ct == 0 ) :
+                ?><span class="group"><?php
+              endif; ?>
+            <span class="line">
+              <span class="role"><?php the_sub_field("role"); ?>: </span>
+              <span class="entity"><?php the_sub_field("entity"); ?></span>
+            </span> <?php
+              $ct += 1;
+              if ( $ct == 6 ) :
+                ?></span><?php
+                $ct = 0;
+              endif;
+            endwhile;
+          endif; ?>
+        </div>
       </div> <?php
     endif;
     if ( get_row_layout() == 'gallery' ) :

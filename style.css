@@ -1111,8 +1111,8 @@ article.vt_project .layout.marquee-video iframe {
   width: 100%;
   height: 100%;
 }
-/* line 7, sass/site/pages/_vt_project.scss */
-article.vt_project .layout.credits {
+/* line 8, sass/site/pages/_vt_project.scss */
+article.vt_project .layout.credits .lines {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
