@@ -1,6 +1,8 @@
 article.vt_project {
   .layout {
     width: 80%; margin: 0 auto 2em;
+    &.headspace {
+      height: $layout__navHeight; }
     &.marquee-video {
       position: relative; width: 100%; padding-bottom: 56.25%;
       iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; } }
@@ -23,5 +25,9 @@ article.vt_project {
       grid-template-rows: auto; grid-gap: 2em;
       .item {
         display: inline-block;
-        img { width: 100%; height: auto; } } }
-  } }
+        img { width: 100%; height: auto; } } } }
+  .post-navigation {
+    width: 80%; margin: 0 auto 4em; display: flex; justify-content: space-between;
+    a { color: red; }
+  }
+}

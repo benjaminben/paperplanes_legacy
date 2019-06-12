@@ -18,21 +18,11 @@ function  default_content_layout($value, $post_id, $field) {
 
   // add default layouts
   $value = array(
-    array(
-      'acf_fc_layout' => 'marquee_video'
-    ),
-    array(
-      'acf_fc_layout' => 'title'
-    ),
-    array(
-      'acf_fc_layout' => 'generic'
-    ),
-    array(
-      'acf_fc_layout' => 'credits'
-    ),
-    array(
-      'acf_fc_layout' => 'gallery'
-    ),
+    array('acf_fc_layout' => 'marquee_video'),
+    array('acf_fc_layout' => 'title'),
+    array('acf_fc_layout' => 'generic'),
+    array('acf_fc_layout' => 'credits'),
+    array('acf_fc_layout' => 'gallery'),
   );
 
   return $value;

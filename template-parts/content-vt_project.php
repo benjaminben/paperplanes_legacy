@@ -7,6 +7,16 @@
  * @package Paper_Planes
  */
 
+$projects = get_field('whitelisted_projects', 'theme-settings');
+$prev = null;
+$next = null;
+$currIdx = array_search($post, $projects);
+if ( $currIdx > 0 ) :
+  $prev = $projects[$currIdx - 1];
+endif;
+if ( $currIdx < sizeof($projects) - 1 ):
+  $next = $projects[$currIdx + 1];
+endif;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -14,7 +24,7 @@
 if ( have_rows( 'content' ) ) :
   while ( have_rows( 'content' ) ) : the_row();
     if ( get_row_layout() == 'headspace' ) : ?>
-      <h1>HEADSPACE</h1> <?php
+      <div class="layout headspace"></div> <?php
     endif;
     if ( get_row_layout() == 'marquee_video' ) : ?>
       <div class="layout marquee-video"><?php the_sub_field( 'embed' ) ?></div> <?php
@@ -56,23 +66,23 @@ if ( have_rows( 'content' ) ) :
         $size = "full";
         if ( get_sub_field( 'slideshow' ) ) : ?>
           <div class="layout slideshow">
-            <div ref="items" class="items">
-              <?php foreach ( $items as $key=>$item ): ?>
+            <div ref="items" class="items"> <?php
+                foreach ( $items as $key=>$item ) : ?>
                 <div :active="active == <?php echo $key ?>" class="item">
                   <?php echo wp_get_attachment_image( $item["ID"], $size ) ?>
-                </div>
-              <?php endforeach; ?>
+                </div> <?php
+                endforeach; ?>
             </div>
             <span @click="navPrev" class="ctrl prev"><</span>
             <span @click="navNext" class="ctrl next">></span>
           </div> <?php
         else: ?>
-          <div class="layout gallery">
-            <?php foreach ( $items as $key=>$item ): ?>
+          <div class="layout gallery"> <?php
+              foreach ( $items as $key=>$item ) : ?>
               <div class="item">
                 <?php echo wp_get_attachment_image( $item["ID"], $size ) ?>
-              </div>
-            <?php endforeach; ?>
+              </div> <?php
+              endforeach; ?>
           </div><?php
         endif;
     endif;
@@ -82,5 +92,13 @@ else :
 endif; ?>
 	<footer class="entry-footer">
 		<?php paperplanes_entry_footer(); ?>
+    <div class="post-navigation">
+      <a class="prev" href="<?php echo $prev ? get_permalink($prev->ID) : '' ?>">
+        <?php echo $prev ? 'Previous Project' : '' ?>
+      </a>
+      <a class="next" href="<?php echo $next ? get_permalink($next->ID) : '' ?>">
+        <?php echo $next ? 'Next Project' : '' ?>
+      </a>
+    </div>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

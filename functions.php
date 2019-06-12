@@ -159,6 +159,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/acf.php';
 
 /**
+ * Theme settings.
+ */
+require get_template_directory() . '/inc/settings.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {

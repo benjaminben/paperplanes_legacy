@@ -10,34 +10,25 @@
 
 get_header();
 
-$loop = new WP_Query(array(
-    "post_type"   => "vt_staff",
-    "post_status" => "publish",
-));
+$post_objects = get_field('whitelisted_staff', 'theme-settings');
 ?>
 
-<?php
-/**
- * Template part for displaying page content in page.php
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Paper_Planes
- */
-
-?>
 
 <div id="content" class="site-content">
   <article id="post-<?php the_ID(); ?>" <?php post_class("team"); ?>>
     <h1><?php the_title() ?></h1>
     <div class="staff">
-  		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-        <span class="member">
-          <div class="headshot"><?php the_post_thumbnail($post->ID) ?></div>
-          <?php the_title('<h4 class="name">', "</h4>") ?>
-          <span class="role"><?php echo get_field("role") ?></span>
-        </span>
-      <?php endwhile; ?>
+  		<?php
+      if ( $post_objects ) :
+        foreach ( $post_objects as $post ) : ?>
+          <span class="member">
+            <div class="headshot"><?php the_post_thumbnail($post->ID) ?></div>
+            <?php the_title('<h4 class="name">', "</h4>") ?>
+            <span class="role"><?php echo get_field("role") ?></span>
+          </span> <?php
+        endforeach;
+        wp_reset_postdata();
+      endif; ?>
   	</div><!-- .staff -->
 
   	<?php if ( get_edit_post_link() ) : ?>

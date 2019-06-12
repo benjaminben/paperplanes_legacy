@@ -10,33 +10,24 @@
 
 get_header();
 
-$loop = new WP_Query(array(
-    "post_type"   => "vt_project",
-    "post_status" => "publish",
-));
-?>
-
-<?php
-/**
- * Template part for displaying page content in page.php
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Paper_Planes
- */
-
+$post_objects = get_field('whitelisted_projects', 'theme-settings');
 ?>
 
 <div id="content" class="site-content">
   <article id="post-<?php the_ID(); ?>" <?php post_class("work"); ?>>
   	<div class="projects">
-  		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-        <a class="project" href="<?php echo get_permalink($post->ID) ?>">
-          <?php echo get_the_post_thumbnail($post->ID) ?>
-          <span><?php echo get_field("main_label") ?></span><br>
-          <span><?php echo get_field("sub_label") ?></span>
-        </a>
-      <?php endwhile; ?>
+  		<?php
+      if ( $post_objects ) :
+        foreach ( $post_objects as $post ) :
+          setup_postdata( $post ); ?>
+          <a class="project" href="<?php echo get_permalink($post->ID) ?>">
+            <?php echo get_the_post_thumbnail($post->ID) ?>
+            <span><?php echo get_field("main_label") ?></span><br>
+            <span><?php echo get_field("sub_label") ?></span>
+          </a> <?php
+        endforeach;
+        wp_reset_postdata();
+      endif; ?>
   	</div><!-- .projects -->
 
   	<?php if ( get_edit_post_link() ) : ?>
