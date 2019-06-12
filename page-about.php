@@ -12,10 +12,11 @@
           </div> <?php
           if ( have_rows( 'list' ) ) : $ct = 0; ?>
           <div class="list"> <?php
-            while ( have_rows( 'list' ) ) : the_row(); ?>
+            while ( have_rows( 'list' ) ) : the_row();
+              $formatted = ($ct < 10 ? '0' : '') . ($ct + 1); ?>
               <div class="item">
-                <h1 class="count"><?php echo $ct + 1; ?></h1>
-                <div class="info" data-count="<?php echo $ct + 1; ?>">
+                <h1 class="count"><?php echo $formatted; ?></h1>
+                <div class="info" data-count="<?php echo $formatted; ?>">
                   <h2><?php the_sub_field( 'title' ) ?></h2>
                   <h3><?php the_sub_field( 'subtitle' ) ?></h3> <?php
                   if ( have_rows( 'items' ) ) : ?>
@@ -28,10 +29,10 @@
                           <?php endif; ?>
                         </li> <?php
                       endwhile; ?>
-                    </ul> <?php
+                    </ul> <?php $ct += 1;
                   endif; ?>
                 </div>
-              </div><?php $ct += 1;
+              </div><?php
             endwhile;
           endif; ?>
           <div>
