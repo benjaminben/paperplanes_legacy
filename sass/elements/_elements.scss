@@ -35,14 +35,4 @@ figure {
 	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
 }
 
-@import "tables";
-
-
-// TEMP: CUSTOM
-
-.work {
-	.projects {
-		display: grid; grid-template-columns: 1fr 1fr 1fr; } }
-.team {
-	.staff {
-		display: grid; grid-template-columns: 1fr 1fr 1fr; } }
+@import "tables"

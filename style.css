@@ -588,18 +588,6 @@ table {
   width: 100%;
 }
 
-/* line 44, sass/elements/_elements.scss */
-.work .projects {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-/* line 47, sass/elements/_elements.scss */
-.team .staff {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -722,20 +710,20 @@ a:hover, a:active {
 .main-navigation {
   display: block;
   width: 100%;
-  padding: 2em 2em 0em;
   position: fixed;
+  padding: 2em 2em 0em;
 }
-/* line 5, sass/navigation/_menus.scss */
+/* line 6, sass/navigation/_menus.scss */
 .main-navigation .home-link {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 7, sass/navigation/_menus.scss */
+/* line 8, sass/navigation/_menus.scss */
 .main-navigation .home-link img, .main-navigation .home-link svg {
   height: 25px;
   width: auto;
 }
-/* line 10, sass/navigation/_menus.scss */
+/* line 11, sass/navigation/_menus.scss */
 .main-navigation .banner {
   display: flex;
   justify-content: space-between;
@@ -746,31 +734,31 @@ a:hover, a:active {
   border-style: solid;
   margin-bottom: 2em;
 }
-/* line 16, sass/navigation/_menus.scss */
+/* line 17, sass/navigation/_menus.scss */
 .main-navigation[data-theme="dark"] .home-link img.theme-dark {
   display: block;
 }
-/* line 17, sass/navigation/_menus.scss */
+/* line 18, sass/navigation/_menus.scss */
 .main-navigation[data-theme="dark"] .home-link img.theme-light {
   display: none;
 }
-/* line 18, sass/navigation/_menus.scss */
+/* line 19, sass/navigation/_menus.scss */
 .main-navigation[data-theme="dark"] .banner {
   border-color: white;
 }
-/* line 21, sass/navigation/_menus.scss */
+/* line 22, sass/navigation/_menus.scss */
 .main-navigation[data-theme="light"] .home-link img.theme-dark {
   display: none;
 }
-/* line 22, sass/navigation/_menus.scss */
+/* line 23, sass/navigation/_menus.scss */
 .main-navigation[data-theme="light"] .home-link img.theme-light {
   display: block;
 }
-/* line 23, sass/navigation/_menus.scss */
+/* line 24, sass/navigation/_menus.scss */
 .main-navigation[data-theme="light"] .banner {
   border-color: black;
 }
-/* line 25, sass/navigation/_menus.scss */
+/* line 26, sass/navigation/_menus.scss */
 .main-navigation .menu {
   display: none;
   list-style: none;
@@ -778,7 +766,7 @@ a:hover, a:active {
   padding-left: 0;
   position: absolute;
 }
-/* line 32, sass/navigation/_menus.scss */
+/* line 33, sass/navigation/_menus.scss */
 .main-navigation .menu ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   float: left;
@@ -787,78 +775,78 @@ a:hover, a:active {
   left: -999em;
   z-index: 99999;
 }
-/* line 40, sass/navigation/_menus.scss */
+/* line 41, sass/navigation/_menus.scss */
 .main-navigation .menu ul ul {
   left: -999em;
   top: 0;
 }
-/* line 46, sass/navigation/_menus.scss */
+/* line 47, sass/navigation/_menus.scss */
 .main-navigation .menu ul li:hover > ul, .main-navigation .menu ul li.focus > ul {
   left: 100%;
 }
-/* line 52, sass/navigation/_menus.scss */
+/* line 53, sass/navigation/_menus.scss */
 .main-navigation .menu ul a {
   width: 200px;
 }
-/* line 65, sass/navigation/_menus.scss */
+/* line 66, sass/navigation/_menus.scss */
 .main-navigation .menu li:hover > ul,
 .main-navigation .menu li.focus > ul {
   left: auto;
 }
-/* line 71, sass/navigation/_menus.scss */
+/* line 72, sass/navigation/_menus.scss */
 .main-navigation li {
   position: relative;
   margin-bottom: 1em;
   display: block;
   font-size: 2em;
 }
-/* line 74, sass/navigation/_menus.scss */
+/* line 75, sass/navigation/_menus.scss */
 .main-navigation li:last-of-type {
   margin-bottom: 0em;
 }
-/* line 80, sass/navigation/_menus.scss */
+/* line 81, sass/navigation/_menus.scss */
 .main-navigation li a {
   color: white;
   display: inline-block;
 }
-/* line 82, sass/navigation/_menus.scss */
+/* line 83, sass/navigation/_menus.scss */
 .main-navigation li a:hover, .main-navigation li a:focus {
   color: red;
 }
-/* line 85, sass/navigation/_menus.scss */
+/* line 86, sass/navigation/_menus.scss */
 .main-navigation a {
   text-decoration: none;
 }
-/* line 95, sass/navigation/_menus.scss */
+/* line 96, sass/navigation/_menus.scss */
 .main-navigation.toggled {
   background: black;
   min-height: 100vh;
 }
-/* line 97, sass/navigation/_menus.scss */
+/* line 98, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu {
   display: block;
 }
 
-/* line 100, sass/navigation/_menus.scss */
+/* line 101, sass/navigation/_menus.scss */
 .menu-toggle {
   display: inline-block;
 }
 
-/* line 108, sass/navigation/_menus.scss */
+/* line 109, sass/navigation/_menus.scss */
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden;
 }
-/* line 113, sass/navigation/_menus.scss */
+/* line 114, sass/navigation/_menus.scss */
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
-/* line 118, sass/navigation/_menus.scss */
+/* line 119, sass/navigation/_menus.scss */
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
@@ -1025,7 +1013,10 @@ a:hover, a:active {
 
 /* line 27, sass/site/primary/_posts-and-pages.scss */
 #content {
+  box-sizing: border-box;
   padding-top: calc( 2em + 25px + 0.5em + 2px + 2em );
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 /*--------------------------------------------------------------
@@ -1092,18 +1083,18 @@ a:hover, a:active {
   height: auto;
 }
 
-/* line 2, sass/site/pages/_vt_project.scss */
+/* line 2, sass/site/pages/_project.scss */
 article.vt_project .layout {
   width: 80%;
   margin: 0 auto 2em;
 }
-/* line 4, sass/site/pages/_vt_project.scss */
+/* line 4, sass/site/pages/_project.scss */
 article.vt_project .layout.marquee-video {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%;
 }
-/* line 6, sass/site/pages/_vt_project.scss */
+/* line 6, sass/site/pages/_project.scss */
 article.vt_project .layout.marquee-video iframe {
   position: absolute;
   top: 0;
@@ -1111,18 +1102,18 @@ article.vt_project .layout.marquee-video iframe {
   width: 100%;
   height: 100%;
 }
-/* line 8, sass/site/pages/_vt_project.scss */
+/* line 8, sass/site/pages/_project.scss */
 article.vt_project .layout.credits .lines {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-/* line 9, sass/site/pages/_vt_project.scss */
+/* line 9, sass/site/pages/_project.scss */
 article.vt_project .layout.slideshow {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%;
 }
-/* line 11, sass/site/pages/_vt_project.scss */
+/* line 11, sass/site/pages/_project.scss */
 article.vt_project .layout.slideshow .ctrl {
   font-family: courier, monospace;
   font-size: 3em;
@@ -1131,15 +1122,15 @@ article.vt_project .layout.slideshow .ctrl {
   top: 50%;
   transform: translateY(-50%);
 }
-/* line 14, sass/site/pages/_vt_project.scss */
+/* line 14, sass/site/pages/_project.scss */
 article.vt_project .layout.slideshow .ctrl.prev {
   left: 1em;
 }
-/* line 15, sass/site/pages/_vt_project.scss */
+/* line 15, sass/site/pages/_project.scss */
 article.vt_project .layout.slideshow .ctrl.next {
   right: 1em;
 }
-/* line 16, sass/site/pages/_vt_project.scss */
+/* line 16, sass/site/pages/_project.scss */
 article.vt_project .layout.slideshow .item {
   position: absolute;
   top: 0;
@@ -1148,17 +1139,17 @@ article.vt_project .layout.slideshow .item {
   height: 100%;
   display: none;
 }
-/* line 19, sass/site/pages/_vt_project.scss */
+/* line 19, sass/site/pages/_project.scss */
 article.vt_project .layout.slideshow .item[active="true"] {
   display: block;
 }
-/* line 20, sass/site/pages/_vt_project.scss */
+/* line 20, sass/site/pages/_project.scss */
 article.vt_project .layout.slideshow .item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-/* line 21, sass/site/pages/_vt_project.scss */
+/* line 21, sass/site/pages/_project.scss */
 article.vt_project .layout.gallery {
   width: 90%;
   display: grid;
@@ -1166,14 +1157,49 @@ article.vt_project .layout.gallery {
   grid-template-rows: auto;
   grid-gap: 2em;
 }
-/* line 24, sass/site/pages/_vt_project.scss */
+/* line 24, sass/site/pages/_project.scss */
 article.vt_project .layout.gallery .item {
   display: inline-block;
 }
-/* line 26, sass/site/pages/_vt_project.scss */
+/* line 26, sass/site/pages/_project.scss */
 article.vt_project .layout.gallery .item img {
   width: 100%;
   height: auto;
+}
+
+/* line 2, sass/site/pages/_projects.scss */
+.work .projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* line 2, sass/site/pages/_team.scss */
+#page.team .staff {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 1em;
+}
+/* line 5, sass/site/pages/_team.scss */
+#page.team .staff .headshot {
+  position: relative;
+  width: 100%;
+  padding-bottom: 120%;
+}
+/* line 7, sass/site/pages/_team.scss */
+#page.team .staff .headshot img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* line 8, sass/site/pages/_team.scss */
+#page.team .staff .name {
+  margin: 1em 0 0em;
+  font-weight: normal;
+  text-decoration: underline;
 }
 
 /*--------------------------------------------------------------

@@ -29,15 +29,13 @@ $loop = new WP_Query(array(
 
 <div id="content" class="site-content">
   <article id="post-<?php the_ID(); ?>" <?php post_class("team"); ?>>
-  	<div class="staff">
+    <h1><?php the_title() ?></h1>
+    <div class="staff">
   		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
         <span class="member">
-          <?php echo get_the_post_thumbnail($post->ID) ?>
-          <a href="<?php echo get_permalink($post->ID) ?>">
-            <?php echo get_the_title() ?>
-          </a><br>
-          <span><?php echo get_field("role") ?></span>
-          <p><?php echo get_field("bio") ?></p>
+          <div class="headshot"><?php the_post_thumbnail($post->ID) ?></div>
+          <?php the_title('<h4 class="name">', "</h4>") ?>
+          <span class="role"><?php echo get_field("role") ?></span>
         </span>
       <?php endwhile; ?>
   	</div><!-- .staff -->

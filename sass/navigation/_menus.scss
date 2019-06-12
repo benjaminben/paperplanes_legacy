@@ -1,6 +1,7 @@
 .main-navigation {
-	display: block; width: 100%; padding: $layout__navBannerPaddingTop 2em 0em;
+	display: block; width: 100%;
 	position: fixed;
+	padding: $layout__navBannerPaddingTop $layout__navBannerPaddingHorizontal 0em;
 
 	.home-link {
 		display: inline-block; vertical-align: middle;

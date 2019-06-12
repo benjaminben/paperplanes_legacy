@@ -6,6 +6,7 @@ $layout__navBannerPaddingBottom: 0.5em;
 $layout__navBannerPaddingTop: 2em;
 $layout__navBannerMarginBottom: 2em;
 $layout__navBannerBorderBottom: 2px;
+$layout__navBannerPaddingHorizontal: 2em;
 $layout__navHeight: calc(
   #{$layout__navBannerPaddingTop} +
 	#{$layout__navBannerHeight} +

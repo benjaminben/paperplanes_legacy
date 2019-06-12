@@ -24,4 +24,8 @@
 	margin: 0 0 1.5em;
 }
 
-#content { padding-top: $layout__navHeight; }
+#content {
+	box-sizing: border-box;
+	padding-top: $layout__navHeight;
+	padding-left: $layout__navBannerPaddingHorizontal;
+	padding-right: $layout__navBannerPaddingHorizontal; }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying projects
+ * Template part for displaying staff
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -11,12 +11,9 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <span class="member">
-    <?php echo get_the_post_thumbnail($post->ID) ?>
-    <a href="<?php echo get_permalink($post->ID) ?>">
-      <?php echo get_the_title() ?>
-    </a><br>
+    <?php echo the_post_thumbnail($post->ID) ?>
+    <?php echo the_title() ?>
     <span><?php echo get_field("role") ?></span>
-    <p><?php echo get_field("bio") ?></p>
   </span>
 	<footer class="entry-footer">
 		<?php paperplanes_entry_footer(); ?>
