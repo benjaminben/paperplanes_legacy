@@ -4,23 +4,26 @@
 	padding: $layout__navBannerPaddingTop $layout__navBannerPaddingHorizontal 0em;
 
 	.home-link {
-		display: inline-block; vertical-align: middle;
-		img, svg { height: $layout__navBannerHeight; width: auto; }
+		display: inline-block; vertical-align: middle; position: relative;
+		img, svg {
+			height: $layout__navBannerHeight; width: auto; transition: opacity 0.5s ease;
+			&.theme-light { position: absolute; top: 0; left: 0; }
+		}
 	}
 
 	.banner {
-		display: flex; justify-content: space-between; align-items: center;
+		display: flex; justify-content: space-between; align-items: center; position: relative;
 	 	padding-bottom: $layout__navBannerPaddingBottom; border-width: 0px; border-bottom-width: $layout__navBannerBorderBottom; border-style: solid;
-	 	margin-bottom: $layout__navBannerMarginBottom; }
+	 	margin-bottom: $layout__navBannerMarginBottom; transition: border-color 0.5s ease; }
 
 	&[data-theme="dark"] {
-		.home-link img { &.theme-dark { display: block; } }
-		.home-link img { &.theme-light { display: none; } }
+		.home-link img { &.theme-dark { opacity: 1; } }
+		.home-link img { &.theme-light { opacity: 0; } }
 		.banner { border-color: white; } }
 
 	&[data-theme="light"] {
-		.home-link img { &.theme-dark { display: none; } }
-		.home-link img { &.theme-light { display: block; } }
+		.home-link img { &.theme-dark { opacity: 0; } }
+		.home-link img { &.theme-light { opacity: 1; } }
 		.banner { border-color: black; } }
 
 	.menu {
@@ -93,9 +96,20 @@
 	.current-menu-ancestor > a {
 	}
 
+	&:before {
+		content: ""; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
+		background: black; transform: translateY(100%);
+	}
+
 	&.toggled {
-		background: black; min-height: 100vh;
-		.menu { display: block; } }
+		min-height: 100vh;
+		&:before { transition: transform 0.5s ease; transform: translateY(0%); }
+		.menu {
+			display: block; animation: menu-in 0.5s ease both; animation-delay: 0.5s; }
+		&.exiting {
+			.menu {
+				animation: menu-out 0.5s ease both; animation-delay: 0s; }
+			&:before { transform: translateY(-100%); } } }
 }
 
 .menu-toggle {
@@ -121,4 +135,14 @@
 		text-align: right;
 		width: 50%;
 	}
+}
+
+@keyframes menu-in {
+	from { opacity: 0 }
+	to { opacity: 1 }
+}
+
+@keyframes menu-out {
+	from { opacity: 1 }
+	to { opacity: 0 }
 }

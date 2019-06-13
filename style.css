@@ -717,48 +717,58 @@ a:hover, a:active {
 .main-navigation .home-link {
   display: inline-block;
   vertical-align: middle;
+  position: relative;
 }
 /* line 8, sass/navigation/_menus.scss */
 .main-navigation .home-link img, .main-navigation .home-link svg {
   height: 25px;
   width: auto;
+  transition: opacity 0.5s ease;
 }
-/* line 11, sass/navigation/_menus.scss */
+/* line 10, sass/navigation/_menus.scss */
+.main-navigation .home-link img.theme-light, .main-navigation .home-link svg.theme-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 14, sass/navigation/_menus.scss */
 .main-navigation .banner {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   padding-bottom: 0.5em;
   border-width: 0px;
   border-bottom-width: 2px;
   border-style: solid;
   margin-bottom: 2em;
+  transition: border-color 0.5s ease;
 }
-/* line 17, sass/navigation/_menus.scss */
+/* line 20, sass/navigation/_menus.scss */
 .main-navigation[data-theme="dark"] .home-link img.theme-dark {
-  display: block;
+  opacity: 1;
 }
-/* line 18, sass/navigation/_menus.scss */
+/* line 21, sass/navigation/_menus.scss */
 .main-navigation[data-theme="dark"] .home-link img.theme-light {
-  display: none;
+  opacity: 0;
 }
-/* line 19, sass/navigation/_menus.scss */
+/* line 22, sass/navigation/_menus.scss */
 .main-navigation[data-theme="dark"] .banner {
   border-color: white;
 }
-/* line 22, sass/navigation/_menus.scss */
+/* line 25, sass/navigation/_menus.scss */
 .main-navigation[data-theme="light"] .home-link img.theme-dark {
-  display: none;
+  opacity: 0;
 }
-/* line 23, sass/navigation/_menus.scss */
+/* line 26, sass/navigation/_menus.scss */
 .main-navigation[data-theme="light"] .home-link img.theme-light {
-  display: block;
+  opacity: 1;
 }
-/* line 24, sass/navigation/_menus.scss */
+/* line 27, sass/navigation/_menus.scss */
 .main-navigation[data-theme="light"] .banner {
   border-color: black;
 }
-/* line 26, sass/navigation/_menus.scss */
+/* line 29, sass/navigation/_menus.scss */
 .main-navigation .menu {
   display: none;
   list-style: none;
@@ -766,7 +776,7 @@ a:hover, a:active {
   padding-left: 0;
   position: absolute;
 }
-/* line 33, sass/navigation/_menus.scss */
+/* line 36, sass/navigation/_menus.scss */
 .main-navigation .menu ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   float: left;
@@ -775,78 +785,104 @@ a:hover, a:active {
   left: -999em;
   z-index: 99999;
 }
-/* line 41, sass/navigation/_menus.scss */
+/* line 44, sass/navigation/_menus.scss */
 .main-navigation .menu ul ul {
   left: -999em;
   top: 0;
 }
-/* line 47, sass/navigation/_menus.scss */
+/* line 50, sass/navigation/_menus.scss */
 .main-navigation .menu ul li:hover > ul, .main-navigation .menu ul li.focus > ul {
   left: 100%;
 }
-/* line 53, sass/navigation/_menus.scss */
+/* line 56, sass/navigation/_menus.scss */
 .main-navigation .menu ul a {
   width: 200px;
 }
-/* line 66, sass/navigation/_menus.scss */
+/* line 69, sass/navigation/_menus.scss */
 .main-navigation .menu li:hover > ul,
 .main-navigation .menu li.focus > ul {
   left: auto;
 }
-/* line 72, sass/navigation/_menus.scss */
+/* line 75, sass/navigation/_menus.scss */
 .main-navigation li {
   position: relative;
   margin-bottom: 1em;
   display: block;
   font-size: 2em;
 }
-/* line 75, sass/navigation/_menus.scss */
+/* line 78, sass/navigation/_menus.scss */
 .main-navigation li:last-of-type {
   margin-bottom: 0em;
 }
-/* line 81, sass/navigation/_menus.scss */
+/* line 84, sass/navigation/_menus.scss */
 .main-navigation li a {
   color: white;
   display: inline-block;
 }
-/* line 83, sass/navigation/_menus.scss */
+/* line 86, sass/navigation/_menus.scss */
 .main-navigation li a:hover, .main-navigation li a:focus {
   color: red;
 }
-/* line 86, sass/navigation/_menus.scss */
+/* line 89, sass/navigation/_menus.scss */
 .main-navigation a {
   text-decoration: none;
 }
-/* line 96, sass/navigation/_menus.scss */
-.main-navigation.toggled {
+/* line 99, sass/navigation/_menus.scss */
+.main-navigation:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: black;
+  transform: translateY(100%);
+}
+/* line 104, sass/navigation/_menus.scss */
+.main-navigation.toggled {
   min-height: 100vh;
 }
-/* line 98, sass/navigation/_menus.scss */
+/* line 106, sass/navigation/_menus.scss */
+.main-navigation.toggled:before {
+  transition: transform 0.5s ease;
+  transform: translateY(0%);
+}
+/* line 107, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu {
   display: block;
+  animation: menu-in 0.5s ease both;
+  animation-delay: 0.5s;
+}
+/* line 110, sass/navigation/_menus.scss */
+.main-navigation.toggled.exiting .menu {
+  animation: menu-out 0.5s ease both;
+  animation-delay: 0s;
+}
+/* line 112, sass/navigation/_menus.scss */
+.main-navigation.toggled.exiting:before {
+  transform: translateY(-100%);
 }
 
-/* line 101, sass/navigation/_menus.scss */
+/* line 115, sass/navigation/_menus.scss */
 .menu-toggle {
   display: inline-block;
 }
 
-/* line 109, sass/navigation/_menus.scss */
+/* line 123, sass/navigation/_menus.scss */
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden;
 }
-/* line 114, sass/navigation/_menus.scss */
+/* line 128, sass/navigation/_menus.scss */
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
-/* line 119, sass/navigation/_menus.scss */
+/* line 133, sass/navigation/_menus.scss */
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
@@ -855,6 +891,22 @@ a:hover, a:active {
   width: 50%;
 }
 
+@keyframes menu-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes menu-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/

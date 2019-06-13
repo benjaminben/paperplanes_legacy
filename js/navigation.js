@@ -7,7 +7,7 @@
 ( function() {
 	var container, button, menu, links, i, len, doc;
 
-doc = document.documentElement
+  doc = document.documentElement
 
 	container = document.getElementById( 'site-navigation' );
 	if ( ! container ) {
@@ -34,32 +34,9 @@ doc = document.documentElement
 
 	button.onclick = function() {
 		if ( -1 !== container.className.indexOf( 'toggled' ) ) {
-			container.className = container.className.replace( ' toggled', '' );
-			button.setAttribute( 'aria-expanded', 'false' );
-			menu.setAttribute( 'aria-expanded', 'false' );
-
-      var scrollPosition = doc._data['scroll-position']
-      doc.style.overflow = doc._data['previous-overflow']
-      window.scrollTo(scrollPosition[0], scrollPosition[1])
-
-      container.setAttribute('data-theme', doc._data['menu-theme'])
+			toggleClosed()
 		} else {
-			container.className += ' toggled';
-			button.setAttribute( 'aria-expanded', 'true' );
-			menu.setAttribute( 'aria-expanded', 'true' );
-
-
-      var scrollPosition = [
-        self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
-        self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop
-      ]
-      doc._data['scroll-position'] = scrollPosition
-      doc._data['previous-overflow'] = doc.style.overflow
-      doc.style.overflow = 'hidden'
-      window.scrollTo(scrollPosition[0], scrollPosition[1])
-
-      doc._data['menu-theme'] = container.getAttribute('data-theme')
-      container.setAttribute('data-theme', 'dark')
+      toggleOpen()
 		}
 	};
 
@@ -124,4 +101,41 @@ doc = document.documentElement
 			}
 		}
 	}( container ) );
+
+  function toggleClosed() {
+    container.className += " exiting"
+    button.setAttribute( 'aria-expanded', 'false' );
+    menu.setAttribute( 'aria-expanded', 'false' );
+
+    var scrollPosition = doc._data['scroll-position']
+    doc.style.overflow = doc._data['previous-overflow']
+    window.scrollTo(scrollPosition[0], scrollPosition[1])
+
+    container.setAttribute('data-theme', doc._data['menu-theme'])
+
+    return new Promise(function(rs,rj) {
+      window.setTimeout(function() {
+        container.className = container.className.replace(/toggled|exiting/g, '' )
+      }, 500)
+    })
+  }
+
+  function toggleOpen() {
+    container.className += ' toggled';
+    button.setAttribute( 'aria-expanded', 'true' );
+    menu.setAttribute( 'aria-expanded', 'true' );
+
+
+    var scrollPosition = [
+      self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
+      self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop
+    ]
+    doc._data['scroll-position'] = scrollPosition
+    doc._data['previous-overflow'] = doc.style.overflow
+    doc.style.overflow = 'hidden'
+    window.scrollTo(scrollPosition[0], scrollPosition[1])
+
+    doc._data['menu-theme'] = container.getAttribute('data-theme')
+    container.setAttribute('data-theme', 'dark')
+  }
 } )();

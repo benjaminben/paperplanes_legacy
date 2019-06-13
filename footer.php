@@ -11,9 +11,11 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
+			<footer id="colophon" class="site-footer">
 
-	</footer><!-- #colophon -->
+			</footer><!-- #colophon -->
+		</div><!-- .barba-container -->
+	</main><!-- #barba-wrapper -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
