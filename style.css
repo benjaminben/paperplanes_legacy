@@ -1121,19 +1121,27 @@ article.page.home:before {
   background: #6f7166;
   z-index: 0;
 }
-/* line 24, sass/site/pages/_home.scss */
+/* line 22, sass/site/pages/_home.scss */
+article.page.home:after {
+  content: "";
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: block;
+}
+/* line 27, sass/site/pages/_home.scss */
 article.page.home .layout {
   position: relative;
 }
-/* line 26, sass/site/pages/_home.scss */
+/* line 29, sass/site/pages/_home.scss */
 article.page.home .layout.banner {
   font-size: 3em;
 }
-/* line 26, sass/site/pages/_home.scss */
+/* line 29, sass/site/pages/_home.scss */
 article.page.home .layout.banner p {
   margin: 0 0 1em;
 }
-/* line 27, sass/site/pages/_home.scss */
+/* line 30, sass/site/pages/_home.scss */
 article.page.home .layout.grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1141,10 +1149,10 @@ article.page.home .layout.grid {
   grid-gap: 3em;
   font-size: 1.66em;
 }
-/* line 34, sass/site/pages/_home.scss */
+/* line 37, sass/site/pages/_home.scss */
 article.page.home .close {
   cursor: pointer;
-  position: absolute;
+  position: relative;
 }
 
 /* line 2, sass/site/pages/_contact.scss */

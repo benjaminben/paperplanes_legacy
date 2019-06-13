@@ -2,9 +2,9 @@ window.addEventListener('load', function() {
   Barba.Pjax.start()
   Barba.Prefetch.init()
   var lastElementClicked
+  var doc = document.documentElement
   var nav = document.querySelector("#site-navigation")
   var menu = document.querySelector("#primary-menu")
-  var doc = document.documentElement
   var siteUrl = document.body.getAttribute("data-site-url")
 
   Barba.Dispatcher.on('linkClicked', function(el) { lastElementClicked = el })
@@ -15,6 +15,7 @@ window.addEventListener('load', function() {
     },
     transition: function() {
       var _this = this;
+      doc._unregisterEventListeners()
       var el = this.newContainer
       nav.setAttribute("data-theme", el.querySelector("#content").getAttribute("data-theme"))
       _this.done()
@@ -45,10 +46,12 @@ window.addEventListener('load', function() {
       var _this = this;
       var el = this.newContainer
       doc._data["menu-theme"] = el.querySelector("#content").getAttribute("data-theme")
+      doc._data['scroll-position'] = [0,0]
 
       this.oldContainer.style.display = "none"
       el.style.visibility = "visible"
       nav.className += " exiting"
+      doc._unregisterEventListeners()
       nav._toggleClosed().then(function() {
         _this.done()
       })

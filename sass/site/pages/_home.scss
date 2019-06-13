@@ -14,12 +14,15 @@ article.page.home {
 	padding-top: $layout__navHeight;
 	padding-left: $layout__navBannerPaddingHorizontal;
 	padding-right: $layout__navBannerPaddingHorizontal;
-	
+
 	&:before {
 		content: "";
 		position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-		background: rgba(111, 113, 102, 1); z-index: 0;
-	}
+		background: rgba(111, 113, 102, 1); z-index: 0; }
+	&:after {
+		content: "";
+		position: relative; width: 100%; height: 100vh;
+		display: block; }
 
 	.layout {
 		position: relative;
@@ -31,5 +34,5 @@ article.page.home {
 		}
 	}
 
-	.close { cursor: pointer; position: absolute; }
+	.close { cursor: pointer; position: relative; }
 }

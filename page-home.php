@@ -1,6 +1,10 @@
 <?php
 
-wp_enqueue_script( 'paperplanes-home', get_template_directory_uri() . '/js/home.js', array(), '20151215', true );
+wp_enqueue_script(
+  'paperplanes-home',
+  get_template_directory_uri() . '/js/home.js',
+  array("paperplanes-main"), '20151215', true
+);
 get_header();
 
 $reel = get_field('reel');
@@ -10,7 +14,9 @@ $reel = get_field('reel');
 <video class="reel" autoplay muted playsinline loop
        src="<?php echo $reel['url'] ?>"></video>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class("home"); ?>>
+<article
+  v-bind:style="{opacity: fade}"
+  id="post-<?php the_ID(); ?>" <?php post_class("home"); ?>>
 <?php while ( have_posts() ) : the_post(); ?>
 <?php
   if ( have_rows( 'content' ) ) :
@@ -33,7 +39,7 @@ $reel = get_field('reel');
   endif;
 ?>
 <?php endwhile; wp_reset_query(); ?>
-<span class="close">Explore</span>
+<span class="close">V</span>
 </article><!-- #post-<?php the_ID(); ?> -->
 
 <?php get_footer(); ?>
