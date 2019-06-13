@@ -63,12 +63,15 @@ window.addEventListener('load', function() {
      * Here you can use your own logic!
      * For example you can use different Transition based on the current page or link...
      */
-      return menu.contains(lastElementClicked) ? MenuTransition : DefaultTransition;
+      return nav.className.match("toggled") ? MenuTransition : DefaultTransition
   };
 
   Barba.Dispatcher.on("newPageReady", function() {
     if (window.location.href == siteUrl) {
-      que_script(siteUrl + "/wp-content/themes/paperplanes/js/home.js");
+      que_script(siteUrl + "/wp-content/themes/paperplanes/js/home.js")
+    }
+    if (lastElementClicked.className === "project") {
+      que_script(siteUrl + "/wp-content/themes/paperplanes/js/project.js")
     }
   })
 
