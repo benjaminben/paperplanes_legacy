@@ -1268,8 +1268,55 @@ article.page.home .close {
 }
 
 /* line 2, sass/site/pages/_projects.scss */
+.work .ctrl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* line 4, sass/site/pages/_projects.scss */
+.work .ctrl .grid {
+  white-space: nowrap;
+}
+/* line 5, sass/site/pages/_projects.scss */
+.work .filter {
+  display: flex;
+  align-items: inherit;
+}
+/* line 7, sass/site/pages/_projects.scss */
+.work .filter .toggle {
+  cursor: pointer;
+  white-space: nowrap;
+}
+/* line 9, sass/site/pages/_projects.scss */
+.work .cats {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 1em;
+}
+/* line 11, sass/site/pages/_projects.scss */
+.work .cat {
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+/* line 13, sass/site/pages/_projects.scss */
+.work .cat:last-of-type {
+  margin-right: 0;
+}
+/* line 14, sass/site/pages/_projects.scss */
+.work .cat[active="true"] {
+  text-decoration: underline;
+}
+/* line 15, sass/site/pages/_projects.scss */
 .work .projects {
   display: grid;
+}
+/* line 17, sass/site/pages/_projects.scss */
+.work .project {
+  display: none;
+}
+/* line 19, sass/site/pages/_projects.scss */
+.work .project[active="true"] {
+  display: block;
 }
 
 /* line 2, sass/site/pages/_team.scss */

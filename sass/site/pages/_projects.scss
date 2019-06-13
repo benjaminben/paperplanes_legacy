@@ -1,3 +1,19 @@
 .work {
+  .ctrl {
+    display: flex; justify-content: space-between; align-items: center;
+    .grid { white-space: nowrap; } }
+  .filter {
+    display: flex; align-items: inherit;
+    .toggle {
+      cursor: pointer; white-space: nowrap; } }
+  .cats {
+    display: flex; flex-flow: row wrap; margin-left: 1em; }
+  .cat {
+    margin-right: 0.5em; cursor: pointer;
+    &:last-of-type { margin-right: 0; }
+    &[active="true"] { text-decoration: underline; } }
 	.projects {
-		display: grid; } }
+		display: grid; }
+  .project {
+    display: none;
+    &[active="true"] { display: block; } } }

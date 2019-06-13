@@ -17,22 +17,57 @@ wp_enqueue_script(
 get_header();
 
 $post_objects = get_field('whitelisted_projects', 'theme-settings');
+$uncategorized_id = get_cat_ID( 'Uncategorized' );
+$categories = get_categories(array(
+  "hide_empty" => 0,
+  "type" => "vt_project",
+  "exclude" => $uncategorized_id,
+));
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("work"); ?>>
   <div class="ctrl">
-    <span class="grid">
+    <div class="filter">
+      <span class="toggle" @click="filterOpen = !filterOpen">
+        Filter
+        <span v-if="filterOpen">X</span>
+        <span v-if="!filterOpen">+</span>
+      </span>
+      <span v-if="filterOpen" class="cats">
+        <span
+          class="cat"
+          @click="filter = null"
+          :active="!filter">All</span>
+        <?php
+        foreach ($categories as $cat) : ?>
+          <span
+            class="cat"
+            @click="filter = '<?php echo $cat->slug ?>'"
+            :active="filter === '<?php echo $cat->slug ?>'"><?php echo $cat->name; ?>
+          </span> <?php
+        endforeach; ?>
+      </span>
+    </div>
+    <div class="grid">
       <span @click="setCols" data-cols="1fr">1 </span>
       <span @click="setCols" data-cols="1fr 1fr">2 </span>
       <span @click="setCols" data-cols="1fr 1fr 1fr">3</span>
-    </span>
+    </div>
   </div>
   <div class="projects" v-bind:style="gridStyle">
 		<?php
     if ( $post_objects ) :
       foreach ( $post_objects as $post ) :
-        setup_postdata( $post ); ?>
-        <a class="project" href="<?php echo get_permalink($post->ID) ?>">
+        setup_postdata( $post );
+        $post_cats = wp_get_post_categories($post->ID) ?>
+        <a
+          class="project"
+          :active="!filter || [
+          <?php foreach ($post_cats as $cat) {
+            echo "'" . get_term($cat)->slug . "',";
+          } ?>
+          ].indexOf(filter) > -1"
+          href="<?php echo get_permalink($post->ID) ?>">
           <?php echo get_the_post_thumbnail($post->ID) ?>
           <span><?php echo get_field("main_label") ?></span><br>
           <span><?php echo get_field("sub_label") ?></span>
