@@ -66,9 +66,14 @@ window.addEventListener('load', function() {
       return nav.className.match("toggled") ? MenuTransition : DefaultTransition
   };
 
+  // TODO: need to adjust scroll
+
   Barba.Dispatcher.on("newPageReady", function() {
     if (window.location.href == siteUrl) {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/home.js")
+    }
+    if (window.location.href == siteUrl+"/work/") {
+      que_script(siteUrl + "/wp-content/themes/paperplanes/js/projects.js")
     }
     if (lastElementClicked.className === "project") {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/project.js")

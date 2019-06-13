@@ -1270,7 +1270,6 @@ article.page.home .close {
 /* line 2, sass/site/pages/_projects.scss */
 .work .projects {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
 /* line 2, sass/site/pages/_team.scss */

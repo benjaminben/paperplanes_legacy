@@ -8,13 +8,26 @@
  * @package Paper_Planes
  */
 
+
+wp_enqueue_script(
+ 'paperplanes-projects',
+ get_template_directory_uri() . '/js/projects.js',
+ array('vuejs'), '20151215', true
+);
 get_header();
 
 $post_objects = get_field('whitelisted_projects', 'theme-settings');
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("work"); ?>>
-	<div class="projects">
+  <div class="ctrl">
+    <span class="grid">
+      <span @click="setCols" data-cols="1fr">1 </span>
+      <span @click="setCols" data-cols="1fr 1fr">2 </span>
+      <span @click="setCols" data-cols="1fr 1fr 1fr">3</span>
+    </span>
+  </div>
+  <div class="projects" v-bind:style="gridStyle">
 		<?php
     if ( $post_objects ) :
       foreach ( $post_objects as $post ) :
