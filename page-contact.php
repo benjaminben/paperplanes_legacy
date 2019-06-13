@@ -5,7 +5,7 @@ $content = get_field( 'content' );
 
 ?>
 
-<div id="content" class="site-content">
+<article id="post-<?php the_ID(); ?>" <?php post_class("contact"); ?>>
 <?php
 if ( have_rows( 'content' ) ) :
   while ( have_rows( 'content' ) ) : the_row();
@@ -54,6 +54,6 @@ if ( have_rows( 'content' ) ) :
 else :
   // no layouts found
 endif; ?>
-</div>
+</article><!-- #post-<?php the_ID(); ?> -->
 
 <?php get_footer(); ?>

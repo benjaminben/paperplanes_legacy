@@ -3,12 +3,12 @@ window.addEventListener('load', function() {
   Barba.Prefetch.init()
   var lastElementClicked
   var nav = document.querySelector("#site-navigation")
-
+  var doc = document.documentElement
 
   Barba.Dispatcher.on('linkClicked', function(el) {
     lastElementClicked = el;
   });
-  var FadeTransition = Barba.BaseTransition.extend({
+  var MenuTransition = Barba.BaseTransition.extend({
     start: function() {
       /**
        * This function is automatically called as soon the Transition starts
@@ -18,21 +18,11 @@ window.addEventListener('load', function() {
 
       // As soon the loading is finished and the old page is faded out, let's fade the new page
       Promise
-        .all([this.newContainerLoading, this.fadeOut()])
-        .then(this.fadeIn.bind(this));
+        .all([this.newContainerLoading])
+        .then(this.menuOut.bind(this));
     },
 
-    fadeOut: function() {
-      /**
-       * this.oldContainer is the HTMLElement of the old Container
-       */
-
-      return new Promise(function(rs,rj) {
-        window.setTimeout(rs, 1000)
-      })
-    },
-
-    fadeIn: function() {
+    menuOut: function() {
       /**
        * this.newContainer is the HTMLElement of the new Container
        * At this stage newContainer is on the DOM (inside our #barba-container and with visibility: hidden)
@@ -41,22 +31,14 @@ window.addEventListener('load', function() {
 
       var _this = this;
       var el = this.newContainer
+      doc._data["menu-theme"] = el.querySelector("#content").getAttribute("data-theme")
 
-      this.oldContainer.style.opacity = 0
-
-      el.style.visibility = 'visible'
-
+      this.oldContainer.style.display = "none"
+      el.style.visibility = "visible"
       nav.className += " exiting"
-
-
-      window.setTimeout(function() {
-        nav.className = nav.className.replace(/toggled|exiting/g, "")
-        /**
-         * Do not forget to call .done() as soon your transition is finished!
-         * .done() will automatically remove from the DOM the old Container
-         */
+      nav._toggleClosed().then(function() {
         _this.done()
-      }, 500)
+      })
     }
   });
   /**
@@ -68,7 +50,7 @@ window.addEventListener('load', function() {
      * Here you can use your own logic!
      * For example you can use different Transition based on the current page or link...
      */
-      return FadeTransition;
+      return MenuTransition;
   };
 
 })

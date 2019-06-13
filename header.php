@@ -26,8 +26,8 @@ $slug = $post->post_name;
 	<?php wp_head(); ?>
 </head>
 
-<body style="background-color: <?php echo get_field('bg_color') ?> " <?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>>
-<div id="page" class="site barba-wrapper <?php echo $slug ?>">
+<body <?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>>
+<div id="page" class="site barba-wrapper">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'paperplanes' ); ?></a>
 
 	<header id="masthead" class="site-header">
@@ -39,3 +39,8 @@ $slug = $post->post_name;
 	</header><!-- #masthead -->
 	<main id="barba-wrapper">
 		<div class="barba-container" data-namespace="grid">
+			<div
+				id="content"
+				style="background-color: <?php echo get_field('bg_color') ?>"
+				data-theme="<?php echo ($theme ? $theme : '')?>"
+				class="site-content <?php echo $slug ?>">

@@ -13,6 +13,8 @@
 	if ( ! container ) {
 		return;
 	}
+  container._toggleClosed = toggleClosed
+  container._toggleOpen = toggleOpen
 
 	button = container.getElementsByTagName( 'button' )[0];
 	if ( 'undefined' === typeof button ) {
@@ -116,6 +118,7 @@
     return new Promise(function(rs,rj) {
       window.setTimeout(function() {
         container.className = container.className.replace(/toggled|exiting/g, '' )
+        rs()
       }, 500)
     })
   }

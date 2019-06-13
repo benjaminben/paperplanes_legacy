@@ -11,9 +11,10 @@
 
 ?>
 
-			<footer id="colophon" class="site-footer">
+				<footer id="colophon" class="site-footer">
 
-			</footer><!-- #colophon -->
+				</footer><!-- #colophon -->
+			</div><!-- #content -->
 		</div><!-- .barba-container -->
 	</main><!-- #barba-wrapper -->
 </div><!-- #page -->

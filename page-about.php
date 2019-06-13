@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<div id="content" class="site-content">
 <?php
   if ( have_rows( 'content' ) ) :
     while ( have_rows( 'content' ) ) : the_row();
@@ -41,6 +40,5 @@
     endwhile;
   endif;
 ?>
-</div>
 
 <?php get_footer(); ?>

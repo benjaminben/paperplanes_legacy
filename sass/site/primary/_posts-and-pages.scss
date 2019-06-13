@@ -2,11 +2,6 @@
 	display: block;
 }
 
-.post,
-.page {
-	margin: 0 0 1.5em;
-}
-
 .updated:not(.published) {
 	display: none;
 }
@@ -26,6 +21,7 @@
 
 #content {
 	box-sizing: border-box;
+	min-height: 100vh;
 	padding-top: $layout__navHeight;
 	padding-left: $layout__navBannerPaddingHorizontal;
 	padding-right: $layout__navBannerPaddingHorizontal; }

@@ -511,13 +511,13 @@ body {
 }
 
 /* line 15, sass/elements/_elements.scss */
-body.theme-dark {
+#content[data-theme="dark"] {
   background: black;
   color: white;
 }
 
 /* line 16, sass/elements/_elements.scss */
-body.theme-light {
+#content[data-theme="light"] {
   background: white;
   color: black;
 }
@@ -835,7 +835,7 @@ a:hover, a:active {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: black;
+  background: #141414;
   transform: translateY(100%);
 }
 /* line 104, sass/navigation/_menus.scss */
@@ -1035,37 +1035,32 @@ a:hover, a:active {
 }
 
 /* line 5, sass/site/primary/_posts-and-pages.scss */
-.post,
-.page {
-  margin: 0 0 1.5em;
-}
-
-/* line 10, sass/site/primary/_posts-and-pages.scss */
 .updated:not(.published) {
   display: none;
 }
 
-/* line 14, sass/site/primary/_posts-and-pages.scss */
+/* line 9, sass/site/primary/_posts-and-pages.scss */
 .page-content,
 .entry-content,
 .entry-summary {
   margin: 1.5em 0 0;
 }
 
-/* line 20, sass/site/primary/_posts-and-pages.scss */
+/* line 15, sass/site/primary/_posts-and-pages.scss */
 .site-content {
   position: relative;
 }
 
-/* line 22, sass/site/primary/_posts-and-pages.scss */
+/* line 17, sass/site/primary/_posts-and-pages.scss */
 .page-links {
   clear: both;
   margin: 0 0 1.5em;
 }
 
-/* line 27, sass/site/primary/_posts-and-pages.scss */
+/* line 22, sass/site/primary/_posts-and-pages.scss */
 #content {
   box-sizing: border-box;
+  min-height: 100vh;
   padding-top: calc( 2em + 25px + 0.5em + 2px + 2em );
   padding-left: 2em;
   padding-right: 2em;
@@ -1087,8 +1082,17 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 ## Custom pages
 --------------------------------------------------------------*/
-/* line 2, sass/site/pages/_home.scss */
-#page.home video.reel {
+/* line 1, sass/site/pages/_home.scss */
+#content.home {
+  color: black;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  z-index: 0;
+}
+/* line 5, sass/site/pages/_home.scss */
+#content.home video.reel {
   position: fixed;
   top: 0;
   left: 0;
@@ -1096,14 +1100,18 @@ a:hover, a:active {
   height: 100vh;
   object-fit: cover;
 }
-/* line 6, sass/site/pages/_home.scss */
-#page.home .site-content {
-  color: black;
+
+/* line 10, sass/site/pages/_home.scss */
+article.page.home {
   position: relative;
-  z-index: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding-top: calc( 2em + 25px + 0.5em + 2px + 2em );
+  padding-left: 2em;
+  padding-right: 2em;
 }
-/* line 8, sass/site/pages/_home.scss */
-#page.home .site-content:before {
+/* line 18, sass/site/pages/_home.scss */
+article.page.home:before {
   content: "";
   position: fixed;
   top: 0;
@@ -1111,42 +1119,47 @@ a:hover, a:active {
   width: 100vw;
   height: 100vh;
   background: #6f7166;
-  z-index: -1;
+  z-index: 0;
 }
-/* line 16, sass/site/pages/_home.scss */
-#page.home .site-content .layout.banner {
+/* line 24, sass/site/pages/_home.scss */
+article.page.home .layout {
+  position: relative;
+}
+/* line 26, sass/site/pages/_home.scss */
+article.page.home .layout.banner {
   font-size: 3em;
 }
-/* line 16, sass/site/pages/_home.scss */
-#page.home .site-content .layout.banner p {
+/* line 26, sass/site/pages/_home.scss */
+article.page.home .layout.banner p {
   margin: 0 0 1em;
 }
-/* line 17, sass/site/pages/_home.scss */
-#page.home .site-content .layout.grid {
+/* line 27, sass/site/pages/_home.scss */
+article.page.home .layout.grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 3em;
   font-size: 1.66em;
 }
-/* line 24, sass/site/pages/_home.scss */
-#page.home .site-content .close {
+/* line 34, sass/site/pages/_home.scss */
+article.page.home .close {
   cursor: pointer;
+  position: absolute;
 }
 
 /* line 2, sass/site/pages/_contact.scss */
-#page.contact .grid {
+.page.contact .grid {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
 }
 /* line 6, sass/site/pages/_contact.scss */
-#page.contact .grid .item h5 {
+.page.contact .grid .item h5 {
   margin: 0;
 }
 /* line 7, sass/site/pages/_contact.scss */
-#page.contact .grid .item.social img {
+.page.contact .grid .item.social img {
   width: 20px;
   height: auto;
 }
@@ -1257,20 +1270,20 @@ article.vt_project .post-navigation a {
 }
 
 /* line 2, sass/site/pages/_team.scss */
-#page.team .staff {
+#content.team .staff {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 1em;
 }
 /* line 5, sass/site/pages/_team.scss */
-#page.team .staff .headshot {
+#content.team .staff .headshot {
   position: relative;
   width: 100%;
   padding-bottom: 120%;
 }
 /* line 7, sass/site/pages/_team.scss */
-#page.team .staff .headshot img {
+#content.team .staff .headshot img {
   position: absolute;
   top: 0;
   left: 0;
@@ -1279,7 +1292,7 @@ article.vt_project .post-navigation a {
   object-fit: cover;
 }
 /* line 8, sass/site/pages/_team.scss */
-#page.team .staff .name {
+#content.team .staff .name {
   margin: 1em 0 0em;
   font-weight: normal;
   text-decoration: underline;
