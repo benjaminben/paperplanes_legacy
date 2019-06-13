@@ -26,7 +26,7 @@ $slug = $post->post_name;
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>>
+<body data-site-url="<?php echo site_url() ?>" <?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>>
 <div id="page" class="site barba-wrapper">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'paperplanes' ); ?></a>
 
