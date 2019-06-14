@@ -76,10 +76,11 @@ window.addEventListener('load', function() {
   // TODO: need to adjust scroll
 
   Barba.Dispatcher.on("newPageReady", function() {
-    if (window.location.href == siteUrl) {
+    var href = window.location.href.replace(/\/+$/, "")
+    if (href == siteUrl) {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/home.js")
     }
-    if (window.location.href == siteUrl+"/work/") {
+    if (href == siteUrl+"/work") {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/projects.js")
     }
     if ( lastElementClicked.className === "project" ||
