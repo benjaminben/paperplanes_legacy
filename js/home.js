@@ -20,21 +20,23 @@
     watch: {
       ui: {
         handler: function(val, oldVal) {
-          if (val.loaded && !this.runIntro) {
-            _this = this
-            _this.runIntro = true
-            window.setTimeout(function() {
-              _this.intro = false
-            }, this.introExitDur)
-          }
+          if (val.loaded && !this.runIntro) {this.init()}
         },
         deep: true,
       }
     },
     mounted: function() {
       doc._registerEventListener("scroll", window, this.handleScroll)
+      if (this.ui.loaded && !this.runIntro) {this.init()}
     },
     methods: {
+      init: function() {
+        _this = this
+        _this.runIntro = true
+        window.setTimeout(function() {
+          _this.intro = false
+        }, this.introExitDur)
+      },
       handleScroll: function(e) {
         var amt = window.scrollY / (document.body.clientHeight - window.innerHeight)
         this.fade = (1 - amt).toFixed(2)
