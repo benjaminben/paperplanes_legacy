@@ -17,7 +17,9 @@ window.addEventListener('load', function() {
       var _this = this;
       doc._unregisterEventListeners()
       var el = this.newContainer
-      nav.setAttribute("data-theme", el.querySelector("#content").getAttribute("data-theme"))
+      doc._store.actions.ui.setTheme(
+        el.querySelector("#content").getAttribute("data-theme") == "dark" ? 1 : 0
+      )
       _this.done()
     }
   })
@@ -45,14 +47,15 @@ window.addEventListener('load', function() {
 
       var _this = this;
       var el = this.newContainer
-      doc._data["menu-theme"] = el.querySelector("#content").getAttribute("data-theme")
+      doc._store.actions.ui.setTheme(
+        el.querySelector("#content").getAttribute("data-theme") == "dark" ? 1 : 0
+      )
       doc._data['scroll-position'] = [0,0]
 
       this.oldContainer.style.display = "none"
       el.style.visibility = "visible"
-      nav.className += " exiting"
       doc._unregisterEventListeners()
-      nav._toggleClosed().then(function() {
+      doc._store.actions.nav.setNavClosed().then(function() {
         _this.done()
       })
     }

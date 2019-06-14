@@ -124,9 +124,9 @@ function paperplanes_scripts() {
 
 	wp_enqueue_script( 'vuejs', 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js' );
 	wp_enqueue_script( 'barbajs', 'https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js', array(), null, true );
-	wp_enqueue_script( 'paperplanes-main', get_template_directory_uri() . '/js/main.js', array(), '20151215', true );
-	wp_enqueue_script( 'paperplanes-barba', get_template_directory_uri() . '/js/barbaMain.js', array(), '20151215', true );
-	wp_enqueue_script( 'paperplanes-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'paperplanes-main', get_template_directory_uri() . '/js/main.js', array('vuejs'), '20151215', true );
+	wp_enqueue_script( 'paperplanes-barba', get_template_directory_uri() . '/js/barbaMain.js', array('barbajs', 'paperplanes-main'), '20151215', true );
+	wp_enqueue_script( 'paperplanes-navigation', get_template_directory_uri() . '/js/navigation.js', array('vuejs', 'paperplanes-main'), '20151215', true );
 	wp_enqueue_script( 'paperplanes-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

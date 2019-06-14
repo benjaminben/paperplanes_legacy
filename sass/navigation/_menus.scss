@@ -16,6 +16,7 @@
 	 	padding-bottom: $layout__navBannerPaddingBottom; border-width: 0px; border-bottom-width: $layout__navBannerBorderBottom; border-style: solid;
 	 	margin-bottom: $layout__navBannerMarginBottom; transition: border-color 0.5s ease; }
 
+	// CSS Defaults --> override with use
 	&[data-theme="dark"] {
 		.home-link img { &.theme-dark { opacity: 1; } }
 		.home-link img { &.theme-light { opacity: 0; } }

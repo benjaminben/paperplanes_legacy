@@ -13,8 +13,15 @@
 	if ( ! container ) {
 		return;
 	}
-  container._toggleClosed = toggleClosed
-  container._toggleOpen = toggleOpen
+
+  var n = new Vue({
+    el: container,
+    data: doc._store.state.nav,
+    methods: {
+      toggleOpen: function() {doc._store.actions.nav.setNavOpen()},
+      toggleClosed: function() {doc._store.actions.nav.setNavClosed()},
+    },
+  })
 
 	button = container.getElementsByTagName( 'button' )[0];
 	if ( 'undefined' === typeof button ) {
@@ -29,21 +36,12 @@
 		return;
 	}
 
-	menu.setAttribute( 'aria-expanded', 'false' );
 	if ( -1 === menu.className.indexOf( 'nav-menu' ) ) {
 		menu.className += ' nav-menu';
 	}
 
-	button.onclick = function() {
-		if ( -1 !== container.className.indexOf( 'toggled' ) ) {
-			toggleClosed()
-		} else {
-      toggleOpen()
-		}
-	};
-
 	// Get all the link elements within the menu.
-	links    = menu.getElementsByTagName( 'a' );
+	links = menu.getElementsByTagName( 'a' );
 
 	// Each time a menu link is focused or blurred, toggle focus.
 	for ( i = 0, len = links.length; i < len; i++ ) {
@@ -103,42 +101,4 @@
 			}
 		}
 	}( container ) );
-
-  function toggleClosed() {
-    container.className += " exiting"
-    button.setAttribute( 'aria-expanded', 'false' );
-    menu.setAttribute( 'aria-expanded', 'false' );
-
-    var scrollPosition = doc._data['scroll-position']
-    doc.style.overflow = doc._data['previous-overflow']
-    window.scrollTo(scrollPosition[0], scrollPosition[1])
-
-    container.setAttribute('data-theme', doc._data['menu-theme'])
-
-    return new Promise(function(rs,rj) {
-      window.setTimeout(function() {
-        container.className = container.className.replace(/toggled|exiting/g, '' )
-        rs()
-      }, 500)
-    })
-  }
-
-  function toggleOpen() {
-    container.className += ' toggled';
-    button.setAttribute( 'aria-expanded', 'true' );
-    menu.setAttribute( 'aria-expanded', 'true' );
-
-
-    var scrollPosition = [
-      self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
-      self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop
-    ]
-    doc._data['scroll-position'] = scrollPosition
-    doc._data['previous-overflow'] = doc.style.overflow
-    doc.style.overflow = 'hidden'
-    window.scrollTo(scrollPosition[0], scrollPosition[1])
-
-    doc._data['menu-theme'] = container.getAttribute('data-theme')
-    container.setAttribute('data-theme', 'dark')
-  }
 } )();

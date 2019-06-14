@@ -39,7 +39,11 @@ $reel = get_field('reel');
   endif;
 ?>
 <?php endwhile; wp_reset_query(); ?>
-<span class="close">V</span>
+<span @click="forceEnter" class="close">
+  <svg width="80" height="24" viewBox="0 0 100 30">
+    <path d="M4 4 L50 26 L96 4" stroke-linecap="round" stroke-linejoin="round" stroke="black" stroke-width="5 " fill="none" />
+  </svg>
+</span>
 </article><!-- #post-<?php the_ID(); ?> -->
 
 <?php get_footer(); ?>
