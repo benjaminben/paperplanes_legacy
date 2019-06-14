@@ -15,6 +15,7 @@ window.addEventListener('load', function() {
     },
     transition: function() {
       var _this = this;
+      window.scrollTo(0,0)
       doc._unregisterEventListeners()
       var el = this.newContainer
       var theme = el.querySelector("#content").getAttribute("data-theme") == "dark" ? 1 : 0
@@ -81,7 +82,8 @@ window.addEventListener('load', function() {
     if (window.location.href == siteUrl+"/work/") {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/projects.js")
     }
-    if (lastElementClicked.className === "project") {
+    if ( lastElementClicked.className === "project" ||
+         lastElementClicked.parentNode.className === "post-navigation" ) {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/project.js")
     }
   })

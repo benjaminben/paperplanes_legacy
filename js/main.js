@@ -13,7 +13,7 @@
   }
 
   var initTheme = document.body.getAttribute("data-theme") === "dark" ? 1 : 0
-  var debugStore = true
+  var debugStore = false
   var state = {
     ui: {
       theme: initTheme, // 0 to 1 == black to white == dark to light
