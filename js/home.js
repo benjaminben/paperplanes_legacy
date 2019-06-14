@@ -20,6 +20,8 @@
       handleScroll: function(e) {
         var amt = window.scrollY / (document.body.clientHeight - window.innerHeight)
         this.fade = 1 - amt
+        doc._store.actions.nav.setTheme(amt)
+        doc._store.actions.ui.setTheme(amt)
       },
       forceEnter: function(e) {
         window.scrollTo(0, document.body.clientHeight - window.innerHeight)

@@ -17,9 +17,9 @@ window.addEventListener('load', function() {
       var _this = this;
       doc._unregisterEventListeners()
       var el = this.newContainer
-      doc._store.actions.ui.setTheme(
-        el.querySelector("#content").getAttribute("data-theme") == "dark" ? 1 : 0
-      )
+      var theme = el.querySelector("#content").getAttribute("data-theme") == "dark" ? 1 : 0
+      doc._store.actions.ui.setTheme(theme)
+      doc._store.actions.nav.setTheme(theme)
       _this.done()
     }
   })

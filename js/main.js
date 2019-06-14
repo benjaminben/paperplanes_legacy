@@ -32,11 +32,12 @@
       ui: {
         setTheme: function(value) {
           if (debugStore) console.log("ui.setTheme triggered with", value)
+          state.ui.theme = value
         }
       },
       nav: {
-        setNavTheme: function (value) {
-          if (debugStore) console.log("nav.setNavTheme triggered with", value)
+        setTheme: function (value) {
+          if (debugStore) console.log("nav.setTheme triggered with", value)
           state.nav.theme = value
         },
         setNavOpen: function(value) {
@@ -50,7 +51,7 @@
           doc.style.overflow = 'hidden'
           window.scrollTo(scrollPosition[0], scrollPosition[1])
 
-          this.setNavTheme(1)
+          this.setTheme(1)
         },
         setNavClosed: function() {
           if (debugStore) console.log("nav.setNavClosed triggered")
@@ -59,7 +60,7 @@
           var scrollPosition = doc._data['scroll-position']
           doc.style.overflow = doc._data['previous-overflow']
           window.scrollTo(scrollPosition[0], scrollPosition[1])
-          this.setNavTheme(state.ui.theme)
+          this.setTheme(state.ui.theme)
 
           return new Promise(function(rs,rj) {
             window.setTimeout(function() {
