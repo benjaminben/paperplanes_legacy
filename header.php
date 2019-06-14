@@ -32,7 +32,6 @@ $slug = $post->post_name;
 	data-site-url="<?php echo site_url() ?>">
 <div id="page" class="site barba-wrapper">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'paperplanes' ); ?></a>
-
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php the_custom_logo(); ?>

@@ -17,6 +17,7 @@ $reel = get_field('reel');
 <article
   v-bind:style="{opacity: fade}"
   id="post-<?php the_ID(); ?>" <?php post_class("home"); ?>>
+<main>
 <?php while ( have_posts() ) : the_post(); ?>
 <?php
   if ( have_rows( 'content' ) ) :
@@ -44,6 +45,7 @@ $reel = get_field('reel');
     <path d="M4 4 L50 26 L96 4" stroke-linecap="round" stroke-linejoin="round" stroke="black" stroke-width="5 " fill="none" />
   </svg>
 </span>
+</main>
 </article><!-- #post-<?php the_ID(); ?> -->
 
 <?php get_footer(); ?>

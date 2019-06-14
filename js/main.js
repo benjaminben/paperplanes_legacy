@@ -17,6 +17,7 @@
   var state = {
     ui: {
       theme: initTheme, // 0 to 1 == black to white == dark to light
+      loaded: false,
     },
     nav: {
       theme: initTheme,
@@ -33,7 +34,10 @@
         setTheme: function(value) {
           if (debugStore) console.log("ui.setTheme triggered with", value)
           state.ui.theme = value
-        }
+        },
+        setLoaded: function() {
+          state.ui.loaded = true
+        },
       },
       nav: {
         setTheme: function (value) {
@@ -72,5 +76,11 @@
         },
       }
     },
+  }
+
+  window.addEventListener("load", doc._store.actions.ui.setLoaded)
+  if (document.readyState === "complete") {
+    window.removeEventListener("load", doc._store.actions.ui.setLoaded)
+    doc._store.actions.ui.setLoaded()
   }
 })()

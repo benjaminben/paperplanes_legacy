@@ -13,7 +13,17 @@
     &:last-of-type { margin-right: 0; }
     &[active="true"] { text-decoration: underline; } }
 	.projects {
-		display: grid; }
+		display: grid; grid-gap: 1em; }
   .project {
     display: none;
     &[active="true"] { display: block; } } }
+
+@media screen and (max-width: 480px) {
+  .work {
+    .ctrl {
+      .grid { display: none; } }
+    .projects {
+      grid-template-columns: 1fr!important;
+    }
+  }
+}

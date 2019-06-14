@@ -17,6 +17,9 @@
 			</div><!-- #content -->
 		</div><!-- .barba-container -->
 	</main><!-- #barba-wrapper -->
+	<div id="loader" v-bind:style="{ display: loaded ? 'none' : 'flex' }">
+		<span>LOADING</span>
+	</div>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

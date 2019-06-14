@@ -1086,6 +1086,25 @@ a:hover, a:active {
 }
 
 /*--------------------------------------------------------------
+## Loader
+--------------------------------------------------------------*/
+/* line 1, sass/site/secondary/_loader.scss */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  font-family: courier, monospace;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*--------------------------------------------------------------
 ## Custom pages
 --------------------------------------------------------------*/
 /* line 1, sass/site/pages/_home.scss */
@@ -1111,10 +1130,14 @@ a:hover, a:active {
 article.page.home {
   position: relative;
   box-sizing: border-box;
-  min-height: 100vh;
   padding-top: calc( 2em + 25px + 0.5em + 2px + 2em );
   padding-left: 2em;
   padding-right: 2em;
+}
+/* line 16, sass/site/pages/_home.scss */
+article.page.home main {
+  min-height: calc(100vh - calc( 2em + 25px + 0.5em + 2px + 2em ));
+  position: relative;
 }
 /* line 18, sass/site/pages/_home.scss */
 article.page.home:before {
@@ -1141,7 +1164,7 @@ article.page.home .layout {
 }
 /* line 29, sass/site/pages/_home.scss */
 article.page.home .layout.banner {
-  font-size: 3em;
+  font-size: 3.5vw;
 }
 /* line 29, sass/site/pages/_home.scss */
 article.page.home .layout.banner p {
@@ -1153,14 +1176,58 @@ article.page.home .layout.grid {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 3em;
-  font-size: 1.66em;
+  font-size: 1.75vw;
 }
-/* line 37, sass/site/pages/_home.scss */
+/* line 34, sass/site/pages/_home.scss */
+article.page.home .layout.grid p {
+  margin: 0;
+}
+/* line 38, sass/site/pages/_home.scss */
 article.page.home .close {
   cursor: pointer;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  bottom: 5em;
+  transform: translateX(-50%);
 }
 
+@media screen and (max-width: 1000px) {
+  /* line 44, sass/site/pages/_home.scss */
+  article.page.home .layout.banner {
+    font-size: 2em;
+  }
+  /* line 45, sass/site/pages/_home.scss */
+  article.page.home .layout.grid {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 52, sass/site/pages/_home.scss */
+  article.page.home .layout.banner {
+    font-size: 1.5em;
+  }
+  /* line 53, sass/site/pages/_home.scss */
+  article.page.home .layout.grid {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* line 60, sass/site/pages/_home.scss */
+  article.page.home .layout.banner {
+    font-size: 1.5em;
+  }
+  /* line 61, sass/site/pages/_home.scss */
+  article.page.home .layout.grid {
+    grid-template-columns: 1fr;
+    grid-gap: 1em;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 68, sass/site/pages/_home.scss */
+  article.page.home .layout.banner {
+    font-size: 1.2em;
+  }
+}
 /* line 2, sass/site/pages/_contact.scss */
 .page.contact .grid {
   display: grid;
@@ -1323,6 +1390,7 @@ article.page.home .close {
 /* line 15, sass/site/pages/_projects.scss */
 .work .projects {
   display: grid;
+  grid-gap: 1em;
 }
 /* line 17, sass/site/pages/_projects.scss */
 .work .project {
@@ -1333,6 +1401,16 @@ article.page.home .close {
   display: block;
 }
 
+@media screen and (max-width: 480px) {
+  /* line 24, sass/site/pages/_projects.scss */
+  .work .ctrl .grid {
+    display: none;
+  }
+  /* line 25, sass/site/pages/_projects.scss */
+  .work .projects {
+    grid-template-columns: 1fr !important;
+  }
+}
 /* line 2, sass/site/pages/_team.scss */
 #content.team .staff {
   display: grid;
