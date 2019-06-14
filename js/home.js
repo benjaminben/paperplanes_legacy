@@ -11,7 +11,25 @@
   new Vue({
     el: "#content.home",
     data: {
-      fade: 1
+      fade: 1,
+      intro: true,
+      runIntro: false,
+      introExitDur: 2000,
+      ui: doc._store.state.ui,
+    },
+    watch: {
+      ui: {
+        handler: function(val, oldVal) {
+          if (val.loaded && !this.runIntro) {
+            _this = this
+            _this.runIntro = true
+            window.setTimeout(function() {
+              _this.intro = false
+            }, this.introExitDur)
+          }
+        },
+        deep: true,
+      }
     },
     mounted: function() {
       doc._registerEventListener("scroll", window, this.handleScroll)

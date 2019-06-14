@@ -1114,7 +1114,6 @@ a:hover, a:active {
   padding-left: 0;
   padding-right: 0;
   position: relative;
-  z-index: 0;
 }
 /* line 5, sass/site/pages/_home.scss */
 #content.home video.reel {
@@ -1191,39 +1190,68 @@ article.page.home .close {
   transform: translateX(-50%);
 }
 
+/* line 41, sass/site/pages/_home.scss */
+#intro {
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  z-index: 3;
+}
+/* line 46, sass/site/pages/_home.scss */
+#intro svg {
+  width: 80%;
+  height: auto;
+  margin: auto;
+}
+
+@keyframes intro-exit {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 @media screen and (max-width: 1000px) {
-  /* line 44, sass/site/pages/_home.scss */
+  /* line 58, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 2em;
   }
-  /* line 45, sass/site/pages/_home.scss */
+  /* line 59, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     font-size: 1em;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 52, sass/site/pages/_home.scss */
+  /* line 66, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.5em;
   }
-  /* line 53, sass/site/pages/_home.scss */
+  /* line 67, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     font-size: 1em;
   }
 }
 @media screen and (max-width: 600px) {
-  /* line 60, sass/site/pages/_home.scss */
+  /* line 74, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.5em;
   }
-  /* line 61, sass/site/pages/_home.scss */
+  /* line 75, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     grid-template-columns: 1fr;
     grid-gap: 1em;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 68, sass/site/pages/_home.scss */
+  /* line 82, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.2em;
   }

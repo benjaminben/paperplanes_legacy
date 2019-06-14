@@ -17,35 +17,50 @@ $reel = get_field('reel');
 <article
   v-bind:style="{opacity: fade}"
   id="post-<?php the_ID(); ?>" <?php post_class("home"); ?>>
-<main>
-<?php while ( have_posts() ) : the_post(); ?>
-<?php
-  if ( have_rows( 'content' ) ) :
-    while ( have_rows( 'content' ) ) : the_row();
-      if ( get_row_layout() == 'banner' ) : ?>
-        <div class="layout banner">
-        <?php the_sub_field( 'content' ) ?>
-        </div> <?php
-      endif;
-      if ( get_row_layout() == 'grid' ) : ?>
-        <div class="layout grid"> <?php
-          if ( have_rows( 'items' ) ) :
-            while ( have_rows( 'items' ) ) : the_row();
-              the_sub_field( 'content' );
-            endwhile;
-          endif; ?>
-        </div> <?php
-      endif;
-    endwhile;
-  endif;
-?>
-<?php endwhile; wp_reset_query(); ?>
-<span @click="forceEnter" class="close">
-  <svg width="80" height="24" viewBox="0 0 100 30">
-    <path d="M4 4 L50 26 L96 4" stroke-linecap="round" stroke-linejoin="round" stroke="black" stroke-width="5 " fill="none" />
-  </svg>
-</span>
+  <main>
+  <?php while ( have_posts() ) : the_post(); ?>
+  <?php
+    if ( have_rows( 'content' ) ) :
+      while ( have_rows( 'content' ) ) : the_row();
+        if ( get_row_layout() == 'banner' ) : ?>
+          <div class="layout banner">
+          <?php the_sub_field( 'content' ) ?>
+          </div> <?php
+        endif;
+        if ( get_row_layout() == 'grid' ) : ?>
+          <div class="layout grid"> <?php
+            if ( have_rows( 'items' ) ) :
+              while ( have_rows( 'items' ) ) : the_row();
+                the_sub_field( 'content' );
+              endwhile;
+            endif; ?>
+          </div> <?php
+        endif;
+      endwhile;
+    endif;
+  ?>
+  <?php endwhile; wp_reset_query(); ?>
+  <span @click="forceEnter" class="close">
+    <svg width="80" height="24" viewBox="0 0 100 30">
+      <path d="M4 26 L50 4 L96 26" stroke-linecap="round" stroke-linejoin="round" stroke="black" stroke-width="5 " fill="none" />
+    </svg>
+  </span>
 </main>
 </article><!-- #post-<?php the_ID(); ?> -->
+<div id="intro" v-if="(ui.loaded && intro)" v-bind:style="{animation: 'intro-exit '+introExitDur+'ms ease both'}">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 191.46">
+    <polygon points="124.07 3.51 99.76 3.51 70.64 92.94 67.74 110.71 66.5 110.71 63.61 92.94 34.49 3.51 0 3.51 50.6 148.09 83.65 148.09 124.42 31.6 160.42 31.6 160.42 148.09 192.02 148.09 192.02 31.6 233.39 31.6 233.39 3.51 134.25 3.51 124.07 3.51" fill="#fff"/>
+    <path d="M300.54,3.51H242.7V148.09h31.61V102.44h26.23c33.87,0,57-18.17,57-49.36C357.54,21.68,334.41,3.51,300.54,3.51Zm-1.86,72.08H274.31V30.36h24.37c17.34,0,27.26,6.61,27.26,22.72C325.94,69,316,75.59,298.68,75.59Z" fill="#fff"/>
+    <path d="M434,44.41a25.12,25.12,0,0,0-9.91-1.66c-12.19,0-21.9,6.2-28.71,14.46V44.82H366.44V148.09h28.92v-62c5.78-12.39,15.28-18.59,26.44-18.59a28.33,28.33,0,0,1,7,1l1.44-1.44Z" fill="#fff"/>
+    <path d="M486.64,42.75c-33.05,0-56.39,22.93-56.39,53.7s23.34,53.71,56.39,53.71c32.84,0,56.18-22.93,56.18-53.71S519.48,42.75,486.64,42.75Zm0,82.42c-15.7,0-27.47-10.74-27.47-28.72s11.77-28.71,27.47-28.71c15.49,0,27.27,10.74,27.27,28.71S502.13,125.17,486.64,125.17Z" fill="#fff"/>
+    <path d="M605.15,3.51H553.72V148.09h51.43c47.29,0,77-26.85,77-72.29S652.44,3.51,605.15,3.51Zm-1,116.49h-18.8V31.6h18.8c30,0,46.47,14.46,46.47,44.2S634.07,120,604.12,120Z" fill="#fff"/>
+    <path d="M743.73,42.75c-28.09,0-53.08,21.49-53.08,53.7s22.51,53.71,53.08,53.71c24.78,0,42.13-11.16,49.77-34.29l-1.24-2.48-24.37-2.48c-3.51,9.5-10.32,15.91-23.54,15.91-14.67,0-25-9.09-26.44-23.34h77.87V95.83C795.78,62.58,774.5,42.75,743.73,42.75Zm-25,42.14c2.68-12.6,12.8-20.45,24.78-20.45,13.64,0,23.34,8.06,24.79,20.45Z" fill="#fff"/>
+    <path d="M855.12,85.3c-19.21-5.16-27.06-8.06-27.06-14.45,0-5,5.58-8.06,12.39-8.06,8.89,0,15.49,5.16,17.56,14.87l22.1-5.37,1-2.27C877,52.67,863,42.75,840.86,42.75c-22.3,0-37.17,13-37.17,29.54,0,16.93,11.77,26.23,32.84,31.39,18,4.55,22.72,7.44,22.72,14,0,6.4-6.2,10.12-14.46,10.12-14,0-20.24-7-22.51-17.35l-22.11,6.61-.82,2.69c5.37,18.79,20.45,30.36,45.23,30.36,25.41,0,41.31-14.88,41.31-34.08C885.89,99.14,875.36,90.88,855.12,85.3Z" fill="#fff"/>
+    <path d="M909.43,0a17,17,0,0,0-16.94,16.73,16.84,16.84,0,0,0,33.67,0A16.93,16.93,0,0,0,909.43,0Z" fill="#fff"/>
+    <rect x="894.97" y="44.82" width="28.71" height="103.27" fill="#fff"/>
+    <path d="M1013.94,53.91c-6.4-6-15.29-11.16-29.12-11.16C959,42.75,935,62.37,935,95.42s23.14,52.67,49.78,52.67c13.63,0,21.07-3.72,29.12-10.53V145c0,14.87-8.68,23.54-25,23.54-12.6,0-17.76-5.78-19.83-13.42L942.68,158l-2.06,2.26c3.92,16.53,17.14,31.19,48.53,31.19,33.67,0,52.26-17.55,52.26-47.5V44.82h-27.47Zm0,47.09c0,14.25-9.7,24-24.79,24-14,0-26.64-8.06-26.64-29.54s12.6-29.53,26.64-29.53c13.85,0,24.79,9.29,24.79,24.16Z" fill="#fff"/>
+    <path d="M1119.27,42.75c-14.88,0-26.23,7-34.29,15.49V44.82h-28.91V148.09H1085V83c5-8.47,14.25-15.49,24.37-15.49,11,0,16.73,6.4,16.73,18.38v62.17H1155V77.46C1155,57.63,1142.19,42.75,1119.27,42.75Z" fill="#fff"/>
+  </svg>
+</div>
 
 <?php get_footer(); ?>

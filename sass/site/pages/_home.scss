@@ -1,7 +1,7 @@
 #content.home {
 	color: black;
 	padding-top: 0; padding-left: 0; padding-right: 0;
-	position: relative; z-index: 0;
+	position: relative;
 	video.reel {
 		position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
 	 	object-fit: cover; }
@@ -36,6 +36,20 @@ article.page.home {
 	}
 
 	.close { cursor: pointer; position: absolute; left: 50%; bottom: 5em; transform: translateX(-50%); }
+}
+
+#intro {
+	background: black;
+	position: fixed;
+  top: 0; left: 0; width: 100%; height: 100vh;
+	display: flex; z-index: 3;
+	svg { width: 80%; height: auto; margin: auto; }
+}
+
+@keyframes intro-exit {
+	0% { opacity: 1 }
+	50% { opacity: 1 }
+	100% { opacity: 0 }
 }
 
 @media screen and (max-width: 1000px) {
