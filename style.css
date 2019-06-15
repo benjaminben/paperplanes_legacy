@@ -718,19 +718,20 @@ a:hover, a:active {
   display: inline-block;
   vertical-align: middle;
   position: relative;
+  outline: none;
 }
-/* line 8, sass/navigation/_menus.scss */
+/* line 9, sass/navigation/_menus.scss */
 .main-navigation .home-link img, .main-navigation .home-link svg {
   height: 1.2em;
   width: auto;
 }
-/* line 10, sass/navigation/_menus.scss */
+/* line 11, sass/navigation/_menus.scss */
 .main-navigation .home-link img.theme-light, .main-navigation .home-link svg.theme-light {
   position: absolute;
   top: 0;
   left: 0;
 }
-/* line 14, sass/navigation/_menus.scss */
+/* line 15, sass/navigation/_menus.scss */
 .main-navigation .banner {
   display: flex;
   justify-content: space-between;
@@ -742,31 +743,31 @@ a:hover, a:active {
   border-style: solid;
   margin-bottom: 2em;
 }
-/* line 22, sass/navigation/_menus.scss */
+/* line 23, sass/navigation/_menus.scss */
 .main-navigation[data-theme="dark"] .home-link img.theme-dark {
   opacity: 1;
 }
-/* line 23, sass/navigation/_menus.scss */
+/* line 24, sass/navigation/_menus.scss */
 .main-navigation[data-theme="dark"] .home-link img.theme-light {
   opacity: 0;
 }
-/* line 24, sass/navigation/_menus.scss */
+/* line 25, sass/navigation/_menus.scss */
 .main-navigation[data-theme="dark"] .banner {
   border-color: white;
 }
-/* line 27, sass/navigation/_menus.scss */
+/* line 28, sass/navigation/_menus.scss */
 .main-navigation[data-theme="light"] .home-link img.theme-dark {
   opacity: 0;
 }
-/* line 28, sass/navigation/_menus.scss */
+/* line 29, sass/navigation/_menus.scss */
 .main-navigation[data-theme="light"] .home-link img.theme-light {
   opacity: 1;
 }
-/* line 29, sass/navigation/_menus.scss */
+/* line 30, sass/navigation/_menus.scss */
 .main-navigation[data-theme="light"] .banner {
   border-color: black;
 }
-/* line 31, sass/navigation/_menus.scss */
+/* line 32, sass/navigation/_menus.scss */
 .main-navigation .menu {
   display: none;
   list-style: none;
@@ -774,7 +775,7 @@ a:hover, a:active {
   padding-left: 0;
   position: absolute;
 }
-/* line 38, sass/navigation/_menus.scss */
+/* line 39, sass/navigation/_menus.scss */
 .main-navigation .menu ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   float: left;
@@ -783,49 +784,49 @@ a:hover, a:active {
   left: -999em;
   z-index: 99999;
 }
-/* line 46, sass/navigation/_menus.scss */
+/* line 47, sass/navigation/_menus.scss */
 .main-navigation .menu ul ul {
   left: -999em;
   top: 0;
 }
-/* line 52, sass/navigation/_menus.scss */
+/* line 53, sass/navigation/_menus.scss */
 .main-navigation .menu ul li:hover > ul, .main-navigation .menu ul li.focus > ul {
   left: 100%;
 }
-/* line 58, sass/navigation/_menus.scss */
+/* line 59, sass/navigation/_menus.scss */
 .main-navigation .menu ul a {
   width: 200px;
 }
-/* line 71, sass/navigation/_menus.scss */
+/* line 72, sass/navigation/_menus.scss */
 .main-navigation .menu li:hover > ul,
 .main-navigation .menu li.focus > ul {
   left: auto;
 }
-/* line 77, sass/navigation/_menus.scss */
+/* line 78, sass/navigation/_menus.scss */
 .main-navigation li {
   position: relative;
   margin-bottom: 1em;
   display: block;
   font-size: 2em;
 }
-/* line 80, sass/navigation/_menus.scss */
+/* line 81, sass/navigation/_menus.scss */
 .main-navigation li:last-of-type {
   margin-bottom: 0em;
 }
-/* line 86, sass/navigation/_menus.scss */
+/* line 87, sass/navigation/_menus.scss */
 .main-navigation li a {
   color: white;
   display: inline-block;
 }
-/* line 88, sass/navigation/_menus.scss */
+/* line 89, sass/navigation/_menus.scss */
 .main-navigation li a:hover, .main-navigation li a:focus {
   color: red;
 }
-/* line 91, sass/navigation/_menus.scss */
+/* line 92, sass/navigation/_menus.scss */
 .main-navigation a {
   text-decoration: none;
 }
-/* line 101, sass/navigation/_menus.scss */
+/* line 102, sass/navigation/_menus.scss */
 .main-navigation:before {
   content: "";
   position: absolute;
@@ -836,56 +837,56 @@ a:hover, a:active {
   background: #141414;
   transform: translateY(100%);
 }
-/* line 106, sass/navigation/_menus.scss */
+/* line 107, sass/navigation/_menus.scss */
 .main-navigation.toggled {
   min-height: 100vh;
 }
-/* line 108, sass/navigation/_menus.scss */
+/* line 109, sass/navigation/_menus.scss */
 .main-navigation.toggled .home-link img, .main-navigation.toggled .home-link svg {
   transition: opacity 0.5s ease;
 }
-/* line 109, sass/navigation/_menus.scss */
+/* line 110, sass/navigation/_menus.scss */
 .main-navigation.toggled .banner {
   transition: border-color 0.5s ease;
 }
-/* line 110, sass/navigation/_menus.scss */
+/* line 111, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu-toggle svg path {
   transition: all 0.5s ease;
 }
-/* line 112, sass/navigation/_menus.scss */
+/* line 113, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu-toggle svg path:first-of-type {
   transform: rotate(-45deg) translate(-6px, -16px);
 }
-/* line 113, sass/navigation/_menus.scss */
+/* line 114, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu-toggle svg path:last-of-type {
   transform: rotate(45deg) translate(2px, 24px);
 }
-/* line 115, sass/navigation/_menus.scss */
+/* line 116, sass/navigation/_menus.scss */
 .main-navigation.toggled:before {
   transition: transform 0.5s ease;
   transform: translateY(0%);
 }
-/* line 116, sass/navigation/_menus.scss */
+/* line 117, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu {
   display: block;
   animation: menu-in 0.5s ease both;
   animation-delay: 0.5s;
 }
-/* line 119, sass/navigation/_menus.scss */
+/* line 120, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting .menu-toggle svg path {
   transform: none;
 }
-/* line 120, sass/navigation/_menus.scss */
+/* line 121, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting .menu {
   animation: menu-out 0.5s ease both;
   animation-delay: 0s;
 }
-/* line 122, sass/navigation/_menus.scss */
+/* line 123, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting:before {
   transform: translateY(-100%);
 }
 
-/* line 125, sass/navigation/_menus.scss */
+/* line 126, sass/navigation/_menus.scss */
 .menu-toggle {
   display: inline-block;
   background: none;
@@ -895,21 +896,21 @@ a:hover, a:active {
   outline: none;
 }
 
-/* line 134, sass/navigation/_menus.scss */
+/* line 135, sass/navigation/_menus.scss */
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden;
 }
-/* line 139, sass/navigation/_menus.scss */
+/* line 140, sass/navigation/_menus.scss */
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
-/* line 144, sass/navigation/_menus.scss */
+/* line 145, sass/navigation/_menus.scss */
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
