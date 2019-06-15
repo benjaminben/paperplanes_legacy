@@ -1,11 +1,11 @@
 $size__site-main: 100%;
 $size__site-sidebar: 25%;
 
-$layout__navBannerHeight: 25px;
-$layout__navBannerPaddingBottom: 0.5em;
+$layout__navBannerHeight: 1.2em;
+$layout__navBannerPaddingBottom: 0.25em;
 $layout__navBannerPaddingTop: 2em;
 $layout__navBannerMarginBottom: 2em;
-$layout__navBannerBorderBottom: 2px;
+$layout__navBannerBorderBottom: 1px;
 $layout__navBannerPaddingHorizontal: 2em;
 $layout__navHeight: calc(
   #{$layout__navBannerPaddingTop} +

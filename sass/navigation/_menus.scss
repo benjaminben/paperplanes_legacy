@@ -107,17 +107,24 @@
 		min-height: 100vh;
 		.home-link { img, svg { transition: opacity 0.5s ease; } }
 		.banner { transition: border-color 0.5s ease; }
+		.menu-toggle svg path {
+			transition: all 0.5s ease;
+			&:first-of-type { transform: rotate(-45deg) translate(-6px, -16px) }
+			&:last-of-type { transform: rotate(45deg) translate(2px, 24px) }
+		}
 		&:before { transition: transform 0.5s ease; transform: translateY(0%); }
 		.menu {
 			display: block; animation: menu-in 0.5s ease both; animation-delay: 0.5s; }
 		&.exiting {
+			.menu-toggle svg path { transform: none; }
 			.menu {
 				animation: menu-out 0.5s ease both; animation-delay: 0s; }
 			&:before { transform: translateY(-100%); } } }
 }
 
 .menu-toggle {
-	display: inline-block;
+	display: inline-block; background: none; border: none; padding: 0;
+	cursor: pointer; outline: none;
 }
 
 .comment-navigation,

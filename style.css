@@ -721,7 +721,7 @@ a:hover, a:active {
 }
 /* line 8, sass/navigation/_menus.scss */
 .main-navigation .home-link img, .main-navigation .home-link svg {
-  height: 25px;
+  height: 1.2em;
   width: auto;
 }
 /* line 10, sass/navigation/_menus.scss */
@@ -736,9 +736,9 @@ a:hover, a:active {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.25em;
   border-width: 0px;
-  border-bottom-width: 2px;
+  border-bottom-width: 1px;
   border-style: solid;
   margin-bottom: 2em;
 }
@@ -849,46 +849,67 @@ a:hover, a:active {
   transition: border-color 0.5s ease;
 }
 /* line 110, sass/navigation/_menus.scss */
+.main-navigation.toggled .menu-toggle svg path {
+  transition: all 0.5s ease;
+}
+/* line 112, sass/navigation/_menus.scss */
+.main-navigation.toggled .menu-toggle svg path:first-of-type {
+  transform: rotate(-45deg) translate(-6px, -16px);
+}
+/* line 113, sass/navigation/_menus.scss */
+.main-navigation.toggled .menu-toggle svg path:last-of-type {
+  transform: rotate(45deg) translate(2px, 24px);
+}
+/* line 115, sass/navigation/_menus.scss */
 .main-navigation.toggled:before {
   transition: transform 0.5s ease;
   transform: translateY(0%);
 }
-/* line 111, sass/navigation/_menus.scss */
+/* line 116, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu {
   display: block;
   animation: menu-in 0.5s ease both;
   animation-delay: 0.5s;
 }
-/* line 114, sass/navigation/_menus.scss */
+/* line 119, sass/navigation/_menus.scss */
+.main-navigation.toggled.exiting .menu-toggle svg path {
+  transform: none;
+}
+/* line 120, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting .menu {
   animation: menu-out 0.5s ease both;
   animation-delay: 0s;
 }
-/* line 116, sass/navigation/_menus.scss */
+/* line 122, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting:before {
   transform: translateY(-100%);
 }
 
-/* line 119, sass/navigation/_menus.scss */
+/* line 125, sass/navigation/_menus.scss */
 .menu-toggle {
   display: inline-block;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
 }
 
-/* line 127, sass/navigation/_menus.scss */
+/* line 134, sass/navigation/_menus.scss */
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden;
 }
-/* line 132, sass/navigation/_menus.scss */
+/* line 139, sass/navigation/_menus.scss */
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
-/* line 137, sass/navigation/_menus.scss */
+/* line 144, sass/navigation/_menus.scss */
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
@@ -1067,7 +1088,7 @@ a:hover, a:active {
 #content {
   box-sizing: border-box;
   min-height: 100vh;
-  padding-top: calc( 2em + 25px + 0.5em + 2px + 2em );
+  padding-top: calc( 2em + 1.2em + 0.25em + 1px + 2em );
   padding-left: 2em;
   padding-right: 2em;
 }
@@ -1129,13 +1150,13 @@ a:hover, a:active {
 article.page.home {
   position: relative;
   box-sizing: border-box;
-  padding-top: calc( 2em + 25px + 0.5em + 2px + 2em );
+  padding-top: calc( 2em + 1.2em + 0.25em + 1px + 2em );
   padding-left: 2em;
   padding-right: 2em;
 }
 /* line 16, sass/site/pages/_home.scss */
 article.page.home main {
-  min-height: calc(100vh - calc( 2em + 25px + 0.5em + 2px + 2em ));
+  min-height: calc(100vh - calc( 2em + 1.2em + 0.25em + 1px + 2em ));
   position: relative;
 }
 /* line 18, sass/site/pages/_home.scss */
@@ -1284,7 +1305,7 @@ article.page.home .close {
 }
 /* line 5, sass/site/pages/_project.scss */
 #content.vt_project .layout.headspace {
-  height: calc( 2em + 25px + 0.5em + 2px + 2em );
+  height: calc( 2em + 1.2em + 0.25em + 1px + 2em );
 }
 /* line 7, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video {
