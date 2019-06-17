@@ -14,7 +14,12 @@ article.page.home {
 	padding-top: $layout__navHeight;
 	padding-left: $layout__navBannerPaddingHorizontal;
 	padding-right: $layout__navBannerPaddingHorizontal;
-	main { min-height: calc(100vh - #{$layout__navHeight}); position: relative; }
+	will-change: opacity;
+
+	main {
+		min-height: calc(100vh - #{$layout__navHeight}); position: relative;
+		padding-bottom: 5em;
+		box-sizing: border-box; }
 
 	&:before {
 		content: "";
@@ -27,16 +32,23 @@ article.page.home {
 
 	.layout {
 		position: relative;
-		&.banner { font-size: 3.5vw; p { margin: 0 0 1em; } }
+		&.banner { font-size: 3em; p { margin: 0 0 1em; } }
 		&.grid {
 			display: grid; grid-template-columns: 1fr 1fr 1fr;
 			grid-template-rows: auto; grid-gap: 3em;
-			font-size: 1.75vw;
+			line-height: 1.2em;
+			font-size: 1.5em;
+			margin-bottom: 2em;
 			p {margin: 0;}
 		}
 	}
 
-	.close { cursor: pointer; position: absolute; left: 50%; bottom: 5em; transform: translateX(-50%); }
+	.close {
+		cursor: pointer;
+    position: absolute;
+    bottom: 2em;
+    left: 50%;
+    transform: translateX(-50%); }
 }
 
 #intro {
@@ -53,24 +65,35 @@ article.page.home {
 	100% { opacity: 0 }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (min-width: 1600px) {
 	article.page.home {
 		.layout {
-		&.banner { font-size: 2em; }
-		&.grid { font-size: 1em; } }
+		&.banner { font-size: 3.5vw; }
+		&.grid { font-size: 2vw; } }
 	}
 }
 
+// @media screen and (max-width: 1000px) {
+// 	article.page.home {
+// 		.layout {
+// 		&.banner { font-size: 2em; }
+// 		&.grid { font-size: 1em; } }
+// 	}
+// }
+//
 @media screen and (max-width: 768px) {
 	article.page.home {
 		.layout {
-		&.banner { font-size: 1.5em; }
-		&.grid { font-size: 1em; } }
+		// &.banner { font-size: 1.5em; }
+		&.grid { grid-template-columns: 1fr; grid-gap: 1em; } }
 	}
 }
 
 @media screen and (max-width: 600px) {
 	article.page.home {
+		padding-top: $layout__mobile__navHeight;
+		padding-left: $layout__mobile__navBannerPaddingHorizontal;
+		padding-right: $layout__mobile__navBannerPaddingHorizontal;
 		.layout {
 		&.banner { font-size: 1.5em; }
 		&.grid { grid-template-columns: 1fr; grid-gap: 1em; } }

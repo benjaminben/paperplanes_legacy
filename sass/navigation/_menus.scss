@@ -101,7 +101,7 @@
 
 	&:before {
 		content: ""; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
-		background: rgba(20,20,20,1); transform: translateY(100%);
+		background: rgba(20,20,20,1); transform: translateY(-100%);
 	}
 
 	&.toggled {
@@ -161,4 +161,10 @@
 @keyframes menu-out {
 	from { opacity: 1 }
 	to { opacity: 0 }
+}
+
+@media screen and (max-width: 600px) {
+	.main-navigation {
+		padding: $layout__mobile__navBannerPaddingTop $layout__mobile__navBannerPaddingHorizontal 0em;
+	}
 }

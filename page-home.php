@@ -16,8 +16,9 @@ $reel = get_field('reel');
 
 <article
   v-bind:style="{opacity: fade}"
+  ref="frame"
   id="post-<?php the_ID(); ?>" <?php post_class("home"); ?>>
-  <main>
+  <main ref="content">
   <?php while ( have_posts() ) : the_post(); ?>
   <?php
     if ( have_rows( 'content' ) ) :
@@ -41,8 +42,8 @@ $reel = get_field('reel');
   ?>
   <?php endwhile; wp_reset_query(); ?>
   <span @click="forceEnter" class="close">
-    <svg width="80" height="24" viewBox="0 0 100 30">
-      <path d="M4 26 L50 4 L96 26" stroke-linecap="round" stroke-linejoin="round" stroke="black" stroke-width="5 " fill="none" />
+    <svg width="60" height="24" viewBox="0 0 100 40">
+      <path d="M4 36 L50 4 L96 36" stroke-linecap="round" stroke-linejoin="round" stroke="black" stroke-width="5 " fill="none" />
     </svg>
   </span>
 </main>

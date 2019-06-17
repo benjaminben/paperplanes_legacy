@@ -3,12 +3,22 @@ $size__site-sidebar: 25%;
 
 $layout__navBannerHeight: 1.2em;
 $layout__navBannerPaddingBottom: 0.25em;
-$layout__navBannerPaddingTop: 2em;
+$layout__navBannerPaddingTop: 3em;
 $layout__navBannerMarginBottom: 2em;
 $layout__navBannerBorderBottom: 1px;
-$layout__navBannerPaddingHorizontal: 2em;
+$layout__navBannerPaddingHorizontal: 4em;
 $layout__navHeight: calc(
   #{$layout__navBannerPaddingTop} +
+	#{$layout__navBannerHeight} +
+	#{$layout__navBannerPaddingBottom} +
+  #{$layout__navBannerBorderBottom} +
+	#{$layout__navBannerMarginBottom}
+);
+
+$layout__mobile__navBannerPaddingTop: 2em;
+$layout__mobile__navBannerPaddingHorizontal: 2em;
+$layout__mobile__navHeight: calc(
+  #{$layout__mobile__navBannerPaddingTop} +
 	#{$layout__navBannerHeight} +
 	#{$layout__navBannerPaddingBottom} +
   #{$layout__navBannerBorderBottom} +
