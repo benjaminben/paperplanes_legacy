@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Visuelt';
+    src: url('Visuelt-Bold.woff2') format('woff2'),
+        url('Visuelt-Bold.woff') format('woff'),
+        url('Visuelt-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Visuelt';
+    src: url('Visuelt-Regular.woff2') format('woff2'),
+        url('Visuelt-Regular.woff') format('woff'),
+        url('Visuelt-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

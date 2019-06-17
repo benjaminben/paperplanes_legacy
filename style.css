@@ -508,21 +508,22 @@ html {
 body {
   background: #fff;
   /* Fallback for when there is no custom background color defined. */
+  font-family: 'Visuelt', courier;
 }
 
-/* line 15, sass/elements/_elements.scss */
+/* line 16, sass/elements/_elements.scss */
 #content[data-theme="dark"] {
   background: black;
   color: white;
 }
 
-/* line 16, sass/elements/_elements.scss */
+/* line 17, sass/elements/_elements.scss */
 #content[data-theme="light"] {
   background: white;
   color: black;
 }
 
-/* line 18, sass/elements/_elements.scss */
+/* line 19, sass/elements/_elements.scss */
 hr {
   background-color: #ccc;
   border: 0;
@@ -530,7 +531,7 @@ hr {
   margin-bottom: 1.5em;
 }
 
-/* line 25, sass/elements/_elements.scss */
+/* line 26, sass/elements/_elements.scss */
 #masthead {
   position: relative;
   z-index: 1;
@@ -568,7 +569,7 @@ dd {
   margin: 0 1.5em 1.5em;
 }
 
-/* line 29, sass/elements/_elements.scss */
+/* line 30, sass/elements/_elements.scss */
 img {
   height: auto;
   /* Make sure images are scaled correctly. */
@@ -576,7 +577,7 @@ img {
   /* Adhere to container width. */
 }
 
-/* line 34, sass/elements/_elements.scss */
+/* line 35, sass/elements/_elements.scss */
 figure {
   margin: 1em 0;
   /* Extra wide images within figure tags don't overflow the content area. */

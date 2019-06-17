@@ -120,6 +120,19 @@ add_action( 'widgets_init', 'paperplanes_widgets_init' );
  * Enqueue scripts and styles.
  */
 function paperplanes_scripts() {
+	// Fonts
+	$di = new DirectoryIterator(get_template_directory() . '/assets/fonts');
+	foreach ($di as $fileinfo) {
+		if ($fileinfo->isDir() && !$fileinfo->isDot()) {
+			$dir = $fileinfo->getFilename();
+			$rel = '/assets/fonts/' . $dir . '/stylesheet.css';
+			$p = get_template_directory() . $rel;
+			if (file_exists($p)) {
+				wp_enqueue_style('font-family-'.$dir, get_template_directory_uri() . $rel);
+			}
+		}
+	}
+
 	wp_enqueue_style( 'paperplanes-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'vuejs', 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js' );

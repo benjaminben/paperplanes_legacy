@@ -30,6 +30,43 @@ $slug = $post->post_name;
 	data-theme="<?php echo $theme ?>"
 	<?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>
 	data-site-url="<?php echo site_url() ?>">
+
+	<!-- <div id="clipper" style="
+	    position: fixed;
+	    width: 100%;
+	    height: 91.8vh;
+	    /* background: pink; */
+	    /* z-index: 10; */
+	    top: 8.2vh;
+	">
+
+	    <svg preserveAspectRatio="none" style="
+	    width: 100%;
+	    height: 100%;
+	" id="clipSvg">
+
+	    <defs>
+
+	    <symbol>
+
+	    <path d="M0 0 L0 100 L100 100 L100 0" id="clippyPath" style="
+	    transform: scaleX(5);
+	"></path>
+
+	    </symbol>
+
+	        <clipPath id="clippy" clipPathUnits="objectBoundingBox">
+	            <use xlink:href="#clippyPath"></use>
+	        </clipPath>
+	        </defs>
+
+	    <use xlink:href="#clippyPath" style="
+	    fill: rgba(255,0,0,0.5);
+	"></use>
+
+	    </svg>
+	</div> -->
+
 <div id="page" class="site barba-wrapper">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'paperplanes' ); ?></a>
 	<header id="masthead" class="site-header">
