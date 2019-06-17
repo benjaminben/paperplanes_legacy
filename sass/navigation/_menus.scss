@@ -5,7 +5,7 @@
 
 	.home-link {
 		display: inline-block; vertical-align: middle; position: relative;
-		outline: none; 
+		outline: none;
 		img, svg {
 			height: $layout__navBannerHeight; width: auto;
 			&.theme-light { position: absolute; top: 0; left: 0; }
@@ -126,6 +126,10 @@
 .menu-toggle {
 	display: inline-block; background: none; border: none; padding: 0;
 	cursor: pointer; outline: none;
+	path {
+		&:first-of-type { transform-origin: 100px 27.5px }
+		&:last-of-type { transform-origin: 100px 72.5px }
+	}
 }
 
 .comment-navigation,
