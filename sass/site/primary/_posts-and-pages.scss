@@ -25,3 +25,11 @@
 	padding-top: $layout__navHeight;
 	padding-left: $layout__navBannerPaddingHorizontal;
 	padding-right: $layout__navBannerPaddingHorizontal; }
+
+@media screen and (max-width: 600px) {
+	#content {
+		padding-top: $layout__mobile__navHeight;
+		padding-left: $layout__mobile__navBannerPaddingHorizontal;
+		padding-right: $layout__mobile__navBannerPaddingHorizontal;
+	}
+}

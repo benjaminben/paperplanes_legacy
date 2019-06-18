@@ -1111,6 +1111,14 @@ a:hover, a:active {
   padding-right: 4em;
 }
 
+@media screen and (max-width: 600px) {
+  /* line 30, sass/site/primary/_posts-and-pages.scss */
+  #content {
+    padding-top: calc( 2em + 1.2em + 0.5em + 1px + 2em );
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
@@ -1591,13 +1599,13 @@ article.page.home .close {
   grid-template-columns: 1fr 0.8fr;
 }
 /* line 16, sass/site/pages/_about.scss */
-#content.about .row.primary .head h1 {
+#content.about .row.primary .head .title {
   margin: 0;
   font-size: 4em;
   margin-bottom: 1em;
 }
 /* line 17, sass/site/pages/_about.scss */
-#content.about .row.primary .head p {
+#content.about .row.primary .head .desc {
   width: 80%;
   font-size: 0.9em;
 }
@@ -1611,7 +1619,7 @@ article.page.home .close {
 /* line 22, sass/site/pages/_about.scss */
 #content.about .row .list .count {
   color: red;
-  font-size: 12em;
+  font-size: 20em;
   margin: 0;
   line-height: 1em;
 }
@@ -1669,6 +1677,60 @@ article.page.home .close {
   margin-left: 3em;
 }
 
+@media screen and (max-width: 1000px) {
+  /* line 43, sass/site/pages/_about.scss */
+  #content.about .row.primary .list .item {
+    grid-template-columns: 1fr 1.8fr;
+  }
+  /* line 44, sass/site/pages/_about.scss */
+  #content.about .row.primary .list .count {
+    font-size: 12em;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 51, sass/site/pages/_about.scss */
+  #content.about .row.primary .head {
+    grid-template-columns: 1fr;
+  }
+  /* line 53, sass/site/pages/_about.scss */
+  #content.about .row.primary .head .title {
+    margin-bottom: 0em;
+  }
+  /* line 54, sass/site/pages/_about.scss */
+  #content.about .row.primary .head .desc {
+    margin-bottom: 4em;
+  }
+  /* line 56, sass/site/pages/_about.scss */
+  #content.about .row.primary .list .item {
+    grid-template-columns: 1fr;
+  }
+  /* line 57, sass/site/pages/_about.scss */
+  #content.about .row.primary .list .count {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* line 64, sass/site/pages/_about.scss */
+  #content.about .row.primary .head {
+    grid-template-columns: 1fr;
+  }
+  /* line 66, sass/site/pages/_about.scss */
+  #content.about .row.primary .head .title {
+    font-size: 2.5em;
+  }
+  /* line 69, sass/site/pages/_about.scss */
+  #content.about .row.primary .list .info ul {
+    grid-template-columns: 1fr;
+  }
+  /* line 70, sass/site/pages/_about.scss */
+  #content.about .row.primary .list .info .title {
+    font-size: 2em;
+  }
+  /* line 71, sass/site/pages/_about.scss */
+  #content.about .row.primary .list .item {
+    grid-template-columns: 1fr;
+  }
+}
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
