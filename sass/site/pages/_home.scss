@@ -56,7 +56,7 @@ article.page.home {
 	position: fixed;
   top: 0; left: 0; width: 100%; height: 100vh;
 	display: flex; z-index: 3;
-	svg { width: 80%; height: auto; margin: auto; }
+	svg { width: 80%; height: auto; margin: auto; opacity: 0; }
 }
 
 @keyframes intro {
@@ -74,18 +74,9 @@ article.page.home {
 	}
 }
 
-// @media screen and (max-width: 1000px) {
-// 	article.page.home {
-// 		.layout {
-// 		&.banner { font-size: 2em; }
-// 		&.grid { font-size: 1em; } }
-// 	}
-// }
-//
 @media screen and (max-width: 768px) {
 	article.page.home {
 		.layout {
-		// &.banner { font-size: 1.5em; }
 		&.grid { grid-template-columns: 1fr; grid-gap: 1em; } }
 	}
 }

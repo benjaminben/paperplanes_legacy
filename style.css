@@ -1309,6 +1309,7 @@ article.page.home .close {
   width: 80%;
   height: auto;
   margin: auto;
+  opacity: 0;
 }
 
 @keyframes intro {
@@ -1336,52 +1337,128 @@ article.page.home .close {
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 89, sass/site/pages/_home.scss */
+  /* line 80, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     grid-template-columns: 1fr;
     grid-gap: 1em;
   }
 }
 @media screen and (max-width: 600px) {
-  /* line 94, sass/site/pages/_home.scss */
+  /* line 85, sass/site/pages/_home.scss */
   article.page.home {
     padding-top: calc( 2em + 1.2em + 0.5em + 1px + 2em );
     padding-left: 2em;
     padding-right: 2em;
   }
-  /* line 99, sass/site/pages/_home.scss */
+  /* line 90, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.5em;
   }
-  /* line 100, sass/site/pages/_home.scss */
+  /* line 91, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     grid-template-columns: 1fr;
     grid-gap: 1em;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 107, sass/site/pages/_home.scss */
+  /* line 98, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.2em;
   }
 }
-/* line 2, sass/site/pages/_contact.scss */
-.page.contact .grid {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto;
+/* line 3, sass/site/pages/_contact.scss */
+#content.contact .banner .text {
+  color: #c2bfb5;
 }
-/* line 6, sass/site/pages/_contact.scss */
-.page.contact .grid .item h5 {
+/* line 5, sass/site/pages/_contact.scss */
+#content.contact .banner .text p {
+  font-size: 10em;
+  line-height: 0.8em;
   margin: 0;
+  font-weight: bold;
 }
 /* line 7, sass/site/pages/_contact.scss */
-.page.contact .grid .item.social img {
-  width: 20px;
-  height: auto;
+#content.contact .grid {
+  margin-top: 4em;
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  grid-gap: 1em;
+}
+/* line 12, sass/site/pages/_contact.scss */
+#content.contact .grid p {
+  margin: 0;
+}
+/* line 14, sass/site/pages/_contact.scss */
+#content.contact .grid .contact .label {
+  font-size: 1em;
+  font-weight: normal;
+}
+/* line 15, sass/site/pages/_contact.scss */
+#content.contact .grid .contact .link {
+  font-size: 2em;
+  color: black;
+  text-decoration: none;
+}
+/* line 17, sass/site/pages/_contact.scss */
+#content.contact .grid .contact .link:hover {
+  text-decoration: underline;
+}
+/* line 19, sass/site/pages/_contact.scss */
+#content.contact .grid .social .label {
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 0.25em;
+}
+/* line 20, sass/site/pages/_contact.scss */
+#content.contact .grid .social .link {
+  font-size: 2em;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 0.2em;
+}
+/* line 23, sass/site/pages/_contact.scss */
+#content.contact .grid .social .link:last-of-type {
+  margin-right: 0em;
+}
+/* line 24, sass/site/pages/_contact.scss */
+#content.contact .grid .social .link img {
+  width: 1em;
+}
+/* line 25, sass/site/pages/_contact.scss */
+#content.contact .grid .tag .text {
+  font-size: 1em;
+  font-weight: normal;
+}
+/* line 26, sass/site/pages/_contact.scss */
+#content.contact .grid .item h5 {
+  margin: 0;
 }
 
+@media screen and (max-width: 1000px) {
+  /* line 32, sass/site/pages/_contact.scss */
+  #content.contact .banner .text p {
+    font-size: 6em;
+  }
+  /* line 36, sass/site/pages/_contact.scss */
+  #content.contact .grid .contact .label {
+    font-size: 0.8em;
+  }
+  /* line 37, sass/site/pages/_contact.scss */
+  #content.contact .grid .contact .link {
+    font-size: 1em;
+  }
+  /* line 39, sass/site/pages/_contact.scss */
+  #content.contact .grid .social .label {
+    font-size: 0.8em;
+  }
+  /* line 40, sass/site/pages/_contact.scss */
+  #content.contact .grid .social .link {
+    font-size: 1.5em;
+  }
+}
 /* line 1, sass/site/pages/_project.scss */
 #content.vt_project {
   padding: 0;

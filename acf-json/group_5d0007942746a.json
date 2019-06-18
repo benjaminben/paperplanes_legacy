@@ -26,7 +26,7 @@
                             "key": "field_5d0007c57e98a",
                             "label": "Text",
                             "name": "text",
-                            "type": "textarea",
+                            "type": "wysiwyg",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -36,10 +36,10 @@
                                 "id": ""
                             },
                             "default_value": "",
-                            "placeholder": "",
-                            "maxlength": "",
-                            "rows": "",
-                            "new_lines": ""
+                            "tabs": "text",
+                            "media_upload": 0,
+                            "toolbar": "full",
+                            "delay": 0
                         }
                     ],
                     "min": "",
@@ -142,7 +142,7 @@
                                             "key": "field_5d00096308ef0",
                                             "label": "Text",
                                             "name": "text",
-                                            "type": "text",
+                                            "type": "wysiwyg",
                                             "instructions": "",
                                             "required": 0,
                                             "conditional_logic": 0,
@@ -152,10 +152,10 @@
                                                 "id": ""
                                             },
                                             "default_value": "",
-                                            "placeholder": "",
-                                            "prepend": "",
-                                            "append": "",
-                                            "maxlength": ""
+                                            "tabs": "text",
+                                            "media_upload": 0,
+                                            "toolbar": "full",
+                                            "delay": 0
                                         }
                                     ],
                                     "min": "",
@@ -286,5 +286,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1560283701
+    "modified": 1560886549
 }
