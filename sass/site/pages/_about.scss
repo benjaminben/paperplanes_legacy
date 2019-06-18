@@ -1,0 +1,36 @@
+#content.about {
+  padding-bottom: 4em;
+  padding-top: calc(
+    #{$layout__navBannerPaddingTop} +
+  	#{$layout__navBannerHeight} +
+  	#{$layout__navBannerPaddingBottom} +
+    #{$layout__navBannerBorderBottom}
+  );
+  .row {
+    &.primary {
+      border-bottom: 1px solid white; min-height: 12em;
+      padding-top: 1em; box-sizing: border-box;
+      &:last-of-type { border-bottom: none; }
+      .head {
+        display: grid; grid-template-columns: 1fr 0.8fr;
+        h1 { margin: 0; font-size: 4em; margin-bottom: 1em; }
+        p { width: 80%; font-size: 0.9em; } } }
+      .list {
+        .item {
+          display: grid; grid-template-columns: 1fr 0.8fr;
+          border-top: 1px solid rgba(64, 64, 64, 1); margin-bottom: 2em; }
+        .count { color: red; font-size: 12em; margin: 0; line-height: 1em; }
+        .info {
+          margin-top: 2em;
+          &:before { content: attr(data-count); color: red; display: block; line-height: 0.5em; }
+          .title { margin: 0; font-size: 2.8em; font-weight: normal; }
+          .subtitle { color: red; text-transform: uppercase; font-weight: normal; font-size: 0.9em; }
+          ul {
+            margin: 0; padding: 0; list-style-type: none;
+            display: grid; grid-template-columns: 1fr 1fr; grid-gap: 0.25em;
+            li {
+              position: relative;
+              &:before { content: "\2014"; position: absolute; }
+              .label {
+                text-transform: uppercase; margin-left: 1em; display: block; }
+              .sub { display: block; margin-left: 3em; } } } } } } }

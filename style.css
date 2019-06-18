@@ -720,6 +720,7 @@ a:hover, a:active {
   vertical-align: middle;
   position: relative;
   outline: none;
+  line-height: 1em;
 }
 /* line 9, sass/navigation/_menus.scss */
 .main-navigation .home-link img, .main-navigation .home-link svg {
@@ -738,7 +739,7 @@ a:hover, a:active {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding-bottom: 0.25em;
+  padding-bottom: 0.5em;
   border-width: 0px;
   border-bottom-width: 1px;
   border-style: solid;
@@ -806,9 +807,9 @@ a:hover, a:active {
 /* line 78, sass/navigation/_menus.scss */
 .main-navigation li {
   position: relative;
-  margin-bottom: 1em;
+  margin-bottom: 0em;
   display: block;
-  font-size: 2em;
+  font-size: 2.5em;
 }
 /* line 81, sass/navigation/_menus.scss */
 .main-navigation li:last-of-type {
@@ -816,18 +817,19 @@ a:hover, a:active {
 }
 /* line 87, sass/navigation/_menus.scss */
 .main-navigation li a {
+  transition: color 0.5s ease;
   color: white;
   display: inline-block;
 }
-/* line 89, sass/navigation/_menus.scss */
+/* line 90, sass/navigation/_menus.scss */
 .main-navigation li a:hover, .main-navigation li a:focus {
   color: red;
 }
-/* line 92, sass/navigation/_menus.scss */
+/* line 93, sass/navigation/_menus.scss */
 .main-navigation a {
   text-decoration: none;
 }
-/* line 102, sass/navigation/_menus.scss */
+/* line 103, sass/navigation/_menus.scss */
 .main-navigation:before {
   content: "";
   position: absolute;
@@ -838,56 +840,56 @@ a:hover, a:active {
   background: #141414;
   transform: translateY(-100%);
 }
-/* line 107, sass/navigation/_menus.scss */
+/* line 108, sass/navigation/_menus.scss */
 .main-navigation.toggled {
   min-height: 100vh;
 }
-/* line 109, sass/navigation/_menus.scss */
+/* line 110, sass/navigation/_menus.scss */
 .main-navigation.toggled .home-link img, .main-navigation.toggled .home-link svg {
   transition: opacity 0.5s ease;
 }
-/* line 110, sass/navigation/_menus.scss */
+/* line 111, sass/navigation/_menus.scss */
 .main-navigation.toggled .banner {
   transition: border-color 0.5s ease;
 }
-/* line 111, sass/navigation/_menus.scss */
+/* line 112, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu-toggle svg path {
   transition: all 0.5s ease;
 }
-/* line 113, sass/navigation/_menus.scss */
+/* line 114, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu-toggle svg path:first-of-type {
   transform: rotate(-45deg) translate(-6px, -16px);
 }
-/* line 114, sass/navigation/_menus.scss */
+/* line 115, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu-toggle svg path:last-of-type {
   transform: rotate(45deg) translate(2px, 24px);
 }
-/* line 116, sass/navigation/_menus.scss */
+/* line 117, sass/navigation/_menus.scss */
 .main-navigation.toggled:before {
   transition: transform 0.5s ease;
   transform: translateY(0%);
 }
-/* line 117, sass/navigation/_menus.scss */
+/* line 118, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu {
   display: block;
   animation: menu-in 0.5s ease both;
   animation-delay: 0.5s;
 }
-/* line 120, sass/navigation/_menus.scss */
+/* line 121, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting .menu-toggle svg path {
   transform: none;
 }
-/* line 121, sass/navigation/_menus.scss */
+/* line 122, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting .menu {
   animation: menu-out 0.5s ease both;
   animation-delay: 0s;
 }
-/* line 123, sass/navigation/_menus.scss */
+/* line 124, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting:before {
   transform: translateY(-100%);
 }
 
-/* line 126, sass/navigation/_menus.scss */
+/* line 127, sass/navigation/_menus.scss */
 .menu-toggle {
   display: inline-block;
   background: none;
@@ -896,30 +898,30 @@ a:hover, a:active {
   cursor: pointer;
   outline: none;
 }
-/* line 130, sass/navigation/_menus.scss */
+/* line 131, sass/navigation/_menus.scss */
 .menu-toggle path:first-of-type {
   transform-origin: 100px 27.5px;
 }
-/* line 131, sass/navigation/_menus.scss */
+/* line 132, sass/navigation/_menus.scss */
 .menu-toggle path:last-of-type {
   transform-origin: 100px 72.5px;
 }
 
-/* line 139, sass/navigation/_menus.scss */
+/* line 140, sass/navigation/_menus.scss */
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden;
 }
-/* line 144, sass/navigation/_menus.scss */
+/* line 145, sass/navigation/_menus.scss */
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
-/* line 149, sass/navigation/_menus.scss */
+/* line 150, sass/navigation/_menus.scss */
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
@@ -945,7 +947,7 @@ a:hover, a:active {
   }
 }
 @media screen and (max-width: 600px) {
-  /* line 167, sass/navigation/_menus.scss */
+  /* line 168, sass/navigation/_menus.scss */
   .main-navigation {
     padding: 2em 2em 0em;
   }
@@ -1104,7 +1106,7 @@ a:hover, a:active {
 #content {
   box-sizing: border-box;
   min-height: 100vh;
-  padding-top: calc( 3em + 1.2em + 0.25em + 1px + 2em );
+  padding-top: calc( 3em + 1.2em + 0.5em + 1px + 2em );
   padding-left: 4em;
   padding-right: 4em;
 }
@@ -1217,14 +1219,14 @@ a:hover, a:active {
 article.page.home {
   position: relative;
   box-sizing: border-box;
-  padding-top: calc( 3em + 1.2em + 0.25em + 1px + 2em );
+  padding-top: calc( 3em + 1.2em + 0.5em + 1px + 2em );
   padding-left: 4em;
   padding-right: 4em;
   will-change: opacity;
 }
 /* line 19, sass/site/pages/_home.scss */
 article.page.home main {
-  min-height: calc(100vh - calc( 3em + 1.2em + 0.25em + 1px + 2em ));
+  min-height: calc(100vh - calc( 3em + 1.2em + 0.5em + 1px + 2em ));
   position: relative;
   padding-bottom: 5em;
   box-sizing: border-box;
@@ -1335,7 +1337,7 @@ article.page.home .close {
 @media screen and (max-width: 600px) {
   /* line 94, sass/site/pages/_home.scss */
   article.page.home {
-    padding-top: calc( 2em + 1.2em + 0.25em + 1px + 2em );
+    padding-top: calc( 2em + 1.2em + 0.5em + 1px + 2em );
     padding-left: 2em;
     padding-right: 2em;
   }
@@ -1383,7 +1385,7 @@ article.page.home .close {
 }
 /* line 5, sass/site/pages/_project.scss */
 #content.vt_project .layout.headspace {
-  height: calc( 3em + 1.2em + 0.25em + 1px + 2em );
+  height: calc( 3em + 1.2em + 0.5em + 1px + 2em );
 }
 /* line 7, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video {
@@ -1565,6 +1567,106 @@ article.page.home .close {
   margin: 1em 0 0em;
   font-weight: normal;
   text-decoration: underline;
+}
+
+/* line 1, sass/site/pages/_about.scss */
+#content.about {
+  padding-bottom: 4em;
+  padding-top: calc( 3em + 1.2em + 0.5em + 1px );
+}
+/* line 10, sass/site/pages/_about.scss */
+#content.about .row.primary {
+  border-bottom: 1px solid white;
+  min-height: 12em;
+  padding-top: 1em;
+  box-sizing: border-box;
+}
+/* line 13, sass/site/pages/_about.scss */
+#content.about .row.primary:last-of-type {
+  border-bottom: none;
+}
+/* line 14, sass/site/pages/_about.scss */
+#content.about .row.primary .head {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+}
+/* line 16, sass/site/pages/_about.scss */
+#content.about .row.primary .head h1 {
+  margin: 0;
+  font-size: 4em;
+  margin-bottom: 1em;
+}
+/* line 17, sass/site/pages/_about.scss */
+#content.about .row.primary .head p {
+  width: 80%;
+  font-size: 0.9em;
+}
+/* line 19, sass/site/pages/_about.scss */
+#content.about .row .list .item {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  border-top: 1px solid #404040;
+  margin-bottom: 2em;
+}
+/* line 22, sass/site/pages/_about.scss */
+#content.about .row .list .count {
+  color: red;
+  font-size: 12em;
+  margin: 0;
+  line-height: 1em;
+}
+/* line 23, sass/site/pages/_about.scss */
+#content.about .row .list .info {
+  margin-top: 2em;
+}
+/* line 25, sass/site/pages/_about.scss */
+#content.about .row .list .info:before {
+  content: attr(data-count);
+  color: red;
+  display: block;
+  line-height: 0.5em;
+}
+/* line 26, sass/site/pages/_about.scss */
+#content.about .row .list .info .title {
+  margin: 0;
+  font-size: 2.8em;
+  font-weight: normal;
+}
+/* line 27, sass/site/pages/_about.scss */
+#content.about .row .list .info .subtitle {
+  color: red;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 0.9em;
+}
+/* line 28, sass/site/pages/_about.scss */
+#content.about .row .list .info ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.25em;
+}
+/* line 31, sass/site/pages/_about.scss */
+#content.about .row .list .info ul li {
+  position: relative;
+}
+/* line 33, sass/site/pages/_about.scss */
+#content.about .row .list .info ul li:before {
+  content: "\2014";
+  position: absolute;
+}
+/* line 34, sass/site/pages/_about.scss */
+#content.about .row .list .info ul li .label {
+  text-transform: uppercase;
+  margin-left: 1em;
+  display: block;
+}
+/* line 36, sass/site/pages/_about.scss */
+#content.about .row .list .info ul li .sub {
+  display: block;
+  margin-left: 3em;
 }
 
 /*--------------------------------------------------------------

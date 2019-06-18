@@ -5,7 +5,7 @@
 
 	.home-link {
 		display: inline-block; vertical-align: middle; position: relative;
-		outline: none;
+		outline: none; line-height: 1em;
 		img, svg {
 			height: $layout__navBannerHeight; width: auto;
 			&.theme-light { position: absolute; top: 0; left: 0; }
@@ -76,8 +76,8 @@
 	}
 
 	li {
-		position: relative; margin-bottom: 1em; display: block;
-		font-size: 2em;
+		position: relative; margin-bottom: 0em; display: block;
+		font-size: 2.5em;
 		&:last-of-type { margin-bottom: 0em; }
 
 		&:hover > a,
@@ -85,6 +85,7 @@
 		}
 
 		a {
+			transition: color 0.5s ease;
 			color: white; display: inline-block;
 			&:hover, &:focus { color: red; } }
 	}

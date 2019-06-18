@@ -6,8 +6,8 @@
       if ( get_row_layout() == 'primary' ) : ?>
         <div class="primary row">
           <div class="head">
-            <h1><?php the_sub_field( 'title' ) ?></h1>
-            <p><?php the_sub_field( 'desc' ) ?></p>
+            <h1 class="title"><?php the_sub_field( 'title' ) ?></h1>
+            <p class="desc"><?php the_sub_field( 'desc' ) ?></p>
           </div> <?php
           if ( have_rows( 'list' ) ) : $ct = 0; ?>
           <div class="list"> <?php
@@ -16,8 +16,8 @@
               <div class="item">
                 <h1 class="count"><?php echo $formatted; ?></h1>
                 <div class="info" data-count="<?php echo $formatted; ?>">
-                  <h2><?php the_sub_field( 'title' ) ?></h2>
-                  <h3><?php the_sub_field( 'subtitle' ) ?></h3> <?php
+                  <h2 class="title"><?php the_sub_field( 'title' ) ?></h2>
+                  <h3 class="subtitle"><?php the_sub_field( 'subtitle' ) ?></h3> <?php
                   if ( have_rows( 'items' ) ) : ?>
                     <ul> <?php
                       while ( have_rows( 'items' ) ) : the_row(); ?>
@@ -32,9 +32,9 @@
                   endif; ?>
                 </div>
               </div><?php
-            endwhile;
+            endwhile; ?>
+          </div> <?php
           endif; ?>
-          <div>
         </div> <?php
       endif;
     endwhile;
