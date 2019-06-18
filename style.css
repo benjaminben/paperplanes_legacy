@@ -1549,19 +1549,25 @@ article.page.home .close {
   }
 }
 /* line 2, sass/site/pages/_team.scss */
+#content.team .page-title {
+  font-size: 6em;
+  line-height: 1em;
+  margin: 0 0 0.15em;
+}
+/* line 4, sass/site/pages/_team.scss */
 #content.team .staff {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 1em;
 }
-/* line 5, sass/site/pages/_team.scss */
+/* line 7, sass/site/pages/_team.scss */
 #content.team .staff .headshot {
   position: relative;
   width: 100%;
   padding-bottom: 120%;
 }
-/* line 7, sass/site/pages/_team.scss */
+/* line 9, sass/site/pages/_team.scss */
 #content.team .staff .headshot img {
   position: absolute;
   top: 0;
@@ -1570,13 +1576,36 @@ article.page.home .close {
   height: 100%;
   object-fit: cover;
 }
-/* line 8, sass/site/pages/_team.scss */
+/* line 10, sass/site/pages/_team.scss */
 #content.team .staff .name {
   margin: 1em 0 0em;
   font-weight: normal;
   text-decoration: underline;
 }
+/* line 13, sass/site/pages/_team.scss */
+#content.team .staff .role {
+  display: block;
+  margin-bottom: 2em;
+}
 
+@media screen and (max-width: 1000px) {
+  /* line 17, sass/site/pages/_team.scss */
+  #content.team .staff {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 22, sass/site/pages/_team.scss */
+  #content.team .staff {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 400px) {
+  /* line 27, sass/site/pages/_team.scss */
+  #content.team .staff {
+    grid-template-columns: 1fr;
+  }
+}
 /* line 1, sass/site/pages/_about.scss */
 #content.about {
   padding-bottom: 4em;

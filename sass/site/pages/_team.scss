@@ -1,4 +1,6 @@
 #content.team {
+  .page-title {
+    font-size: 6em; line-height: 1em; margin: 0 0 0.15em; }
   .staff {
 		display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: auto;
     grid-gap: 1em;
@@ -7,5 +9,20 @@
       img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; } }
     .name {
       margin: 1em 0 0em;
-      font-weight: normal; text-decoration: underline } }
+      font-weight: normal; text-decoration: underline }
+    .role { display: block; margin-bottom: 2em; } } }
+
+@media screen and (max-width: 1000px) {
+  #content.team {
+    .staff { grid-template-columns: 1fr 1fr 1fr; } }
+}
+
+@media screen and (max-width: 768px) {
+  #content.team {
+    .staff { grid-template-columns: 1fr 1fr; } }
+}
+
+@media screen and (max-width: 400px) {
+  #content.team {
+    .staff { grid-template-columns: 1fr; } }
 }
