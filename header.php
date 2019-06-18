@@ -27,6 +27,7 @@ $slug = $post->post_name;
 </head>
 
 <body
+	data-slug="<?php echo $slug ?>"
 	data-theme="<?php echo $theme ?>"
 	<?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>
 	data-site-url="<?php echo site_url() ?>">

@@ -951,6 +951,11 @@ a:hover, a:active {
   .main-navigation {
     padding: 2em 2em 0em;
   }
+  /* line 170, sass/navigation/_menus.scss */
+  .main-navigation .menu {
+    text-align: right;
+    right: 2em;
+  }
 }
 /*--------------------------------------------------------------
 # Accessibility
@@ -1457,6 +1462,46 @@ article.page.home .close {
   /* line 40, sass/site/pages/_contact.scss */
   #content.contact .grid .social .link {
     font-size: 1.5em;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* line 48, sass/site/pages/_contact.scss */
+  #content.contact .banner .text p {
+    font-size: 3em;
+  }
+  /* line 50, sass/site/pages/_contact.scss */
+  #content.contact .item {
+    margin-bottom: 1em;
+  }
+  /* line 51, sass/site/pages/_contact.scss */
+  #content.contact .grid {
+    margin-top: 2em;
+    display: flex;
+    flex-flow: column;
+  }
+  /* line 54, sass/site/pages/_contact.scss */
+  #content.contact .grid .contact .label {
+    font-size: 1em;
+  }
+  /* line 55, sass/site/pages/_contact.scss */
+  #content.contact .grid .contact .link {
+    font-size: 1.5em;
+  }
+  /* line 57, sass/site/pages/_contact.scss */
+  #content.contact .grid .social .label {
+    font-size: 1em;
+  }
+  /* line 58, sass/site/pages/_contact.scss */
+  #content.contact .grid .social .link {
+    font-size: 2em;
+  }
+  /* line 59, sass/site/pages/_contact.scss */
+  #content.contact .phone {
+    margin-top: 1em;
+  }
+  /* line 60, sass/site/pages/_contact.scss */
+  #content.contact .tag {
+    margin-top: 1em;
   }
 }
 /* line 1, sass/site/pages/_project.scss */

@@ -41,3 +41,22 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  #content.contact {
+    .banner {
+      .text { p { font-size: 3em; } }
+    }
+    .item { margin-bottom: 1em; }
+    .grid {
+      margin-top: 2em; display: flex; flex-flow: column;
+      .contact {
+        .label { font-size: 1em }
+        .link { font-size: 1.5em; } }
+      .social {
+        .label { font-size: 1em }
+        .link { font-size: 2em; } } }
+    .phone { margin-top: 1em; }
+    .tag { margin-top: 1em; }
+  }
+}

@@ -13,6 +13,7 @@
   }
 
   var initTheme = document.body.getAttribute("data-theme") === "dark" ? 1 : 0
+  var initSlug = document.body.getAttribute("data-slug")
   var debug = false
   var state = {
     ui: {
@@ -21,6 +22,7 @@
     },
     nav: {
       theme: initTheme,
+      slug: initSlug,
       open: false,
       exiting: false,
     },
@@ -59,6 +61,10 @@
         setTheme: function (value) {
           if (debug) console.log("nav.setTheme triggered with", value)
           state.nav.theme = value
+        },
+        setSlug: function (value) {
+          if (debug) console.log("nav.setSlug triggered with", value)
+          state.nav.slug = value
         },
         setNavOpen: function(value) {
           if (debug) console.log("nav.setNavOpen triggered with", value)

@@ -35,3 +35,14 @@ function paperplanes_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'paperplanes_pingback_header' );
+
+add_filter( 'nav_menu_link_attributes', 'paperplanes_menu_item_atts', 10, 3 );
+function paperplanes_menu_item_atts( $atts, $item, $args )
+{
+  // $atts['data-dest'] = get_post_field( 'post_name', $item->ID );
+	// var_dump($args);
+	$s = get_post_field( 'post_name', get_post_meta( $item->ID, '_menu_item_object_id', true ) );
+	$atts['data-dest'] = $s;
+	$atts['v-bind:style'] = "{ color: slug === '" . $s . "' ? 'red' : '' }";
+	return $atts;
+}

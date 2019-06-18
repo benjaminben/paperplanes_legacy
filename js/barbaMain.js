@@ -7,7 +7,10 @@ window.addEventListener('load', function() {
   var menu = document.querySelector("#primary-menu")
   var siteUrl = document.body.getAttribute("data-site-url")
 
-  Barba.Dispatcher.on('linkClicked', function(el) { lastElementClicked = el })
+  Barba.Dispatcher.on('linkClicked', function(el) {
+    lastElementClicked = el
+    doc._store.actions.nav.setSlug(el.getAttribute("data-dest"))
+  })
 
   var DefaultTransition = Barba.BaseTransition.extend({
     start: function() {
@@ -76,6 +79,7 @@ window.addEventListener('load', function() {
   // TODO: need to adjust scroll
 
   Barba.Dispatcher.on("newPageReady", function() {
+    // TODO: this whole function is jank...
     var href = window.location.href.replace(/\/+$/, "")
     if (href == siteUrl) {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/home.js")
@@ -86,6 +90,7 @@ window.addEventListener('load', function() {
     if ( lastElementClicked.className === "project" ||
          lastElementClicked.parentNode.className === "post-navigation" ) {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/project.js")
+      doc._store.actions.nav.setSlug("work")
     }
   })
 

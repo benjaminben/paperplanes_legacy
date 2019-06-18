@@ -21,7 +21,9 @@ if ( have_rows( 'content' ) ) :
         while ( have_rows( 'items' ) ) : the_row();
           $layout = get_row_layout();
           if ( $layout == 'contact' ) : ?>
-            <span class="item <?php echo $layout ?>">
+            <span
+              style="grid-area: <?php echo get_sub_field( 'grid_position' ); ?>; order: <?php echo get_sub_field( 'portrait_order' ); ?>"
+              class="item <?php echo $layout ?> <?php echo get_sub_field( 'class' ); ?>">
               <h5 class="label"><?php echo get_sub_field( 'label' ) ?></h5>
               <a class="link" href="<?php echo get_sub_field( 'link' ) ?>">
                 <?php echo get_sub_field( 'display' ) ?>
@@ -29,12 +31,16 @@ if ( have_rows( 'content' ) ) :
             </span>
           <?php endif;
           if ( $layout == 'tag' ) : ?>
-            <span class="item <?php echo $layout ?>">
+            <span
+              style="grid-area: <?php echo get_sub_field( 'grid_position' ); ?>; order: <?php echo get_sub_field( 'portrait_order' ); ?>"
+              class="item <?php echo $layout ?> <?php echo get_sub_field( 'class' ); ?>">
               <h5 class="text"><?php echo get_sub_field( 'text' ) ?></h5>
             </span>
           <?php endif;
           if ( $layout == 'social' ) : ?>
-            <span class="item <?php echo $layout ?>">
+            <span
+              style="grid-area: <?php echo get_sub_field( 'grid_position' ); ?>; order: <?php echo get_sub_field( 'portrait_order' ); ?>"
+              class="item <?php echo $layout ?> <?php echo get_sub_field( 'class' ); ?>">
               <h5 class="label"><?php echo get_sub_field( 'label' ) ?></h5>
               <?php
                 if ( have_rows( 'links' ) ) :

@@ -167,5 +167,6 @@
 @media screen and (max-width: 600px) {
 	.main-navigation {
 		padding: $layout__mobile__navBannerPaddingTop $layout__mobile__navBannerPaddingHorizontal 0em;
+	  .menu { text-align: right; right: $layout__mobile__navBannerPaddingHorizontal; }
 	}
 }
