@@ -36,7 +36,7 @@
           state.ui.theme = value
         },
         setLoaded: function() {
-          state.ui.loaded = true
+          // state.ui.loaded = true
         },
       },
       nav: {

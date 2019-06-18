@@ -1140,7 +1140,61 @@ a:hover, a:active {
   align-items: center;
   justify-content: center;
 }
+/* line 7, sass/site/secondary/_loader.scss */
+#loader svg {
+  width: 100px;
+  height: auto;
+}
+/* line 9, sass/site/secondary/_loader.scss */
+#loader svg .l1 {
+  stroke-dasharray: 798.0558px;
+  stroke-dashoffset: 798.0558px;
+  animation: plane-l1 3s infinite ease-in;
+}
+/* line 13, sass/site/secondary/_loader.scss */
+#loader svg .l2 {
+  stroke-dasharray: 580.44714px;
+  stroke-dashoffset: -580.44714px;
+  animation: plane-l2 3s infinite ease-in;
+}
 
+@keyframes plane-l1 {
+  20% {
+    stroke-dashoffset: 0px;
+  }
+  40% {
+    stroke-dashoffset: 0px;
+  }
+  60% {
+    stroke-dashoffset: -798.0558px;
+  }
+  80% {
+    stroke-dashoffset: -798.0558px;
+  }
+  100% {
+    stroke-dashoffset: -798.0558px;
+  }
+}
+@keyframes plane-l2 {
+  6% {
+    stroke-dashoffset: -580.44714px;
+  }
+  20% {
+    stroke-dashoffset: 0px;
+  }
+  46% {
+    stroke-dashoffset: 0px;
+  }
+  60% {
+    stroke-dashoffset: 580.44714px;
+  }
+  80% {
+    stroke-dashoffset: 580.44714px;
+  }
+  100% {
+    stroke-dashoffset: 580.44714px;
+  }
+}
 /*--------------------------------------------------------------
 ## Custom pages
 --------------------------------------------------------------*/
