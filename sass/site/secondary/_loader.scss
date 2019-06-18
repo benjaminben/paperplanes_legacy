@@ -7,13 +7,16 @@
   svg {
     width: 100px; height: auto;
     .l1 {
-      stroke-dasharray: 798.0558px;
-      stroke-dashoffset: 798.0558px;
-      animation: plane-l1 3s infinite ease-in; }
+      opacity: 0;
+      // stroke-dasharray: 798.0558px;
+      // stroke-dashoffset: 798.0558px;
+      // animation: plane-l1 3s infinite ease-in;
+    }
     .l2 {
-      stroke-dasharray: 580.44714px;
-      stroke-dashoffset: -580.44714px;
-      animation: plane-l2 3s infinite ease-in;
+      opacity: 0;
+      // stroke-dasharray: 580.44714px;
+      // stroke-dashoffset: -580.44714px;
+      // animation: plane-l2 3s infinite ease-in;
     }
   }
 }

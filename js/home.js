@@ -3,6 +3,7 @@
   var siteNav = document.getElementById( 'site-navigation' )
   var content = document.querySelector("#content.home .page")
   var close = document.querySelector("#content.home .close")
+  var introTl = new TimelineMax()
 
   var paddingTop
   var cDims
@@ -13,7 +14,6 @@
       fade: 1,
       intro: true,
       runIntro: false,
-      introExitDur: 2000,
       ui: doc._store.state.ui,
     },
     watch: {
@@ -25,21 +25,24 @@
       }
     },
     mounted: function() {
-      doc._registerEventListener("scroll", window, this.handleScroll)
-      doc._registerEventListener("resize", window, this.handleResize)
-      if (this.ui.loaded && !this.runIntro) {
+      TweenLite.set(this.$refs.introLogo, {opacity: 0})
+      if (this.ui.loaded) {
         this.init()
       }
     },
     methods: {
       init: function() {
         _this = this
-        _this.runIntro = true
         _this.handleResize()
         _this.handleScroll()
-        window.setTimeout(function() {
-          _this.intro = false
-        }, this.introExitDur)
+        doc._registerEventListener("scroll", window, this.handleScroll)
+        doc._registerEventListener("resize", window, this.handleResize)
+        _this.runIntro = true
+        introTl.add(new TweenLite(this.$refs.introLogo, 0.5, {opacity: 1}))
+        introTl.add(new TweenLite(this.$refs.intro, 2, {
+          opacity: 0,
+          onComplete: function() {_this.intro = false}
+        }), "+=1")
       },
       handleResize: function() {
         cDims = this.$refs.content.getBoundingClientRect()

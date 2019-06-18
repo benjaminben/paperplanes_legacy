@@ -1147,15 +1147,11 @@ a:hover, a:active {
 }
 /* line 9, sass/site/secondary/_loader.scss */
 #loader svg .l1 {
-  stroke-dasharray: 798.0558px;
-  stroke-dashoffset: 798.0558px;
-  animation: plane-l1 3s infinite ease-in;
+  opacity: 0;
 }
-/* line 13, sass/site/secondary/_loader.scss */
+/* line 15, sass/site/secondary/_loader.scss */
 #loader svg .l2 {
-  stroke-dasharray: 580.44714px;
-  stroke-dashoffset: -580.44714px;
-  animation: plane-l2 3s infinite ease-in;
+  opacity: 0;
 }
 
 @keyframes plane-l1 {
@@ -1305,8 +1301,11 @@ article.page.home .close {
   margin: auto;
 }
 
-@keyframes intro-exit {
+@keyframes intro {
   0% {
+    opacity: 0;
+  }
+  20% {
     opacity: 1;
   }
   50% {
@@ -1317,41 +1316,41 @@ article.page.home .close {
   }
 }
 @media screen and (min-width: 1600px) {
-  /* line 71, sass/site/pages/_home.scss */
+  /* line 72, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 3.5vw;
   }
-  /* line 72, sass/site/pages/_home.scss */
+  /* line 73, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     font-size: 2vw;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 88, sass/site/pages/_home.scss */
+  /* line 89, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     grid-template-columns: 1fr;
     grid-gap: 1em;
   }
 }
 @media screen and (max-width: 600px) {
-  /* line 93, sass/site/pages/_home.scss */
+  /* line 94, sass/site/pages/_home.scss */
   article.page.home {
     padding-top: calc( 2em + 1.2em + 0.25em + 1px + 2em );
     padding-left: 2em;
     padding-right: 2em;
   }
-  /* line 98, sass/site/pages/_home.scss */
+  /* line 99, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.5em;
   }
-  /* line 99, sass/site/pages/_home.scss */
+  /* line 100, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     grid-template-columns: 1fr;
     grid-gap: 1em;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 106, sass/site/pages/_home.scss */
+  /* line 107, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.2em;
   }
