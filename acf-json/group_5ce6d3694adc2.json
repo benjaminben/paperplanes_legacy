@@ -84,6 +84,25 @@
                             },
                             "width": "",
                             "height": ""
+                        },
+                        {
+                            "key": "field_5d0a6efe29e9e",
+                            "label": "Video ID",
+                            "name": "vid_id",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
                         }
                     ],
                     "min": "",
@@ -293,5 +312,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1560366814
+    "modified": 1560964874
 }
