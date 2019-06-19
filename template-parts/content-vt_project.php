@@ -102,7 +102,7 @@ if ( have_rows( 'content' ) ) :
 else :
   // no layouts found
 endif; ?>
-	<footer class="entry-footer">
+	<footer style="display: none" class="entry-footer"> <!-- TEMP: hidden -->
 		<?php paperplanes_entry_footer(); ?>
     <div class="post-navigation">
       <a class="prev" href="<?php echo $prev ? get_permalink($prev->ID) : '' ?>">

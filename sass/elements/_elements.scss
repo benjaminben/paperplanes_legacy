@@ -15,6 +15,13 @@ body {
 
 #content[data-theme="dark"] { background: black; color: white; }
 #content[data-theme="light"] { background: white; color: black; }
+#pageWipe {
+	position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1;
+	background: black; transform: translateY(-100%);
+}
+body.trans {
+	#pageWipe { transform: translateY(0); transition: transform 0.5s ease; }
+}
 
 hr {
 	background-color: $color__background-hr;
@@ -23,7 +30,7 @@ hr {
 	margin-bottom: 1.5em;
 }
 
-#masthead { position: relative; z-index: 1; }
+#masthead { position: relative; z-index: 2; }
 
 @import "lists";
 

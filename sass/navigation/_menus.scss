@@ -106,6 +106,14 @@
 		background: rgba(20,20,20,1); transform: translateY(-100%);
 	}
 
+	&.escape {
+		.menu-toggle svg path {
+			transition: all 0.5s ease;
+			&:first-of-type { transform: rotate(-45deg) translate(-6px, -16px) }
+			&:last-of-type { transform: rotate(45deg) translate(2px, 24px) }
+		}
+	}
+
 	&.toggled {
 		min-height: 100vh;
 		.home-link { img, svg { transition: opacity 0.5s ease; } }
@@ -123,6 +131,12 @@
 			.menu {
 				animation: menu-out 0.5s ease both; animation-delay: 0s; }
 			&:before { transform: translateY(-100%); } } }
+}
+
+body.trans .main-navigation {
+	.home-link { img, svg { transition: opacity 0.5s ease; } }
+	.banner { transition: border-color 0.5s ease; }
+	.menu-toggle svg path { transition: all 0.5s ease; }
 }
 
 .menu-toggle {

@@ -28,6 +28,34 @@ window.addEventListener('load', function() {
     }
   })
 
+  var ProjectEnterTransition = Barba.BaseTransition.extend({
+    start: function() {
+      Promise
+        .all([this.newContainerLoading])
+        .then(this.overIn.bind(this));
+    },
+    overIn: function() {
+      var _this = this
+      var el = _this.newContainer
+      nav.className += " trans project"
+      doc._store.actions.ui.setTheme(1) // Go dark
+      doc._store.actions.nav.setTheme(1) // Go dark
+      _this.newContainer.style.visibility = "visible"
+      _this.newContainer.style.display = "none"
+      var tl = new TimelineMax()
+      var wipe = document.getElementById("pageWipe")
+      document.body.className += " trans"
+      // console.log(window.getComputedStyle(_this.newContainer))
+      window.setTimeout(function() {
+        doc._store.actions.ui.setTheme(0)
+        document.body.style.backgroundColor = "rgba(0,0,0,1)"
+        document.body.className = document.body.className.replace(" trans", "")
+        _this.oldContainer.style.display = "none"
+        _this.newContainer.style.display = "block"
+      }, 500)
+    },
+  })
+
   var MenuTransition = Barba.BaseTransition.extend({
     start: function() {
       /**
@@ -39,7 +67,7 @@ window.addEventListener('load', function() {
       // As soon the loading is finished and the old page is faded out, let's fade the new page
       Promise
         .all([this.newContainerLoading])
-        .then(this.menuOut.bind(this));
+        .then(this.menuOut.bind(this))
     },
 
     menuOut: function() {
@@ -49,7 +77,7 @@ window.addEventListener('load', function() {
        * Please note, newContainer is available just after newContainerLoading is resolved!
        */
 
-      var _this = this;
+      var _this = this
       var el = this.newContainer
       doc._store.actions.ui.setTheme(
         el.querySelector("#content").getAttribute("data-theme") == "dark" ? 1 : 0
@@ -73,7 +101,11 @@ window.addEventListener('load', function() {
      * Here you can use your own logic!
      * For example you can use different Transition based on the current page or link...
      */
-      return nav.className.match("toggled") ? MenuTransition : DefaultTransition
+      return nav.className.match("toggled")
+        ? MenuTransition
+        : lastElementClicked && lastElementClicked.className === "project"
+          ? ProjectEnterTransition
+          : DefaultTransition
   };
 
   // TODO: need to adjust scroll
@@ -89,21 +121,24 @@ window.addEventListener('load', function() {
     }
     if ( lastElementClicked.className === "project" ||
          lastElementClicked.parentNode.className === "post-navigation" ) {
-      que_script(siteUrl + "/wp-content/themes/paperplanes/js/project.js")
+      que_script("https://player.vimeo.com/api/player.js", function() {
+        que_script(siteUrl + "/wp-content/themes/paperplanes/js/project.js")
+      })
       doc._store.actions.nav.setSlug("work")
     }
   })
 
-  function que_script(scriptSrc) {
+  function que_script(scriptSrc, onLoad) {
     Array.from(document.querySelectorAll("body script")).forEach(function(s) {
       if (s.src == scriptSrc) {
         document.body.removeChild(s)
       }
-    });
-    var newScript = document.createElement('script');
-    newScript.type = 'text/javascript';
-    newScript.src = scriptSrc;
-    document.body.appendChild(newScript);
+    })
+    var newScript = document.createElement('script')
+    newScript.type = 'text/javascript'
+    newScript.addEventListener("load", onLoad)
+    newScript.src = scriptSrc
+    document.body.appendChild(newScript)
   }
 
 })

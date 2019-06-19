@@ -1,4 +1,6 @@
 (function() {
+  var doc = document.documentElement
+  var siteUrl = document.body.getAttribute("data-site-url")
   var marquees =
   Array.from(document.querySelectorAll(".layout.marquee-video"))
     .map(function(l,i,a) {
@@ -17,6 +19,7 @@
           },
         },
         mounted: function() {
+          doc._store.actions.nav.setEscape(function() { Barba.Pjax.goTo(siteUrl + "/work") })
           this.player = new Vimeo.Player("vimeo_" + l.querySelector(".embed").getAttribute("data-vimeo-id"))
           var playBtn = l.querySelector(".ctrl .play")
           // console.log(playBtn)

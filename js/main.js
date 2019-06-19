@@ -26,6 +26,7 @@
       slug: initSlug,
       open: false,
       exiting: false,
+      escape: null,
     },
   }
 
@@ -63,6 +64,10 @@
         },
       },
       nav: {
+        setEscape: function(value) {
+          if (debug) console.log("nav.setEscape triggered with", value)
+          state.nav.escape = value
+        },
         setTheme: function (value) {
           if (debug) console.log("nav.setTheme triggered with", value)
           state.nav.theme = value

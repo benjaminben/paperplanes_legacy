@@ -1,7 +1,8 @@
 #content.vt_project {
   padding: 0;
+  animation: project-in 0.5s ease both;
   .layout {
-    width: 80%; margin: 0 auto 2em;
+    width: 80%; margin: 0 auto 2em; position: relative;
     &.headspace {
       height: $layout__navHeight; }
     &.marquee-video {
@@ -75,4 +76,9 @@
     width: 80%; margin: 0 auto 4em; display: flex; justify-content: space-between;
     a { color: red; }
   }
+}
+
+@keyframes project-in {
+  from { opacity: 0 }
+  to { opacity: 1 }
 }

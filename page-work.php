@@ -59,6 +59,7 @@ $categories = get_categories(array(
     if ( $post_objects ) :
       foreach ( $post_objects as $post ) :
         setup_postdata( $post );
+        if ($post->post_status == "private") {continue;}
         $post_cats = wp_get_post_categories($post->ID) ?>
         <a
           class="project"

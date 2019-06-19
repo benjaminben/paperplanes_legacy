@@ -11,7 +11,7 @@ wp_enqueue_script('vimeo', 'https://player.vimeo.com/api/player.js', array(), nu
 wp_enqueue_script(
   'paperplanes-project',
   get_template_directory_uri() . '/js/project.js',
-  array('vuejs', 'vimeo'), '20151215', true
+  array('vuejs', 'vimeo', 'paperplanes-main'), '20151215', true
 );
 get_header();
 ?>
