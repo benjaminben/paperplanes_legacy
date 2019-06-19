@@ -12,7 +12,7 @@
 wp_enqueue_script(
  'paperplanes-projects',
  get_template_directory_uri() . '/js/projects.js',
- array('vuejs'), '20151215', true
+ array('vuejs', 'paperplanes-main'), '20151215', true
 );
 get_header();
 
@@ -26,6 +26,11 @@ $categories = get_categories(array(
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("work"); ?>>
+  <div id="pageWipe"
+    v-bind:style="{
+      transform: shared.trans ? 'translateY(0)' : 'translateY(-100vh)',
+      transition: 'all 0.5s ease',
+    }"></div>
   <div class="ctrl">
     <div class="filter">
       <span class="toggle" @click="filterOpen = !filterOpen">

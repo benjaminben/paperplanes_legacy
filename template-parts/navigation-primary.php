@@ -6,7 +6,7 @@ $theme = get_field( 'theme' );
   id="site-navigation"
   class="main-navigation"
   data-theme="<?php echo $theme; ?>"
-  v-bind:class="{ toggled: open, exiting: exiting, escape: escape }">
+  v-bind:class="{ toggled: open, exiting: exiting, escape: escape, trans: trans }">
   <div
     class="banner"
     v-bind:style="{
@@ -20,13 +20,14 @@ $theme = get_field( 'theme' );
       <img class="theme-light" src="<?php echo get_theme_mod( 'light_theme_logo' ); ?>"
            v-bind:style="{ opacity: 1 - theme }" />
     </a>
-    <button
+    <a
+      v-bind="{ href: escape ? escape : 'javascript:void(0)' }"
       class="menu-toggle"
       aria-controls="primary-menu"
       :aria-expanded="open"
       v-on="{
         click : escape
-          ? escape
+          ? clearEscape
           : open
             ? toggleClosed
             : toggleOpen
@@ -37,7 +38,7 @@ $theme = get_field( 'theme' );
         <path d="M0 72.5 L100 72.5" stroke-width="8" transform-origin="100 72.5"
               v-bind:style="{ stroke: 'rgba('+255*theme+','+255*theme+','+255*theme+',1)' }"/>
       </svg>
-    </button>
+    </a>
   </div>
   <?php
     wp_nav_menu( array(

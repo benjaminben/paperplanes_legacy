@@ -18,8 +18,12 @@
     el: container,
     data: doc._store.state.nav,
     methods: {
-      toggleOpen: function() {doc._store.actions.nav.setNavOpen()},
-      toggleClosed: function() {doc._store.actions.nav.setNavClosed()},
+      toggleOpen: function() { doc._store.actions.nav.setNavOpen() },
+      toggleClosed: function() { doc._store.actions.nav.setNavClosed() },
+      clearEscape: function() {
+        doc._store.actions.nav.setEscape(null)
+        doc._store.actions.ui.setTrans(true)
+      }
     },
   })
 

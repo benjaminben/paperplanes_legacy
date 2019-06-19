@@ -20,6 +20,7 @@
       theme: initTheme, // 0 to 1 == black to white == dark to light
       loaded: false,
       runIntro: initSlug === "home",
+      trans: false,
     },
     nav: {
       theme: initTheme,
@@ -27,6 +28,7 @@
       open: false,
       exiting: false,
       escape: null,
+      trans: false,
     },
   }
 
@@ -45,6 +47,11 @@
         clearIntro: function() {
           if (debug) console.log("ui.clearIntro triggered")
           state.ui.runIntro = false
+        },
+        setTrans: function(value) {
+          if (debug) console.log("ui.setTrans triggered", value)
+          state.ui.trans = value
+          state.nav.trans = value
         },
         lockScroll: function() {
           if (debug) console.log("ui.lockScroll triggered")

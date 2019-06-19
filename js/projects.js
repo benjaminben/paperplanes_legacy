@@ -1,4 +1,5 @@
 (function() {
+  var doc = document.documentElement
   var vm = new Vue({
     el: "#content.work",
     data: {
@@ -7,6 +8,9 @@
       },
       filter: null,
       filterOpen: false,
+      shared: {
+        ui: doc._store.state.ui
+      }
     },
     methods: {
       setCols: function(e) {

@@ -24,6 +24,7 @@ window.addEventListener('load', function() {
       var theme = el.querySelector("#content").getAttribute("data-theme") == "dark" ? 1 : 0
       doc._store.actions.ui.setTheme(theme)
       doc._store.actions.nav.setTheme(theme)
+      doc._store.actions.nav.setEscape(null)
       _this.done()
     }
   })
@@ -39,22 +40,14 @@ window.addEventListener('load', function() {
       var el = _this.newContainer
       _this.newContainer.style.visibility = "visible"
       _this.newContainer.style.display = "none"
-      var tl = new TimelineMax()
-      var wipe = document.getElementById("pageWipe")
-      // document.body.className += " trans"
-      // console.log(window.getComputedStyle(_this.newContainer))
+      var wipe = _this.oldContainer.querySelector("#pageWipe")
       wipe.style.transform = "translateY(0)"
-      wipe.style.transition = "all 0.5s ease"
       window.setTimeout(function() {
-        doc._store.actions.ui.setTheme(0)
-        wipe.style.opacity = 0
-        window.setTimeout(function() {
-          wipe.style.transition = ""
-          wipe.style.transform = "translateY(-100%)"
-        }, 500)
-        // document.body.className = document.body.className.replace(" trans", "")
+        // doc._store.actions.ui.setTheme(0)
+        document.body.style.backgroundColor = "rgba(0,0,0,1)"
         _this.oldContainer.style.display = "none"
         _this.newContainer.style.display = "block"
+        _this.done()
       }, 500)
     }
   })
@@ -68,8 +61,32 @@ window.addEventListener('load', function() {
     overOut: function() {
       var _this = this
       var el = _this.newContainer
-      doc._store.actions.ui.setTheme(0)
-      var wipe = document.getElementById("pageWipe")
+      var wipe = el.querySelector("#pageWipe")
+      var tl = new TimelineMax()
+
+      el.style.visibility = "visible"
+
+      TweenLite.to(_this.oldContainer, 0.4, {
+        opacity: 0,
+        onComplete: function() {
+          doc._store.actions.ui.setTheme(0)
+          doc._store.actions.nav.setTheme(0)
+          _this.done()
+          // _this.oldContainer.style.display = "none"
+        }
+      })
+
+      // tl.eventCallback("onComplete", function() {
+      //   doc._store.actions.ui.setTheme(0)
+      //   doc._store.actions.nav.setTheme(0)
+      //   _this.done()
+      // })
+      // tl.add(new TweenLite(_this.oldContainer, 0.4, {
+      //   opacity: 0,
+      //   onComplete: function() {
+      //     // _this.oldContainer.style.display = "none"
+      //   }
+      // }))
     }
   })
 
@@ -118,11 +135,12 @@ window.addEventListener('load', function() {
      * Here you can use your own logic!
      * For example you can use different Transition based on the current page or link...
      */
-      return nav.className.match("toggled")
-        ? MenuTransition
-        : lastElementClicked && lastElementClicked.className === "project"
-          ? ProjectEnterTransition
-          : DefaultTransition
+     if (lastElementClicked) {
+       if (lastElementClicked.className === "menu-link") { return MenuTransition }
+       if (lastElementClicked.className === "project") { return ProjectEnterTransition }
+       if (lastElementClicked.className === "menu-toggle") { return ProjectExitTransition }
+     }
+     return DefaultTransition
   };
 
   // TODO: need to adjust scroll
@@ -135,6 +153,7 @@ window.addEventListener('load', function() {
     }
     if (href == siteUrl+"/work") {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/projects.js")
+      doc._store.actions.nav.setSlug("work")
     }
     if ( lastElementClicked.className === "project" ||
          lastElementClicked.parentNode.className === "post-navigation" ) {

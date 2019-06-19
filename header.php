@@ -70,7 +70,6 @@ $slug = $post->post_name;
 
 <div id="page" class="site barba-wrapper">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'paperplanes' ); ?></a>
-	<div id="pageWipe"></div>
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php the_custom_logo(); ?>

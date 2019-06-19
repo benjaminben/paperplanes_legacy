@@ -114,6 +114,10 @@
 		}
 	}
 
+	.home-link { img, svg { transition: opacity 0.5s ease; } }
+	.banner { transition: border-color 0.5s ease; }
+	.menu-toggle svg path { transition: all 0.5s ease; }
+
 	&.toggled {
 		min-height: 100vh;
 		.home-link { img, svg { transition: opacity 0.5s ease; } }
@@ -131,12 +135,6 @@
 			.menu {
 				animation: menu-out 0.5s ease both; animation-delay: 0s; }
 			&:before { transform: translateY(-100%); } } }
-}
-
-body.trans .main-navigation {
-	.home-link { img, svg { transition: opacity 0.5s ease; } }
-	.banner { transition: border-color 0.5s ease; }
-	.menu-toggle svg path { transition: all 0.5s ease; }
 }
 
 .menu-toggle {

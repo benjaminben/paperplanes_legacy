@@ -531,7 +531,7 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: 1;
-  background: black;
+  background: pink;
   transform: translateY(-100%);
 }
 
@@ -867,68 +867,67 @@ a:hover, a:active {
   transform: rotate(45deg) translate(2px, 24px);
 }
 /* line 117, sass/navigation/_menus.scss */
+.main-navigation .home-link img, .main-navigation .home-link svg {
+  transition: opacity 0.5s ease;
+}
+/* line 118, sass/navigation/_menus.scss */
+.main-navigation .banner {
+  transition: border-color 0.5s ease;
+}
+/* line 119, sass/navigation/_menus.scss */
+.main-navigation .menu-toggle svg path {
+  transition: all 0.5s ease;
+}
+/* line 121, sass/navigation/_menus.scss */
 .main-navigation.toggled {
   min-height: 100vh;
 }
-/* line 119, sass/navigation/_menus.scss */
+/* line 123, sass/navigation/_menus.scss */
 .main-navigation.toggled .home-link img, .main-navigation.toggled .home-link svg {
   transition: opacity 0.5s ease;
 }
-/* line 120, sass/navigation/_menus.scss */
+/* line 124, sass/navigation/_menus.scss */
 .main-navigation.toggled .banner {
   transition: border-color 0.5s ease;
 }
-/* line 121, sass/navigation/_menus.scss */
+/* line 125, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu-toggle svg path {
   transition: all 0.5s ease;
 }
-/* line 123, sass/navigation/_menus.scss */
+/* line 127, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu-toggle svg path:first-of-type {
   transform: rotate(-45deg) translate(-6px, -16px);
 }
-/* line 124, sass/navigation/_menus.scss */
+/* line 128, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu-toggle svg path:last-of-type {
   transform: rotate(45deg) translate(2px, 24px);
 }
-/* line 126, sass/navigation/_menus.scss */
+/* line 130, sass/navigation/_menus.scss */
 .main-navigation.toggled:before {
   transition: transform 0.5s ease;
   transform: translateY(0%);
 }
-/* line 127, sass/navigation/_menus.scss */
+/* line 131, sass/navigation/_menus.scss */
 .main-navigation.toggled .menu {
   display: block;
   animation: menu-in 0.5s ease both;
   animation-delay: 0.5s;
 }
-/* line 130, sass/navigation/_menus.scss */
+/* line 134, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting .menu-toggle svg path {
   transform: none;
 }
-/* line 131, sass/navigation/_menus.scss */
+/* line 135, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting .menu {
   animation: menu-out 0.5s ease both;
   animation-delay: 0s;
 }
-/* line 133, sass/navigation/_menus.scss */
+/* line 137, sass/navigation/_menus.scss */
 .main-navigation.toggled.exiting:before {
   transform: translateY(-100%);
 }
 
-/* line 137, sass/navigation/_menus.scss */
-body.trans .main-navigation .home-link img, body.trans .main-navigation .home-link svg {
-  transition: opacity 0.5s ease;
-}
-/* line 138, sass/navigation/_menus.scss */
-body.trans .main-navigation .banner {
-  transition: border-color 0.5s ease;
-}
-/* line 139, sass/navigation/_menus.scss */
-body.trans .main-navigation .menu-toggle svg path {
-  transition: all 0.5s ease;
-}
-
-/* line 142, sass/navigation/_menus.scss */
+/* line 140, sass/navigation/_menus.scss */
 .menu-toggle {
   display: inline-block;
   background: none;
@@ -937,30 +936,30 @@ body.trans .main-navigation .menu-toggle svg path {
   cursor: pointer;
   outline: none;
 }
-/* line 146, sass/navigation/_menus.scss */
+/* line 144, sass/navigation/_menus.scss */
 .menu-toggle path:first-of-type {
   transform-origin: 100px 27.5px;
 }
-/* line 147, sass/navigation/_menus.scss */
+/* line 145, sass/navigation/_menus.scss */
 .menu-toggle path:last-of-type {
   transform-origin: 100px 72.5px;
 }
 
-/* line 155, sass/navigation/_menus.scss */
+/* line 153, sass/navigation/_menus.scss */
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
   margin: 0 0 1.5em;
   overflow: hidden;
 }
-/* line 160, sass/navigation/_menus.scss */
+/* line 158, sass/navigation/_menus.scss */
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
-/* line 165, sass/navigation/_menus.scss */
+/* line 163, sass/navigation/_menus.scss */
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
@@ -986,11 +985,11 @@ body.trans .main-navigation .menu-toggle svg path {
   }
 }
 @media screen and (max-width: 600px) {
-  /* line 183, sass/navigation/_menus.scss */
+  /* line 181, sass/navigation/_menus.scss */
   .main-navigation {
     padding: 2em 2em 0em;
   }
-  /* line 185, sass/navigation/_menus.scss */
+  /* line 183, sass/navigation/_menus.scss */
   .main-navigation .menu {
     text-align: right;
     right: 2em;
