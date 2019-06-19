@@ -16,7 +16,20 @@
 		display: grid; grid-gap: 1em; }
   .project {
     display: none;
-    &[active="true"] { display: block; } } }
+    &[active="true"] { display: block; }
+    .preview {
+      position: relative; width: 100%; padding-bottom: 56.25%; overflow: hidden;
+      img {
+        position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+        transition: all 0.5s ease; filter: saturate(0); transform: scale(1.1);
+        transform-origin: center center; } }
+    &:hover {
+      .preview {
+        img {
+          transform: scale(1); filter: saturate(1);
+        }
+      }
+    } } }
 
 @media screen and (max-width: 480px) {
   .work {

@@ -68,7 +68,7 @@ $categories = get_categories(array(
           } ?>
           ].indexOf(filter) > -1"
           href="<?php echo get_permalink($post->ID) ?>">
-          <?php echo get_the_post_thumbnail($post->ID) ?>
+          <div class="preview"><?php echo get_the_post_thumbnail($post->ID) ?></div>
           <span><?php echo get_field("main_label") ?></span><br>
           <span><?php echo get_field("sub_label") ?></span>
         </a> <?php
