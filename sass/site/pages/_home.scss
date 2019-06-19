@@ -1,5 +1,5 @@
 #content.home {
-	color: black;
+	color: white;
 	background: black;
 	padding-top: 0; padding-left: 0; padding-right: 0;
 	position: relative;
@@ -24,7 +24,7 @@ article.page.home {
 	&:before {
 		content: "";
 		position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-		background: rgba(111, 113, 102, 1); z-index: 0; }
+		background: rgba(0, 0, 0, 0.5); z-index: 0; }
 	&:after {
 		content: "";
 		position: relative; width: 100%; height: 100vh;
@@ -32,6 +32,7 @@ article.page.home {
 
 	.layout {
 		position: relative;
+		transition: all 0.5s ease;
 		&.banner { font-size: 3em; p { margin: 0 0 1em; } }
 		&.grid {
 			display: grid; grid-template-columns: 1fr 1fr 1fr;

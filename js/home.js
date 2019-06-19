@@ -14,6 +14,7 @@
       fade: 1,
       intro: true,
       runIntro: false,
+      ready: false,
       ui: doc._store.state.ui,
     },
     watch: {
@@ -22,6 +23,11 @@
           if (val.loaded && !this.runIntro) {this.init()}
         },
         deep: true,
+      },
+      intro: {
+        handler: function(val, oldVal) {
+          if (!val && oldVal) { this.ready = true }
+        }
       }
     },
     mounted: function() {
@@ -42,7 +48,7 @@
         introTl.add(new TweenLite(this.$refs.intro, 2, {
           opacity: 0,
           onComplete: function() {_this.intro = false}
-        }), "+=1")
+        }), "+=2")
       },
       handleResize: function() {
         cDims = this.$refs.content.getBoundingClientRect()
@@ -57,8 +63,8 @@
         var amt = Math.max(0, comp) / (document.body.clientHeight - window.innerHeight - comp)
         if (amt === Infinity || amt < 0) {amt = 1}
         this.fade = (1 - amt).toFixed(2)
-        doc._store.actions.nav.setTheme(amt)
-        doc._store.actions.ui.setTheme(amt)
+        // doc._store.actions.nav.setTheme(amt)
+        // doc._store.actions.ui.setTheme(amt)
       },
       forceEnter: function(e) {
         scrollToY(document.body.clientHeight - window.innerHeight, 100, 'easeInOutQuint')

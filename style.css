@@ -1159,7 +1159,7 @@ a:hover, a:active {
 }
 /* line 7, sass/site/secondary/_loader.scss */
 #loader svg {
-  width: 100px;
+  width: 75px;
   height: auto;
 }
 /* line 9, sass/site/secondary/_loader.scss */
@@ -1213,7 +1213,7 @@ a:hover, a:active {
 --------------------------------------------------------------*/
 /* line 1, sass/site/pages/_home.scss */
 #content.home {
-  color: black;
+  color: white;
   background: black;
   padding-top: 0;
   padding-left: 0;
@@ -1254,7 +1254,7 @@ article.page.home:before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #6f7166;
+  background: rgba(0, 0, 0, 0.5);
   z-index: 0;
 }
 /* line 28, sass/site/pages/_home.scss */
@@ -1268,16 +1268,17 @@ article.page.home:after {
 /* line 33, sass/site/pages/_home.scss */
 article.page.home .layout {
   position: relative;
+  transition: all 0.5s ease;
 }
-/* line 35, sass/site/pages/_home.scss */
+/* line 36, sass/site/pages/_home.scss */
 article.page.home .layout.banner {
   font-size: 3em;
 }
-/* line 35, sass/site/pages/_home.scss */
+/* line 36, sass/site/pages/_home.scss */
 article.page.home .layout.banner p {
   margin: 0 0 1em;
 }
-/* line 36, sass/site/pages/_home.scss */
+/* line 37, sass/site/pages/_home.scss */
 article.page.home .layout.grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1287,11 +1288,11 @@ article.page.home .layout.grid {
   font-size: 1.5em;
   margin-bottom: 2em;
 }
-/* line 42, sass/site/pages/_home.scss */
+/* line 43, sass/site/pages/_home.scss */
 article.page.home .layout.grid p {
   margin: 0;
 }
-/* line 46, sass/site/pages/_home.scss */
+/* line 47, sass/site/pages/_home.scss */
 article.page.home .close {
   cursor: pointer;
   position: absolute;
@@ -1300,7 +1301,7 @@ article.page.home .close {
   transform: translateX(-50%);
 }
 
-/* line 54, sass/site/pages/_home.scss */
+/* line 55, sass/site/pages/_home.scss */
 #intro {
   background: black;
   position: fixed;
@@ -1311,7 +1312,7 @@ article.page.home .close {
   display: flex;
   z-index: 3;
 }
-/* line 59, sass/site/pages/_home.scss */
+/* line 60, sass/site/pages/_home.scss */
 #intro svg {
   width: 80%;
   height: auto;
@@ -1334,41 +1335,41 @@ article.page.home .close {
   }
 }
 @media screen and (min-width: 1600px) {
-  /* line 72, sass/site/pages/_home.scss */
+  /* line 73, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 3.5vw;
   }
-  /* line 73, sass/site/pages/_home.scss */
+  /* line 74, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     font-size: 2vw;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 80, sass/site/pages/_home.scss */
+  /* line 81, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     grid-template-columns: 1fr;
     grid-gap: 1em;
   }
 }
 @media screen and (max-width: 600px) {
-  /* line 85, sass/site/pages/_home.scss */
+  /* line 86, sass/site/pages/_home.scss */
   article.page.home {
     padding-top: calc( 2em + 1.2em + 0.5em + 1px + 2em );
     padding-left: 2em;
     padding-right: 2em;
   }
-  /* line 90, sass/site/pages/_home.scss */
+  /* line 91, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.5em;
   }
-  /* line 91, sass/site/pages/_home.scss */
+  /* line 92, sass/site/pages/_home.scss */
   article.page.home .layout.grid {
     grid-template-columns: 1fr;
     grid-gap: 1em;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 98, sass/site/pages/_home.scss */
+  /* line 99, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.2em;
   }
