@@ -535,12 +535,6 @@ body {
   transform: translateY(-100%);
 }
 
-/* line 23, sass/elements/_elements.scss */
-body.trans #pageWipe {
-  transform: translateY(0);
-  transition: transform 0.5s ease;
-}
-
 /* line 26, sass/elements/_elements.scss */
 hr {
   background-color: #ccc;

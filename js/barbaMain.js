@@ -37,23 +37,40 @@ window.addEventListener('load', function() {
     overIn: function() {
       var _this = this
       var el = _this.newContainer
-      nav.className += " trans project"
-      doc._store.actions.ui.setTheme(1) // Go dark
-      doc._store.actions.nav.setTheme(1) // Go dark
       _this.newContainer.style.visibility = "visible"
       _this.newContainer.style.display = "none"
       var tl = new TimelineMax()
       var wipe = document.getElementById("pageWipe")
-      document.body.className += " trans"
+      // document.body.className += " trans"
       // console.log(window.getComputedStyle(_this.newContainer))
+      wipe.style.transform = "translateY(0)"
+      wipe.style.transition = "all 0.5s ease"
       window.setTimeout(function() {
         doc._store.actions.ui.setTheme(0)
-        document.body.style.backgroundColor = "rgba(0,0,0,1)"
-        document.body.className = document.body.className.replace(" trans", "")
+        wipe.style.opacity = 0
+        window.setTimeout(function() {
+          wipe.style.transition = ""
+          wipe.style.transform = "translateY(-100%)"
+        }, 500)
+        // document.body.className = document.body.className.replace(" trans", "")
         _this.oldContainer.style.display = "none"
         _this.newContainer.style.display = "block"
       }, 500)
+    }
+  })
+
+  var ProjectExitTransition = Barba.BaseTransition.extend({
+    start: function() {
+      Promise
+        .all([this.newContainerLoading])
+        .then(this.overOut.bind(this));
     },
+    overOut: function() {
+      var _this = this
+      var el = _this.newContainer
+      doc._store.actions.ui.setTheme(0)
+      var wipe = document.getElementById("pageWipe")
+    }
   })
 
   var MenuTransition = Barba.BaseTransition.extend({
