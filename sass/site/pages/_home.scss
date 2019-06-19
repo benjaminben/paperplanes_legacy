@@ -53,10 +53,11 @@ article.page.home {
 }
 
 #intro {
+	display: none;
 	background: black;
 	position: fixed;
   top: 0; left: 0; width: 100%; height: 100vh;
-	display: flex; z-index: 3;
+	z-index: 3;
 	svg { width: 80%; height: auto; margin: auto; opacity: 0; }
 }
 
