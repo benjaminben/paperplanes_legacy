@@ -44,7 +44,7 @@
     },
     methods: {
       init: function() {
-        _this = this
+        var _this = this
         _this.handleResize()
         _this.handleScroll()
         doc._registerEventListener("scroll", window, this.handleScroll)

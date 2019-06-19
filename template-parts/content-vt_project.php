@@ -32,13 +32,11 @@ if ( have_rows( 'content' ) ) :
           id="vimeo_<?php echo get_sub_field('vid_id'); ?>"
           class="embed"
           data-vimeo-id="<?php echo get_sub_field('vid_id') ?>"></div>
-        <div class="cover" v-bind:style="{ display: playing ? 'none' : 'flex' }">
+        <div ref="cover" class="cover" v-bind:style="{ display: played ? 'none' : 'flex' }">
           <?php echo get_the_post_thumbnail($post->ID) ?>
           <span class="ctrl">
-            <svg v-if="player" @click="handlePlay" class="play" width="100" height="50" viewBox="0 0 100 50">
-              <path d="M35 10 L35 40 L65 25" fill="white" />
-              <rect x="0" y="0" width="100" height="50" fill="none" stroke="white" stroke-width="1" />
-            </svg>
+            <span ref="playBtn" v-if="player" @click="handlePlay" class="play">
+            </span>
           </span>
         </div>
       </div> <?php

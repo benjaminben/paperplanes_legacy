@@ -6,14 +6,13 @@
         el: l,
         data: {
           player: null,
-          playing: false,
+          played: false,
           cover: true,
         },
         watch: {
-          playing: function(val, oldVal) {
+          played: function(val, oldVal) {
             if (val && !oldVal) {
               this.cover = false
-              this.player.play()
             }
           },
         },
@@ -30,7 +29,15 @@
         },
         methods: {
           handlePlay: function(e) {
-            this.playing = true
+            var _this = this
+            _this.player.play()
+            TweenLite.to(_this.$refs.cover, 0.2, {
+              opacity: 0,
+              scale: 1.1,
+              onComplete: function() {
+                _this.played = true
+              }
+            })
           }
         },
       })
