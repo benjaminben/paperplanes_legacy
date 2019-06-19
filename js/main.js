@@ -19,6 +19,7 @@
     ui: {
       theme: initTheme, // 0 to 1 == black to white == dark to light
       loaded: false,
+      runIntro: initSlug === "home",
     },
     nav: {
       theme: initTheme,
@@ -39,6 +40,10 @@
         setLoaded: function() {
           if (debug) console.log("ui.setLogo triggered")
           state.ui.loaded = true
+        },
+        clearIntro: function() {
+          if (debug) console.log("ui.clearIntro triggered")
+          state.ui.runIntro = false
         },
         lockScroll: function() {
           if (debug) console.log("ui.lockScroll triggered")

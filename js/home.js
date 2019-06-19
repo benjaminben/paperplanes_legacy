@@ -13,14 +13,13 @@
     data: {
       fade: 1,
       intro: true,
-      runIntro: false,
       ready: false,
       ui: doc._store.state.ui,
     },
     watch: {
       ui: {
         handler: function(val, oldVal) {
-          if (val.loaded && !this.runIntro) {this.init()}
+          if (val.loaded && this.ui.runIntro) {this.init()}
         },
         deep: true,
       },
@@ -31,7 +30,14 @@
       }
     },
     mounted: function() {
-      TweenLite.set(this.$refs.introLogo, {opacity: 0})
+      if (this.ui.runIntro) {
+        console.log("boop")
+        this.intro = true
+        TweenLite.set(this.$refs.introLogo, {opacity: 0})
+      } else {
+        this.intro = false
+      }
+
       if (this.ui.loaded) {
         this.init()
       }
@@ -43,12 +49,16 @@
         _this.handleScroll()
         doc._registerEventListener("scroll", window, this.handleScroll)
         doc._registerEventListener("resize", window, this.handleResize)
-        _this.runIntro = true
-        introTl.add(new TweenLite(this.$refs.introLogo, 0.5, {opacity: 1}))
-        introTl.add(new TweenLite(this.$refs.intro, 2, {
-          opacity: 0,
-          onComplete: function() {_this.intro = false}
-        }), "+=2")
+        if (this.ui.runIntro) {
+          introTl.add(new TweenLite(this.$refs.introLogo, 0.5, {opacity: 1}))
+          introTl.add(new TweenLite(this.$refs.intro, 2, {
+            opacity: 0,
+            onComplete: function() {
+              doc._store.actions.ui.clearIntro()
+              _this.intro = false
+            }
+          }), "+=2")
+        }
       },
       handleResize: function() {
         cDims = this.$refs.content.getBoundingClientRect()
