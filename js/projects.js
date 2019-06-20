@@ -9,7 +9,7 @@
       }
     },
     mounted: function() {
-      window.scrollTo(this.shared.work.scroll[0], this.shared.work.scroll[1])
+      // window.scrollTo(this.shared.work.scroll[0], this.shared.work.scroll[1])
     },
     methods: {
       setCols: function(e) {

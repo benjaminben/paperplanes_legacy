@@ -74,6 +74,7 @@ window.addEventListener('load', function() {
         opacity: 0,
         onComplete: function() {
           _this.oldContainer.style.display = "none"
+          el.style.position = "relative"
           doc._store.actions.ui.setTheme(0)
           doc._store.actions.nav.setTheme(0)
           doc._store.actions.ui.setTrans(false)
