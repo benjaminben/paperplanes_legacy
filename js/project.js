@@ -70,12 +70,26 @@
         },
       })
     })
+
+  initPhotoSwipeFromDOM(".layout.gallery")
+  // var galleries =
+  // Array.from(document.querySelectorAll(".layout.gallery"))
+  //   .map(function(g,i,a) {
+  //     return new Vue({
+  //       el: g,
+  //       data: {},
+  //       methods: {},
+  //       mounted: function() {
+  //         initPhotoSwipeFromDOM()
+  //       },
+  //     })
+  //   })
 })()
 
 /****************PHOTOSWIPE*********************/
 /****************PHOTOSWIPE*********************/
 /*********** https://photoswipe.com ************/
-var initPhotoSwipeFromDOM = function(gallerySelector) {
+function initPhotoSwipeFromDOM(gallerySelector) {
 
     // parse slide data (url, title, size ...) from DOM elements
     // (children of gallerySelector)
@@ -83,44 +97,34 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         var thumbElements = el.childNodes,
             numNodes = thumbElements.length,
             items = [],
-            figureEl,
+            itemEl,
             linkEl,
             size,
             item;
 
         for(var i = 0; i < numNodes; i++) {
 
-            figureEl = thumbElements[i]; // <figure> element
+            itemEl = thumbElements[i]; // .item element
 
             // include only element nodes
-            if(figureEl.nodeType !== 1) {
+            if(itemEl.nodeType !== 1) {
                 continue;
             }
 
-            linkEl = figureEl.children[0]; // <a> element
-
-            size = linkEl.getAttribute('data-size').split('x');
+            imgEl = itemEl.children[0]; // <img> element
 
             // create slide object
             item = {
-                src: linkEl.getAttribute('href'),
-                w: parseInt(size[0], 10),
-                h: parseInt(size[1], 10)
+                src: imgEl.getAttribute('src'),
+                msrc: imgEl.getAttribute('data-thumb-src'),
+                w: parseInt(imgEl.getAttribute('width'), 10),
+                h: parseInt(imgEl.getAttribute('height'), 10)
             };
 
+            var cap = itemEl.querySelector('.caption')
+            if (cap) { item.title = cap.innerHTML }
 
-
-            if(figureEl.children.length > 1) {
-                // <figcaption> content
-                item.title = figureEl.children[1].innerHTML;
-            }
-
-            if(linkEl.children.length > 0) {
-                // <img> thumbnail element, retrieving thumbnail url
-                item.msrc = linkEl.children[0].getAttribute('src');
-            }
-
-            item.el = figureEl; // save link to element for getThumbBoundsFn
+            item.el = itemEl; // save link to element for getThumbBoundsFn
             items.push(item);
         }
 
@@ -137,11 +141,11 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         e = e || window.event;
         e.preventDefault ? e.preventDefault() : e.returnValue = false;
 
-        var eTarget = e.target || e.srcElement;
+        var eTarget = e.currentTarget;
 
         // find root element of slide
         var clickedListItem = closest(eTarget, function(el) {
-            return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+            return (el.tagName && el.className.match(/item/));
         });
 
         if(!clickedListItem) {
@@ -206,6 +210,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
     };
 
     var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+        console.log("open sesame", galleryElement)
         var pswpElement = document.querySelectorAll('.pswp')[0],
             gallery,
             options,
@@ -267,8 +272,9 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
     var galleryElements = document.querySelectorAll( gallerySelector );
 
     for(var i = 0, l = galleryElements.length; i < l; i++) {
+        console.log(galleryElements[i])
         galleryElements[i].setAttribute('data-pswp-uid', i+1);
-        galleryElements[i].onclick = onThumbnailsClick;
+        galleryElements[i].children[0].onclick = onThumbnailsClick;
     }
 
     // Parse URL and open gallery if it contains #&pid=3&gid=1

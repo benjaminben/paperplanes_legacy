@@ -1773,18 +1773,22 @@ article.page.home .close {
   display: inline-block;
 }
 /* line 74, sass/site/pages/_project.scss */
+#content.vt_project .layout.gallery .item .caption {
+  display: none;
+}
+/* line 75, sass/site/pages/_project.scss */
 #content.vt_project .layout.gallery .item img {
   width: 100%;
   height: auto;
 }
-/* line 75, sass/site/pages/_project.scss */
+/* line 76, sass/site/pages/_project.scss */
 #content.vt_project .post-navigation {
   width: 80%;
   margin: 0 auto 4em;
   display: flex;
   justify-content: space-between;
 }
-/* line 77, sass/site/pages/_project.scss */
+/* line 78, sass/site/pages/_project.scss */
 #content.vt_project .post-navigation a {
   color: red;
 }

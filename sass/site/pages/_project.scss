@@ -71,6 +71,7 @@
       width: calc(100% - #{$layout__navBannerPaddingHorizontal * 2});
       .item {
         display: inline-block;
+        .caption { display: none; }
         img { width: 100%; height: auto; } } } }
   .post-navigation {
     width: 80%; margin: 0 auto 4em; display: flex; justify-content: space-between;

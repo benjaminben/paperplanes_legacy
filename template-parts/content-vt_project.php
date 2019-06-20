@@ -92,7 +92,10 @@ if ( have_rows( 'content' ) ) :
           <div class="layout gallery"> <?php
               foreach ( $items as $key=>$item ) : ?>
               <div class="item">
-                <?php echo wp_get_attachment_image( $item["ID"], $size ) ?>
+                <?php echo wp_get_attachment_image($item['ID'], $size, '', array('data-thumb-src' => wp_get_attachment_image_src($item['ID'], 'thumbnail' )[0] ) ) ?>
+                <?php if ( $item['caption'] ) : ?>
+                  <span class="caption"><?php echo $item['caption']; ?></span>
+                <?php endif ?>
               </div> <?php
               endforeach; ?>
           </div><?php
@@ -113,4 +116,5 @@ endif; ?>
       </a>
     </div>
 	</footer><!-- .entry-footer -->
+<?php get_template_part( 'template-parts/content', 'photoswipe' ); ?>
 </article><!-- #post-<?php the_ID(); ?> -->
