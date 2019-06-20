@@ -3,19 +3,24 @@
   var vm = new Vue({
     el: "#content.work",
     data: {
-      gridStyle: {
-        gridTemplateColumns: "1fr 1fr 1fr"
-      },
-      filter: null,
-      filterOpen: false,
       shared: {
-        ui: doc._store.state.ui
+        ui: doc._store.state.ui,
+        work: doc._store.state.work
       }
+    },
+    mounted: function() {
+      window.scrollTo(this.shared.work.scroll[0], this.shared.work.scroll[1])
     },
     methods: {
       setCols: function(e) {
-        this.gridStyle.gridTemplateColumns = e.target.getAttribute("data-cols")
-      }
+        doc._store.actions.work.setCols(e.target.getAttribute("data-cols"))
+      },
+      setFilterOpen: function(v) {
+        doc._store.actions.work.setFilterOpen(v)
+      },
+      setFilter: function(v) {
+        doc._store.actions.work.setFilter(v)
+      },
     }
   })
 })()

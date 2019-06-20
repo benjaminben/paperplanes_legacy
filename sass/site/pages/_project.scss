@@ -1,6 +1,6 @@
 #content.vt_project {
   padding: 0;
-  animation: project-in 0.5s ease both;
+  animation: project-in 0.5s ease both; z-index: 1;
   .layout {
     width: 80%; margin: 0 auto 2em; position: relative;
     &.headspace {

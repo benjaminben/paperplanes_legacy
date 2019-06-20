@@ -30,6 +30,14 @@
       escape: null,
       trans: false,
     },
+    work: {
+      gridStyle: {
+        gridTemplateColumns: "1fr 1fr 1fr"
+      },
+      filter: null,
+      filterOpen: false,
+      scroll: [0,0],
+    }
   }
 
   doc._store = {
@@ -68,6 +76,24 @@
           var scrollPosition = doc._data['scroll-position']
           doc.style.overflow = doc._data['previous-overflow']
           window.scrollTo(scrollPosition[0], scrollPosition[1])
+        },
+      },
+      work: {
+        setCols: function(value) {
+          if (debug) console.log("work.setCols triggered with:", value)
+          state.work.gridStyle.gridTemplateColumns = value
+        },
+        setFilter: function(value) {
+          if (debug) console.log("work.setFilter triggered with:", value)
+          state.work.filter = value
+        },
+        setFilterOpen: function(value) {
+          if (debug) console.log("work.setFilterOpen triggered with:", value)
+          state.work.filterOpen = value
+        },
+        setScroll: function(value) {
+          if (debug) console.log("work.setScroll triggered with:", value)
+          state.work.scroll = value
         },
       },
       nav: {

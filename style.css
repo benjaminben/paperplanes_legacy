@@ -531,7 +531,7 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: 1;
-  background: pink;
+  background: black;
   transform: translateY(-100%);
 }
 
@@ -934,7 +934,7 @@ a:hover, a:active {
   border: none;
   padding: 0;
   cursor: pointer;
-  outline: none;
+  outline: none !important;
 }
 /* line 144, sass/navigation/_menus.scss */
 .menu-toggle path:first-of-type {
@@ -1547,6 +1547,7 @@ article.page.home .close {
 #content.vt_project {
   padding: 0;
   animation: project-in 0.5s ease both;
+  z-index: 1;
 }
 /* line 4, sass/site/pages/_project.scss */
 #content.vt_project .layout {
@@ -1730,67 +1731,72 @@ article.page.home .close {
     opacity: 1;
   }
 }
-/* line 2, sass/site/pages/_work.scss */
-.work .ctrl {
+/* line 1, sass/site/pages/_work.scss */
+#content.work {
+  z-index: 0;
+  position: relative;
+}
+/* line 3, sass/site/pages/_work.scss */
+#content.work .ctrl {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-/* line 4, sass/site/pages/_work.scss */
-.work .ctrl .grid {
+/* line 5, sass/site/pages/_work.scss */
+#content.work .ctrl .grid {
   white-space: nowrap;
 }
-/* line 5, sass/site/pages/_work.scss */
-.work .filter {
+/* line 6, sass/site/pages/_work.scss */
+#content.work .filter {
   display: flex;
   align-items: inherit;
 }
-/* line 7, sass/site/pages/_work.scss */
-.work .filter .toggle {
+/* line 8, sass/site/pages/_work.scss */
+#content.work .filter .toggle {
   cursor: pointer;
   white-space: nowrap;
 }
-/* line 9, sass/site/pages/_work.scss */
-.work .cats {
+/* line 10, sass/site/pages/_work.scss */
+#content.work .cats {
   display: flex;
   flex-flow: row wrap;
   margin-left: 1em;
 }
-/* line 11, sass/site/pages/_work.scss */
-.work .cat {
+/* line 12, sass/site/pages/_work.scss */
+#content.work .cat {
   margin-right: 0.5em;
   cursor: pointer;
 }
-/* line 13, sass/site/pages/_work.scss */
-.work .cat:last-of-type {
+/* line 14, sass/site/pages/_work.scss */
+#content.work .cat:last-of-type {
   margin-right: 0;
 }
-/* line 14, sass/site/pages/_work.scss */
-.work .cat[active="true"] {
+/* line 15, sass/site/pages/_work.scss */
+#content.work .cat[active="true"] {
   text-decoration: underline;
 }
-/* line 15, sass/site/pages/_work.scss */
-.work .projects {
+/* line 16, sass/site/pages/_work.scss */
+#content.work .projects {
   display: grid;
   grid-gap: 1em;
 }
-/* line 17, sass/site/pages/_work.scss */
-.work .project {
+/* line 18, sass/site/pages/_work.scss */
+#content.work .project {
   display: none;
 }
-/* line 19, sass/site/pages/_work.scss */
-.work .project[active="true"] {
+/* line 20, sass/site/pages/_work.scss */
+#content.work .project[active="true"] {
   display: block;
 }
-/* line 20, sass/site/pages/_work.scss */
-.work .project .preview {
+/* line 21, sass/site/pages/_work.scss */
+#content.work .project .preview {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%;
   overflow: hidden;
 }
-/* line 22, sass/site/pages/_work.scss */
-.work .project .preview img {
+/* line 23, sass/site/pages/_work.scss */
+#content.work .project .preview img {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1801,18 +1807,18 @@ article.page.home .close {
   transform: scale(1.1);
   transform-origin: center center;
 }
-/* line 28, sass/site/pages/_work.scss */
-.work .project:hover .preview img {
+/* line 29, sass/site/pages/_work.scss */
+#content.work .project:hover .preview img {
   transform: scale(1);
   filter: saturate(1);
 }
 
 @media screen and (max-width: 480px) {
-  /* line 37, sass/site/pages/_work.scss */
+  /* line 38, sass/site/pages/_work.scss */
   .work .ctrl .grid {
     display: none;
   }
-  /* line 38, sass/site/pages/_work.scss */
+  /* line 39, sass/site/pages/_work.scss */
   .work .projects {
     grid-template-columns: 1fr !important;
   }

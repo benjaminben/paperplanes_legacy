@@ -44,6 +44,8 @@ window.addEventListener('load', function() {
       wipe.style.transform = "translateY(0)"
       window.setTimeout(function() {
         // doc._store.actions.ui.setTheme(0)
+        doc._store.actions.work.setScroll([window.scrollX, window.scrollY])
+        window.scrollTo(0,0)
         document.body.style.backgroundColor = "rgba(0,0,0,1)"
         _this.oldContainer.style.display = "none"
         _this.newContainer.style.display = "block"
@@ -65,14 +67,21 @@ window.addEventListener('load', function() {
       var tl = new TimelineMax()
 
       el.style.visibility = "visible"
+      _this.oldContainer.style.position = "relative"
+      _this.oldContainer.style.zIndex = 1
 
       TweenLite.to(_this.oldContainer, 0.4, {
         opacity: 0,
         onComplete: function() {
+          _this.oldContainer.style.display = "none"
           doc._store.actions.ui.setTheme(0)
           doc._store.actions.nav.setTheme(0)
+          doc._store.actions.ui.setTrans(false)
+          window.scrollTo(
+            doc._store.state.work.scroll[0],
+            doc._store.state.work.scroll[1]
+          )
           _this.done()
-          // _this.oldContainer.style.display = "none"
         }
       })
 

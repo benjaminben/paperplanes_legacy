@@ -139,7 +139,7 @@
 
 .menu-toggle {
 	display: inline-block; background: none; border: none; padding: 0;
-	cursor: pointer; outline: none;
+	cursor: pointer; outline: none!important;
 	path {
 		&:first-of-type { transform-origin: 100px 27.5px }
 		&:last-of-type { transform-origin: 100px 72.5px }

@@ -28,27 +28,27 @@ $categories = get_categories(array(
 <article id="post-<?php the_ID(); ?>" <?php post_class("work"); ?>>
   <div id="pageWipe"
     v-bind:style="{
-      transform: shared.trans ? 'translateY(0)' : 'translateY(-100vh)',
+      transform: shared.ui.trans ? 'translateY(0)' : 'translateY(-100vh)',
       transition: 'all 0.5s ease',
     }"></div>
   <div class="ctrl">
     <div class="filter">
-      <span class="toggle" @click="filterOpen = !filterOpen">
+      <span class="toggle" @click="setFilterOpen(!shared.work.filterOpen)">
         Filter
-        <span v-if="filterOpen">X</span>
-        <span v-if="!filterOpen">+</span>
+        <span v-if="shared.work.filterOpen">X</span>
+        <span v-if="!shared.work.filterOpen">+</span>
       </span>
-      <span v-if="filterOpen" class="cats">
+      <span v-if="shared.work.filterOpen" class="cats">
         <span
           class="cat"
-          @click="filter = null"
-          :active="!filter">All</span>
+          @click="setFilter(null)"
+          :active="!shared.work.filter">All</span>
         <?php
         foreach ($categories as $cat) : ?>
           <span
             class="cat"
-            @click="filter = '<?php echo $cat->slug ?>'"
-            :active="filter === '<?php echo $cat->slug ?>'"><?php echo $cat->name; ?>
+            @click="setFilter('<?php echo $cat->slug ?>')"
+            :active="shared.work.filter === '<?php echo $cat->slug ?>'"><?php echo $cat->name; ?>
           </span> <?php
         endforeach; ?>
       </span>
@@ -59,7 +59,7 @@ $categories = get_categories(array(
       <span @click="setCols" data-cols="1fr 1fr 1fr">3</span>
     </div>
   </div>
-  <div class="projects" v-bind:style="gridStyle">
+  <div class="projects" v-bind:style="shared.work.gridStyle">
 		<?php
     if ( $post_objects ) :
       foreach ( $post_objects as $post ) :
@@ -68,11 +68,11 @@ $categories = get_categories(array(
         $post_cats = wp_get_post_categories($post->ID) ?>
         <a
           class="project"
-          :active="!filter || [
+          :active="!shared.work.filter || [
           <?php foreach ($post_cats as $cat) {
             echo "'" . get_term($cat)->slug . "',";
           } ?>
-          ].indexOf(filter) > -1"
+          ].indexOf(shared.work.filter) > -1"
           href="<?php echo get_permalink($post->ID) ?>">
           <div class="preview"><?php echo get_the_post_thumbnail($post->ID) ?></div>
           <span><?php echo get_field("main_label") ?></span><br>
