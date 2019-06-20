@@ -131,6 +131,7 @@ window.addEventListener('load', function() {
       this.oldContainer.style.display = "none"
       el.style.visibility = "visible"
       doc._actions.ui.unregisterEventListeners()
+      doc._actions.ui.unregisterObservers()
       doc._actions.nav.setNavClosed().then(function() {
         _this.done()
       })
@@ -160,6 +161,12 @@ window.addEventListener('load', function() {
     var href = window.location.href.replace(/\/+$/, "")
     if (href == siteUrl) {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/home.js")
+    }
+    if (href == siteUrl+"/team") {
+      que_script(siteUrl + "/wp-content/themes/paperplanes/js/team.js")
+    }
+    if (href == siteUrl+"/about") {
+      que_script(siteUrl + "/wp-content/themes/paperplanes/js/about.js")
     }
     if (href == siteUrl+"/work") {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/projects.js")

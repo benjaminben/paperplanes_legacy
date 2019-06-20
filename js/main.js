@@ -6,7 +6,8 @@
 
   var state = {
     private: {
-      activeListeners: [],
+      activeListeners: [], // TEMP: Should be objects
+      activeObservers: [],
     },
     ui: {
       theme: initTheme, // 0 to 1 == black to white == dark to light
@@ -42,6 +43,24 @@
         state.private.activeListeners.forEach(function(l) {
           l.target.removeEventListener(l.type, l.fn)
         })
+      },
+      registerObserver: function(nodes, options, callback) {
+        options = options || {
+          rootMargin: "0px",
+          threshold: 1.0,
+        }
+        callback = callback || function(entries, observer) {
+          console.log("OOPS: Did you forget to pass an observer callback?")
+        }
+        var observer = new IntersectionObserver(callback, options)
+        Array.from(nodes).forEach(function(n,i,a) {observer.observe(n)})
+        state.private.activeObservers.push(observer)
+      },
+      unregisterObservers: function() {
+        state.private.activeObservers.forEach(function(io) {
+          io.disconnect()
+        })
+        state.private.activeObservers = []
       },
       setTheme: function(value) {
         if (debug) console.log("ui.setTheme triggered with", value)

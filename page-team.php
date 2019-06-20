@@ -8,6 +8,11 @@
  * @package Paper_Planes
  */
 
+wp_enqueue_script(
+  'paperplanes-team',
+  get_template_directory_uri() . '/js/team.js',
+  array("vuejs", "paperplanes-main"), '20151215', true
+);
 get_header();
 
 $post_objects = get_field('whitelisted_staff', 'theme-settings');
@@ -20,7 +25,7 @@ $post_objects = get_field('whitelisted_staff', 'theme-settings');
 		<?php
     if ( $post_objects ) :
       foreach ( $post_objects as $post ) : ?>
-        <span class="member">
+        <span class="member anim fade">
           <div class="headshot"><?php the_post_thumbnail($post->ID) ?></div>
           <?php the_title('<h4 class="name">', "</h4>") ?>
           <span class="role"><?php echo get_field("role") ?></span>

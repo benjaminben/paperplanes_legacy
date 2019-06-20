@@ -1,19 +1,30 @@
-<?php get_header(); ?>
+<?php
+
+wp_enqueue_script(
+  'paperplanes-about',
+  get_template_directory_uri() . '/js/about.js',
+  array("vuejs", "paperplanes-main"), '20151215', true
+);
+get_header(); ?>
 
 <?php
   if ( have_rows( 'content' ) ) :
     while ( have_rows( 'content' ) ) : the_row();
-      if ( get_row_layout() == 'primary' ) : ?>
-        <div class="primary row">
-          <div class="head">
-            <h1 class="title"><?php the_sub_field( 'title' ) ?></h1>
-            <p class="desc"><?php the_sub_field( 'desc' ) ?></p>
+      if ( get_row_layout() == 'primary' ) :
+        $title = get_sub_field( 'title' );
+        $desc = get_sub_field( 'desc' );
+        $noListClass = have_rows( 'list' ) ? "" : " anim fade";
+        $listHeadClass = have_rows( 'list' ) ? " anim fade" : ""; ?>
+        <div class="primary row<?php echo $noListClass; ?>">
+          <div class="head<?php echo $listHeadClass; ?>">
+            <h1 class="title"><?php echo $title ?></h1>
+            <p class="desc"><?php echo $desc ?></p>
           </div> <?php
           if ( have_rows( 'list' ) ) : $ct = 0; ?>
           <div class="list"> <?php
             while ( have_rows( 'list' ) ) : the_row();
               $formatted = ($ct < 10 ? '0' : '') . ($ct + 1); ?>
-              <div class="item">
+              <div class="item anim fade">
                 <h1 class="count"><?php echo $formatted; ?></h1>
                 <div class="info" data-count="<?php echo $formatted; ?>">
                   <h2 class="title"><?php the_sub_field( 'title' ) ?></h2>
