@@ -19,9 +19,9 @@
           },
         },
         mounted: function() {
-          doc._store.actions.ui.setTheme(1) // Go dark
-          doc._store.actions.nav.setTheme(1)
-          doc._store.actions.nav.setEscape(siteUrl + "/work")
+          doc._actions.ui.setTheme(1) // Go dark
+          doc._actions.nav.setTheme(1)
+          doc._actions.nav.setEscape(siteUrl + "/work")
           this.player = new Vimeo.Player("vimeo_" + l.querySelector(".embed").getAttribute("data-vimeo-id"))
           var playBtn = l.querySelector(".ctrl .play")
           // console.log(playBtn)

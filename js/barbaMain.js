@@ -9,7 +9,7 @@ window.addEventListener('load', function() {
 
   Barba.Dispatcher.on('linkClicked', function(el) {
     lastElementClicked = el
-    doc._store.actions.nav.setSlug(el.getAttribute("data-dest"))
+    doc._actions.nav.setSlug(el.getAttribute("data-dest"))
   })
 
   var DefaultTransition = Barba.BaseTransition.extend({
@@ -19,12 +19,12 @@ window.addEventListener('load', function() {
     transition: function() {
       var _this = this;
       window.scrollTo(0,0)
-      doc._unregisterEventListeners()
+      doc._actions.ui.unregisterEventListeners()
       var el = this.newContainer
       var theme = el.querySelector("#content").getAttribute("data-theme") == "dark" ? 1 : 0
-      doc._store.actions.ui.setTheme(theme)
-      doc._store.actions.nav.setTheme(theme)
-      doc._store.actions.nav.setEscape(null)
+      doc._actions.ui.setTheme(theme)
+      doc._actions.nav.setTheme(theme)
+      doc._actions.nav.setEscape(null)
       _this.done()
     }
   })
@@ -43,8 +43,8 @@ window.addEventListener('load', function() {
       var wipe = _this.oldContainer.querySelector("#pageWipe")
       wipe.style.transform = "translateY(0)"
       window.setTimeout(function() {
-        // doc._store.actions.ui.setTheme(0)
-        doc._store.actions.work.setScroll([window.scrollX, window.scrollY])
+        // doc._actions.ui.setTheme(0)
+        doc._actions.work.setScroll([window.scrollX, window.scrollY])
         window.scrollTo(0,0)
         document.body.style.backgroundColor = "rgba(0,0,0,1)"
         _this.oldContainer.style.display = "none"
@@ -75,20 +75,20 @@ window.addEventListener('load', function() {
         onComplete: function() {
           _this.oldContainer.style.display = "none"
           el.style.position = "relative"
-          doc._store.actions.ui.setTheme(0)
-          doc._store.actions.nav.setTheme(0)
-          doc._store.actions.ui.setTrans(false)
+          doc._actions.ui.setTheme(0)
+          doc._actions.nav.setTheme(0)
+          doc._actions.ui.setTrans(false)
           window.scrollTo(
-            doc._store.state.work.scroll[0],
-            doc._store.state.work.scroll[1]
+            doc._state.work.scroll[0],
+            doc._state.work.scroll[1]
           )
           _this.done()
         }
       })
 
       // tl.eventCallback("onComplete", function() {
-      //   doc._store.actions.ui.setTheme(0)
-      //   doc._store.actions.nav.setTheme(0)
+      //   doc._actions.ui.setTheme(0)
+      //   doc._actions.nav.setTheme(0)
       //   _this.done()
       // })
       // tl.add(new TweenLite(_this.oldContainer, 0.4, {
@@ -123,15 +123,15 @@ window.addEventListener('load', function() {
 
       var _this = this
       var el = this.newContainer
-      doc._store.actions.ui.setTheme(
+      doc._actions.ui.setTheme(
         el.querySelector("#content").getAttribute("data-theme") == "dark" ? 1 : 0
       )
-      doc._data['scroll-position'] = [0,0]
+      doc._actions.ui.setScrollPosition([0,0])
 
       this.oldContainer.style.display = "none"
       el.style.visibility = "visible"
-      doc._unregisterEventListeners()
-      doc._store.actions.nav.setNavClosed().then(function() {
+      doc._actions.ui.unregisterEventListeners()
+      doc._actions.nav.setNavClosed().then(function() {
         _this.done()
       })
     }
@@ -163,14 +163,14 @@ window.addEventListener('load', function() {
     }
     if (href == siteUrl+"/work") {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/projects.js")
-      doc._store.actions.nav.setSlug("work")
+      doc._actions.nav.setSlug("work")
     }
     if ( lastElementClicked.className === "project" ||
          lastElementClicked.parentNode.className === "post-navigation" ) {
       que_script("https://player.vimeo.com/api/player.js", function() {
         que_script(siteUrl + "/wp-content/themes/paperplanes/js/project.js")
       })
-      doc._store.actions.nav.setSlug("work")
+      doc._actions.nav.setSlug("work")
     }
   })
 

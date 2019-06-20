@@ -18,12 +18,12 @@
 		</div><!-- .barba-container -->
 	</main><!-- #barba-wrapper -->
 	<div id="loader" v-bind:style="{ display: shared.loaded ? 'none' : 'flex' }">
-		<svg id="plane" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380.79 369.3">
+		<svg id="plane" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 359.86 347.48">
 			<polyline
-				ref="l1" class="l1" points="6 6 193.69 190.8 353.26 191.19 166.25 6.55 112.73 105.26"
+				ref="l1" class="l1" points="6 6 195.94 192.74 353.86 191.7 166.91 6.36 113.17 104.81"
 				fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
 			<polyline
-				ref="l2" class="l2" points="6.82 7.27 84.8 154.33 274.96 339.7 274.96 191.27"
+				ref="l2" class="l2" points="6.18 6.09 85.88 155.88 275.5 341.48 275.3 198.03"
 				fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
 		</svg>
 	</div>

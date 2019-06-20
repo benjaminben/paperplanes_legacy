@@ -14,7 +14,7 @@
       fade: 1,
       intro: true,
       ready: false,
-      ui: doc._store.state.ui,
+      ui: doc._state.ui,
     },
     watch: {
       ui: {
@@ -31,7 +31,6 @@
     },
     mounted: function() {
       if (this.ui.runIntro) {
-        console.log("boop")
         this.intro = true
         TweenLite.set(this.$refs.introLogo, {opacity: 0})
       } else {
@@ -47,14 +46,14 @@
         var _this = this
         _this.handleResize()
         _this.handleScroll()
-        doc._registerEventListener("scroll", window, this.handleScroll)
-        doc._registerEventListener("resize", window, this.handleResize)
+        doc._actions.ui.registerEventListener("scroll", window, _this.handleScroll)
+        doc._actions.ui.registerEventListener("resize", window, _this.handleResize)
         if (this.ui.runIntro) {
           introTl.add(new TweenLite(this.$refs.introLogo, 0.5, {opacity: 1}))
-          introTl.add(new TweenLite(this.$refs.intro, 2, {
+          introTl.add(new TweenLite(this.$refs.intro, 1, {
             opacity: 0,
             onComplete: function() {
-              doc._store.actions.ui.clearIntro()
+              doc._actions.ui.clearIntro()
               _this.intro = false
             }
           }), "+=2")
@@ -73,8 +72,6 @@
         var amt = Math.max(0, comp) / (document.body.clientHeight - window.innerHeight - comp)
         if (amt === Infinity || amt < 0) {amt = 1}
         this.fade = (1 - amt).toFixed(2)
-        // doc._store.actions.nav.setTheme(amt)
-        // doc._store.actions.ui.setTheme(amt)
       },
       forceEnter: function(e) {
         scrollToY(document.body.clientHeight - window.innerHeight, 100, 'easeInOutQuint')

@@ -4,8 +4,8 @@
     el: "#content.work",
     data: {
       shared: {
-        ui: doc._store.state.ui,
-        work: doc._store.state.work
+        ui: doc._state.ui,
+        work: doc._state.work
       }
     },
     mounted: function() {
@@ -13,13 +13,13 @@
     },
     methods: {
       setCols: function(e) {
-        doc._store.actions.work.setCols(e.target.getAttribute("data-cols"))
+        doc._actions.work.setCols(e.target.getAttribute("data-cols"))
       },
       setFilterOpen: function(v) {
-        doc._store.actions.work.setFilterOpen(v)
+        doc._actions.work.setFilterOpen(v)
       },
       setFilter: function(v) {
-        doc._store.actions.work.setFilter(v)
+        doc._actions.work.setFilter(v)
       },
     }
   })
