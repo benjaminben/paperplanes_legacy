@@ -21,8 +21,3 @@
   #content.team {
     .staff { grid-template-columns: 1fr 1fr; } }
 }
-
-@media screen and (max-width: 400px) {
-  #content.team {
-    .staff { grid-template-columns: 1fr; } }
-}

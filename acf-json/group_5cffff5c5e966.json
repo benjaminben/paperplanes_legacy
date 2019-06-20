@@ -55,9 +55,9 @@
                                 "id": ""
                             },
                             "default_value": "",
-                            "tabs": "all",
+                            "tabs": "text",
+                            "media_upload": 0,
                             "toolbar": "full",
-                            "media_upload": 1,
                             "delay": 0
                         }
                     ],
@@ -137,5 +137,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1560370836
+    "modified": 1561048380
 }
