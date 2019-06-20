@@ -210,7 +210,6 @@ function initPhotoSwipeFromDOM(gallerySelector) {
     };
 
     var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
-        console.log("open sesame", galleryElement)
         var pswpElement = document.querySelectorAll('.pswp')[0],
             gallery,
             options,
@@ -271,10 +270,11 @@ function initPhotoSwipeFromDOM(gallerySelector) {
     // loop through all gallery elements and bind events
     var galleryElements = document.querySelectorAll( gallerySelector );
 
-    for(var i = 0, l = galleryElements.length; i < l; i++) {
-        console.log(galleryElements[i])
+    for (var i = 0, l = galleryElements.length; i < l; i++) {
         galleryElements[i].setAttribute('data-pswp-uid', i+1);
-        galleryElements[i].children[0].onclick = onThumbnailsClick;
+        for (var ci = 0; ci < galleryElements[i].children.length; ci++) {
+          galleryElements[i].children[ci].onclick = onThumbnailsClick;
+        }
     }
 
     // Parse URL and open gallery if it contains #&pid=3&gid=1

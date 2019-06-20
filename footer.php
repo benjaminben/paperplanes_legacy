@@ -17,6 +17,7 @@
 			</div><!-- #content -->
 		</div><!-- .barba-container -->
 	</main><!-- #barba-wrapper -->
+	<?php get_template_part( 'template-parts/content', 'photoswipe' ); ?><!-- Ideally this isn't global -->
 	<div id="loader" v-bind:style="{ display: shared.loaded ? 'none' : 'flex' }">
 		<svg id="plane" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 359.86 347.48">
 			<polyline
