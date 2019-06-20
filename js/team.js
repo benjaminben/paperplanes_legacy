@@ -1,5 +1,6 @@
 (function() {
   var doc = document.documentElement
+  var animQuery = "*[class^=anim-]:not(.anim-active), *[class*= anim-]:not(.anim-active)"
   var vm = new Vue({
     el: "#content.team",
     data: {
@@ -19,7 +20,7 @@
     methods: {
       init: function() {
         var _this = this
-        var anims = Array.from(this.$el.querySelectorAll(".anim"))
+        var anims = Array.from(this.$el.querySelectorAll(animQuery))
         var firstObserve = false
         doc._actions.ui.registerObserver(
           anims,
@@ -37,7 +38,7 @@
                   var ti = tops.indexOf(entry.boundingClientRect.top)
                   ct = ti !== -1 ? ti : 0
                 }
-                entry.target.setAttribute("data-observed", true)
+                entry.target.className += " anim-active"
                 entry.target.style.transitionDelay = 0.5*ct + "s"
                 observer.unobserve(entry.target)
               }

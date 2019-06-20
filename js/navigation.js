@@ -20,10 +20,23 @@
     methods: {
       toggleOpen: function() { doc._actions.nav.setNavOpen() },
       toggleClosed: function() { doc._actions.nav.setNavClosed() },
+      checkCurrent: function(e) {
+        if(e.currentTarget.href === window.location.href) {
+          e.preventDefault()
+          e.stopPropagation()
+          this.toggleClosed()
+        }
+      },
       clearEscape: function() {
         doc._actions.nav.setEscape(null)
         doc._actions.ui.setTrans(true)
-      }
+      },
+    },
+    mounted: function() {
+      var _this = this
+      this.$el.querySelectorAll("a[href]").forEach(function(a) {
+        a.addEventListener("click", _this.checkCurrent)
+      })
     },
   })
 

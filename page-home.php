@@ -19,40 +19,16 @@ $reel = get_field('reel');
   ref="frame"
   id="post-<?php the_ID(); ?>" <?php post_class("home"); ?>>
   <main ref="content">
-  <?php while ( have_posts() ) : the_post(); ?>
   <?php
+  while ( have_posts() ) : the_post();
     if ( have_rows( 'content' ) ) :
-      $ct = 0;
       while ( have_rows( 'content' ) ) : the_row();
         if ( get_row_layout() == 'banner' ) : ?>
-          <div
-            class="layout banner"
-            v-bind:style="{
-              opacity: ready ? 1 : 0,
-              transform: 'translateY(' + (ready ? 0 : 5) + '%)',
-              transitionDelay: <?php echo $ct * 0.5 ?> + 's' }">
-          <?php the_sub_field( 'content' ) ?>
-          </div> <?php
+          <div class="layout banner"><?php the_sub_field( 'content' ) ?></div><?php
         endif;
-        if ( get_row_layout() == 'grid' ) : ?>
-          <div
-            class="layout grid"
-            v-bind:style="{
-              opacity: ready ? 1 : 0,
-              transform: 'translateY(' + (ready ? 0 : 5) + '%)',
-              transitionDelay: <?php echo $ct * 0.5 ?> + 's' }"> <?php
-            if ( have_rows( 'items' ) ) :
-              while ( have_rows( 'items' ) ) : the_row();
-                the_sub_field( 'content' );
-              endwhile;
-            endif; ?>
-          </div> <?php
-        endif;
-        $ct += 1;
       endwhile;
     endif;
-  ?>
-  <?php endwhile; wp_reset_query(); ?>
+  endwhile; wp_reset_query(); ?>
   <span @click="forceEnter" class="close">
     <svg width="60" height="24" viewBox="0 0 100 40">
       <path d="M4 36 L50 4 L96 36" stroke-linecap="round" stroke-linejoin="round" stroke="white" stroke-width="5 " fill="none" />

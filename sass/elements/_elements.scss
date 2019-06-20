@@ -17,20 +17,17 @@ body {
 #content[data-theme="light"] { background: white; color: black; }
 #pageWipe {
 	position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1;
-	background: black; transform: translateY(-100%);
-}
-// body.trans {
-// 	#pageWipe { transform: translateY(0); transition: transform 0.5s ease; }
-// }
+	background: black; transform: translateY(-100%); }
 
-.anim {
-	transition: all 0.5s ease;
-	&.fade { opacity: 0; }
-
-	&[data-observed="true"] {
-		&.fade { opacity: 1; }
-	}
-}
+.anim-fade {opacity: 0;}
+.anim-scale {transform: scale(0.66);}
+.anim-over {transform: translate(0,-1em);}
+.anim-right {transform: translate(1em,0);}
+.anim-left {transform: translate(-1em,0);}
+.anim-under {transform: translate(0,1em);}
+*[class^=anim-], *[class*= anim-] {
+  transition: opacity 0.66s ease, transform 0.66s ease;
+  &.anim-active { opacity: 1; transform: translate(0,0) scale(1); } }
 
 hr {
 	background-color: $color__background-hr;

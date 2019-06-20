@@ -535,20 +535,47 @@ body {
   transform: translateY(-100%);
 }
 
-/* line 26, sass/elements/_elements.scss */
-.anim {
-  transition: all 0.5s ease;
-}
-/* line 28, sass/elements/_elements.scss */
-.anim.fade {
+/* line 22, sass/elements/_elements.scss */
+.anim-fade {
   opacity: 0;
 }
-/* line 31, sass/elements/_elements.scss */
-.anim[data-observed="true"].fade {
-  opacity: 1;
+
+/* line 23, sass/elements/_elements.scss */
+.anim-scale {
+  transform: scale(0.66);
 }
 
-/* line 35, sass/elements/_elements.scss */
+/* line 24, sass/elements/_elements.scss */
+.anim-over {
+  transform: translate(0, -1em);
+}
+
+/* line 25, sass/elements/_elements.scss */
+.anim-right {
+  transform: translate(1em, 0);
+}
+
+/* line 26, sass/elements/_elements.scss */
+.anim-left {
+  transform: translate(-1em, 0);
+}
+
+/* line 27, sass/elements/_elements.scss */
+.anim-under {
+  transform: translate(0, 1em);
+}
+
+/* line 28, sass/elements/_elements.scss */
+*[class^=anim-], *[class*=anim-] {
+  transition: opacity 0.66s ease, transform 0.66s ease;
+}
+/* line 30, sass/elements/_elements.scss */
+*[class^=anim-].anim-active, *[class*=anim-].anim-active {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* line 32, sass/elements/_elements.scss */
 hr {
   background-color: #ccc;
   border: 0;
@@ -556,7 +583,7 @@ hr {
   margin-bottom: 1.5em;
 }
 
-/* line 42, sass/elements/_elements.scss */
+/* line 39, sass/elements/_elements.scss */
 #masthead {
   position: relative;
   z-index: 2;
@@ -594,7 +621,7 @@ dd {
   margin: 0 1.5em 1.5em;
 }
 
-/* line 46, sass/elements/_elements.scss */
+/* line 43, sass/elements/_elements.scss */
 img {
   height: auto;
   /* Make sure images are scaled correctly. */
@@ -602,7 +629,7 @@ img {
   /* Adhere to container width. */
 }
 
-/* line 51, sass/elements/_elements.scss */
+/* line 48, sass/elements/_elements.scss */
 figure {
   margin: 1em 0;
   /* Extra wide images within figure tags don't overflow the content area. */
@@ -1292,13 +1319,15 @@ article.page.home {
 article.page.home main {
   min-height: calc(100vh - calc( 3em + 1.2em + 0.5em + 1px + 2em ));
   position: relative;
+  width: 90%;
+  margin: 0 auto;
   box-sizing: border-box;
   display: grid;
   grid-template-rows: auto minmax(5em, auto);
   align-items: center;
   justify-items: center;
 }
-/* line 28, sass/site/pages/_home.scss */
+/* line 25, sass/site/pages/_home.scss */
 article.page.home:before {
   content: "";
   position: fixed;
@@ -1309,7 +1338,7 @@ article.page.home:before {
   background: rgba(0, 0, 0, 0.75);
   z-index: 0;
 }
-/* line 32, sass/site/pages/_home.scss */
+/* line 29, sass/site/pages/_home.scss */
 article.page.home:after {
   content: "";
   position: relative;
@@ -1317,29 +1346,29 @@ article.page.home:after {
   height: 100vh;
   display: block;
 }
-/* line 37, sass/site/pages/_home.scss */
+/* line 34, sass/site/pages/_home.scss */
 article.page.home .layout {
   position: relative;
   transition: all 0.5s ease;
 }
-/* line 40, sass/site/pages/_home.scss */
+/* line 37, sass/site/pages/_home.scss */
 article.page.home .layout.banner {
   font-size: 3em;
-  text-align: left;
+  text-align: justify;
 }
-/* line 42, sass/site/pages/_home.scss */
+/* line 39, sass/site/pages/_home.scss */
 article.page.home .layout.banner .mobile {
   display: none;
 }
-/* line 43, sass/site/pages/_home.scss */
+/* line 40, sass/site/pages/_home.scss */
 article.page.home .layout.banner p {
   margin: 0;
 }
-/* line 44, sass/site/pages/_home.scss */
+/* line 41, sass/site/pages/_home.scss */
 article.page.home .layout.banner section {
   display: inline;
 }
-/* line 45, sass/site/pages/_home.scss */
+/* line 42, sass/site/pages/_home.scss */
 article.page.home .layout.grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1349,16 +1378,16 @@ article.page.home .layout.grid {
   font-size: 1.5em;
   margin-bottom: 2em;
 }
-/* line 51, sass/site/pages/_home.scss */
+/* line 48, sass/site/pages/_home.scss */
 article.page.home .layout.grid p {
   margin: 0;
 }
-/* line 55, sass/site/pages/_home.scss */
+/* line 52, sass/site/pages/_home.scss */
 article.page.home .close {
   cursor: pointer;
 }
 
-/* line 59, sass/site/pages/_home.scss */
+/* line 56, sass/site/pages/_home.scss */
 #intro {
   display: none;
   background: black;
@@ -1369,7 +1398,7 @@ article.page.home .close {
   height: 100vh;
   z-index: 3;
 }
-/* line 65, sass/site/pages/_home.scss */
+/* line 59, sass/site/pages/_home.scss */
 #intro svg {
   width: 80%;
   height: auto;
@@ -1392,51 +1421,57 @@ article.page.home .close {
   }
 }
 @media screen and (min-width: 1440px) {
-  /* line 78, sass/site/pages/_home.scss */
+  /* line 72, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 3.5vw;
-    text-align: justify;
   }
 }
 @media screen and (max-width: 1000px) {
-  /* line 85, sass/site/pages/_home.scss */
+  /* line 79, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 2.5em;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 92, sass/site/pages/_home.scss */
+  /* line 86, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 2em;
   }
 }
+@media screen and (min-width: 600px) {
+  /* line 92, sass/site/pages/_home.scss */
+  article.page.home .layout.banner section {
+    transition-delay: 0s !important;
+  }
+}
 @media screen and (max-width: 600px) {
-  /* line 97, sass/site/pages/_home.scss */
+  /* line 96, sass/site/pages/_home.scss */
   article.page.home {
     padding-top: calc( 2em + 1.2em + 0.5em + 1px + 2em );
     padding-left: 2em;
     padding-right: 2em;
   }
-  /* line 101, sass/site/pages/_home.scss */
+  /* line 100, sass/site/pages/_home.scss */
   article.page.home main {
     grid-template-rows: auto minmax(5em, auto);
+    width: 100%;
   }
-  /* line 103, sass/site/pages/_home.scss */
+  /* line 102, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.5em;
     text-align: left;
   }
-  /* line 105, sass/site/pages/_home.scss */
+  /* line 104, sass/site/pages/_home.scss */
   article.page.home .layout.banner .mobile {
     display: inline;
   }
-  /* line 106, sass/site/pages/_home.scss */
+  /* line 105, sass/site/pages/_home.scss */
   article.page.home .layout.banner section {
     display: block;
     margin-bottom: 1.6em;
     line-height: 1.25em;
   }
-  /* line 109, sass/site/pages/_home.scss */
+  /* line 108, sass/site/pages/_home.scss */
   article.page.home .layout.banner section:last-of-type {
     margin-bottom: 0;
   }

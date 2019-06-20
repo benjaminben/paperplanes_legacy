@@ -14,7 +14,7 @@ $theme = get_field( 'theme' );
         255*theme+','+255*theme+','+255*theme+
       ',1)'
     }">
-    <a class="home-link" href="<?php echo get_home_url(); ?>">
+    <a class="home-link" data-dest="home" href="<?php echo get_home_url(); ?>">
       <img class="theme-dark" src="<?php echo get_theme_mod( 'dark_theme_logo' ); ?>"
            v-bind:style="{ opacity: theme }" />
       <img class="theme-light" src="<?php echo get_theme_mod( 'light_theme_logo' ); ?>"

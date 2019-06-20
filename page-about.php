@@ -13,8 +13,8 @@ get_header(); ?>
       if ( get_row_layout() == 'primary' ) :
         $title = get_sub_field( 'title' );
         $desc = get_sub_field( 'desc' );
-        $noListClass = have_rows( 'list' ) ? "" : " anim fade";
-        $listHeadClass = have_rows( 'list' ) ? " anim fade" : ""; ?>
+        $noListClass = have_rows( 'list' ) ? "" : " anim-fade";
+        $listHeadClass = have_rows( 'list' ) ? " anim-fade" : ""; ?>
         <div class="primary row<?php echo $noListClass; ?>">
           <div class="head<?php echo $listHeadClass; ?>">
             <h1 class="title"><?php echo $title ?></h1>
@@ -24,7 +24,7 @@ get_header(); ?>
           <div class="list"> <?php
             while ( have_rows( 'list' ) ) : the_row();
               $formatted = ($ct < 10 ? '0' : '') . ($ct + 1); ?>
-              <div class="item anim fade">
+              <div class="item anim-fade">
                 <h1 class="count"><?php echo $formatted; ?></h1>
                 <div class="info" data-count="<?php echo $formatted; ?>">
                   <h2 class="title"><?php the_sub_field( 'title' ) ?></h2>
