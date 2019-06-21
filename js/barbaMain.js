@@ -140,7 +140,7 @@ window.addEventListener('load', function() {
      * Here you can use your own logic!
      * For example you can use different Transition based on the current page or link...
      */
-     if (lastElementClicked) {
+     if (lastElementClicked) { // TODO: Use data-trans-key on <a> tags
        if (lastElementClicked.className === "menu-link") { return MenuTransition }
        if (lastElementClicked.className === "project") { return ProjectEnterTransition }
        if (lastElementClicked.className === "menu-toggle") { return ProjectExitTransition }
