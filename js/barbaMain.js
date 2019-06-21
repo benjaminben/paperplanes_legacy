@@ -6,8 +6,14 @@ window.addEventListener('load', function() {
   var nav = document.querySelector("#site-navigation")
   var menu = document.querySelector("#primary-menu")
   var siteUrl = document.body.getAttribute("data-site-url")
+  var popping = false
+
+  window.addEventListener("popstate", function() {
+    popping = true
+  })
 
   Barba.Dispatcher.on('linkClicked', function(el) {
+    popping = false
     lastElementClicked = el
     doc._actions.nav.setSlug(el.getAttribute("data-dest"))
   })
@@ -85,18 +91,6 @@ window.addEventListener('load', function() {
           _this.done()
         }
       })
-
-      // tl.eventCallback("onComplete", function() {
-      //   doc._actions.ui.setTheme(0)
-      //   doc._actions.nav.setTheme(0)
-      //   _this.done()
-      // })
-      // tl.add(new TweenLite(_this.oldContainer, 0.4, {
-      //   opacity: 0,
-      //   onComplete: function() {
-      //     // _this.oldContainer.style.display = "none"
-      //   }
-      // }))
     }
   })
 
@@ -172,13 +166,16 @@ window.addEventListener('load', function() {
       que_script(siteUrl + "/wp-content/themes/paperplanes/js/projects.js")
       doc._actions.nav.setSlug("work")
     }
-    if ( lastElementClicked.className === "project" ||
-         lastElementClicked.parentNode.className === "post-navigation" ) {
+    if ( lastElementClicked && lastElementClicked.className === "project" ) {
       que_script("https://player.vimeo.com/api/player.js", function() {
         que_script(siteUrl + "/wp-content/themes/paperplanes/js/project.js")
       })
       doc._actions.nav.setSlug("work")
     }
+  })
+
+  Barba.Dispatcher.on("transitionCompleted", function() {
+    lastElementClicked = null
   })
 
   function que_script(scriptSrc, onLoad) {

@@ -12,6 +12,7 @@
 global $post;
 
 $theme = get_field( 'theme' );
+if ( !$theme ) $theme = 'dark';
 $slug = $post->post_name;
 
 ?>
