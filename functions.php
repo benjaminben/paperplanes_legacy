@@ -135,10 +135,6 @@ function paperplanes_scripts() {
 
 	wp_enqueue_style( 'paperplanes-style', get_stylesheet_uri() );
 
-	// if ( function_exists('photoswipe') ) {
-	//
-	// }
-
 	wp_enqueue_script( 'vuejs', 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js' );
 	wp_enqueue_script( 'gsap-timelinemax', get_template_directory_uri() . '/js/gsap/minified/TimelineMax.min.js', array(), '20151215', false );
   wp_enqueue_script( 'gsap-tweenmax', get_template_directory_uri() . '/js/gsap/minified/TweenMax.min.js', array(), '20151215', false );
@@ -148,6 +144,10 @@ function paperplanes_scripts() {
 	wp_enqueue_script( 'paperplanes-barba', get_template_directory_uri() . '/js/barbaMain.js', array('barbajs', 'paperplanes-main'), '20151215', true );
 	wp_enqueue_script( 'paperplanes-navigation', get_template_directory_uri() . '/js/navigation.js', array('paperplanes-main'), '20151215', true );
 	wp_enqueue_script( 'paperplanes-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	if ( !wp_script_is( 'photoswipe', 'enqueued' ) ) {
+		wp_enqueue_script( 'photoswipe', get_template_directory_uri() . '/js/photoswipe-fallback.js' );
+		wp_enqueue_script( 'photoswipe-ui-default', get_template_directory_uri() . '/js/photoswipe-fallback.js'  );
+	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
