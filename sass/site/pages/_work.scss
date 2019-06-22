@@ -1,25 +1,46 @@
 #content.work {
-  z-index: 0; position: relative;
+  z-index: 0; position: relative; padding-bottom: 4em;
   .ctrl {
-    display: flex; justify-content: space-between; align-items: center;
-    .grid { white-space: nowrap; } }
+    display: flex; justify-content: space-between; align-items: flex-end;
+    .grid {
+      white-space: nowrap; margin-bottom: 0.1em;
+      .option {
+        cursor: pointer; display: inline-block; width: 1em;
+        &:nth-of-type(2) { font-size: 1.2em }
+        &:nth-of-type(3) { font-size: 1.4em }
+        transform-origin: center center;
+        transform: scale(0.9);
+        transition: transform 0.2s ease;
+        vertical-align: middle;
+        svg { display: block; }
+        svg rect { fill: rgba(110,112,102,1); transition: fill 0.2s ease; }
+        &.active {
+          transform: scale(1);
+          svg rect { fill: rgba(0,0,0,1); } } } } }
   .filter {
-    display: flex; align-items: inherit;
+    margin-bottom: 1em;
     .toggle {
-      cursor: pointer; white-space: nowrap; } }
-  .cats {
-    display: flex; flex-flow: row wrap; margin-left: 1em; }
+      cursor: pointer; white-space: nowrap;
+      .mark {
+        width: 0.8em; transition: transform 0.2s ease; display: inline-block; 
+        svg { width: 100%; height: auto; } } } }
   .cat {
-    margin-right: 0.5em; cursor: pointer;
+    font-size: 0.9em; margin-right: 0.5em; cursor: pointer;
+    &:first-of-type { margin-left: 0.5em; }
     &:last-of-type { margin-right: 0; }
     &[active="true"] { text-decoration: underline; } }
 	.projects {
 		display: grid; grid-gap: 1em; }
   .project {
-    display: none;
+    display: none; text-decoration: none; color: black; font-size: 0.9em;
+    .label {
+      line-height: 1.5em;
+      display: block;
+      &.sub { font-size: 0.9em; } }
     &[active="true"] { display: block; }
     .preview {
       position: relative; width: 100%; padding-bottom: 56.25%; overflow: hidden;
+      margin-bottom: 0.66em;
       img {
         position: absolute; width: 100%; height: 100%; top: 0; left: 0;
         transition: all 0.5s ease; filter: saturate(0); transform: scale(1.1);
@@ -32,7 +53,7 @@
       }
     } } }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .work {
     .ctrl {
       .grid { display: none; } }

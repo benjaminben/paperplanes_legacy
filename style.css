@@ -1882,67 +1882,126 @@ article.page.home .close {
 #content.work {
   z-index: 0;
   position: relative;
+  padding-bottom: 4em;
 }
 /* line 3, sass/site/pages/_work.scss */
 #content.work .ctrl {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 /* line 5, sass/site/pages/_work.scss */
 #content.work .ctrl .grid {
   white-space: nowrap;
+  margin-bottom: 0.1em;
 }
-/* line 6, sass/site/pages/_work.scss */
+/* line 7, sass/site/pages/_work.scss */
+#content.work .ctrl .grid .option {
+  cursor: pointer;
+  display: inline-block;
+  width: 1em;
+  transform-origin: center center;
+  transform: scale(0.9);
+  transition: transform 0.2s ease;
+  vertical-align: middle;
+}
+/* line 9, sass/site/pages/_work.scss */
+#content.work .ctrl .grid .option:nth-of-type(2) {
+  font-size: 1.2em;
+}
+/* line 10, sass/site/pages/_work.scss */
+#content.work .ctrl .grid .option:nth-of-type(3) {
+  font-size: 1.4em;
+}
+/* line 15, sass/site/pages/_work.scss */
+#content.work .ctrl .grid .option svg {
+  display: block;
+}
+/* line 16, sass/site/pages/_work.scss */
+#content.work .ctrl .grid .option svg rect {
+  fill: #6e7066;
+  transition: fill 0.2s ease;
+}
+/* line 17, sass/site/pages/_work.scss */
+#content.work .ctrl .grid .option.active {
+  transform: scale(1);
+}
+/* line 19, sass/site/pages/_work.scss */
+#content.work .ctrl .grid .option.active svg rect {
+  fill: black;
+}
+/* line 20, sass/site/pages/_work.scss */
 #content.work .filter {
-  display: flex;
-  align-items: inherit;
+  margin-bottom: 1em;
 }
-/* line 8, sass/site/pages/_work.scss */
+/* line 22, sass/site/pages/_work.scss */
 #content.work .filter .toggle {
   cursor: pointer;
   white-space: nowrap;
 }
-/* line 10, sass/site/pages/_work.scss */
-#content.work .cats {
-  display: flex;
-  flex-flow: row wrap;
-  margin-left: 1em;
+/* line 24, sass/site/pages/_work.scss */
+#content.work .filter .toggle .mark {
+  width: 0.8em;
+  transition: transform 0.2s ease;
+  display: inline-block;
 }
-/* line 12, sass/site/pages/_work.scss */
+/* line 26, sass/site/pages/_work.scss */
+#content.work .filter .toggle .mark svg {
+  width: 100%;
+  height: auto;
+}
+/* line 27, sass/site/pages/_work.scss */
 #content.work .cat {
+  font-size: 0.9em;
   margin-right: 0.5em;
   cursor: pointer;
 }
-/* line 14, sass/site/pages/_work.scss */
+/* line 29, sass/site/pages/_work.scss */
+#content.work .cat:first-of-type {
+  margin-left: 0.5em;
+}
+/* line 30, sass/site/pages/_work.scss */
 #content.work .cat:last-of-type {
   margin-right: 0;
 }
-/* line 15, sass/site/pages/_work.scss */
+/* line 31, sass/site/pages/_work.scss */
 #content.work .cat[active="true"] {
   text-decoration: underline;
 }
-/* line 16, sass/site/pages/_work.scss */
+/* line 32, sass/site/pages/_work.scss */
 #content.work .projects {
   display: grid;
   grid-gap: 1em;
 }
-/* line 18, sass/site/pages/_work.scss */
+/* line 34, sass/site/pages/_work.scss */
 #content.work .project {
   display: none;
+  text-decoration: none;
+  color: black;
+  font-size: 0.9em;
 }
-/* line 20, sass/site/pages/_work.scss */
+/* line 36, sass/site/pages/_work.scss */
+#content.work .project .label {
+  line-height: 1.5em;
+  display: block;
+}
+/* line 39, sass/site/pages/_work.scss */
+#content.work .project .label.sub {
+  font-size: 0.9em;
+}
+/* line 40, sass/site/pages/_work.scss */
 #content.work .project[active="true"] {
   display: block;
 }
-/* line 21, sass/site/pages/_work.scss */
+/* line 41, sass/site/pages/_work.scss */
 #content.work .project .preview {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%;
   overflow: hidden;
+  margin-bottom: 0.66em;
 }
-/* line 23, sass/site/pages/_work.scss */
+/* line 44, sass/site/pages/_work.scss */
 #content.work .project .preview img {
   position: absolute;
   width: 100%;
@@ -1954,18 +2013,18 @@ article.page.home .close {
   transform: scale(1.1);
   transform-origin: center center;
 }
-/* line 29, sass/site/pages/_work.scss */
+/* line 50, sass/site/pages/_work.scss */
 #content.work .project:hover .preview img {
   transform: scale(1);
   filter: saturate(1);
 }
 
-@media screen and (max-width: 480px) {
-  /* line 38, sass/site/pages/_work.scss */
+@media screen and (max-width: 600px) {
+  /* line 59, sass/site/pages/_work.scss */
   .work .ctrl .grid {
     display: none;
   }
-  /* line 39, sass/site/pages/_work.scss */
+  /* line 60, sass/site/pages/_work.scss */
   .work .projects {
     grid-template-columns: 1fr !important;
   }

@@ -35,18 +35,24 @@ $categories = get_categories(array(
     <div class="filter">
       <span class="toggle" @click="setFilterOpen(!shared.work.filterOpen)">
         Filter
-        <span v-if="shared.work.filterOpen">X</span>
-        <span v-if="!shared.work.filterOpen">+</span>
+        <span class="mark" v-bind:style="{ transform: shared.work.filterOpen ? 'rotate(135deg)' : 'rotate(0deg)' }">
+          <svg viewBox="0 0 100 100">
+            <line x1="0" x2="100" y1="50" y2="50" stroke="black" stroke-width="5" />
+            <line x1="50" x2="50" y1="0" y2="100" stroke="black" stroke-width="5" />
+          </svg>
+        </span>
       </span>
-      <span v-if="shared.work.filterOpen" class="cats">
+      <span class="cats">
         <span
           class="cat"
+          v-if="shared.work.filterOpen"
           @click="setFilter(null)"
           :active="!shared.work.filter">All</span>
         <?php
         foreach ($categories as $cat) : ?>
           <span
             class="cat"
+            v-if="shared.work.filterOpen"
             @click="setFilter('<?php echo $cat->slug ?>')"
             :active="shared.work.filter === '<?php echo $cat->slug ?>'"><?php echo $cat->name; ?>
           </span> <?php
@@ -54,9 +60,27 @@ $categories = get_categories(array(
       </span>
     </div>
     <div class="grid">
-      <span @click="setCols" data-cols="1fr">1 </span>
-      <span @click="setCols" data-cols="1fr 1fr">2 </span>
-      <span @click="setCols" data-cols="1fr 1fr 1fr">3</span>
+      <span class="option" @click="setCols" data-cols="1fr"
+            v-bind:class="{active: shared.work.gridStyle.gridTemplateColumns == '1fr'}">
+        <svg viewbox="0 0 90 50">
+          <rect x="0" y="0" width="90" height="50" fill="rgba(110,112,102,1)" />
+        </svg>
+      </span>
+      <span class="option" @click="setCols" data-cols="1fr 1fr"
+            v-bind:class="{active: shared.work.gridStyle.gridTemplateColumns == '1fr 1fr'}">
+        <svg viewbox="0 0 105 50">
+          <rect x="0" y="0" width="50" height="50" fill="rgba(110,112,102,1)" />
+          <rect x="55" y="0" width="50" height="50" fill="rgba(110,112,102,1)" />
+        </svg>
+      </span>
+      <span class="option" @click="setCols" data-cols="1fr 1fr 1fr"
+            v-bind:class="{active: shared.work.gridStyle.gridTemplateColumns == '1fr 1fr 1fr'}">
+        <svg viewbox="0 0 160 50">
+          <rect x="0" y="0" width="50" height="50" fill="rgba(110,112,102,1)" />
+          <rect x="55" y="0" width="50" height="50" fill="rgba(110,112,102,1)" />
+          <rect x="110" y="0" width="50" height="50" fill="rgba(110,112,102,1)" />
+        </svg>
+      </span>
     </div>
   </div>
   <div class="projects" v-bind:style="shared.work.gridStyle">
@@ -75,8 +99,8 @@ $categories = get_categories(array(
           ].indexOf(shared.work.filter) > -1"
           href="<?php echo get_permalink($post->ID) ?>">
           <div class="preview"><?php echo get_the_post_thumbnail($post->ID) ?></div>
-          <span><?php echo get_field("main_label") ?></span><br>
-          <span><?php echo get_field("sub_label") ?></span>
+          <span class="label main"><?php echo get_field("main_label") ?></span>
+          <span class="label sub"><?php echo get_field("sub_label") ?></span>
         </a> <?php
       endforeach;
       wp_reset_postdata();
