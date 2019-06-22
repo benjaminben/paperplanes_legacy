@@ -9,6 +9,7 @@
         data: {
           player: null,
           played: false,
+          loading: false,
           cover: true,
         },
         watch: {
@@ -19,23 +20,12 @@
           },
         },
         mounted: function() {
+          var _this = this
           doc._actions.ui.setTheme(1) // Go dark
           doc._actions.nav.setTheme(1)
           doc._actions.nav.setEscape(siteUrl + "/work")
           this.player = new Vimeo.Player("vimeo_" + l.querySelector(".embed").getAttribute("data-vimeo-id"))
-          var playBtn = l.querySelector(".ctrl .play")
-          // console.log(playBtn)
-          // playBtn.addEventListener("click", function() {
-          //   console.log("play")
-          // })
           this.player.on("play", function() {
-            console.log("blug")
-          })
-        },
-        methods: {
-          handlePlay: function(e) {
-            var _this = this
-            _this.player.play()
             TweenLite.to(_this.$refs.cover, 0.2, {
               opacity: 0,
               scale: 1.1,
@@ -43,6 +33,13 @@
                 _this.played = true
               }
             })
+          })
+        },
+        methods: {
+          handlePlay: function(e) {
+            var _this = this
+            _this.player.play()
+            _this.loading = true
           }
         },
       })

@@ -20,21 +20,3 @@
     }
   }
 }
-
-
-@keyframes plane-l1 {
-  20% { stroke-dashoffset: 0px; }
-  40% { stroke-dashoffset: 0px; }
-  60% { stroke-dashoffset: -798.0558px; }
-  80% { stroke-dashoffset: -798.0558px; }
-  100% { stroke-dashoffset: -798.0558px; }
-}
-
-@keyframes plane-l2 {
-  6% { stroke-dashoffset: -580.44714px; }
-  20% { stroke-dashoffset: 0px; }
-  46% { stroke-dashoffset: 0px; }
-  60% { stroke-dashoffset: 580.44714px; }
-  80% { stroke-dashoffset: 580.44714px; }
-  100% { stroke-dashoffset: 580.44714px; }
-}

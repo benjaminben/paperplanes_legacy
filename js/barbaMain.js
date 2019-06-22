@@ -168,6 +168,7 @@ window.addEventListener('load', function() {
     }
     if ( lastElementClicked && lastElementClicked.className === "project" ) {
       que_script("https://player.vimeo.com/api/player.js", function() {
+        console.log("vimeo loaded")
         que_script(siteUrl + "/wp-content/themes/paperplanes/js/project.js")
       })
       doc._actions.nav.setSlug("work")

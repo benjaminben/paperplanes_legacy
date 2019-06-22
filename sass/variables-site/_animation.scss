@@ -1,0 +1,21 @@
+$l1-dash-array: 799.699585px;
+$l2-dash-array: 578.459595px;
+
+svg.plane {
+  .l1 { stroke-dasharray: $l1-dash-array }
+  .l2 { stroke-dasharray: $l2-dash-array }
+}
+
+@keyframes plane-l1 {
+  0% { stroke-dashoffset: $l1-dash-array*3; }
+  33% { stroke-dashoffset: $l1-dash-array*2; }
+  66% { stroke-dashoffset: $l1-dash-array*2; }
+  100% { stroke-dashoffset: $l1-dash-array; }
+}
+
+@keyframes plane-l2 {
+  0% { stroke-dashoffset: $l2-dash-array; }
+  33% { stroke-dashoffset: $l2-dash-array*2; }
+  66% { stroke-dashoffset: $l2-dash-array*2; }
+  100% { stroke-dashoffset: $l2-dash-array*3; }
+}

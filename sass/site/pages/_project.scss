@@ -2,11 +2,14 @@
   padding: 0;
   animation: project-in 0.5s ease both; z-index: 1;
   .layout {
-    width: 80%; margin: 0 auto 2em; position: relative;
+    width: calc(100% - #{$layout__navBannerPaddingHorizontal * 2});
+    max-width: 1200px;
+    margin: 0 auto 2em; position: relative;
+    &.generic, &.credits, &.title, { max-width: 1000px; }
     &.headspace {
       height: $layout__navHeight; }
     &.marquee-video {
-      position: relative; width: 100%; padding-bottom: 56.25%;
+      position: relative; width: 100%; padding-bottom: 56.25%; max-width: none;
       .cover {
         position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex;
         overflow: hidden;
@@ -14,39 +17,36 @@
           position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
         .ctrl {
           position: relative; margin: auto;
-        .play {
+        .play-btn {
           width: 7em; height: 3.5em;
           cursor: pointer;
           position: relative;
           display: block;
-          &:before {
-            content: "";
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            border: 2px solid white;
-            border-radius: 0.5em;
-            transition: transform 0.2s cubic-bezier(0.58, 0.63, 0.69, 1.46);
-            transform-origin: center center;
-          }
-          &:after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
+          // border: 2px solid white;
+          border-radius: 0.5em;
+          background: white;
+          transition: border-color 0.33s ease;
+          box-sizing: border-box;
+          // &:before {
+          //   content: ""; background: white; opacity: 0; position: absolute; border-radius: 0.5em;
+          //   top: 0; left: 0; width: 100%; height: 100%; transition: opacity 0.2s ease; }
+          .play {
+            position: absolute; top: 50%; left: 50%;
             transform: scale(1) translate(-40%, -50%);
-            transition: transform 0.2s cubic-bezier(0.58, 0.63, 0.69, 1.46);
-            transform-origin: top left;
-            border-left: 1.25em solid white;
-            border-bottom: 0.75em solid transparent;
-            border-top: 0.75em solid transparent;
-          }
+            transition: transform 0.2s cubic-bezier(0.58, 0.63, 0.69, 1.46), opacity 0.33s ease;
+            transform-origin: top left; border-left: 1.25em solid black;
+            border-bottom: 0.75em solid transparent; border-top: 0.75em solid transparent; }
+          .loader svg {
+              position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+              height: 60%; width: auto; * { stroke: black; }
+              .l1 { animation: plane-l1 1s ease infinite; }
+              .l2 { animation: plane-l2 1s ease infinite; } }
           &:hover {
-            &:before {
-              transform: scale(1.2);
-            }
-            &:after {
-              transform: scale(0.8) translate(-40%, -50%);
-            }
-          }
+            .play {
+              transform: scale(0.8) translate(-40%, -50%); } }
+          &.loading {
+            .play { opacity: 0; transform: scale(1) translate(-40%, -50%); } }
+
         } } }
       .embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
       iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; } }
@@ -68,6 +68,7 @@
     &.gallery {
       column-count: 2;
       column-gap: 1em;
+      width: calc(100% - #{$layout__navBannerPaddingHorizontal * 2});
       .item {
         display: inline-block;
         margin: 0 0 1em;

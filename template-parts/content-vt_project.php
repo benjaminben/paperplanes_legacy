@@ -34,8 +34,12 @@ if ( have_rows( 'content' ) ) :
           data-vimeo-id="<?php echo get_sub_field('vid_id') ?>"></div>
         <div ref="cover" class="cover" v-bind:style="{ display: played ? 'none' : 'flex' }">
           <?php echo get_the_post_thumbnail($post->ID) ?>
-          <span class="ctrl">
-            <span ref="playBtn" v-if="player" @click="handlePlay" class="play">
+          <span class="ctrl" v-if="player" v-bind:class="{ loading: loading }">
+            <span ref="playBtn" @click="handlePlay" class="play-btn">
+              <span class="play" v-if="!loading"></span>
+              <span ref="loader" v-if="loading" class="loader">
+                <?php get_template_part( 'template-parts/graphic', 'plane' ); ?>
+              </span>
             </span>
           </span>
         </div>
