@@ -27,9 +27,6 @@
           background: white;
           transition: border-color 0.33s ease;
           box-sizing: border-box;
-          // &:before {
-          //   content: ""; background: white; opacity: 0; position: absolute; border-radius: 0.5em;
-          //   top: 0; left: 0; width: 100%; height: 100%; transition: opacity 0.2s ease; }
           .play {
             position: absolute; top: 50%; left: 50%;
             transform: scale(1) translate(-40%, -50%);
@@ -58,7 +55,6 @@
       .line { display: block; font-size: 0.8em; } }
     &.slideshow {
       position: relative; padding-bottom: 56.25%;
-      width: calc(100% - #{$layout__navBannerPaddingHorizontal * 2});
       .ctrl {
         font-family: courier, monospace; font-size: 3em; cursor: pointer;
         position: absolute; top: 50%; transform: translateY(-50%);
@@ -72,7 +68,6 @@
     &.gallery {
       column-count: 2;
       column-gap: 1em;
-      width: calc(100% - #{$layout__navBannerPaddingHorizontal * 2});
       .item {
         display: inline-block;
         margin: 0 0 1em;
@@ -102,4 +97,18 @@
     .layout {
       &.credits {
         .lines { grid-template-columns: auto; } } } }
+}
+
+/* Mobile Padding */
+@media screen and (max-width: 600px) {
+  #content.vt_project {
+    padding-top: $layout__navHeight;
+    .layout {
+      width: calc(100% - #{$layout__mobile__navBannerPaddingHorizontal * 2});
+      &.headspace { display: none; }
+      &.generic { * { font-size: 0.9em; } }
+      &.title { * { font-size: 1em; } }
+      &.marquee-video { width: calc(100% - #{$layout__mobile__navBannerPaddingHorizontal * 2}); }
+      &.credits {
+        .lines { grid-template-columns: auto auto; } } } }
 }
