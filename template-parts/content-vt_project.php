@@ -55,7 +55,7 @@ if ( have_rows( 'content' ) ) :
     endif;
     if ( get_row_layout() == 'credits' ) : ?>
       <div class="layout credits">
-        <p>Credit List</p>
+        <h5 class="heading">Credit List</h5>
         <div class="lines"><?php
           if ( have_rows( 'lines' ) ) :
             $ct = 0;

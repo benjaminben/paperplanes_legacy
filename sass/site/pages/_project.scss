@@ -51,7 +51,11 @@
       .embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
       iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; } }
     &.credits {
-      .lines { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; } }
+      color: rgba(110,112,102,1);
+      .heading { font-size: 0.8em; font-weight: normal; }
+      .group { margin-bottom: 2em; }
+      .lines { display: grid; grid-template-columns: auto auto auto auto; }
+      .line { display: block; font-size: 0.8em; } }
     &.slideshow {
       position: relative; padding-bottom: 56.25%;
       width: calc(100% - #{$layout__navBannerPaddingHorizontal * 2});
@@ -84,4 +88,18 @@
 @keyframes project-in {
   from { opacity: 0 }
   to { opacity: 1 }
+}
+
+@media screen and (max-width: 768px) {
+  #content.vt_project {
+    .layout {
+      &.credits {
+        .lines { grid-template-columns: auto auto; } } } }
+}
+
+@media screen and (max-width: 480px) {
+  #content.vt_project {
+    .layout {
+      &.credits {
+        .lines { grid-template-columns: auto; } } } }
 }
