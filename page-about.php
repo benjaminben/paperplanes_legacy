@@ -1,11 +1,18 @@
 <?php
 
-wp_enqueue_script(
-  'paperplanes-about',
-  get_template_directory_uri() . '/js/about.js',
-  array("vuejs", "paperplanes-main"), '20151215', true
-);
+$theme = get_field( 'theme' );
+if ( !$theme ) $theme = 'dark';
+$slug = $post->post_name;
+
 get_header(); ?>
+
+<div
+  id="content"
+  data-vue-root="About"
+  data-barba="container"
+  style="background-color: <?php echo get_field('bg_color') ?>"
+  data-theme="<?php echo ($theme ? $theme : '')?>"
+  class="site-content <?php echo get_post_type() ?> <?php echo $slug ?>">
 
 <?php
   if ( have_rows( 'content' ) ) :

@@ -8,13 +8,11 @@
  * @package Paper_Planes
  */
 
-
-wp_enqueue_script(
- 'paperplanes-projects',
- get_template_directory_uri() . '/js/projects.js',
- array('vuejs', 'paperplanes-main'), '20151215', true
-);
 get_header();
+
+$theme = get_field( 'theme' );
+if ( !$theme ) $theme = 'dark';
+$slug = $post->post_name;
 
 $post_objects = get_field('whitelisted_projects', 'theme-settings');
 $uncategorized_id = get_cat_ID( 'Uncategorized' );
@@ -25,17 +23,25 @@ $categories = get_categories(array(
 ));
 ?>
 
+<div
+  id="content"
+  data-vue-root="Work"
+  data-barba="container"
+  style="background-color: <?php echo get_field('bg_color') ?>"
+  data-theme="<?php echo ($theme ? $theme : '')?>"
+  class="site-content <?php echo get_post_type() ?> <?php echo $slug ?>">
+
 <article id="post-<?php the_ID(); ?>" <?php post_class("work"); ?>>
   <div id="pageWipe"
     v-bind:style="{
-      transform: shared.ui.trans ? 'translateY(0)' : 'translateY(-100vh)',
+      transform: trans ? 'translateY(0)' : 'translateY(-100vh)',
       transition: 'all 0.5s ease',
     }"></div>
   <div class="ctrl">
     <div class="filter">
-      <span class="toggle" @click="setFilterOpen(!shared.work.filterOpen)">
+      <span class="toggle" @click="setFilterOpen(!filterOpen)">
         Filter
-        <span class="mark" v-bind:style="{ transform: shared.work.filterOpen ? 'rotate(135deg)' : 'rotate(0deg)' }">
+        <span class="mark" v-bind:style="{ transform: filterOpen ? 'rotate(135deg)' : 'rotate(0deg)' }">
           <svg viewBox="0 0 100 100">
             <line x1="0" x2="100" y1="50" y2="50" stroke="black" stroke-width="5" />
             <line x1="50" x2="50" y1="0" y2="100" stroke="black" stroke-width="5" />
@@ -45,36 +51,36 @@ $categories = get_categories(array(
       <span class="cats">
         <span
           class="cat"
-          v-if="shared.work.filterOpen"
+          v-if="filterOpen"
           @click="setFilter(null)"
-          :active="!shared.work.filter">All</span>
+          :active="!filter">All</span>
         <?php
         foreach ($categories as $cat) : ?>
           <span
             class="cat"
-            v-if="shared.work.filterOpen"
+            v-if="filterOpen"
             @click="setFilter('<?php echo $cat->slug ?>')"
-            :active="shared.work.filter === '<?php echo $cat->slug ?>'"><?php echo $cat->name; ?>
+            :active="filter === '<?php echo $cat->slug ?>'"><?php echo $cat->name; ?>
           </span> <?php
         endforeach; ?>
       </span>
     </div>
     <div class="grid">
       <span class="option" @click="setCols" data-cols="1fr"
-            v-bind:class="{active: shared.work.gridStyle.gridTemplateColumns == '1fr'}">
+            v-bind:class="{active: gridStyle.gridTemplateColumns == '1fr'}">
         <svg viewbox="0 0 90 50">
           <rect x="0" y="0" width="90" height="50" fill="rgba(110,112,102,1)" />
         </svg>
       </span>
       <span class="option" @click="setCols" data-cols="1fr 1fr"
-            v-bind:class="{active: shared.work.gridStyle.gridTemplateColumns == '1fr 1fr'}">
+            v-bind:class="{active: gridStyle.gridTemplateColumns == '1fr 1fr'}">
         <svg viewbox="0 0 105 50">
           <rect x="0" y="0" width="50" height="50" fill="rgba(110,112,102,1)" />
           <rect x="55" y="0" width="50" height="50" fill="rgba(110,112,102,1)" />
         </svg>
       </span>
       <span class="option" @click="setCols" data-cols="1fr 1fr 1fr"
-            v-bind:class="{active: shared.work.gridStyle.gridTemplateColumns == '1fr 1fr 1fr'}">
+            v-bind:class="{active: gridStyle.gridTemplateColumns == '1fr 1fr 1fr'}">
         <svg viewbox="0 0 160 50">
           <rect x="0" y="0" width="50" height="50" fill="rgba(110,112,102,1)" />
           <rect x="55" y="0" width="50" height="50" fill="rgba(110,112,102,1)" />
@@ -83,7 +89,7 @@ $categories = get_categories(array(
       </span>
     </div>
   </div>
-  <div class="projects" v-bind:style="shared.work.gridStyle">
+  <div class="projects" v-bind:style="gridStyle">
 		<?php
     if ( $post_objects ) :
       foreach ( $post_objects as $post ) :
@@ -92,11 +98,11 @@ $categories = get_categories(array(
         $post_cats = wp_get_post_categories($post->ID) ?>
         <a
           class="project"
-          :active="!shared.work.filter || [
+          :active="!filter || [
           <?php foreach ($post_cats as $cat) {
             echo "'" . get_term($cat)->slug . "',";
           } ?>
-          ].indexOf(shared.work.filter) > -1"
+          ].indexOf(filter) > -1"
           href="<?php echo get_permalink($post->ID) ?>">
           <div class="preview"><?php echo get_the_post_thumbnail($post->ID) ?></div>
           <span class="label main"><?php echo get_field("main_label") ?></span>

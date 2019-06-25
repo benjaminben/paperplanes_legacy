@@ -3,6 +3,11 @@ import Loader     from "./components/Loader"
 import Navigation from "./components/Navigation"
 import Home       from "./components/Home"
 import Team       from "./components/Team"
+import Work       from "./components/Work"
+import About      from "./components/About"
+import Contact    from "./components/Contact"
+import Project    from "./components/Project"
+import Play       from "./components/Play"
 import store      from "./store"
 
 const ComponentMap = {
@@ -10,6 +15,11 @@ const ComponentMap = {
   Navigation,
   Home,
   Team,
+  About,
+  Work,
+  Project,
+  Contact,
+  Play,
 }
 
 vueify(document.body)
@@ -24,16 +34,17 @@ barba.init({
         return trigger.className.match("menu-link")
       },
       afterLeave() {
+        store.dispatch("ui/setScrollPosition", [0,0])
         store.dispatch("nav/setNavClosed")
         store.dispatch("ui/unlockScroll")
-      }
+      },
     },
     {
       name: "default-transition",
       from: {},
       to: {},
       beforeEnter() {
-        window.scrollTo(0,0)
+        store.dispatch("ui/scrollPosition", [0,0])
         store.dispatch("nav/setEscape", null)
         store.dispatch("nav/setSlug", null)
       }

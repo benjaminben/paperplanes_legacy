@@ -1,46 +1,55 @@
-import {animQuery} from "../config"
-const doc = document.documentElement
-var vm = new Vue({
-  el: "#content.about",
-  data: {
-    ui: doc._state.ui,
-    initted: false,
-  },
-  watch: {
-    ui: {
-      handler: function(val, oldVal) {
-        if (val.loaded && !this.initted) {
-          this.init()
-        }
+import Vue                      from "vue"
+import { mapState, mapActions } from "vuex"
+import { animQuery }            from "../config"
+import store                    from "../store"
+
+export default (root) => {
+  return new Vue({
+    store,
+    el: root,
+    data: {
+      initted: false,
+    },
+    computed: {
+      ...mapState("ui", {
+        loaded: state => state.loaded,
+      })
+    },
+    watch: {
+      loaded: {
+        handler(val, oldVal) {
+          if (val && !this.initted) { this.init() }
+        },
       },
-      deep: true,
     },
-  },
-  methods: {
-    init: function() {
-      var _this = this
-      var anims = Array.from(this.$el.querySelectorAll(animQuery))
-      var firstObserve = false
-      doc._actions.ui.registerObserver(
-        anims,
-        { rootMargin: "0px", threshold: 0.2, },
-        function(entries, observer) {
-          var ct = 0
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.className += " anim-active"
-              entry.target.style.transitionDelay = 0.5*ct + "s"
-              observer.unobserve(entry.target)
-              if (!firstObserve) {ct += 1}
-            }
-          })
-          if (!firstObserve) {firstObserve = true}
-        }
-      )
-      _this.initted = true
+    methods: {
+      ...mapActions("ui", [
+        "registerObserver",
+      ]),
+      init() {
+        var anims = Array.from(this.$el.querySelectorAll(animQuery))
+        var firstObserve = false
+        this.registerObserver({
+          nodes: anims,
+          options: { rootMargin: "0px", threshold: 0.2, },
+          callback: (entries, observer) => {
+            var ct = 0
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.className += " anim-active"
+                entry.target.style.transitionDelay = 0.5*ct + "s"
+                observer.unobserve(entry.target)
+                if (!firstObserve) {ct += 1}
+              }
+            })
+            if (!firstObserve) {firstObserve = true}
+          }
+        })
+        this.initted = true
+      },
     },
-  },
-  mounted: function() {
-    if (this.ui.loaded) { this.init() }
-  },
-})
+    mounted() {
+      if (this.loaded) { this.init() }
+    },
+  })
+}
