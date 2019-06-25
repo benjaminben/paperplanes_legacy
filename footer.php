@@ -11,11 +11,10 @@
 
 ?>
 
-				<footer id="colophon" class="site-footer">
+			<footer id="colophon" class="site-footer">
 
-				</footer><!-- #colophon -->
-			</div><!-- #content -->
-		</div><!-- .barba-container -->
+			</footer><!-- #colophon -->
+		</div><!-- #content -->
 	</main><!-- #barba-wrapper -->
 	<?php get_template_part( 'template-parts/content', 'photoswipe' ); ?><!-- Ideally this isn't global -->
 	<div id="loader" data-vue-root="Loader" v-bind:style="{ display: loaded ? 'none' : 'flex' }">

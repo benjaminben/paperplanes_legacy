@@ -42,4 +42,3 @@ $slug = $post->post_name;
 		<?php get_template_part("template-parts/navigation", "primary") ?>
 	</header><!-- #masthead -->
 	<main>
-		<div data-barba="container">

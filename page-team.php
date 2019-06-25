@@ -20,6 +20,7 @@ $post_objects = get_field('whitelisted_staff', 'theme-settings');
 <div
   id="content"
   data-vue-root="Team"
+  data-barba="container"
   style="background-color: <?php echo get_field('bg_color') ?>"
   data-theme="<?php echo ($theme ? $theme : '')?>"
   class="site-content <?php echo get_post_type() ?> <?php echo $slug ?>">

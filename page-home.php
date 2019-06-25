@@ -12,6 +12,7 @@ $reel = get_field('reel');
 <div
   id="content"
   data-vue-root="Home"
+  data-barba="container"
   style="background-color: <?php echo get_field('bg_color') ?>"
   data-theme="<?php echo ($theme ? $theme : '')?>"
   class="site-content <?php echo get_post_type() ?> <?php echo $slug ?>">

@@ -99,6 +99,9 @@ const m = {
     setLoaded(context) {
       context.commit("loaded", true)
     },
+    setTheme(context, value) {
+      context.commit("theme", value)
+    }
   },
 }
 
