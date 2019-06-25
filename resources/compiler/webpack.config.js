@@ -90,7 +90,11 @@ module.exports = (options) => {
             to: path.resolve(outputFolder),
           }
         ], {
-          ignore: ['*.js', '*.scss', '*.css']
+          ignore: [
+            '*.js',
+            '*.scss',
+            // '*.css' // Need this for fonts/*/stylesheet.css structure
+          ]
         })
       ])
     ],
