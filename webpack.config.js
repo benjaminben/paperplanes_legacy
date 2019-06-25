@@ -1,6 +1,6 @@
 var path = require("path");
 var config = {
-  entry: "./js/src/index.js",
+  entry: "./src/index.js",
   module: {
     rules: [
       {
@@ -22,7 +22,7 @@ var config = {
   },
   output: {
     filename: "app.js",
-    path: path.resolve(__dirname, "js")
+    path: path.resolve(__dirname, "dist")
   },
 }
 

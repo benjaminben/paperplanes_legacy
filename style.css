@@ -1230,13 +1230,28 @@ a:hover, a:active {
   padding-left: 4em;
   padding-right: 4em;
 }
+/* line 28, sass/site/primary/_posts-and-pages.scss */
+#content:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 83px;
+  background-color: inherit;
+  z-index: 1;
+}
 
 @media screen and (max-width: 600px) {
-  /* line 30, sass/site/primary/_posts-and-pages.scss */
+  /* line 35, sass/site/primary/_posts-and-pages.scss */
   #content {
     padding-top: calc( 2em + 1.2em + 0.5em + 1px + 2em );
     padding-left: 2em;
     padding-right: 2em;
+  }
+  /* line 39, sass/site/primary/_posts-and-pages.scss */
+  #content:before {
+    height: 67px;
   }
 }
 /*--------------------------------------------------------------
@@ -1296,7 +1311,11 @@ a:hover, a:active {
   padding-right: 0;
   position: relative;
 }
-/* line 6, sass/site/pages/_home.scss */
+/* line 2, sass/site/pages/_home.scss */
+#content.home:before {
+  opacity: 0;
+}
+/* line 7, sass/site/pages/_home.scss */
 #content.home video.reel {
   position: fixed;
   top: 0;
@@ -1306,7 +1325,7 @@ a:hover, a:active {
   object-fit: cover;
 }
 
-/* line 11, sass/site/pages/_home.scss */
+/* line 12, sass/site/pages/_home.scss */
 article.page.home {
   position: relative;
   box-sizing: border-box;
@@ -1315,7 +1334,7 @@ article.page.home {
   padding-right: 4em;
   will-change: opacity;
 }
-/* line 19, sass/site/pages/_home.scss */
+/* line 20, sass/site/pages/_home.scss */
 article.page.home main {
   min-height: calc(100vh - calc( 3em + 1.2em + 0.5em + 1px + 2em ));
   position: relative;
@@ -1327,7 +1346,7 @@ article.page.home main {
   align-items: center;
   justify-items: center;
 }
-/* line 25, sass/site/pages/_home.scss */
+/* line 26, sass/site/pages/_home.scss */
 article.page.home:before {
   content: "";
   position: fixed;
@@ -1338,7 +1357,7 @@ article.page.home:before {
   background: rgba(0, 0, 0, 0.75);
   z-index: 0;
 }
-/* line 29, sass/site/pages/_home.scss */
+/* line 30, sass/site/pages/_home.scss */
 article.page.home:after {
   content: "";
   position: relative;
@@ -1346,29 +1365,29 @@ article.page.home:after {
   height: 100vh;
   display: block;
 }
-/* line 34, sass/site/pages/_home.scss */
+/* line 35, sass/site/pages/_home.scss */
 article.page.home .layout {
   position: relative;
   transition: all 0.5s ease;
 }
-/* line 37, sass/site/pages/_home.scss */
+/* line 38, sass/site/pages/_home.scss */
 article.page.home .layout.banner {
   font-size: 3em;
   text-align: justify;
 }
-/* line 39, sass/site/pages/_home.scss */
+/* line 40, sass/site/pages/_home.scss */
 article.page.home .layout.banner .mobile {
   display: none;
 }
-/* line 40, sass/site/pages/_home.scss */
+/* line 41, sass/site/pages/_home.scss */
 article.page.home .layout.banner p {
   margin: 0;
 }
-/* line 41, sass/site/pages/_home.scss */
+/* line 42, sass/site/pages/_home.scss */
 article.page.home .layout.banner section {
   display: inline;
 }
-/* line 42, sass/site/pages/_home.scss */
+/* line 43, sass/site/pages/_home.scss */
 article.page.home .layout.grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1378,16 +1397,16 @@ article.page.home .layout.grid {
   font-size: 1.5em;
   margin-bottom: 2em;
 }
-/* line 48, sass/site/pages/_home.scss */
+/* line 49, sass/site/pages/_home.scss */
 article.page.home .layout.grid p {
   margin: 0;
 }
-/* line 52, sass/site/pages/_home.scss */
+/* line 53, sass/site/pages/_home.scss */
 article.page.home .close {
   cursor: pointer;
 }
 
-/* line 56, sass/site/pages/_home.scss */
+/* line 57, sass/site/pages/_home.scss */
 #intro {
   display: none;
   background: black;
@@ -1398,7 +1417,7 @@ article.page.home .close {
   height: 100vh;
   z-index: 3;
 }
-/* line 59, sass/site/pages/_home.scss */
+/* line 60, sass/site/pages/_home.scss */
 #intro svg {
   width: 80%;
   height: auto;
@@ -1421,57 +1440,57 @@ article.page.home .close {
   }
 }
 @media screen and (min-width: 1440px) {
-  /* line 72, sass/site/pages/_home.scss */
+  /* line 73, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 3.5vw;
   }
 }
 @media screen and (max-width: 1000px) {
-  /* line 79, sass/site/pages/_home.scss */
+  /* line 80, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 2.5em;
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 86, sass/site/pages/_home.scss */
+  /* line 87, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 2em;
   }
 }
 @media screen and (min-width: 600px) {
-  /* line 92, sass/site/pages/_home.scss */
+  /* line 93, sass/site/pages/_home.scss */
   article.page.home .layout.banner section {
     transition-delay: 0s !important;
   }
 }
 @media screen and (max-width: 600px) {
-  /* line 96, sass/site/pages/_home.scss */
+  /* line 97, sass/site/pages/_home.scss */
   article.page.home {
     padding-top: calc( 2em + 1.2em + 0.5em + 1px + 2em );
     padding-left: 2em;
     padding-right: 2em;
   }
-  /* line 100, sass/site/pages/_home.scss */
+  /* line 101, sass/site/pages/_home.scss */
   article.page.home main {
     grid-template-rows: auto minmax(5em, auto);
     width: 100%;
   }
-  /* line 102, sass/site/pages/_home.scss */
+  /* line 103, sass/site/pages/_home.scss */
   article.page.home .layout.banner {
     font-size: 1.5em;
     text-align: left;
   }
-  /* line 104, sass/site/pages/_home.scss */
+  /* line 105, sass/site/pages/_home.scss */
   article.page.home .layout.banner .mobile {
     display: inline;
   }
-  /* line 105, sass/site/pages/_home.scss */
+  /* line 106, sass/site/pages/_home.scss */
   article.page.home .layout.banner section {
     display: block;
     margin-bottom: 1.6em;
     line-height: 1.25em;
   }
-  /* line 108, sass/site/pages/_home.scss */
+  /* line 109, sass/site/pages/_home.scss */
   article.page.home .layout.banner section:last-of-type {
     margin-bottom: 0;
   }
@@ -1636,8 +1655,9 @@ article.page.home .close {
   width: 100%;
   padding-bottom: 56.25%;
   max-width: none;
+  z-index: 2;
 }
-/* line 13, sass/site/pages/_project.scss */
+/* line 14, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover {
   position: absolute;
   top: 0;
@@ -1647,7 +1667,7 @@ article.page.home .close {
   display: flex;
   overflow: hidden;
 }
-/* line 16, sass/site/pages/_project.scss */
+/* line 17, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover img {
   position: absolute;
   top: 0;
@@ -1656,12 +1676,12 @@ article.page.home .close {
   height: 100%;
   object-fit: cover;
 }
-/* line 18, sass/site/pages/_project.scss */
+/* line 19, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover .ctrl {
   position: relative;
   margin: auto;
 }
-/* line 20, sass/site/pages/_project.scss */
+/* line 21, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover .ctrl .play-btn {
   width: 7em;
   height: 3.5em;
@@ -1673,7 +1693,7 @@ article.page.home .close {
   transition: border-color 0.33s ease;
   box-sizing: border-box;
 }
-/* line 30, sass/site/pages/_project.scss */
+/* line 31, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover .ctrl .play-btn .play {
   position: absolute;
   top: 50%;
@@ -1685,7 +1705,7 @@ article.page.home .close {
   border-bottom: 0.75em solid transparent;
   border-top: 0.75em solid transparent;
 }
-/* line 36, sass/site/pages/_project.scss */
+/* line 37, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover .ctrl .play-btn .loader svg {
   position: absolute;
   top: 50%;
@@ -1694,28 +1714,28 @@ article.page.home .close {
   height: 60%;
   width: auto;
 }
-/* line 38, sass/site/pages/_project.scss */
+/* line 39, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover .ctrl .play-btn .loader svg * {
   stroke: black;
 }
-/* line 39, sass/site/pages/_project.scss */
+/* line 40, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover .ctrl .play-btn .loader svg .l1 {
   animation: plane-l1 1s ease infinite;
 }
-/* line 40, sass/site/pages/_project.scss */
+/* line 41, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover .ctrl .play-btn .loader svg .l2 {
   animation: plane-l2 1s ease infinite;
 }
-/* line 42, sass/site/pages/_project.scss */
+/* line 43, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover .ctrl .play-btn:hover .play {
   transform: scale(0.8) translate(-40%, -50%);
 }
-/* line 45, sass/site/pages/_project.scss */
+/* line 46, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .cover .ctrl .play-btn.loading .play {
   opacity: 0;
   transform: scale(1) translate(-40%, -50%);
 }
-/* line 48, sass/site/pages/_project.scss */
+/* line 49, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video .embed {
   position: absolute;
   top: 0;
@@ -1723,7 +1743,7 @@ article.page.home .close {
   width: 100%;
   height: 100%;
 }
-/* line 49, sass/site/pages/_project.scss */
+/* line 50, sass/site/pages/_project.scss */
 #content.vt_project .layout.marquee-video iframe {
   position: absolute;
   top: 0;
@@ -1731,35 +1751,35 @@ article.page.home .close {
   width: 100%;
   height: 100%;
 }
-/* line 50, sass/site/pages/_project.scss */
+/* line 51, sass/site/pages/_project.scss */
 #content.vt_project .layout.credits {
   color: #6e7066;
 }
-/* line 52, sass/site/pages/_project.scss */
+/* line 53, sass/site/pages/_project.scss */
 #content.vt_project .layout.credits .heading {
   font-size: 0.8em;
   font-weight: normal;
 }
-/* line 53, sass/site/pages/_project.scss */
+/* line 54, sass/site/pages/_project.scss */
 #content.vt_project .layout.credits .group {
   margin-bottom: 2em;
 }
-/* line 54, sass/site/pages/_project.scss */
+/* line 55, sass/site/pages/_project.scss */
 #content.vt_project .layout.credits .lines {
   display: grid;
   grid-template-columns: auto auto auto auto;
 }
-/* line 55, sass/site/pages/_project.scss */
+/* line 56, sass/site/pages/_project.scss */
 #content.vt_project .layout.credits .line {
   display: block;
   font-size: 0.8em;
 }
-/* line 56, sass/site/pages/_project.scss */
+/* line 57, sass/site/pages/_project.scss */
 #content.vt_project .layout.slideshow {
   position: relative;
   padding-bottom: 56.25%;
 }
-/* line 58, sass/site/pages/_project.scss */
+/* line 59, sass/site/pages/_project.scss */
 #content.vt_project .layout.slideshow .ctrl {
   font-family: courier, monospace;
   font-size: 3em;
@@ -1768,15 +1788,15 @@ article.page.home .close {
   top: 50%;
   transform: translateY(-50%);
 }
-/* line 61, sass/site/pages/_project.scss */
+/* line 62, sass/site/pages/_project.scss */
 #content.vt_project .layout.slideshow .ctrl.prev {
   left: 1em;
 }
-/* line 62, sass/site/pages/_project.scss */
+/* line 63, sass/site/pages/_project.scss */
 #content.vt_project .layout.slideshow .ctrl.next {
   right: 1em;
 }
-/* line 63, sass/site/pages/_project.scss */
+/* line 64, sass/site/pages/_project.scss */
 #content.vt_project .layout.slideshow .item {
   position: absolute;
   top: 0;
@@ -1785,44 +1805,44 @@ article.page.home .close {
   height: 100%;
   display: none;
 }
-/* line 66, sass/site/pages/_project.scss */
+/* line 67, sass/site/pages/_project.scss */
 #content.vt_project .layout.slideshow .item[active="true"] {
   display: block;
 }
-/* line 67, sass/site/pages/_project.scss */
+/* line 68, sass/site/pages/_project.scss */
 #content.vt_project .layout.slideshow .item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-/* line 68, sass/site/pages/_project.scss */
+/* line 69, sass/site/pages/_project.scss */
 #content.vt_project .layout.gallery {
   column-count: 2;
   column-gap: 1em;
 }
-/* line 71, sass/site/pages/_project.scss */
+/* line 72, sass/site/pages/_project.scss */
 #content.vt_project .layout.gallery .item {
   display: inline-block;
   margin: 0 0 1em;
   width: 100%;
 }
-/* line 75, sass/site/pages/_project.scss */
+/* line 76, sass/site/pages/_project.scss */
 #content.vt_project .layout.gallery .item .caption {
   display: none;
 }
-/* line 76, sass/site/pages/_project.scss */
+/* line 77, sass/site/pages/_project.scss */
 #content.vt_project .layout.gallery .item img {
   width: 100%;
   height: auto;
 }
-/* line 77, sass/site/pages/_project.scss */
+/* line 78, sass/site/pages/_project.scss */
 #content.vt_project .post-navigation {
   width: 80%;
   margin: 0 auto 4em;
   display: flex;
   justify-content: space-between;
 }
-/* line 79, sass/site/pages/_project.scss */
+/* line 80, sass/site/pages/_project.scss */
 #content.vt_project .post-navigation a {
   color: red;
 }
@@ -1836,44 +1856,48 @@ article.page.home .close {
   }
 }
 @media screen and (max-width: 768px) {
-  /* line 92, sass/site/pages/_project.scss */
+  /* line 93, sass/site/pages/_project.scss */
   #content.vt_project .layout.credits .lines {
     grid-template-columns: auto auto;
   }
 }
 @media screen and (max-width: 480px) {
-  /* line 99, sass/site/pages/_project.scss */
+  /* line 100, sass/site/pages/_project.scss */
   #content.vt_project .layout.credits .lines {
     grid-template-columns: auto;
   }
 }
 /* Mobile Padding */
 @media screen and (max-width: 600px) {
-  /* line 104, sass/site/pages/_project.scss */
+  /* line 105, sass/site/pages/_project.scss */
   #content.vt_project {
     padding-top: calc( 3em + 1.2em + 0.5em + 1px + 2em );
   }
-  /* line 106, sass/site/pages/_project.scss */
+  /* line 107, sass/site/pages/_project.scss */
   #content.vt_project .layout {
     width: calc(100% - 4em);
   }
-  /* line 108, sass/site/pages/_project.scss */
+  /* line 109, sass/site/pages/_project.scss */
   #content.vt_project .layout.headspace {
     display: none;
   }
-  /* line 109, sass/site/pages/_project.scss */
+  /* line 110, sass/site/pages/_project.scss */
   #content.vt_project .layout.generic * {
     font-size: 0.9em;
   }
-  /* line 110, sass/site/pages/_project.scss */
+  /* line 111, sass/site/pages/_project.scss */
   #content.vt_project .layout.title * {
     font-size: 1em;
   }
-  /* line 111, sass/site/pages/_project.scss */
+  /* line 112, sass/site/pages/_project.scss */
   #content.vt_project .layout.marquee-video {
     width: calc(100% - 4em);
   }
-  /* line 113, sass/site/pages/_project.scss */
+  /* line 114, sass/site/pages/_project.scss */
+  #content.vt_project .layout.marquee-video .cover .ctrl .play-btn {
+    font-size: 0.66em;
+  }
+  /* line 116, sass/site/pages/_project.scss */
   #content.vt_project .layout.credits .lines {
     grid-template-columns: auto auto;
   }

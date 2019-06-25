@@ -10,6 +10,7 @@
       height: $layout__navHeight; }
     &.marquee-video {
       position: relative; width: 100%; padding-bottom: 56.25%; max-width: none;
+      z-index: 2;
       .cover {
         position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex;
         overflow: hidden;
@@ -108,7 +109,9 @@
       &.headspace { display: none; }
       &.generic { * { font-size: 0.9em; } }
       &.title { * { font-size: 1em; } }
-      &.marquee-video { width: calc(100% - #{$layout__mobile__navBannerPaddingHorizontal * 2}); }
+      &.marquee-video {
+        width: calc(100% - #{$layout__mobile__navBannerPaddingHorizontal * 2});
+        .cover .ctrl .play-btn { font-size: 0.66em; } }
       &.credits {
         .lines { grid-template-columns: auto auto; } } } }
 }

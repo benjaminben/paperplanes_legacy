@@ -10,6 +10,7 @@ export default (root) => {
 
   // TEMP: Redundant with router.js BUT in case initial load...
   store.dispatch("ui/setTheme", 1)
+  store.dispatch("ui/setTrans", true)
   store.dispatch("nav/setEscape", siteUrl + "/work")
 
   initPhotoSwipeFromDOM(".layout.gallery")

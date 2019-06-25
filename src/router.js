@@ -36,7 +36,7 @@ const ComponentMap = {
 vueify(document.body)
 
 barba.init({
-  debug: true,
+  debug: process.env.NODE_ENV === "production" ? false : true,
   transitions: [
     {
       name: "menu-transition",
