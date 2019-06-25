@@ -135,6 +135,7 @@ function paperplanes_scripts() {
 
 	wp_enqueue_style( 'paperplanes-style', get_stylesheet_uri() );
 
+	wp_enqueue_script( 'paperplanes-app', get_template_directory_uri() . '/js/app.js', array(), '20151215', true);
 	wp_enqueue_script( 'vuejs', 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js' );
 	wp_enqueue_script( 'gsap-timelinemax', get_template_directory_uri() . '/js/gsap/minified/TimelineMax.min.js', array(), '20151215', false );
   wp_enqueue_script( 'gsap-tweenmax', get_template_directory_uri() . '/js/gsap/minified/TweenMax.min.js', array(), '20151215', false );
