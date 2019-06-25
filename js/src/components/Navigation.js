@@ -1,44 +1,58 @@
-/**
- * File navigation.js.
- *
- * Handles toggling the navigation menu for small screens and enables TAB key
- * navigation support for dropdown menus.
- */
+import Vue                      from "vue"
+import { mapState, mapActions } from "vuex"
+import store                    from "../store"
+
+export default (root) =>
+new Vue({
+  store,
+  el: root,
+  computed: {
+    ...mapState({
+      theme: state => state.ui.theme,
+      escape: state => state.nav.escape,
+      exiting: state => state.nav.exiting,
+      open: state => state.nav.open,
+      slug: state => state.nav.slug,
+      trans: state => state.nav.trans,
+    })
+  },
+  methods: {
+    ...mapActions("nav", [
+      "setNavOpen",
+      "setNavClosed",
+      "setEscape",
+    ]),
+    ...mapActions("ui", [
+      "setTrans",
+    ]),
+    checkCurrent(e) {
+      if(e.currentTarget.href === window.location.href) {
+        e.preventDefault()
+        e.stopPropagation()
+        this.setNavClosed()
+      }
+    },
+    clearEscape() {
+      this.setEscape(null)
+      this.setTrans(true)
+    },
+  },
+  mounted: function() {
+    var _this = this
+    this.$el.querySelectorAll("a[href]").forEach(function(a) {
+      a.addEventListener("click", _this.checkCurrent)
+    })
+  },
+});
+
+// _s boilerplate
 ( function() {
 	var container, button, menu, links, i, len, doc;
-
-  doc = document.documentElement
 
 	container = document.getElementById( 'site-navigation' );
 	if ( ! container ) {
 		return;
 	}
-
-  var n = new Vue({
-    el: container,
-    data: doc._state.nav,
-    methods: {
-      toggleOpen: function() { doc._actions.nav.setNavOpen() },
-      toggleClosed: function() { doc._actions.nav.setNavClosed() },
-      checkCurrent: function(e) {
-        if(e.currentTarget.href === window.location.href) {
-          e.preventDefault()
-          e.stopPropagation()
-          this.toggleClosed()
-        }
-      },
-      clearEscape: function() {
-        doc._actions.nav.setEscape(null)
-        doc._actions.ui.setTrans(true)
-      },
-    },
-    mounted: function() {
-      var _this = this
-      this.$el.querySelectorAll("a[href]").forEach(function(a) {
-        a.addEventListener("click", _this.checkCurrent)
-      })
-    },
-  })
 
 	button = container.getElementsByTagName( 'button' )[0];
 	if ( 'undefined' === typeof button ) {

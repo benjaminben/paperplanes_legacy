@@ -1,9 +1,11 @@
-import Vue from "Vue"
-import Vuex from "Vuex"
-
-import App from "./components/App"
-import Loader from "./components/Loader"
-import Home from "./components/Home"
+import Vue        from "Vue"
+import Vuex       from "Vuex"
+import Loader     from "./components/Loader"
+import Navigation from "./components/Navigation"
+import Home       from "./components/Home"
+import Team       from "./components/Team"
 
 Loader("#loader")
-Home("#content.home")
+// Home("#content.home")
+Team("#content.team")
+Navigation("#site-navigation")

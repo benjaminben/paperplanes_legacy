@@ -29,8 +29,8 @@ $theme = get_field( 'theme' );
         click : escape
           ? clearEscape
           : open
-            ? toggleClosed
-            : toggleOpen
+            ? setNavClosed
+            : setNavOpen
       }">
       <svg width="20" height="20" viewBox="0 0 100 100">
         <path d="M0 27.5 L100 27.5" stroke-width="8" transform-origin="100 27.5"

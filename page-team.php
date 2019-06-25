@@ -8,11 +8,6 @@
  * @package Paper_Planes
  */
 
-wp_enqueue_script(
-  'paperplanes-team',
-  get_template_directory_uri() . '/js/team.js',
-  array("vuejs", "paperplanes-main"), '20151215', true
-);
 get_header();
 
 $post_objects = get_field('whitelisted_staff', 'theme-settings');

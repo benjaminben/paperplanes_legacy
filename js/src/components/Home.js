@@ -1,8 +1,8 @@
-import Vue from "vue"
-import { mapState, mapActions } from "vuex"
-import {TimelineMax, TweenLite} from "gsap"
-import {animQuery} from "../config"
-import store from "../store"
+import Vue                        from "vue"
+import { mapState, mapActions }   from "vuex"
+import { TimelineMax, TweenLite } from "gsap"
+import { animQuery }              from "../config"
+import store                      from "../store"
 
 export default (root) => {
   root = document.querySelector(root)

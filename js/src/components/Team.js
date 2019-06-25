@@ -1,38 +1,45 @@
-(function() {
-  var doc = document.documentElement
-  var animQuery = "*[class^=anim-]:not(.anim-active), *[class*= anim-]:not(.anim-active)"
-  var vm = new Vue({
-    el: "#content.team",
+import Vue                      from "vue"
+import { mapState, mapActions } from "vuex"
+import { animQuery }            from "../config"
+import store                    from "../store"
+
+export default (root) => {
+  return new Vue({
+    store,
+    el: root,
     data: {
-      ui: doc._state.ui,
       initted: false,
     },
+    computed: {
+      ...mapState("ui", {
+        loaded: state => state.loaded,
+      })
+    },
     watch: {
-      ui: {
-        handler: function(val, oldVal) {
-          if (val.loaded && !this.initted) {
-            this.init()
-          }
+      loaded: {
+        handler(val, oldVal) {
+          if (val && !this.initted) { this.init() }
         },
-        deep: true,
       },
     },
     methods: {
-      init: function() {
-        var _this = this
+      ...mapActions("ui", [
+        "registerObserver",
+      ]),
+      init() {
         var anims = Array.from(this.$el.querySelectorAll(animQuery))
         var firstObserve = false
-        doc._actions.ui.registerObserver(
-          anims,
-          { rootMargin: "0px", threshold: 0.2, },
-          function(entries, observer) {
-            var tops = entries.map(function(entry) {
+        this.registerObserver({
+          nodes: anims,
+          options: { threshold: 0.2 },
+          callback: (entries, observer) => {
+            var tops = entries.map(entry => {
               return entry.boundingClientRect.top
-            }).sort(function(a,b) { return a < b }).filter(function(t,i,a) {
+            }).sort(function(a,b) { return a < b }).filter((t,i,a) => {
               if (a[i] !== a[i-1]) {return t}
             })
             var ct = 0
-            entries.forEach(function(entry) {
+            entries.forEach(entry => {
               if (entry.isIntersecting) {
                 if (!firstObserve) {
                   var ti = tops.indexOf(entry.boundingClientRect.top)
@@ -45,12 +52,12 @@
             })
             if (!firstObserve) {firstObserve = true}
           }
-        )
-        _this.initted = true
+        })
+        this.initted = true
       },
     },
-    mounted: function() {
-      if (this.ui.loaded) { this.init() }
+    mounted() {
+      if (this.loaded) { this.init() }
     }
   })
-})()
+}

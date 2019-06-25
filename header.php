@@ -33,43 +33,7 @@ $slug = $post->post_name;
 	<?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>
 	data-site-url="<?php echo site_url() ?>">
 
-	<!-- <div id="clipper" style="
-	    position: fixed;
-	    width: 100%;
-	    height: 91.8vh;
-	    /* background: pink; */
-	    /* z-index: 10; */
-	    top: 8.2vh;
-	">
-
-	    <svg preserveAspectRatio="none" style="
-	    width: 100%;
-	    height: 100%;
-	" id="clipSvg">
-
-	    <defs>
-
-	    <symbol>
-
-	    <path d="M0 0 L0 100 L100 100 L100 0" id="clippyPath" style="
-	    transform: scaleX(5);
-	"></path>
-
-	    </symbol>
-
-	        <clipPath id="clippy" clipPathUnits="objectBoundingBox">
-	            <use xlink:href="#clippyPath"></use>
-	        </clipPath>
-	        </defs>
-
-	    <use xlink:href="#clippyPath" style="
-	    fill: rgba(255,0,0,0.5);
-	"></use>
-
-	    </svg>
-	</div> -->
-
-<div id="page" class="site barba-wrapper">
+<div id="page" data-barba="wrapper" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'paperplanes' ); ?></a>
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
@@ -77,8 +41,8 @@ $slug = $post->post_name;
 		</div><!-- .site-branding -->
 		<?php get_template_part("template-parts/navigation", "primary") ?>
 	</header><!-- #masthead -->
-	<main id="barba-wrapper">
-		<div class="barba-container" data-namespace="grid">
+	<main>
+		<div data-barba="barba-container">
 			<div
 				id="content"
 				style="background-color: <?php echo get_field('bg_color') ?>"
