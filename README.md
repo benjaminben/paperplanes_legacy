@@ -4,7 +4,7 @@ WordPress theme based on [_s](https://underscores.me/)
 
 Webpack 4 Wordpress config by [Renato Ruškan](https://medium.com/q-software/webpack-4-wordpress-9cada8f2647)
 
-#Get Started
+## Get Started
 
 `cd` into `./resources` and...
 ```
