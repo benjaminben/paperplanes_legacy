@@ -42,7 +42,7 @@ $slug = $post->post_name;
 		<?php get_template_part("template-parts/navigation", "primary") ?>
 	</header><!-- #masthead -->
 	<main>
-		<div data-barba="barba-container">
+		<div data-barba="container">
 			<div
 				id="content"
 				style="background-color: <?php echo get_field('bg_color') ?>"

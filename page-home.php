@@ -10,7 +10,7 @@ $reel = get_field('reel');
        src="<?php echo $reel['url'] ?>"></video>
 
 <article
-  data-vue-root="home"
+  data-vue-root="Home"
   v-bind:style="{opacity: fade}"
   ref="frame"
   id="post-<?php the_ID(); ?>" <?php post_class("home"); ?>>
