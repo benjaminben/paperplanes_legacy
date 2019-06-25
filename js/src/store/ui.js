@@ -1,3 +1,6 @@
+const initTheme = document.body.getAttribute("data-theme") === "dark" ? 1 : 0
+const initSlug = document.body.getAttribute("data-slug")
+
 const m = {
   state: {
     activeListeners: [], // TEMP: Should be objects
