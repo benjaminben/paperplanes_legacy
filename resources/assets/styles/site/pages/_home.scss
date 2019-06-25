@@ -20,8 +20,8 @@ article.page.home {
 	main {
 		min-height: calc(100vh - #{$layout__navHeight}); position: relative;
 		width: 90%; margin: 0 auto; box-sizing: border-box; display: grid;
-		grid-template-rows: auto minmax(5em, auto); align-items: center;
-		justify-items: center; }
+		grid-template-rows: auto minmax(5em, auto);
+		> * { justify-self: center; align-self: center; } }
 
 	&:before {
 		content: "";
@@ -42,7 +42,7 @@ article.page.home {
 			section { display: inline; } }
 		&.grid {
 			display: grid; grid-template-columns: 1fr 1fr 1fr;
-			grid-template-rows: auto; grid-gap: 3em;
+			grid-template-rows: auto; grid-column-gap: 3em; grid-row-gap: 3em;
 			line-height: 1.2em;
 			font-size: 1.5em;
 			margin-bottom: 2em;

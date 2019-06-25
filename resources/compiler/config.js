@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   outputFolder: '../assets',
   publicFolder: 'assets',
-  proxyTarget: 'http://wp4wp.loc',
+  proxyTarget: 'http://localhost:8888/vt',
   watch: [
     '../**/*.php'
   ]

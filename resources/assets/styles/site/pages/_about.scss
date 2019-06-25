@@ -27,7 +27,8 @@
           .subtitle { color: red; text-transform: uppercase; font-weight: normal; font-size: 0.9em; }
           ul {
             margin: 0; padding: 0; list-style-type: none;
-            display: grid; grid-template-columns: 1fr 1fr; grid-gap: 0.25em;
+            display: grid; grid-template-columns: 1fr 1fr;
+            grid-column-gap: 0.25em; grid-row-gap: 0.25em;
             li {
               position: relative;
               &:before { content: "\2014"; position: absolute; }
