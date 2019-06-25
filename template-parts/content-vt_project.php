@@ -27,7 +27,7 @@ if ( have_rows( 'content' ) ) :
       <div class="layout headspace"></div> <?php
     endif;
     if ( get_row_layout() == 'marquee_video' ) : ?>
-      <div class="layout marquee-video">
+      <div class="layout marquee-video" data-vue-root="Project__MarqueeVideo">
         <div
           id="vimeo_<?php echo get_sub_field('vid_id'); ?>"
           class="embed"
@@ -81,7 +81,7 @@ if ( have_rows( 'content' ) ) :
         $items = get_sub_field( 'items' );
         $size = "full";
         if ( get_sub_field( 'slideshow' ) ) : ?>
-          <div class="layout slideshow">
+          <div class="layout slideshow" data-vue-root="Project__Slideshow">
             <div ref="items" class="items"> <?php
                 foreach ( $items as $key=>$item ) : ?>
                 <div :active="active == <?php echo $key ?>" class="item">

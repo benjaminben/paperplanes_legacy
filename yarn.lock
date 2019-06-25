@@ -626,6 +626,14 @@
     path-to-regexp "^3.0.0"
     run-async "^2.3.0"
 
+"@vimeo/player@^2.9.1":
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/@vimeo/player/-/player-2.9.1.tgz#63b0c19c127579ff839b6e2546b82ab6719effc0"
+  integrity sha512-f2OdhJ9T2AezA8g8dy+5fzOJ52afkBEfULnDGZBYwSQuOepWgmBpaC9SgVkhyrO458sYi4Ie1G3rjxprg1C8HA==
+  dependencies:
+    native-promise-only "0.8.1"
+    weakmap-polyfill "2.0.0"
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
@@ -2494,6 +2502,11 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+native-promise-only@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/native-promise-only/-/native-promise-only-0.8.1.tgz#20a318c30cb45f71fe7adfbf7b21c99c1472ef11"
+  integrity sha1-IKMYwwy0X3H+et+/eyHJnBRy7xE=
+
 needle@^2.2.1:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/needle/-/needle-2.4.0.tgz#6833e74975c444642590e15a750288c5f939b57c"
@@ -3645,6 +3658,11 @@ watchpack@^1.5.0:
     chokidar "^2.0.2"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+
+weakmap-polyfill@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/weakmap-polyfill/-/weakmap-polyfill-2.0.0.tgz#8f28f935e3853896ad40747e5258db578d9dc8de"
+  integrity sha1-jyj5NeOFOJatQHR+UljbV42dyN4=
 
 webpack-cli@^3.3.5:
   version "3.3.5"

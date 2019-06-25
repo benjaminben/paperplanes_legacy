@@ -7,21 +7,17 @@
  * @package Paper_Planes
  */
 
-wp_enqueue_script('vimeo', 'https://player.vimeo.com/api/player.js', array(), null, true);
-wp_enqueue_script(
-  'paperplanes-project',
-  get_template_directory_uri() . '/js/project.js',
-  array(
-    'vuejs',
-    'vimeo',
-    'photoswipe',
-    'photoswipe-ui-default',
-    'paperplanes-main'
-  ),
-  '20151215', true
-);
 get_header();
 ?>
+
+<div
+  id="content"
+  data-barba="container"
+  data-barba-namespace="project"
+  data-vue-root="Project"
+  style="background-color: #000"
+  data-theme="dark"
+  class="site-content <?php echo get_post_type() ?>">
 
 <div id="primary" class="content-area">
   <main id="main" class="site-main">

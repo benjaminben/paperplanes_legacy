@@ -1,14 +1,17 @@
-import barba      from "@barba/core"
-import Loader     from "./components/Loader"
-import Navigation from "./components/Navigation"
-import Home       from "./components/Home"
-import Team       from "./components/Team"
-import Work       from "./components/Work"
-import About      from "./components/About"
-import Contact    from "./components/Contact"
-import Project    from "./components/Project"
-import Play       from "./components/Play"
-import store      from "./store"
+import barba                 from "@barba/core"
+import Loader                from "./components/Loader"
+import Navigation            from "./components/Navigation"
+import Home                  from "./components/Home"
+import Team                  from "./components/Team"
+import Work                  from "./components/Work"
+import About                 from "./components/About"
+import Contact               from "./components/Contact"
+import Project               from "./components/Project"
+import Project__Slideshow    from "./components/Project__Slideshow"
+import Project__Gallery      from "./components/Project__Gallery"
+import Project__MarqueeVideo from "./components/Project__MarqueeVideo"
+import Play                  from "./components/Play"
+import store                 from "./store"
 
 const ComponentMap = {
   Loader,
@@ -18,6 +21,9 @@ const ComponentMap = {
   About,
   Work,
   Project,
+  Project__Slideshow,
+  Project__Gallery,
+  Project__MarqueeVideo,
   Contact,
   Play,
 }
@@ -40,6 +46,29 @@ barba.init({
       },
     },
     {
+      name: "project-exit-transition",
+      from: "project",
+      to: {
+        namespace: [
+          "work"
+        ]
+      },
+      beforeEnter() {
+        // store.dispatch("ui/setTheme", 1)
+        console.log("suppppp")
+        store.dispatch("ui/setEscape", null)
+      }
+    },
+    {
+      name: "project-enter-transition",
+      from: {},
+      to: {
+        namespace: [
+          "project"
+        ]
+      },
+    },
+    {
       name: "default-transition",
       from: {},
       to: {},
@@ -50,6 +79,10 @@ barba.init({
       }
     },
   ]
+})
+
+barba.hooks.before(data => {
+  console.log("SIP", data)
 })
 
 barba.hooks.beforeEnter(({current, next, trigger}) => {

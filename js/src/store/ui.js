@@ -101,6 +101,9 @@ const m = {
     },
     setTheme(context, value) {
       context.commit("theme", value)
+    },
+    setTrans(context, value) {
+      context.commit("trans", value)
     }
   },
 }
