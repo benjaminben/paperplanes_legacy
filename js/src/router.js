@@ -49,7 +49,6 @@ barba.init({
       beforeEnter: ({current, next, trigger}) => {
         const nextTheme = next.container.getAttribute("data-theme") === "dark" ? 1 : 0
         store.dispatch("ui/setTheme", nextTheme)
-        store.dispatch("ui/scrollPosition", [0,0])
         store.dispatch("nav/setEscape", null)
         store.dispatch("nav/setSlug", null)
         vueify(next.container)
@@ -136,6 +135,11 @@ barba.init({
         store.dispatch("nav/setSlug", null)
         vueify(next.container)
         return
+      },
+      afterLeave() {
+        store.dispatch("ui/setScrollPosition", [0,0])
+        store.dispatch("nav/setNavClosed")
+        store.dispatch("ui/unlockScroll")
       },
     },
   ]
