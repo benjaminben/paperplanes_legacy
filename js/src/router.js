@@ -23,6 +23,11 @@ barba.init({
   ]
 })
 
+barba.hooks.beforeEnter(data => {
+  vueify(data.next.container)
+  return
+})
+
 function vueify(root) {
   root.querySelectorAll("*[data-vue-root]").forEach(n => {
     const component = ComponentMap[n.getAttribute("data-vue-root")]

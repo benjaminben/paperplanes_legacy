@@ -24,7 +24,17 @@ new Vue({
     ]),
     ...mapActions("ui", [
       "setTrans",
+      "lockScroll",
+      "unlockScroll",
     ]),
+    toggleOpen() {
+      this.setNavOpen()
+      this.lockScroll()
+    },
+    toggleClosed() {
+      this.setNavClosed()
+      this.unlockScroll()
+    },
     checkCurrent(e) {
       if(e.currentTarget.href === window.location.href) {
         e.preventDefault()

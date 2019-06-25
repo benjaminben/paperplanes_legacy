@@ -5,8 +5,6 @@ import { animQuery }              from "../config"
 import store                      from "../store"
 
 export default (root) => {
-  root = document.querySelector(root)
-
   var siteNav = document.getElementById( 'site-navigation' )
   var content = root.querySelector(".page")
   var close = root.querySelector(".close")
@@ -93,13 +91,13 @@ export default (root) => {
           nodes: anims,
           options: { rootMargin: "0px", threshold: 0.2, },
           callback: (entries, observer) => {
-            var tops = entries.map(function(entry) {
+            var tops = entries.map(entry => {
               return entry.boundingClientRect.top
             }).sort(function(a,b) { return a < b }).filter(function(t,i,a) {
               if (a[i] !== a[i-1]) {return t}
             })
             var ct = 0
-            entries.forEach(function(entry) {
+            entries.forEach(entry => {
               if (entry.isIntersecting) {
                 if (!firstObserve) {
                   var ti = tops.indexOf(entry.boundingClientRect.top)

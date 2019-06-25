@@ -2,15 +2,24 @@
 
 get_header();
 
+$theme = get_field( 'theme' );
+if ( !$theme ) $theme = 'dark';
+$slug = $post->post_name;
 $reel = get_field('reel');
 
 ?>
+
+<div
+  id="content"
+  data-vue-root="Home"
+  style="background-color: <?php echo get_field('bg_color') ?>"
+  data-theme="<?php echo ($theme ? $theme : '')?>"
+  class="site-content <?php echo get_post_type() ?> <?php echo $slug ?>">
 
 <video class="reel" autoplay muted playsinline loop
        src="<?php echo $reel['url'] ?>"></video>
 
 <article
-  data-vue-root="Home"
   v-bind:style="{opacity: fade}"
   ref="frame"
   id="post-<?php the_ID(); ?>" <?php post_class("home"); ?>>

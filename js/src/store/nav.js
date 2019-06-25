@@ -21,19 +21,14 @@ const m = {
     setEscape(context, value) {
       context.commit("escape", value)
     },
-    setTheme(context, value) {
-      context.commit("theme", value)
-    },
     setSlug(context, value) {
       context.commit("slug", value)
     },
     setNavOpen(context, value) {
       context.commit("open", true)
       context.commit("theme", 1)
-      // actions.ui.lockScroll()
     },
     setNavClosed(context) {
-      // actions.ui.unlockScroll()
       context.commit("exiting", true)
 
       return new Promise((rs, rj) => {
