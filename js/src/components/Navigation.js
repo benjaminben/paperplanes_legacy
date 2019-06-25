@@ -1,5 +1,6 @@
 import Vue                      from "vue"
 import { mapState, mapActions } from "vuex"
+import barba                    from "@barba/core"
 import store                    from "../store"
 
 export default (root) =>
@@ -43,14 +44,14 @@ new Vue({
       }
     },
     clearEscape() {
-      this.setEscape(null)
-      this.setTrans(true)
+      // barba.request
+      // this.setEscape(null)
+      // this.setTrans(true)
     },
   },
-  mounted: function() {
-    var _this = this
-    this.$el.querySelectorAll("a[href]").forEach(function(a) {
-      a.addEventListener("click", _this.checkCurrent)
+  mounted() {
+    this.$el.querySelectorAll("a[href]").forEach(a => {
+      a.addEventListener("click", this.checkCurrent)
     })
   },
 });

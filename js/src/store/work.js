@@ -35,7 +35,7 @@ const m = {
     setFilterOpen(context, value) {
       context.commit("filterOpen", value)
     },
-    setScroll(value) {
+    setScroll(context, value) {
       context.commit("scroll", value)
     },
   },
