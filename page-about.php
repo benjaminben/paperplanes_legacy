@@ -20,12 +20,16 @@ get_header(); ?>
       if ( get_row_layout() == 'primary' ) :
         $title = get_sub_field( 'title' );
         $desc = get_sub_field( 'desc' );
-        $noListClass = have_rows( 'list' ) ? "" : " anim-fade";
-        $listHeadClass = have_rows( 'list' ) ? " anim-fade" : ""; ?>
+        $noListClass = have_rows( 'list' ) ? "" : " anim-fade anim-under";
+        $listHeadClass = have_rows( 'list' ) ? " anim-fade anim-under" : ""; ?>
         <div class="primary row<?php echo $noListClass; ?>">
-          <div class="head<?php echo $listHeadClass; ?>">
-            <h1 class="title"><?php echo $title ?></h1>
-            <p class="desc"><?php echo $desc ?></p>
+          <div class="head<?php echo $listHeadClass; ?> <?php echo (!$title||!$desc) ? " solo" : "" ?>">
+            <?php if ( $title ) : ?>
+              <h1 class="title"><?php echo $title ?></h1>
+            <?php endif; ?>
+            <?php if ( $desc ) : ?>
+              <p class="desc"><?php echo $desc ?></p>
+            <?php endif; ?>
           </div> <?php
           if ( have_rows( 'list' ) ) : $ct = 0; ?>
           <div class="list"> <?php
@@ -33,8 +37,8 @@ get_header(); ?>
               $formatted = ($ct < 10 ? '0' : '') . ($ct + 1); ?>
               <div class="item anim-fade">
                 <h1 class="count"><?php echo $formatted; ?></h1>
-                <div class="info" data-count="<?php echo $formatted; ?>">
-                  <h2 class="title"><?php the_sub_field( 'title' ) ?></h2>
+                <div class="info">
+                  <h2 class="title" data-count="<?php echo $formatted; ?>"><?php the_sub_field( 'title' ) ?></h2>
                   <h3 class="subtitle"><?php the_sub_field( 'subtitle' ) ?></h3> <?php
                   if ( have_rows( 'items' ) ) : ?>
                     <ul> <?php

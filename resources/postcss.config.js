@@ -3,7 +3,7 @@ module.exports = ({ options }) => {
     plugins: {
       'autoprefixer': { grid: true },
       'postcss-preset-env': {},
-      'css-mqpacker': {},
+      // 'css-mqpacker': {},
       'cssnano': options.dev ? false : {
         preset: ['default', {
           discardComments: { removeAll: true }

@@ -27,3 +27,19 @@
 @mixin column-width($numberColumns: 3) {
 	width: map-get( $columns, $numberColumns ) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
 }
+
+// Page titles
+@mixin page-title-base {
+	margin: 0 0 0.5em;; font-weight: bold; }
+@mixin page-title-desktop {
+	font-size: 10em; line-height: 0.8em; }
+@mixin page-title-tablet {
+	font-size: 6em; }
+@mixin page-title-mobile {
+	font-size: 3em; }
+
+// Item labels
+@mixin item-label-base {
+	line-height: 1.5em; display: block; }
+@mixin item-label-sub {
+	font-size: 0.9em; }

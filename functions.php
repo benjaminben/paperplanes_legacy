@@ -135,7 +135,6 @@ function paperplanes_scripts() {
 	}
 
 	wp_enqueue_style( 'paperplanes-style', get_stylesheet_uri() );
-	// wp_enqueue_script( 'paperplanes-app', get_template_directory_uri() . '/dist/app.js', array(), '20151215', true);
 	wp_enqueue_script( 'paperplanes-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 	if ( !wp_script_is( 'photoswipe', 'enqueued' ) ) {
 		wp_enqueue_script( 'photoswipe', get_template_directory_uri() . '/js/photoswipe-fallback.js' );

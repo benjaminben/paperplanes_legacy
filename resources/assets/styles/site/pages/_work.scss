@@ -32,11 +32,10 @@
 	.projects {
 		display: grid; grid-column-gap: 1em; grid-row-gap: 1em; }
   .project {
-    display: none; text-decoration: none; color: black; font-size: 0.9em;
+    display: none; text-decoration: none; color: black;
     .label {
-      line-height: 1.5em;
-      display: block;
-      &.sub { font-size: 0.9em; } }
+      @include item-label-base();
+      &.sub { @include item-label-sub(); } }
     &[active="true"] { display: block; }
     .preview {
       position: relative; width: 100%; padding-bottom: 56.25%; overflow: hidden;
@@ -53,12 +52,16 @@
       }
     } } }
 
+@media screen and (max-width: 768px) {
+  #content.work {
+    .project {
+      font-size: 0.9em; } }
+}
+
 @media screen and (max-width: 600px) {
-  .work {
+  #content.work {
     .ctrl {
       .grid { display: none; } }
     .projects {
-      grid-template-columns: 1fr!important;
-    }
-  }
+      grid-template-columns: 1fr!important; } }
 }

@@ -1,17 +1,21 @@
 .main-navigation {
-	display: block; width: 100%;
-	position: fixed;
+	display: block; width: 100%; position: fixed;
 	padding: $layout__navBannerPaddingTop $layout__navBannerPaddingHorizontal 0em;
-
+	a { text-decoration: none; }
 	.home-link {
-		display: inline-block; vertical-align: middle; position: relative;
+		display: block; position: relative;
 		outline: none; line-height: 1em;
 		img, svg {
-			height: $layout__navBannerHeight; width: auto;
-			&.theme-light { position: absolute; top: 0; left: 0; }
-		}
-	}
-
+			height: $layout__navBannerHeight; width: auto; display: block;
+			&.theme-light { position: absolute; top: 0; left: 0; } } }
+	.menu-toggle {
+		height: $layout__navBannerHeight; width: auto;
+		display: block; background: none; border: none; padding: 0;
+		cursor: pointer; outline: none!important;
+		path {
+			transition: all 0.5s ease;
+			&:first-of-type { transform-origin: 100px 27.5px }
+			&:last-of-type { transform-origin: 100px 72.5px } } }
 	.banner {
 		display: flex; justify-content: space-between; align-items: center; position: relative;
 	 	padding-bottom: $layout__navBannerPaddingBottom; border-width: 0px;
@@ -23,100 +27,43 @@
 		.home-link img { &.theme-dark { opacity: 1; } }
 		.home-link img { &.theme-light { opacity: 0; } }
 		.banner { border-color: white; } }
-
 	&[data-theme="light"] {
 		.home-link img { &.theme-dark { opacity: 0; } }
 		.home-link img { &.theme-light { opacity: 1; } }
 		.banner { border-color: black; } }
 
 	.menu {
-		display: none;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
-		position: absolute;
+		display: none; list-style: none; margin: 0; padding-left: 0; position: absolute;
 		text-align: right; right: $layout__navBannerPaddingHorizontal;
-
 		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 100%;
-			left: -999em;
-			z-index: 99999;
-
-			ul {
-				left: -999em;
-				top: 0;
-			}
-
+			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); float: left; position: absolute;
+			top: 100%; left: -999em; z-index: 99999;
+			ul { left: -999em; top: 0; }
 			li {
 				&:hover > ul,
-				&.focus > ul {
-					left: 100%;
-				}
-			}
-
-			a {
-				width: 200px;
-			}
-
-			:hover > a,
-			.focus > a {
-			}
-
-			a:hover,
-			a.focus {
-			}
-		}
-
+				&.focus > ul { left: 100%; } }
+			a { width: 200px; } }
 		li:hover > ul,
-		li.focus > ul {
-			left: auto;
-		}
-	}
-
+		li.focus > ul { left: auto; } }
 	li {
-		position: relative; margin-bottom: 0em; display: block;
-		font-size: 2.5em;
+		position: relative; margin-bottom: 0em; display: block; font-size: 2.5em;
 		&:last-of-type { margin-bottom: 0em; }
-
-		&:hover > a,
-		&.focus > a {
-		}
-
 		a {
-			transition: color 0.5s ease;
-			color: white; display: inline-block;
-			&:hover, &:focus { color: red; } }
-	}
-
-	a {
-		text-decoration: none;
-	}
-
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
-	}
+			transition: color 0.5s ease; color: white; display: inline-block;
+			&:hover, &:focus { color: red; } } }
 
 	&:before {
 		content: ""; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
-		background: rgba(20,20,20,1); transform: translateY(-100%);
-	}
+		background: rgba(20,20,20,1); transform: translateY(-100%); }
 
 	&.escape {
 		.menu-toggle svg path {
 			transition: all 0.5s ease;
 			&:first-of-type { transform: rotate(-45deg) translate(-6px, -16px) }
-			&:last-of-type { transform: rotate(45deg) translate(2px, 24px) }
-		}
-	}
+			&:last-of-type { transform: rotate(45deg) translate(2px, 24px) } } }
 
 	.home-link { img, svg { transition: opacity 0.5s ease; } }
 	.banner { transition: border-color 0.5s ease; }
-	.menu-toggle svg path { transition: all 0.5s ease; }
 
 	&.toggled {
 		min-height: 100vh;
@@ -135,15 +82,6 @@
 			.menu {
 				animation: menu-out 0.5s ease both; animation-delay: 0s; }
 			&:before { transform: translateY(-100%); } } }
-}
-
-.menu-toggle {
-	display: inline-block; background: none; border: none; padding: 0;
-	cursor: pointer; outline: none!important;
-	path {
-		&:first-of-type { transform-origin: 100px 27.5px }
-		&:last-of-type { transform-origin: 100px 72.5px }
-	}
 }
 
 .comment-navigation,

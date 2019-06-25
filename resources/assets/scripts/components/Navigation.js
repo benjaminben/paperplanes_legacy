@@ -40,7 +40,7 @@ new Vue({
       if(e.currentTarget.href === window.location.href) {
         e.preventDefault()
         e.stopPropagation()
-        this.setNavClosed()
+        this.toggleClosed()
       }
     },
     clearEscape() {

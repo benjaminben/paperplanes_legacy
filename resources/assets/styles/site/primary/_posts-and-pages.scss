@@ -27,7 +27,7 @@
 	padding-right: $layout__navBannerPaddingHorizontal;
  	&:before {
 		content: ""; position: fixed; top: 0; left: 0; width: 100%;
-		height: 83px; // refactor l8r
+		height: $layout__navHeight - $layout__navBannerMarginBottom; // refactor l8r
 		background-color: inherit; z-index: 1;
 	} }
 
@@ -37,7 +37,7 @@
 		padding-left: $layout__mobile__navBannerPaddingHorizontal;
 		padding-right: $layout__mobile__navBannerPaddingHorizontal;
 		&:before {
-			height: 67px; // refactor l8r
+			height: $layout__mobile__navHeight - $layout__navBannerMarginBottom; // refactor l8r
 		}
 	}
 }

@@ -2,7 +2,9 @@
   .banner {
     .text {
       color: rgba(194,191,181,1);
-      p { font-size: 10em; line-height: 0.8em; margin: 0; font-weight: bold; } }
+      p {
+        @include page-title-base;
+        @include page-title-desktop; } }
   }
   .grid {
     margin-top: 4em;
@@ -29,7 +31,7 @@
 @media screen and (max-width: 1000px) {
   #content.contact {
     .banner {
-      .text { p { font-size: 6em; } }
+      .text { p { @include page-title-tablet; } }
     }
     .grid {
       .contact {
@@ -45,7 +47,7 @@
 @media screen and (max-width: 600px) {
   #content.contact {
     .banner {
-      .text { p { font-size: 3em; } }
+      .text { p { @include page-title-mobile; } }
     }
     .item { margin-bottom: 1em; }
     .grid {
