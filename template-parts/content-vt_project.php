@@ -94,7 +94,7 @@ if ( have_rows( 'content' ) ) :
           </div> <?php
         else: ?>
           <div class="layout gallery"> <?php
-              foreach ( $items as $key=>$item ) : ?>
+              foreach ( (array)$items as $key=>$item ) : ?>
               <div class="item">
                 <?php echo wp_get_attachment_image($item['ID'], $size, '', array('data-thumb-src' => wp_get_attachment_image_src($item['ID'], $size )[0] ) ) ?>
                 <?php if ( $item['caption'] ) : ?>

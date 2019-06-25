@@ -119,6 +119,7 @@ add_action( 'widgets_init', 'paperplanes_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+
 function paperplanes_scripts() {
 	// Fonts
 	$di = new DirectoryIterator(get_template_directory() . '/assets/fonts');
@@ -134,7 +135,7 @@ function paperplanes_scripts() {
 	}
 
 	wp_enqueue_style( 'paperplanes-style', get_stylesheet_uri() );
-	wp_enqueue_script( 'paperplanes-app', get_template_directory_uri() . '/dist/app.js', array(), '20151215', true);
+	// wp_enqueue_script( 'paperplanes-app', get_template_directory_uri() . '/dist/app.js', array(), '20151215', true);
 	wp_enqueue_script( 'paperplanes-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 	if ( !wp_script_is( 'photoswipe', 'enqueued' ) ) {
 		wp_enqueue_script( 'photoswipe', get_template_directory_uri() . '/js/photoswipe-fallback.js' );
@@ -146,6 +147,12 @@ function paperplanes_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'paperplanes_scripts' );
+
+function wp4wp_scripts() {
+	wp_enqueue_style('main_css', get_template_directory_uri() . '/assets/styles/main.css', array(), '1.0', false);
+	wp_enqueue_script('main_js', get_template_directory_uri() . '/assets/scripts/main.js', array(), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'wp4wp_scripts');
 
 /**
  * Implement the Custom Header feature.
