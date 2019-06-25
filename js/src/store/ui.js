@@ -2,6 +2,7 @@ const initTheme = document.body.getAttribute("data-theme") === "dark" ? 1 : 0
 const initSlug = document.body.getAttribute("data-slug")
 
 const m = {
+  namespaced: true,
   state: {
     activeListeners: [], // TEMP: Should be objects
     activeObservers: [],
@@ -16,41 +17,46 @@ const m = {
     activeListeners(state, value) {
       state.activeListeners = value
     },
-    theme(state, value) => {
+    activeObservers(state, value) {
+      state.activeObservers = value
+    },
+    theme(state, value) {
       state.theme = value
     },
-    loaded(state) => {
-      state.loaded = true
+    loaded(state, value) {
+      state.loaded = value
     },
-    runIntro(state, value) => {
+    runIntro(state, value) {
       state.runIntro = value
     },
-    trans(state, value) => {
+    trans(state, value) {
       state.trans = value
     },
-    scrollPosition(state, value) => {
+    scrollPosition(state, value) {
       state.scrollPosition = value
     },
-    previousOverflow(state, value) => {
+    previousOverflow(state, value) {
       state.previousOverflow = value
     },
   },
   actions: {
     registerEventListener(context, o) {
-      target.addEventListener(o.type, o.fn)
-      const l = state.activeListeners.concat([{type, target, fn}])
+      const {target, type, fn} = o
+      target.addEventListener(type, fn)
+      const l = context.state.activeListeners.concat([{type, target, fn}])
       context.commit("activeListeners", l)
     },
     unregisterEventListeners(context) {
-      context.activeListeners.forEach(l => {
+      context.state.activeListeners.forEach(l => {
         l.target.removeEventListener(l.type, l.fn)
       })
       context.commit("activeListeners", [])
     },
     registerObserver(context, config) {
-      const options = config.options || {
+      const options = {
         rootMargin: "0px",
         threshold: 1.0,
+        ...config.options
       }
       const callback = config.callback || function(entries, observer) {
         console.log("OOPS: Did you forget to pass an observer callback?")
@@ -58,11 +64,11 @@ const m = {
       const observer = new IntersectionObserver(callback, options)
       Array.from(config.nodes).forEach(function(n,i,a) {observer.observe(n)})
 
-      const o = context.activeObservers.concat([observer])
+      const o = context.state.activeObservers.concat([observer])
       context.commit("activeObservers", o)
     },
     unregisterObservers(context) {
-      context.activeObservers.forEach(function(io) {
+      context.state.activeObservers.forEach(function(io) {
         io.disconnect()
       })
       context.commit("activeObservers", [])
@@ -78,14 +84,20 @@ const m = {
         self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
         self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop ]
       context.commit("scrollPosition", position)
-      context.commit("previousOverflow", "hidden")
+      context.commit("previousOverflow", document.documentElement.style.overflow)
       document.documentElement.style.overflow = 'hidden'
       window.scrollTo(position[0], position[1])
     },
     unlockScroll(context) {
-      const {scrollPosition, previousOverflow} = context
+      const {scrollPosition, previousOverflow} = context.state
       document.documentElement.style.overflow = previousOverflow
       window.scrollTo(scrollPosition[0], scrollPosition[1])
+    },
+    clearIntro(context) {
+      context.commit("runIntro", false)
+    },
+    setLoaded(context) {
+      context.commit("loaded", true)
     },
   },
 }

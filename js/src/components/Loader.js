@@ -1,31 +1,47 @@
-(function() {
-  var doc = document.documentElement
+import Vue from "vue"
+import { mapState, mapActions } from "vuex"
+import { TimelineMax, TweenMax } from "gsap"
+import store from "../store"
+
+export default (root) => {
   var tl = new TimelineMax({repeat: -1})
   tl.repeatDelay(1)
-  var n = new Vue({
-    el: "#loader",
+
+  return new Vue({
+    store,
+    el: root,
     data: {
-      shared: doc._state.ui,
       private: {
         animLength: 3000,
       },
     },
+    computed: {
+      ...mapState("ui", {
+        loaded: state => state.loaded
+      })
+    },
     methods: {
-      cleanUp: function() {
+      ...mapActions("ui", [
+        "lockScroll",
+        "unlockScroll",
+        "setLoaded",
+        "boop",
+      ]),
+      cleanUp() {
         tl.repeat(0)
-        tl.eventCallback("onComplete", function() {
+        tl.eventCallback("onComplete", () => {
           TweenMax.to("#loader", 0.5, {
             opacity: 0,
-            onComplete: function() {
-              doc._actions.ui.setLoaded()
-              doc._actions.ui.unlockScroll()
+            onComplete: () => {
+              this.setLoaded()
+              this.unlockScroll()
             }
           })
         })
       }
     },
-    mounted: function() {
-      doc._actions.ui.lockScroll()
+    mounted() {
+      this.lockScroll()
       window.addEventListener("load", this.cleanUp)
       if (document.readyState === "complete") {
         window.removeEventListener("load", this.cleanUp)
@@ -69,8 +85,6 @@
           autoRound: false,
         }),
       ], 1.5)
-
-      // tl.set({},{},1)
     }
   })
-})()
+}

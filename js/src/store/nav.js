@@ -1,6 +1,7 @@
 const initSlug = document.body.getAttribute("data-slug")
 
 const m = {
+  namespaced: true,
   state: {
     slug: initSlug,
     open: false,

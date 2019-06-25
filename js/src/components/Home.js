@@ -1,78 +1,98 @@
-(function() {
-  var doc = document.documentElement
-  var animQuery = "*[class^=anim-]:not(.anim-active), *[class*= anim-]:not(.anim-active)"
+import Vue from "vue"
+import { mapState, mapActions } from "vuex"
+import {TimelineMax, TweenLite} from "gsap"
+import {animQuery} from "../config"
+import store from "../store"
+
+export default (root) => {
+  root = document.querySelector(root)
+
   var siteNav = document.getElementById( 'site-navigation' )
-  var content = document.querySelector("#content.home .page")
-  var close = document.querySelector("#content.home .close")
+  var content = root.querySelector(".page")
+  var close = root.querySelector(".close")
   var introTl = new TimelineMax()
 
   var paddingTop
   var cDims
 
-  new Vue({
-    el: "#content.home",
+  return new Vue({
+    store,
+    el: root,
     data: {
       fade: 1,
       intro: true,
       ready: false,
       display: false,
-      ui: doc._state.ui,
+    },
+    computed: {
+      ...mapState("ui", {
+        runIntro: state => state.runIntro,
+        loaded: state => state.loaded
+      })
     },
     watch: {
-      ui: {
-        handler: function(val, oldVal) {
-          if (val.loaded && this.ui.runIntro) {this.init()}
-          if (val.loaded && this.display) {this.displayContent()}
-        },
-        deep: true,
+      loaded: {
+        handler(val, oldVal) {
+          if (val && this.runIntro) {this.init()}
+          if (val && this.display) {this.displayContent()}
+        }
       },
       intro: {
-        handler: function(val, oldVal) {
+        handler(val, oldVal) {
           if (!val && oldVal) { this.ready = true }
         }
       }
     },
-    mounted: function() {
-      if (this.ui.runIntro) {
+    mounted() {
+      if (this.runIntro) {
         this.intro = true
         TweenLite.set(this.$refs.introLogo, {opacity: 0})
       } else {
         this.intro = false
       }
 
-      if (this.ui.loaded) {
-        this.init()
-      }
+      if (this.loaded) { this.init() }
     },
     methods: {
-      init: function() {
-        var _this = this
-        _this.handleResize()
-        _this.handleScroll()
-        doc._actions.ui.registerEventListener("scroll", window, _this.handleScroll)
-        doc._actions.ui.registerEventListener("resize", window, _this.handleResize)
-        if (this.ui.runIntro) {
+      ...mapActions("ui", [
+        "registerEventListener",
+        "registerObserver",
+        "clearIntro",
+      ]),
+      init() {
+        this.handleResize()
+        this.handleScroll()
+        this.registerEventListener({
+          type: "scroll",
+          target: window,
+          fn: this.handleScroll
+        })
+        this.registerEventListener({
+          type: "resize",
+          target: window,
+          fn: this.handleResize
+        })
+        if (this.runIntro) {
           introTl.add(new TweenLite(this.$refs.introLogo, 0.5, {opacity: 1}))
           introTl.add(new TweenLite(this.$refs.intro, 1, {
             opacity: 0,
-            onComplete: function() {
-              doc._actions.ui.clearIntro()
-              _this.intro = false
-              _this.displayContent()
+            onComplete: () => {
+              this.clearIntro()
+              this.intro = false
+              this.displayContent()
             }
           }), "+=2")
         } else {
           this.displayContent()
         }
       },
-      displayContent: function() {
-        var _this = this
+      displayContent() {
         var anims = Array.from(this.$el.querySelectorAll(animQuery))
         var firstObserve = false
-        doc._actions.ui.registerObserver(
-          anims,
-          { rootMargin: "0px", threshold: 0.2, },
-          function(entries, observer) {
+        this.registerObserver({
+          nodes: anims,
+          options: { rootMargin: "0px", threshold: 0.2, },
+          callback: (entries, observer) => {
             var tops = entries.map(function(entry) {
               return entry.boundingClientRect.top
             }).sort(function(a,b) { return a < b }).filter(function(t,i,a) {
@@ -92,16 +112,16 @@
             })
             if (!firstObserve) {firstObserve = true}
           }
-        )
-        _this.display = true
+        })
+        this.display = true
       },
-      handleResize: function() {
+      handleResize() {
         cDims = this.$refs.content.getBoundingClientRect()
         paddingTop = parseFloat(
           window.getComputedStyle(this.$refs.frame, null)
           .getPropertyValue('padding-top'))
       },
-      handleScroll: function(e) {
+      handleScroll(e) {
         var totalHeight = cDims.height + paddingTop
         var overflow = Math.max(totalHeight - window.innerHeight, 0)
         var comp = window.scrollY - overflow
@@ -109,12 +129,12 @@
         if (amt === Infinity || amt < 0) {amt = 1}
         this.fade = (1 - amt).toFixed(2)
       },
-      forceEnter: function(e) {
+      forceEnter(e) {
         scrollToY(document.body.clientHeight - window.innerHeight, 100, 'easeInOutQuint')
       },
     },
   })
-})()
+}
 
 // first add raf shim
 // http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/

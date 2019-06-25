@@ -1,4 +1,5 @@
 const m = {
+  namespaced: true,
   state: {
     gridStyle: {
       gridTemplateColumns: "1fr 1fr 1fr"

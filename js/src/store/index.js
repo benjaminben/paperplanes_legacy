@@ -1,15 +1,18 @@
+import Vue from "vue"
 import Vuex from "vuex"
+import logger from "vuex/dist/logger"
 
 import ui from "./ui"
 import nav from "./nav"
 import work from "./work"
-import private from "./private"
 
-const store = new Vuex.Store({
+Vue.use(Vuex)
+
+export default new Vuex.Store({
   modules: {
     ui,
     nav,
     work,
-    private,
-  }
+  },
+  plugins: [logger()],
 })

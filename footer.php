@@ -18,7 +18,7 @@
 		</div><!-- .barba-container -->
 	</main><!-- #barba-wrapper -->
 	<?php get_template_part( 'template-parts/content', 'photoswipe' ); ?><!-- Ideally this isn't global -->
-	<div id="loader" v-bind:style="{ display: shared.loaded ? 'none' : 'flex' }">
+	<div id="loader" v-bind:style="{ display: loaded ? 'none' : 'flex' }">
 		<?php get_template_part( 'template-parts/graphic', 'plane' ); ?>
 	</div>
 	<noscript>

@@ -1,10 +1,5 @@
 <?php
 
-wp_enqueue_script(
-  'paperplanes-home',
-  get_template_directory_uri() . '/js/home.js',
-  array("paperplanes-main"), '20151215', true
-);
 get_header();
 
 $reel = get_field('reel');
@@ -15,6 +10,7 @@ $reel = get_field('reel');
        src="<?php echo $reel['url'] ?>"></video>
 
 <article
+  data-vue-root="home"
   v-bind:style="{opacity: fade}"
   ref="frame"
   id="post-<?php the_ID(); ?>" <?php post_class("home"); ?>>
