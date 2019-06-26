@@ -44,6 +44,6 @@ function paperplanes_menu_item_atts( $atts, $item, $args )
 	$s = get_post_field( 'post_name', get_post_meta( $item->ID, '_menu_item_object_id', true ) );
 	$atts['data-dest'] = $s;
 	$atts['class'] = 'menu-link';
-	$atts['v-bind:style'] = "{ color: slug === '" . $s . "' ? 'red' : '' }";
+	$atts['v-bind:class'] = "{ active: slug === '" . $s . "' }";
 	return $atts;
 }
