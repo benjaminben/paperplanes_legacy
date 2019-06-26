@@ -6,9 +6,11 @@
   "author": "benBen <benmbenjamin@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "serve": "node compiler/serve",
-    "start": "node compiler/serve",
-    "build": "node compiler/build"
+    "start": "node boop/serve",
+    "build": "node boop/build",
+    "serveHot": "node compiler/serve",
+    "startHot": "node compiler/serve",
+    "buildHot": "node compiler/build"
   },
   "browserslist": [
     "> 0.5%",
