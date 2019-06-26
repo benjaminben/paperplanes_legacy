@@ -3,7 +3,6 @@ import { mapState, mapActions } from "vuex"
 import { animQuery }            from "../config"
 import store                    from "../store"
 
-
 export default (root) => {
   return new Vue({
     store,

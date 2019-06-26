@@ -77,7 +77,7 @@
         img { width: 100%; height: auto; } } } }
   .post-navigation {
     width: 80%; margin: 0 auto 4em; display: flex; justify-content: space-between;
-    a { color: red; }
+    a { color: $color__red; }
   }
 }
 
@@ -103,13 +103,14 @@
 /* Mobile Padding */
 @media screen and (max-width: 600px) {
   #content.vt_project {
-    padding-top: $layout__navHeight;
+    padding-top: $layout__mobile__navHeight;
     .layout {
       width: calc(100% - #{$layout__mobile__navBannerPaddingHorizontal * 2});
       &.headspace { display: none; }
       &.generic { * { font-size: 0.9em; } }
       &.title { * { font-size: 1em; } }
       &.marquee-video {
+        z-index: 0;
         width: calc(100% - #{$layout__mobile__navBannerPaddingHorizontal * 2});
         .cover .ctrl .play-btn { font-size: 0.66em; } }
       &.credits {

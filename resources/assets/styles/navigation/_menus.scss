@@ -1,7 +1,9 @@
 .main-navigation {
 	display: block; width: 100%; position: fixed;
 	padding: $layout__navBannerPaddingTop $layout__navBannerPaddingHorizontal 0em;
-	a { text-decoration: none; }
+	a {
+		&.active { color: $color__red; }
+		text-decoration: none; }
 	.home-link {
 		display: block; position: relative;
 		outline: none; line-height: 1em;

@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractWebpackPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const NonJsEntryCleanupPlugin = require('./non-js-entry-cleanup-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const { context, entry, devtool, outputFolder, publicFolder } = require('./config');
@@ -75,15 +75,10 @@ module.exports = (options) => {
         }),
         new NonJsEntryCleanupPlugin({
           context: 'styles',
-          extesion: 'js',
+          extesions: 'js',
           includeSubfolders: true
         }),
-        new CopyWebpackPlugin([
-          path.resolve(outputFolder)
-        ], {
-          allowExternal: true,
-          beforeEmit: true
-        }),
+        new CleanWebpackPlugin(),
         new CopyWebpackPlugin([
           {
             from: path.resolve(`${context}/**/*`),

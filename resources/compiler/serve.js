@@ -8,12 +8,12 @@ const webpackConfig = require('./webpack.config')({ dev: true });
 const getPublicPath = require('./publicPath');
 
 const compiler = webpack(webpackConfig);
-
+console.log(getPublicPath(publicFolder))
 const middleware = [
   webpackDevMiddleware(compiler, {
     publicPath: getPublicPath(publicFolder),
     logLevel: 'silent',
-    quiet: true
+    quiet: true,
   }),
   webpackHotMiddleware(compiler, {
     log: false,
@@ -27,7 +27,8 @@ browserSync.init({
     target: proxyTarget,
     middleware
   },
-  logLevel: 'silent',
+  open: false,
+  logLevel: 'debug',
   files: watch.map(element => path.resolve(element)),
   snippetOptions: {
     rule: {
