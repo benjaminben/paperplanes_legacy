@@ -7,7 +7,6 @@ import {
 
 export default (root) => {
   console.log("No vue defined for Project")
-  console.log("BOOO")
   // TEMP: Redundant with router.js BUT in case initial load...
   store.dispatch("ui/setTheme", 1)
   store.dispatch("ui/setTrans", true)

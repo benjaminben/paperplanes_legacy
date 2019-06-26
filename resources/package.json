@@ -6,8 +6,8 @@
   "author": "benBen <benmbenjamin@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node boop/serve",
-    "build": "node boop/build",
+    "start": "webpack --watch --mode=development",
+    "build": "webpack",
     "serveHot": "node compiler/serve",
     "startHot": "node compiler/serve",
     "buildHot": "node compiler/build"
