@@ -122,14 +122,16 @@ add_action( 'widgets_init', 'paperplanes_widgets_init' );
 
 function paperplanes_scripts() {
 	// Fonts
-	$di = new DirectoryIterator(get_template_directory() . '/assets/fonts');
-	foreach ($di as $fileinfo) {
-		if ($fileinfo->isDir() && !$fileinfo->isDot()) {
-			$dir = $fileinfo->getFilename();
-			$rel = '/assets/fonts/' . $dir . '/stylesheet.css';
-			$p = get_template_directory() . $rel;
-			if (file_exists($p)) {
-				wp_enqueue_style('font-family-'.$dir, get_template_directory_uri() . $rel);
+	if (file_exists(get_template_directory() . '/assets/fonts')) {
+		$di = new DirectoryIterator(get_template_directory() . '/assets/fonts');
+		foreach ($di as $fileinfo) {
+			if ($fileinfo->isDir() && !$fileinfo->isDot()) {
+				$dir = $fileinfo->getFilename();
+				$rel = '/assets/fonts/' . $dir . '/stylesheet.css';
+				$p = get_template_directory() . $rel;
+				if (file_exists($p)) {
+					wp_enqueue_style('font-family-'.$dir, get_template_directory_uri() . $rel);
+				}
 			}
 		}
 	}
