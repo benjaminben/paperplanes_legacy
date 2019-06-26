@@ -5,18 +5,7 @@
   display: flex; align-items: center; justify-content: center;
 
   svg {
-    width: 75px; height: auto;
-    .l1 {
-      opacity: 0;
-      // stroke-dasharray: 798.0558px;
-      // stroke-dashoffset: 798.0558px;
-      // animation: plane-l1 3s infinite ease-in;
-    }
-    .l2 {
-      opacity: 0;
-      // stroke-dasharray: 580.44714px;
-      // stroke-dashoffset: -580.44714px;
-      // animation: plane-l2 3s infinite ease-in;
-    }
-  }
+    width: 50px; height: auto;
+    .l1 { opacity: 0; }
+    .l2 { opacity: 0; } }
 }

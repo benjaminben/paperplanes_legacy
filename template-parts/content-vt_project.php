@@ -46,22 +46,22 @@ if ( have_rows( 'content' ) ) :
       </div> <?php
     endif;
     if ( get_row_layout() == 'title' ) : ?>
-      <div class="layout title">
+      <div class="layout title anim-fade anim-under">
         <h1><?php get_sub_field( 'alt' ) ? the_sub_field( 'alt' ) : the_title() ?></h1>
       </div> <?php
     endif;
     if ( get_row_layout() == 'generic' ) : ?>
-      <div class="layout generic"><?php the_sub_field( 'content' ) ?></div> <?php
+      <div class="layout generic anim-fade anim-under"><?php the_sub_field( 'content' ) ?></div> <?php
     endif;
     if ( get_row_layout() == 'credits' ) : ?>
       <div class="layout credits">
-        <h5 class="heading">Credit List</h5>
+        <h5 class="heading anim-fade anim-under">Credit List</h5>
         <div class="lines"><?php
           if ( have_rows( 'lines' ) ) :
             $ct = 0;
             while ( have_rows( 'lines' ) ) : the_row();
               if ( $ct == 0 ) :
-                ?><span class="group"><?php
+                ?><span class="group anim-fade anim-under"><?php
               endif; ?>
             <span class="line">
               <span class="role"><?php the_sub_field("role"); ?>: </span>
@@ -89,14 +89,24 @@ if ( have_rows( 'content' ) ) :
                 </div> <?php
                 endforeach; ?>
             </div>
-            <span @click="navPrev" class="ctrl prev"><</span>
-            <span @click="navNext" class="ctrl next">></span>
+            <span @click="navPrev" class="ctrl prev">
+              <svg width="1.2em" height="1.2em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.73 29.73">
+                <circle cx="14.87" cy="14.87" r="14.87" fill="rgba(0,0,0,0.2)"/>
+                <polyline points="18.54 6.62 11.19 14.87 18.54 23.11" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+              </svg>
+            </span>
+            <span @click="navNext" class="ctrl next">
+              <svg width="1.2em" height="1.2em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.73 29.73">
+                <circle cx="14.87" cy="14.87" r="14.87" fill="rgba(0,0,0,0.2)"/>
+                <polyline points="11.19 23.11 18.54 14.87 11.19 6.62" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+              </svg>
+            </span>
           </div> <?php
         else: ?>
           <div class="layout gallery"> <?php
               foreach ( (array)$items as $key=>$item ) : ?>
               <div class="item">
-                <?php echo wp_get_attachment_image($item['ID'], $size, '', array('data-thumb-src' => wp_get_attachment_image_src($item['ID'], $size )[0] ) ) ?>
+                <?php echo wp_get_attachment_image($item['ID'], $size, '', array('class' => 'anim-fade anim-scale-down', 'data-thumb-src' => wp_get_attachment_image_src($item['ID'], $size )[0] ) ) ?>
                 <?php if ( $item['caption'] ) : ?>
                   <span class="caption"><?php echo $item['caption']; ?></span>
                 <?php endif ?>
