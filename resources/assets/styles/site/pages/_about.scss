@@ -1,15 +1,10 @@
 #content.about {
   padding-bottom: 4em;
-  padding-top: calc(
-    #{$layout__navBannerPaddingTop} +
-  	#{$layout__navBannerHeight} +
-  	#{$layout__navBannerPaddingBottom} +
-    #{$layout__navBannerBorderBottom}
-  );
+  padding-top: $layout__navBannerPaddingTop + $layout__navBannerHeight + $layout__navBannerPaddingBottom + $layout__navBannerBorderBottom;
   .row {
     &.primary {
       border-bottom: 1px solid white; min-height: 12em;
-      padding-top: 1em; box-sizing: border-box;
+      padding-top: 1.5em; box-sizing: border-box;
       &:last-of-type { border-bottom: none; }
       .head {
         display: grid; grid-template-columns: 1fr 0.8fr; grid-column-gap: 2em;
@@ -79,6 +74,7 @@
 
 @media screen and (max-width: 600px) {
   #content.about {
+    padding-top: $layout__mobile__navBannerPaddingTop + $layout__navBannerHeight + $layout__navBannerPaddingBottom + $layout__navBannerBorderBottom;
     .row {
       &.primary {
         .head {

@@ -3,6 +3,7 @@ import { mapState, mapActions } from "vuex"
 import { animQuery }            from "../config"
 import store                    from "../store"
 
+
 export default (root) => {
   return new Vue({
     store,
@@ -29,9 +30,10 @@ export default (root) => {
       init() {
         var anims = Array.from(this.$el.querySelectorAll(animQuery))
         var firstObserve = false
+        const dly = 0;
         this.registerObserver({
           nodes: anims,
-          options: { threshold: 0.2 },
+          options: { threshold: 0 },
           callback: (entries, observer) => {
             var tops = entries.map(entry => {
               return entry.boundingClientRect.top
@@ -45,8 +47,10 @@ export default (root) => {
                   var ti = tops.indexOf(entry.boundingClientRect.top)
                   ct = ti !== -1 ? ti : 0
                 }
+                var td = `${dly*ct}s`
+                console.log(td)
                 entry.target.className += " anim-active"
-                entry.target.style.transitionDelay = 0.5*ct + "s"
+                entry.target.style.transitionDelay = td
                 observer.unobserve(entry.target)
               }
             })

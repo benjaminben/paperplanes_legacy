@@ -8,8 +8,10 @@
     grid-column-gap: 1em; grid-row-gap: 1em;
     .member { margin-bottom: 2em; }
     .headshot {
-      position: relative; width: 100%; padding-bottom: 120%;
-      img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; } }
+      position: relative; width: 100%; padding-bottom: 120%; overflow: hidden;
+      img {
+        transition-delay: inherit!important;
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; } }
     .name {
       margin: 1em 0 0em;
       @include item-label-base();

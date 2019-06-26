@@ -128,7 +128,7 @@ export default (root) => {
         this.fade = (1 - amt).toFixed(2)
       },
       forceEnter(e) {
-        scrollToY(document.body.clientHeight - window.innerHeight, 100, 'easeInOutQuint')
+        scrollToY(document.body.clientHeight - window.innerHeight, 50, 'easeInOutQuint')
       },
     },
   })

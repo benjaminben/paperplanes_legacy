@@ -34,7 +34,9 @@ $post_objects = get_field('whitelisted_staff', 'theme-settings');
     if ( $post_objects ) :
       foreach ( $post_objects as $post ) : ?>
         <span class="member anim-fade">
-          <div class="headshot"><?php the_post_thumbnail($post->ID) ?></div>
+          <div class="headshot">
+            <?php the_post_thumbnail($post->ID, ['class' => 'anim-scale-down']) ?>
+          </div>
           <?php the_title('<h4 class="name">', "</h4>") ?>
           <span class="role"><?php echo get_field("role") ?></span>
         </span> <?php
