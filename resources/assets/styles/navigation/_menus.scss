@@ -50,7 +50,7 @@
 		&:last-of-type { margin-bottom: 0em; }
 		a {
 			transition: color 0.5s ease; color: white; display: inline-block;
-			&:hover, &:focus { color: red; } } }
+			&:hover, &:focus { color: $color__red; } } }
 
 	&:before {
 		content: ""; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
