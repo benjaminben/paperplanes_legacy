@@ -84,25 +84,27 @@ if ( have_rows( 'content' ) ) :
         $size = "full";
         if ( get_sub_field( 'slideshow' ) ) : ?>
           <div class="layout slideshow" data-vue-root="Project__Slideshow">
-            <div ref="items" class="items"> <?php
-                foreach ( $items as $key=>$item ) : ?>
-                <div :active="active == <?php echo $key ?>" class="item">
-                  <?php echo wp_get_attachment_image( $item["ID"], $size ) ?>
-                </div> <?php
-                endforeach; ?>
+            <div class="cnr">
+              <div ref="items" class="items"> <?php
+                  foreach ( $items as $key=>$item ) : ?>
+                  <div :active="active == <?php echo $key ?>" class="item">
+                    <?php echo wp_get_attachment_image( $item["ID"], $size ) ?>
+                  </div> <?php
+                  endforeach; ?>
+              </div>
+              <span @click="navPrev" class="ctrl prev">
+                <svg width="1.2em" height="1.2em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.73 29.73">
+                  <circle cx="14.87" cy="14.87" r="14.87" fill="rgba(0,0,0,0.2)"/>
+                  <polyline points="18.54 6.62 11.19 14.87 18.54 23.11" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+                </svg>
+              </span>
+              <span @click="navNext" class="ctrl next">
+                <svg width="1.2em" height="1.2em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.73 29.73">
+                  <circle cx="14.87" cy="14.87" r="14.87" fill="rgba(0,0,0,0.2)"/>
+                  <polyline points="11.19 23.11 18.54 14.87 11.19 6.62" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+                </svg>
+              </span>
             </div>
-            <span @click="navPrev" class="ctrl prev">
-              <svg width="1.2em" height="1.2em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.73 29.73">
-                <circle cx="14.87" cy="14.87" r="14.87" fill="rgba(0,0,0,0.2)"/>
-                <polyline points="18.54 6.62 11.19 14.87 18.54 23.11" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-              </svg>
-            </span>
-            <span @click="navNext" class="ctrl next">
-              <svg width="1.2em" height="1.2em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.73 29.73">
-                <circle cx="14.87" cy="14.87" r="14.87" fill="rgba(0,0,0,0.2)"/>
-                <polyline points="11.19 23.11 18.54 14.87 11.19 6.62" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-              </svg>
-            </span>
           </div> <?php
         else: ?>
           <div class="layout gallery"> <?php

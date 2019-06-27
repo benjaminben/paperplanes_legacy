@@ -88,7 +88,7 @@ module.exports = (options) => {
           ignore: [
             '*.js',
             '*.scss',
-            'stylesheet.css' // Need this for fonts/*/stylesheet.css structure
+            // '*.css' // Need this for fonts/*/stylesheet.css structure
           ]
         })
       ])
