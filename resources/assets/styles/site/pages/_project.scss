@@ -75,7 +75,7 @@
       .item {
         display: inline-block; user-select: none; width: 100%; overflow: hidden;
         .caption { display: none; }
-        img { width: 100%; height: auto; display: block; } } } }
+        img { cursor: pointer; width: 100%; height: auto; display: block; } } } }
   .post-navigation {
     width: 80%; margin: 0 auto 4em; display: flex; justify-content: space-between;
     a { color: $color__red; }

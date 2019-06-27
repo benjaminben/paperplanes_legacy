@@ -2,6 +2,7 @@ import Vue                        from "vue"
 import { mapState, mapActions }   from "vuex"
 import { TimelineMax, TweenLite } from "gsap"
 import { animQuery }              from "../config"
+import { initAnims }              from "../utils/anims"
 import store                      from "../store"
 
 export default (root) => {
@@ -32,7 +33,9 @@ export default (root) => {
       loaded: {
         handler(val, oldVal) {
           if (val && this.runIntro) {this.init()}
-          if (val && this.display) {this.displayContent()}
+          if (val && this.display) {
+            this.displayContent()
+          }
         }
       },
       intro: {
@@ -85,32 +88,33 @@ export default (root) => {
         }
       },
       displayContent() {
-        var anims = Array.from(this.$el.querySelectorAll(animQuery))
-        var firstObserve = false
-        this.registerObserver({
-          nodes: anims,
-          options: { rootMargin: "0px", threshold: 0.2, },
-          callback: (entries, observer) => {
-            var tops = entries.map(entry => {
-              return entry.boundingClientRect.top
-            }).sort(function(a,b) { return a < b }).filter(function(t,i,a) {
-              if (a[i] !== a[i-1]) {return t}
-            })
-            var ct = 0
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                if (!firstObserve) {
-                  var ti = tops.indexOf(entry.boundingClientRect.top)
-                  ct = ti !== -1 ? ti : 0
-                }
-                entry.target.className += " anim-active"
-                entry.target.style.transitionDelay = 0.5*ct + "s"
-                observer.unobserve(entry.target)
-              }
-            })
-            if (!firstObserve) {firstObserve = true}
-          }
-        })
+        initAnims(this.$el)
+        // var anims = Array.from(this.$el.querySelectorAll(animQuery))
+        // var firstObserve = false
+        // this.registerObserver({
+        //   nodes: anims,
+        //   options: { rootMargin: "0px", threshold: 0.2, },
+        //   callback: (entries, observer) => {
+        //     var tops = entries.map(entry => {
+        //       return entry.boundingClientRect.top
+        //     }).sort(function(a,b) { return a < b }).filter(function(t,i,a) {
+        //       if (a[i] !== a[i-1]) {return t}
+        //     })
+        //     var ct = 0
+        //     entries.forEach(entry => {
+        //       if (entry.isIntersecting) {
+        //         if (!firstObserve) {
+        //           var ti = tops.indexOf(entry.boundingClientRect.top)
+        //           ct = ti !== -1 ? ti : 0
+        //         }
+        //         entry.target.className += " anim-active"
+        //         entry.target.style.transitionDelay = 0.5*ct + "s"
+        //         observer.unobserve(entry.target)
+        //       }
+        //     })
+        //     if (!firstObserve) {firstObserve = true}
+        //   }
+        // })
         this.display = true
       },
       handleResize() {

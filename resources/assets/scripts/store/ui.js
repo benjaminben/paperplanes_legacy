@@ -116,6 +116,9 @@ const m = {
       if (backgroundColor) {document.body.style.backgroundColor = backgroundColor}
     },
   },
+  getters: {
+    loaded: state => state.loaded
+  }
 }
 
 export default m

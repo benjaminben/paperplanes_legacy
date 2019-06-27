@@ -1,6 +1,7 @@
 import Vue from "vue"
 import { mapState, mapActions } from "vuex"
 import { TimelineMax, TweenMax } from "gsap"
+import { initAnims } from "../utils/anims"
 import store from "../store"
 
 export default (root) => {
@@ -33,7 +34,11 @@ export default (root) => {
             opacity: 0,
             onComplete: () => {
               this.setLoaded()
+              store.dispatch("ui/setScrollPosition", [
+                self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
+                self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop ])
               this.unlockScroll()
+              initAnims(document.body)
             }
           })
         })
