@@ -23,6 +23,7 @@ $reel = get_field('reel');
        src="<?php echo $reel['url'] ?>"></video>
 
 <article
+  v-bind:class="{'no-display': !display}"
   v-bind:style="{opacity: fade}"
   ref="frame"
   id="post-<?php the_ID(); ?>" <?php post_class("home"); ?>>

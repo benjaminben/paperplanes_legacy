@@ -28,7 +28,7 @@ export default (root) => {
         "registerObserver",
       ]),
       init() {
-        initAnims(this.$el)
+        // initAnims(this.$el)
       },
     },
     mounted() {

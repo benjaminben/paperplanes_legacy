@@ -18,28 +18,29 @@ function uniq(a) {
 
 function initAnims(root) {
   var anims = Array.from(root.querySelectorAll(`${animQuery}`))
+  console.log("sup anims", anims)
 
-  // store.dispatch("ui/registerObserver", { // Set delays
-  //   nodes: anims,
-  //   options: { rootMargin: "0px", threshold: 0.1 },
-  //   callback: (entries, observer) => {
-  //     let delay = 0
-  //     // const tops = uniq(entries.map(e => e.boundingClientRect.top)).sort((a,b) => a < b)
-  //     // const ct = 0
-  //     // const prevTop = 0
-  //     entries.forEach((e,i) => {
-  //       if (e.isIntersecting) {
-  //         // if (!e.target.className.match("anim-match-delay")) {
-  //         //   ct += 1
-  //         //   prevTop = e.boundingClientRect.top
-  //         // }
-  //         const delay = 0.5 * i
-  //         e.target.style.transitionDelay = `${delay}s`
-  //       }
-  //     })
-  //     entries.forEach(e => observer.unobserve(e.target))
-  //   }
-  // })
+  store.dispatch("ui/registerObserver", { // Set delays
+    nodes: anims,
+    options: { rootMargin: "0px", threshold: 0.1 },
+    callback: (entries, observer) => {
+      let delay = 0
+      // const tops = uniq(entries.map(e => e.boundingClientRect.top)).sort((a,b) => a < b)
+      // const ct = 0
+      // const prevTop = 0
+      entries.forEach((e,i) => {
+        if (e.isIntersecting) {
+          // if (!e.target.className.match("anim-match-delay")) {
+          //   ct += 1
+          //   prevTop = e.boundingClientRect.top
+          // }
+          const delay = 0.5 * i
+          e.target.style.transitionDelay = `${delay}s`
+        }
+      })
+      entries.forEach(e => observer.unobserve(e.target))
+    }
+  })
 
   store.dispatch("ui/registerObserver", { // Main loop
     nodes: anims,

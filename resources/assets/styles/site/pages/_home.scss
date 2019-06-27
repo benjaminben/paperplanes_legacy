@@ -52,6 +52,10 @@ article.page.home {
 
 	.close {
 		cursor: pointer; }
+
+	&.no-display {
+		section { opacity: 0!important; transform: translate(0,1em)!important; }
+	}
 }
 
 #intro {

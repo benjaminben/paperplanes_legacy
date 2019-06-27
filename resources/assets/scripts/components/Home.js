@@ -88,33 +88,8 @@ export default (root) => {
         }
       },
       displayContent() {
-        initAnims(this.$el)
-        // var anims = Array.from(this.$el.querySelectorAll(animQuery))
-        // var firstObserve = false
-        // this.registerObserver({
-        //   nodes: anims,
-        //   options: { rootMargin: "0px", threshold: 0.2, },
-        //   callback: (entries, observer) => {
-        //     var tops = entries.map(entry => {
-        //       return entry.boundingClientRect.top
-        //     }).sort(function(a,b) { return a < b }).filter(function(t,i,a) {
-        //       if (a[i] !== a[i-1]) {return t}
-        //     })
-        //     var ct = 0
-        //     entries.forEach(entry => {
-        //       if (entry.isIntersecting) {
-        //         if (!firstObserve) {
-        //           var ti = tops.indexOf(entry.boundingClientRect.top)
-        //           ct = ti !== -1 ? ti : 0
-        //         }
-        //         entry.target.className += " anim-active"
-        //         entry.target.style.transitionDelay = 0.5*ct + "s"
-        //         observer.unobserve(entry.target)
-        //       }
-        //     })
-        //     if (!firstObserve) {firstObserve = true}
-        //   }
-        // })
+        // initAnims(this.$el)
+        console.log("DONE")
         this.display = true
       },
       handleResize() {

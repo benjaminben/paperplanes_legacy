@@ -56,7 +56,7 @@
     &.slideshow {
       position: relative; display: block;
       user-select: none; max-width: 1800px;
-      .cnr { display: block; background: red; width: 100%; padding-bottom: 56.25%; overflow: hidden; position: relative; }
+      .cnr { display: block; width: 100%; padding-bottom: 56.25%; overflow: hidden; position: relative; }
       .ctrl {
         font-family: courier, monospace; font-size: 1em; cursor: pointer;
         position: absolute; top: 50%; transform: translateY(-50%); display: block;

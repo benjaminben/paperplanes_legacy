@@ -11,15 +11,12 @@ import {
 
 export default (root) => {
   // TEMP: Redundant with router.js BUT in case initial load...
-  console.log(store.getters["ui/loaded"])
 
   store.dispatch("ui/setTheme", 1)
   store.dispatch("ui/setTrans", true)
   store.dispatch("nav/setEscape", siteUrl + "/work")
 
   initPhotoSwipeFromDOM(".layout.gallery")
-  initAnims(root)
-
 
   function masonrifyGalleries() {
     Array.from(root.querySelectorAll(".layout.gallery")).forEach(g => {

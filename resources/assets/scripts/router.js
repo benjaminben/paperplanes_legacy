@@ -11,7 +11,8 @@ import Project__Slideshow    from "./components/Project__Slideshow"
 import Project__Gallery      from "./components/Project__Gallery"
 import Project__MarqueeVideo from "./components/Project__MarqueeVideo"
 import Play                  from "./components/Play"
-import {siteUrl}             from "./config"
+import { siteUrl }           from "./config"
+import { initAnims }         from "./utils/anims"
 import store                 from "./store"
 import {
   TimelineMax,
@@ -33,6 +34,7 @@ const ComponentMap = {
   Play,
 }
 
+var n = null
 vueify(document.body)
 dressUp(document.getElementById("content"))
 
@@ -47,18 +49,21 @@ barba.init({
       to: {},
       beforeEnter: ({current, next, trigger}) => {
         const nextTheme = next.container.getAttribute("data-theme") === "dark" ? 1 : 0
-
+        n = next
         store.dispatch("ui/setTheme", nextTheme)
         store.dispatch("nav/setEscape", null)
         store.dispatch("nav/setSlug", null)
+        initAnims(next.container)
         vueify(next.container)
         return
       },
-      afterLeave() {
+      afterLeave: () => {
         store.dispatch("ui/setScrollPosition", [0,0])
-        store.dispatch("nav/setNavClosed")
         store.dispatch("ui/unlockScroll")
       },
+      after: () => {
+        store.dispatch("nav/setNavClosed")
+      }
     },
     {
       name: "project-enter-transition",
@@ -86,7 +91,7 @@ barba.init({
       },
       beforeEnter: ({current, next, dest}) => {
         vueify(next.container)
-      }
+      },
     },
     {
       name: "project-exit-transition",
@@ -151,6 +156,10 @@ barba.hooks.beforeEnter(({current, next, trigger}) => {
 
 barba.hooks.afterEnter(({current, next, trigger}) => {
   store.dispatch("nav/setSlug", trigger.getAttribute("data-dest"))
+})
+
+barba.hooks.after(() => {
+  initAnims(document.body)
 })
 
 const routerEvent_leave = new Event("_routerEvent_leave")
