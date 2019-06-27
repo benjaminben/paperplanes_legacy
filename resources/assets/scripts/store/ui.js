@@ -46,6 +46,12 @@ const m = {
       const l = context.state.activeListeners.concat([{type, target, fn}])
       context.commit("activeListeners", l)
     },
+    unregisterEventListener(context, o) {
+      const {target, type, fn} = o
+      context.commit("activeListeners", context.state.activeListeners.filter(l => {
+        return l.target !== target && l.type !== type && l.fn !== fn
+      }))
+    },
     unregisterEventListeners(context) {
       context.state.activeListeners.forEach(l => {
         l.target.removeEventListener(l.type, l.fn)

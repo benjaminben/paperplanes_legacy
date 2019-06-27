@@ -3,6 +3,7 @@ import Project__Slideshow    from "./Project__Slideshow"
 import Project__Gallery      from "./Project__Gallery"
 import store                 from "../store"
 import {siteUrl, animQuery}  from "../config"
+import {masonrifyGallery}    from "../utils/projects"
 import {
   initPhotoSwipeFromDOM,
 } from "../helpers"
@@ -14,18 +15,26 @@ export default (root) => {
   store.dispatch("nav/setEscape", siteUrl + "/work")
 
   initPhotoSwipeFromDOM(".layout.gallery")
-  const masonrifyGalleries = () => {
+
+
+  function masonrifyGalleries() {
     Array.from(root.querySelectorAll(".layout.gallery")).forEach(g => {
       masonrifyGallery(g)
     })
   }
-
   masonrifyGalleries(root)
-  store.dispatch("ui/registerEventListener", {
+  const masonryListener = {
     type: "resize",
     target: window,
     fn: masonrifyGalleries,
-  })
+  }
+
+  store.dispatch("ui/registerEventListener", masonryListener)
+  function clearHooks() {
+    store.dispatch("ui/unregisterEventListener", masonryListener)
+    window.removeEventListener("_routerEvent_leave", clearHooks)
+  }
+  window.addEventListener("_routerEvent_leave", clearHooks)
 
   var anims = Array.from(root.querySelectorAll(animQuery))
   // var firstObserve = false
@@ -52,26 +61,5 @@ export default (root) => {
       })
       // if (!firstObserve) {firstObserve = true}
     }
-  })
-}
-
-function masonrifyGallery(root) {
-  const compDistances = [0, 0]
-  const items = Array.from(root.querySelectorAll(".item"))
-  const em = parseFloat(getComputedStyle(root).fontSize)
-
-  Promise.resolve().then(() => items.forEach(p => {
-    p.style.transform = `translateY(0px)`
-  })).then(() => {
-    items.forEach((p,i,a) => {
-      if (i < 2) { return }
-      const currImg = p.children[0]
-      const prevImg = a[i-2].children[0]
-      const {top: currTop} = p.getBoundingClientRect()
-      const prevBottom = a[i-2].getBoundingClientRect().top + prevImg.clientHeight
-      const distance = currTop - prevBottom
-      compDistances[i%2] += distance
-      p.style.transform = `translateY(${-1 * (distance - em)}px)`
-    })
   })
 }

@@ -151,6 +151,12 @@ barba.hooks.afterEnter(({current, next, trigger}) => {
   store.dispatch("nav/setSlug", trigger.getAttribute("data-dest"))
 })
 
+const routerEvent_leave = new Event("_routerEvent_leave")
+
+barba.hooks.leave(data => {
+  window.dispatchEvent(routerEvent_leave)
+})
+
 function vueify(root) {
   if (root.getAttribute("data-vue-root")) {mapComponentToNode(root)}
   root.querySelectorAll("*[data-vue-root]").forEach(mapComponentToNode)

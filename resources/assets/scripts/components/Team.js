@@ -61,6 +61,6 @@ export default (root) => {
     },
     mounted() {
       if (this.loaded) { this.init() }
-    }
+    },
   })
 }
