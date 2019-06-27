@@ -54,8 +54,9 @@
       .lines { display: grid; grid-template-columns: auto auto auto auto; }
       .line { display: block; font-size: 0.8em; } }
     &.slideshow {
-      position: relative; padding-bottom: 56.25%;
-      user-select: none;
+      position: relative; display: block;
+      user-select: none; max-width: 1800px;
+      .cnr { display: block; background: red; width: 100%; padding-bottom: 56.25%; overflow: hidden; position: relative; }
       .ctrl {
         font-family: courier, monospace; font-size: 1em; cursor: pointer;
         position: absolute; top: 50%; transform: translateY(-50%); display: block;
@@ -71,7 +72,7 @@
         img { width: 100%; height: 100%; object-fit: cover; } } }
     &.gallery {
       display: grid; grid-template-columns: 1fr 1fr;
-      grid-column-gap: 1em; grid-row-gap: 1em;
+      grid-column-gap: 1em; grid-row-gap: 1em; max-width: 1800px;
       .item {
         display: inline-block; user-select: none; width: 100%; overflow: hidden;
         .caption { display: none; }
