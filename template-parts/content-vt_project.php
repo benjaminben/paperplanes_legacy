@@ -50,8 +50,10 @@ if ( have_rows( 'content' ) ) :
         <h1><?php get_sub_field( 'alt' ) ? the_sub_field( 'alt' ) : the_title() ?></h1>
       </div> <?php
     endif;
-    if ( get_row_layout() == 'generic' ) : ?>
-      <div class="layout generic anim-fade anim-under"><?php the_sub_field( 'content' ) ?></div> <?php
+    if ( get_row_layout() == 'generic' ) :
+      $content = get_sub_field( 'content' );
+      $content = str_replace('<p', '<p class="anim-fade anim-under"', $content); ?>
+      <div class="layout generic"><?php echo $content ?></div> <?php
     endif;
     if ( get_row_layout() == 'credits' ) : ?>
       <div class="layout credits">

@@ -36,7 +36,7 @@ export default (root) => {
   }
   window.addEventListener("_routerEvent_leave", clearHooks)
 
-  var anims = Array.from(root.querySelectorAll(animQuery))
+  var anims = Array.from(root.querySelectorAll(`${animQuery}`))
   // var firstObserve = false
   store.dispatch("ui/registerObserver", {
     nodes: anims,

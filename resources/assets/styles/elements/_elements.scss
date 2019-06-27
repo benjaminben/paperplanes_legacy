@@ -19,13 +19,6 @@ body {
 	position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1;
 	background: black; transform: translateY(-100%); }
 
-.site-footer {
-	display: flex; justify-content: space-between; bottom: 0;
-	width: calc(100% - #{$layout__navBannerPaddingHorizontal * 2});
-	margin: 4em auto 0; border-top: 1px solid; padding-bottom: 2em;
-	padding-top: 1em; font-size: 0.9em;
-}
-
 .anim-fade {opacity: 0;}
 .anim-scale-up {transform: scale(0.66);}
 .anim-scale-down {transform: scale(1.2);}
@@ -57,4 +50,6 @@ figure {
 	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
 }
 
-@import "tables"
+@import "tables";
+
+@import "footer";
