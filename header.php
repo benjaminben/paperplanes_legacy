@@ -12,7 +12,9 @@
 global $post;
 
 $theme = get_field( 'theme' );
+$bg_color = get_field('bg_color');
 if ( !$theme ) $theme = 'dark';
+if ( !$bg_color ) $bg_color = '#000';
 $slug = $post->post_name;
 
 ?>
@@ -30,7 +32,8 @@ $slug = $post->post_name;
 <body
 	data-slug="<?php echo $slug ?>"
 	data-theme="<?php echo $theme ?>"
-	<?php body_class( ($theme ? 'theme-' . $theme : '') ); ?>
+	style="background-color: <?php echo $bg_color ?>"
+	<?php body_class( 'theme-' . $theme ) ?>
 	data-site-url="<?php echo site_url() ?>">
 
 <div id="page" data-barba="wrapper" class="site">

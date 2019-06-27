@@ -1,5 +1,5 @@
 #content.vt_project {
-  padding: 0 0 4em;
+  padding: 0;
   animation: project-in 0.5s ease both; z-index: 1;
   .layout {
     width: calc(100% - #{$layout__navBannerPaddingHorizontal * 2});

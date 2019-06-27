@@ -34,6 +34,7 @@ const ComponentMap = {
 }
 
 vueify(document.body)
+dressUp(document.getElementById("content"))
 
 barba.init({
   debug: process.env.NODE_ENV === "production" ? false : true,
@@ -41,13 +42,12 @@ barba.init({
     {
       name: "menu-transition",
       from: {
-        custom: ({current, next, trigger}) => {
-          return trigger.className.match("menu-link")
-        },
+        custom: ({current, next, trigger}) => trigger.className.match("menu-link"),
       },
       to: {},
       beforeEnter: ({current, next, trigger}) => {
         const nextTheme = next.container.getAttribute("data-theme") === "dark" ? 1 : 0
+
         store.dispatch("ui/setTheme", nextTheme)
         store.dispatch("nav/setEscape", null)
         store.dispatch("nav/setSlug", null)
@@ -130,7 +130,7 @@ barba.init({
       beforeEnter: ({current, next, trigger}) => {
         const nextTheme = next.container.getAttribute("data-theme") === "dark" ? 1 : 0
         store.dispatch("ui/setTheme", nextTheme)
-        store.dispatch("ui/scrollPosition", [0,0])
+        store.dispatch("ui/setScrollPosition", [0,0])
         store.dispatch("nav/setEscape", null)
         store.dispatch("nav/setSlug", null)
         vueify(next.container)
@@ -145,7 +145,9 @@ barba.init({
   ]
 })
 
-// barba.hooks.beforeEnter()
+barba.hooks.beforeEnter(({current, next, trigger}) => {
+  dressUp(next.container)
+})
 
 barba.hooks.afterEnter(({current, next, trigger}) => {
   store.dispatch("nav/setSlug", trigger.getAttribute("data-dest"))
@@ -165,4 +167,13 @@ function vueify(root) {
 function mapComponentToNode(n) {
   const component = ComponentMap[n.getAttribute("data-vue-root")]
   return component(n)
+}
+
+function dressUp(dest) {
+  const theme = dest.getAttribute("data-theme")
+  const color = theme === "dark" ? "white" : "black"
+  const backgroundColor = dest.getAttribute("data-bg-color")
+  const ops = {color, backgroundColor}
+  console.log("dressing up", ops)
+  store.dispatch("ui/dressBody", ops)
 }

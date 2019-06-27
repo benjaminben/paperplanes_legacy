@@ -16,6 +16,7 @@ get_header();
   data-barba-namespace="project"
   data-vue-root="Project"
   style="background-color: #000"
+  data-bg-color="#000"
   data-theme="dark"
   class="site-content <?php echo get_post_type() ?>">
 

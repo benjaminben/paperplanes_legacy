@@ -1,7 +1,9 @@
 <?php
 
 $theme = get_field( 'theme' );
+$bg_color = get_field('bg_color');
 if ( !$theme ) $theme = 'dark';
+if ( !$bg_color ) $bg_color = '#000';
 $slug = $post->post_name;
 
 get_header(); ?>
@@ -10,8 +12,8 @@ get_header(); ?>
   id="content"
   data-vue-root="About"
   data-barba="container"
-  style="background-color: <?php echo get_field('bg_color') ?>"
-  data-theme="<?php echo ($theme ? $theme : '')?>"
+  data-theme="<?php echo $theme ?>"
+  data-bg-color="<?php echo $bg_color ?>"
   class="site-content <?php echo get_post_type() ?> <?php echo $slug ?>">
 
 <?php

@@ -11,6 +11,7 @@
 get_header();
 
 $theme = get_field( 'theme' );
+$bg_color = get_field( 'bg_color' );
 if ( !$theme ) $theme = 'dark';
 $slug = $post->post_name;
 
@@ -21,8 +22,9 @@ $post_objects = get_field('whitelisted_staff', 'theme-settings');
   id="content"
   data-vue-root="Team"
   data-barba="container"
-  style="background-color: <?php echo get_field('bg_color') ?>"
-  data-theme="<?php echo ($theme ? $theme : '')?>"
+  style="background-color: <?php echo $bg_color ?>"
+  data-bg-color="<?php echo $bg_color ?>"
+  data-theme="<?php echo $theme ?>"
   class="site-content <?php echo get_post_type() ?> <?php echo $slug ?>">
 
 <article

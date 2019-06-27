@@ -110,7 +110,11 @@ const m = {
     },
     setTrans(context, value) {
       context.commit("trans", value)
-    }
+    },
+    dressBody(context, {color, backgroundColor}) {
+      if (color) {document.body.style.color = color}
+      if (backgroundColor) {document.body.style.backgroundColor = backgroundColor}
+    },
   },
 }
 

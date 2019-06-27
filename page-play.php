@@ -2,6 +2,7 @@
 
 get_header();
 $theme = get_field( 'theme' );
+$bg_color = get_field( 'bg_color' );
 if ( !$theme ) $theme = 'dark';
 $slug = $post->post_name; ?>
 
@@ -9,8 +10,9 @@ $slug = $post->post_name; ?>
   id="content"
   data-vue-root="Play"
   data-barba="container"
-  style="background-color: <?php echo get_field('bg_color') ?>"
-  data-theme="<?php echo ($theme ? $theme : '')?>"
+  style="background-color: <?php echo $bg_color ?>"
+  data-theme="<?php echo $theme ?>"
+  data-bg-color="<?php echo $bg_color ?>"
   class="site-content <?php echo get_post_type() ?> <?php echo $slug ?>">
 
 PLAY

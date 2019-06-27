@@ -21,7 +21,7 @@
 
 #content {
 	box-sizing: border-box;
-	min-height: 100vh;
+	min-height: calc(100vh - #{$layout__footerHeight});
 	padding-top: $layout__navHeight;
 	padding-left: $layout__navBannerPaddingHorizontal;
 	padding-right: $layout__navBannerPaddingHorizontal;
