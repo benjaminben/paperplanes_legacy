@@ -35,7 +35,9 @@ $slug = $post->post_name;
 	style="background-color: <?php echo $bg_color ?>"
 	<?php body_class( 'theme-' . $theme ) ?>
 	data-site-url="<?php echo site_url() ?>">
-
+<div id="loader" data-vue-root="Loader" v-bind:style="{ display: loaded ? 'none' : 'flex' }">
+	<?php get_template_part( 'template-parts/graphic', 'plane' ); ?>
+</div>
 <div id="page" data-barba="wrapper" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'paperplanes' ); ?></a>
 	<header id="masthead" class="site-header">

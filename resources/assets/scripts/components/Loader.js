@@ -25,7 +25,6 @@ export default (root) => {
         "lockScroll",
         "unlockScroll",
         "setLoaded",
-        "boop",
       ]),
       cleanUp() {
         tl.repeat(0)

@@ -174,6 +174,5 @@ function dressUp(dest) {
   const color = theme === "dark" ? "white" : "black"
   const backgroundColor = dest.getAttribute("data-bg-color")
   const ops = {color, backgroundColor}
-  console.log("dressing up", ops)
   store.dispatch("ui/dressBody", ops)
 }

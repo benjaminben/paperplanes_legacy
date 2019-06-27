@@ -14,10 +14,6 @@
 
 		</div><!-- #content -->
 	</main><!-- #barba-wrapper -->
-	<?php get_template_part( 'template-parts/content', 'photoswipe' ); ?><!-- Ideally this isn't global -->
-	<div id="loader" data-vue-root="Loader" v-bind:style="{ display: loaded ? 'none' : 'flex' }">
-		<?php get_template_part( 'template-parts/graphic', 'plane' ); ?>
-	</div>
 	<noscript>
 		<style>#loader {display: none;}</style>
 	</noscript>
@@ -26,6 +22,7 @@
 	<span class="legal">&copy; VT Pro Design. All rights reserved</span>
 	<span class="tag">Let&apos;s make cool shit. <span class="year">2019</span></span>
 </footer><!-- #colophon -->
+<?php get_template_part( 'template-parts/content', 'photoswipe' ); ?><!-- Ideally this isn't global -->
 <?php wp_footer(); ?>
 
 </body>
