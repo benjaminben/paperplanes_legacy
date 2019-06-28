@@ -1,42 +1,19 @@
 import barba                 from "@barba/core"
-import Loader                from "./components/Loader"
-import Navigation            from "./components/Navigation"
-import Home                  from "./components/Home"
-import Team                  from "./components/Team"
-import Work                  from "./components/Work"
-import About                 from "./components/About"
-import Contact               from "./components/Contact"
-import Project               from "./components/Project"
-import Project__Slideshow    from "./components/Project__Slideshow"
-import Project__Gallery      from "./components/Project__Gallery"
-import Project__MarqueeVideo from "./components/Project__MarqueeVideo"
-import Play                  from "./components/Play"
 import { siteUrl }           from "./config"
 import { initAnims }         from "./utils/anims"
+import vueify                from "./utils/vueify"
+import dressUp               from "./utils/dressUp"
 import store                 from "./store"
 import {
   TimelineMax,
   TweenLite,
 } from "gsap"
 
-const ComponentMap = {
-  Loader,
-  Navigation,
-  Home,
-  Team,
-  About,
-  Work,
-  Project,
-  Project__Slideshow,
-  Project__Gallery,
-  Project__MarqueeVideo,
-  Contact,
-  Play,
-}
-
-var n = null
 vueify(document.body)
 dressUp(document.getElementById("content"))
+
+console.log(barba)
+barba.use(barba.logger)
 
 barba.init({
   debug: process.env.NODE_ENV === "production" ? false : true,
@@ -44,15 +21,13 @@ barba.init({
     {
       name: "menu-transition",
       from: {
-        custom: ({current, next, trigger}) => trigger.className.match("menu-link"),
+        custom: ({current, next, trigger}) => trigger.className && trigger.className.match("menu-link"),
       },
       to: {},
       beforeEnter: ({current, next, trigger}) => {
         const nextTheme = next.container.getAttribute("data-theme") === "dark" ? 1 : 0
-        n = next
         store.dispatch("ui/setTheme", nextTheme)
         store.dispatch("nav/setEscape", null)
-        store.dispatch("nav/setSlug", null)
         initAnims(next.container)
         vueify(next.container)
         return
@@ -90,6 +65,7 @@ barba.init({
         })
       },
       beforeEnter: ({current, next, dest}) => {
+        console.log("hello hello hello", next)
         vueify(next.container)
       },
     },
@@ -97,13 +73,13 @@ barba.init({
       name: "project-exit-transition",
       from: "project",
       to: {
-        namespace: ["work"]
+        namespace: ["work"],
       },
       beforeEnter: ({current, next, trigger}) => {
+        console.log("boop to work")
         vueify(next.container)
         store.dispatch("nav/setEscape", null)
         store.dispatch("ui/lockScroll")
-        const wipe = next.container.querySelector("#pageWipe")
         store.dispatch("ui/setTrans", true)
         current.container.style.animation = "none"
 
@@ -130,7 +106,9 @@ barba.init({
     },
     {
       name: "default-transition",
-      from: {},
+      from: {
+        custom: ({next, trigger}) => trigger === "popstate" || !next.namespace,
+      },
       to: {},
       beforeEnter: ({current, next, trigger}) => {
         const nextTheme = next.container.getAttribute("data-theme") === "dark" ? 1 : 0
@@ -138,6 +116,29 @@ barba.init({
         store.dispatch("ui/setScrollPosition", [0,0])
         store.dispatch("nav/setEscape", null)
         store.dispatch("nav/setSlug", null)
+        store.dispatch("ui/setTrans", false)
+        vueify(next.container)
+        return
+      },
+      afterLeave() {
+        store.dispatch("ui/setScrollPosition", [0,0])
+        store.dispatch("nav/setNavClosed")
+        store.dispatch("ui/unlockScroll")
+      },
+    },
+    {
+      name: "home-transition",
+      from: {
+        custom: ({next}) => next.namespace === "home"
+      },
+      to: {},
+      beforeEnter: ({current, next, trigger}) => {
+        const nextTheme = next.container.getAttribute("data-theme") === "dark" ? 1 : 0
+        store.dispatch("ui/setTheme", nextTheme)
+        store.dispatch("ui/setScrollPosition", [0,0])
+        store.dispatch("nav/setEscape", null)
+        store.dispatch("nav/setSlug", null)
+        store.dispatch("ui/setTrans", false)
         vueify(next.container)
         return
       },
@@ -150,15 +151,20 @@ barba.init({
   ]
 })
 
+barba.hooks.before(({current, next, trigger}) => {
+  console.log("bootybootybooty", current, next, trigger)
+  if (trigger === "popstate") {}
+})
+
 barba.hooks.beforeEnter(({current, next, trigger}) => {
   dressUp(next.container)
 })
 
 barba.hooks.afterEnter(({current, next, trigger}) => {
-  store.dispatch("nav/setSlug", trigger.getAttribute("data-dest"))
+  store.dispatch("nav/setSlug", next.namespace)
 })
 
-barba.hooks.after(() => {
+barba.hooks.after(({next}) => {
   initAnims(document.body)
 })
 
@@ -167,21 +173,3 @@ const routerEvent_leave = new Event("_routerEvent_leave")
 barba.hooks.leave(data => {
   window.dispatchEvent(routerEvent_leave)
 })
-
-function vueify(root) {
-  if (root.getAttribute("data-vue-root")) {mapComponentToNode(root)}
-  root.querySelectorAll("*[data-vue-root]").forEach(mapComponentToNode)
-}
-
-function mapComponentToNode(n) {
-  const component = ComponentMap[n.getAttribute("data-vue-root")]
-  return component(n)
-}
-
-function dressUp(dest) {
-  const theme = dest.getAttribute("data-theme")
-  const color = theme === "dark" ? "white" : "black"
-  const backgroundColor = dest.getAttribute("data-bg-color")
-  const ops = {color, backgroundColor}
-  store.dispatch("ui/dressBody", ops)
-}
