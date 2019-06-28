@@ -22,6 +22,7 @@ const m = {
       context.commit("escape", value)
     },
     setSlug(context, value) {
+      document.body.setAttribute("data-slug", value)
       context.commit("slug", value)
     },
     setNavOpen(context, value) {
