@@ -5,6 +5,7 @@ get_header();
 $theme = get_field( 'theme' );
 $bg_color = get_field( 'bg_color' );
 if ( !$theme ) $theme = 'dark';
+if ( !$bg_color ) $bg_color = '#000';
 $slug = $post->post_name;
 $reel = get_field('reel');
 

@@ -26,7 +26,15 @@
         img { width: 1em; } } }
     .tag { .text { font-size: 1em; font-weight: normal; } }
     .item { h5 { margin: 0; } } }
-  }
+
+  .logo {
+    display: block; position: absolute;
+    bottom: 5em;
+    right: $layout__navBannerPaddingHorizontal;
+    svg {
+      width: auto; height: 4em;
+      * { stroke: black; } } }
+}
 
 @media screen and (max-width: 1000px) {
   #content.contact {
@@ -41,15 +49,18 @@
         .label { font-size: 0.8em }
         .link { font-size: 1.5em; } }
     }
+    .logo svg { font-size: 0.8em; }
   }
 }
 
 @media screen and (max-width: 600px) {
   #content.contact {
+    // margin-bottom: -1.5em;
     .banner {
       .text { p { @include page-title-mobile; } }
     }
-    .item { margin-bottom: 1em; }
+    .item {
+      margin-bottom: 1em; }
     .grid {
       margin-top: 2em; display: flex; flex-flow: column;
       .contact {
@@ -59,6 +70,9 @@
         .label { font-size: 1em }
         .link { font-size: 2em; } } }
     .phone { margin-top: 1em; }
-    .tag { margin-top: 1em; }
+    .tag { margin-top: 1em; margin-bottom: 0em; }
+    .logo {
+      height: 4em;
+      right: $layout__mobile__navBannerPaddingHorizontal; }
   }
 }

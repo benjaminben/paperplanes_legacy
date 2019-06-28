@@ -11,10 +11,11 @@ html {
 body {
 	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
 	font-family: 'Visuelt', courier;
+	position: relative;
 }
 
-#content[data-theme="dark"] { background: black; color: white; }
-#content[data-theme="light"] { background: white; color: black; }
+#content[data-theme="dark"] { color: white; }
+#content[data-theme="light"] { color: black; }
 #pageWipe {
 	position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1;
 	background: black; transform: translateY(-100%); }

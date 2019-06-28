@@ -12,6 +12,7 @@ get_header(); ?>
   id="content"
   data-vue-root="About"
   data-barba="container"
+  style="background-color: <?php echo $bg_color  ?>"
   data-theme="<?php echo $theme ?>"
   data-bg-color="<?php echo $bg_color ?>"
   class="site-content <?php echo get_post_type() ?> <?php echo $slug ?>">

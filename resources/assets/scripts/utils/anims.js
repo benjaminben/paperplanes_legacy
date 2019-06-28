@@ -18,7 +18,6 @@ function uniq(a) {
 
 function initAnims(root) {
   var anims = Array.from(root.querySelectorAll(`${animQuery}`))
-  console.log("sup anims", anims)
 
   store.dispatch("ui/registerObserver", { // Set delays
     nodes: anims,

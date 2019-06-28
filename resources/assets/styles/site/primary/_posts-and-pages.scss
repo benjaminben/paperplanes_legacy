@@ -21,10 +21,11 @@
 
 #content {
 	box-sizing: border-box;
-	min-height: calc(100vh - #{$layout__footerHeight});
+	min-height: calc(100vh);
 	padding-top: $layout__navHeight;
 	padding-left: $layout__navBannerPaddingHorizontal;
 	padding-right: $layout__navBannerPaddingHorizontal;
+	padding-bottom: $layout__footerHeight + 2em;
  	&:before {
 		content: ""; position: fixed; top: 0; left: 0; width: 100%;
 		height: $layout__navHeight - $layout__navBannerMarginBottom; // refactor l8r

@@ -108,8 +108,10 @@ $categories = get_categories(array(
           ].indexOf(filter) > -1"
           href="<?php echo get_permalink($post->ID) ?>">
           <div class="preview"><?php echo get_the_post_thumbnail($post->ID) ?></div>
-          <span class="label main"><?php echo get_field("main_label") ?></span>
-          <span class="label sub"><?php echo get_field("sub_label") ?></span>
+          <div class="label-cnr">
+            <span class="label main"><?php echo get_field("main_label") ?></span>
+            <span class="label sub"><?php echo get_field("sub_label") ?></span>
+          </div>
         </a> <?php
       endforeach;
       wp_reset_postdata();

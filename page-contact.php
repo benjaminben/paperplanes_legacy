@@ -20,7 +20,6 @@ $content = get_field( 'content' );
   data-bg-color="<?php echo $bg_color ?>"
   class="site-content <?php echo get_post_type() ?> <?php echo $slug ?>">
 
-<article id="post-<?php the_ID(); ?>" <?php post_class("contact"); ?>>
 <?php
 if ( have_rows( 'content' ) ) :
   while ( have_rows( 'content' ) ) : the_row();
@@ -71,12 +70,15 @@ if ( have_rows( 'content' ) ) :
         endwhile;
       endif;
       ?>
-    <div>
+    </div>
     <?php endif;
   endwhile;
 else :
   // no layouts found
 endif; ?>
-</article><!-- #post-<?php the_ID(); ?> -->
+
+<span class="logo">
+  <?php get_template_part( 'template-parts/graphic', 'plane' ); ?>
+</span>
 
 <?php get_footer(); ?>

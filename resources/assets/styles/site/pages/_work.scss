@@ -1,5 +1,5 @@
 #content.work {
-  z-index: 0; position: relative; padding-bottom: 2em;
+  z-index: 0; position: relative;
   .ctrl {
     display: flex; justify-content: space-between; align-items: flex-end;
     .grid {
@@ -32,7 +32,8 @@
 	.projects {
 		display: grid; grid-column-gap: 1em; grid-row-gap: 1em; }
   .project {
-    display: none; text-decoration: none; color: black;
+    display: none; text-decoration: none; color: black; position: relative;
+    .label-cnr { position: relative; }
     .label {
       @include item-label-base();
       &.sub { @include item-label-sub(); } }
@@ -62,6 +63,12 @@
   #content.work {
     .ctrl {
       .grid { display: none; } }
+    .project {
+      .preview { margin-bottom: 0; }
+      .label-cnr {
+        position: absolute; color: white; left: 0.75em; bottom: 0.5em;
+        font-size: 1.2em;
+        .main { font-weight: bold; } } }
     .projects {
       grid-template-columns: 1fr!important; } }
 }

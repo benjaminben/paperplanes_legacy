@@ -10,7 +10,8 @@ $layout__navBannerPaddingHorizontal: 4em;
 $layout__navHeight: $layout__navBannerPaddingTop + $layout__navBannerHeight + $layout__navBannerPaddingBottom + $layout__navBannerBorderBottom + $layout__navBannerMarginBottom;
 
 // padding-bottom + font-size + padding-top + border-top + margin-top
-$layout__footerHeight: calc(2em + 0.9em + 1em + 1px + 4em);
+// $layout__footerHeight: calc(2em + 0.9em + 1em + 1px + 4em);
+$layout__footerHeight: 4em;
 
 $layout__mobile__navBannerPaddingTop: 1.75em;
 $layout__mobile__navBannerPaddingHorizontal: 1.5em;
