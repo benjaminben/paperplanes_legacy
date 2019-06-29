@@ -12,7 +12,6 @@ import {
 vueify(document.body)
 dressUp(document.getElementById("content"))
 
-console.log(barba)
 barba.use(barba.logger)
 
 barba.init({
@@ -28,7 +27,6 @@ barba.init({
         const nextTheme = next.container.getAttribute("data-theme") === "dark" ? 1 : 0
         store.dispatch("ui/setTheme", nextTheme)
         store.dispatch("nav/setEscape", null)
-        initAnims(next.container)
         vueify(next.container)
         return
       },
@@ -165,7 +163,7 @@ barba.hooks.afterEnter(({current, next, trigger}) => {
 })
 
 barba.hooks.after(({next}) => {
-  initAnims(document.body)
+  window.setTimeout(() => initAnims(document.body), 500) // :|
 })
 
 const routerEvent_leave = new Event("_routerEvent_leave")
