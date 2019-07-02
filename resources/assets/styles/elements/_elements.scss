@@ -54,3 +54,7 @@ figure {
 @import "tables";
 
 @import "footer";
+
+@media screen and (min-width: 1600px) {
+	body { font-size: 1.2em; }
+}

@@ -13,7 +13,6 @@ vueify(document.body)
 dressUp(document.getElementById("content"))
 
 barba.use(barba.logger)
-
 barba.init({
   debug: process.env.NODE_ENV === "production" ? false : true,
   transitions: [
@@ -63,7 +62,6 @@ barba.init({
         })
       },
       beforeEnter: ({current, next, dest}) => {
-        console.log("hello hello hello", next)
         vueify(next.container)
       },
     },
@@ -150,7 +148,6 @@ barba.init({
 })
 
 barba.hooks.before(({current, next, trigger}) => {
-  console.log("bootybootybooty", current, next, trigger)
   if (trigger === "popstate") {}
 })
 
@@ -163,6 +160,7 @@ barba.hooks.afterEnter(({current, next, trigger}) => {
 })
 
 barba.hooks.after(({next}) => {
+  // initAnims(document.body)
   window.setTimeout(() => initAnims(document.body), 500) // :|
 })
 

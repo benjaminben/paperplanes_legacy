@@ -10,5 +10,6 @@ module.exports = {
   proxyTarget: 'http://localhost:8888/vt',
   watch: [
     '../**/*.php',
+    '../**/*.js',
   ]
 }

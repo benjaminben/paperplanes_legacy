@@ -51,7 +51,8 @@ article.page.home {
 	}
 
 	.close {
-		cursor: pointer; }
+		cursor: pointer;
+	 	svg { width: 4em; height: auto; } }
 
 	&.no-display {
 		section { opacity: 0!important; transform: translate(0,1em)!important; }
