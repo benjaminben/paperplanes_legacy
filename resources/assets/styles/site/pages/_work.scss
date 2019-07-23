@@ -29,8 +29,6 @@
     &:first-of-type { margin-left: 0.5em; }
     &:last-of-type { margin-right: 0; }
     &[active="true"] { text-decoration: underline; } }
-	.projects {
-		display: grid; grid-column-gap: 1em; grid-row-gap: 1em; }
   .project {
     display: none; text-decoration: none; color: black; position: relative;
     .label-cnr { position: relative; }
@@ -51,7 +49,15 @@
           transform: scale(1); filter: saturate(1);
         }
       }
-    } } }
+    } }
+  .projects {
+		display: grid; grid-column-gap: 1em; grid-row-gap: 1em;
+    &.single {
+      .preview { margin-bottom: 0; }
+      .label-cnr {
+        position: absolute; color: white; left: 0.75em; bottom: 0.5em;
+        font-size: 1.2em;
+        .main { font-weight: bold; } } } } }
 
 @media screen and (max-width: 768px) {
   #content.work {

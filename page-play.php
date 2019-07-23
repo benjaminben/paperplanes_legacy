@@ -10,6 +10,7 @@ $slug = $post->post_name; ?>
   id="content"
   data-vue-root="Play"
   data-barba="container"
+  data-barba-namespace="<?php echo $slug ?>"
   style="background-color: <?php echo $bg_color ?>"
   data-theme="<?php echo $theme ?>"
   data-bg-color="<?php echo $bg_color ?>"

@@ -28,7 +28,7 @@ const ComponentMap = {
 
 function vueify(root) {
   if (root.getAttribute("data-vue-root")) {mapComponentToNode(root)}
-  root.querySelectorAll("*[data-vue-root]").forEach(mapComponentToNode)
+  Array.from(root.querySelectorAll("*[data-vue-root]")).forEach(mapComponentToNode)
 }
 
 function mapComponentToNode(n) {

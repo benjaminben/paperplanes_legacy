@@ -28,7 +28,7 @@ $categories = get_categories(array(
   id="content"
   data-vue-root="Work"
   data-barba="container"
-  data-barba-namespace="work"
+  data-barba-namespace="<?php echo $slug ?>"
   style="background-color: <?php echo $bg_color ?>"
   data-bg-color="<?php echo $bg_color ?>"
   data-theme="<?php echo $theme?>"
@@ -92,7 +92,9 @@ $categories = get_categories(array(
       </span>
     </div>
   </div>
-  <div class="projects" v-bind:style="gridStyle">
+  <div class="projects"
+       v-bind:class="{single: gridStyle.gridTemplateColumns == '1fr'}"
+       v-bind:style="gridStyle">
 		<?php
     if ( $post_objects ) :
       foreach ( $post_objects as $post ) :

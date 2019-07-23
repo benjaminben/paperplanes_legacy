@@ -186,8 +186,21 @@ require get_template_directory() . '/inc/acf.php';
 require get_template_directory() . '/inc/settings.php';
 
 /**
+ * Custom endpoints.
+ */
+require get_template_directory() . '/inc/endpoints.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
+}
+
+add_filter( 'wp_headers', 'send_cors_headers', 11, 1 );
+function send_cors_headers( $headers ) {
+    $allowed_domains = array( 'http://bb.ngrok.io' , 'https://benjaminben.github.io');
+    if ( ! in_array( $_SERVER[ 'HTTP_ORIGIN' ] , $allowed_domains ) ) return $headers;
+    $headers['Access-Control-Allow-Origin'] = $_SERVER[ 'HTTP_ORIGIN' ];
+    return $headers;
 }

@@ -22,6 +22,7 @@ $post_objects = get_field('whitelisted_staff', 'theme-settings');
   id="content"
   data-vue-root="Team"
   data-barba="container"
+  data-barba-namespace="<?php echo $slug ?>"
   style="background-color: <?php echo $bg_color ?>"
   data-bg-color="<?php echo $bg_color ?>"
   data-theme="<?php echo $theme ?>"
@@ -37,7 +38,7 @@ $post_objects = get_field('whitelisted_staff', 'theme-settings');
       foreach ( $post_objects as $post ) : ?>
         <span class="member anim-fade">
           <div class="headshot">
-            <?php the_post_thumbnail($post->ID, ['class' => '']) ?>
+            <?php the_post_thumbnail($post->ID, ['class' => 'anim-scale-down']) ?>
           </div>
           <?php the_title('<h4 class="name">', "</h4>") ?>
           <span class="role"><?php echo get_field("role") ?></span>

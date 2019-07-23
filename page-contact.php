@@ -15,6 +15,7 @@ $content = get_field( 'content' );
   id="content"
   data-vue-root="Contact"
   data-barba="container"
+  data-barba-namespace="<?php echo $slug ?>"
   style="background-color: <?php echo $bg_color ?>"
   data-theme="<?php echo ($theme ? $theme : '')?>"
   data-bg-color="<?php echo $bg_color ?>"

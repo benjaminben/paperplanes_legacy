@@ -50,7 +50,7 @@ new Vue({
     },
   },
   mounted() {
-    this.$el.querySelectorAll("a[href]").forEach(a => {
+    Array.from(this.$el.querySelectorAll("a[href]")).forEach(a => {
       a.addEventListener("click", this.checkCurrent)
     })
   },
